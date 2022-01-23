@@ -1,9 +1,9 @@
-const PROJECTION_PLANE_WIDTH = 800;
-const PROJECTION_PLANE_HEIGHT = 600;
+const PROJECTION_PLANE_WIDTH = 640;
+const PROJECTION_PLANE_HEIGHT = 576;
 const FOV_DEGREES = 60;
 const FOV_RADS = FOV_DEGREES * (Math.PI / 180);
 const PROJECTION_PLAIN_DISTANCE = (PROJECTION_PLANE_WIDTH / 2) / Math.tan(FOV_RADS / 2);
-const RAY_INCREMENT_WIDTH = 1;
+const RAY_INCREMENT_WIDTH = 4;
 const NUM_OF_RAYS = PROJECTION_PLANE_WIDTH / RAY_INCREMENT_WIDTH;
 const RAY_ANGLE_INCREMENT = FOV_RADS / NUM_OF_RAYS;
 
@@ -210,13 +210,13 @@ function drawEverything() {
     render3DProjection();
     currentLevel.draw();
     player.draw();
-    player.drawHands();
+    //player.drawHands();
 
     for (let o of objects) {
         o.draw2D();
     }
 
-    drawHUD();
+    //drawHUD();
 }
 
 function render3DProjection() {
