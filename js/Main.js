@@ -2,6 +2,7 @@ var canvas;
 var canvasContext;
 
 var mapSection = new MapSection();
+var player = new Player();
 
 window.onload = function () {
     canvas = document.getElementById('gameCanvas');
@@ -9,6 +10,7 @@ window.onload = function () {
     canvasContext.canvas.width = PROJECTION_PLANE_WIDTH;
     canvasContext.canvas.height = PROJECTION_PLANE_HEIGHT;
 
+    initInput();
     initRenderLoop();
 }
 
@@ -20,14 +22,15 @@ function initRenderLoop() {
 }
 
 function update(){
-    moveEverything();
+    updateEverything();
     drawEverything();
 }
 
-function moveEverything(){
-
+function updateEverything(){
+    player.update();
 }
 
 function drawEverything(){
     mapSection.draw();
+    player.draw();
 }

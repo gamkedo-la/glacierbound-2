@@ -1,6 +1,7 @@
-function colorRect(topLeftX, topLeftY, boxWidth, boxHeight, fillColor) {
+//#region Graphics Functions
+function colorRect(topLeftX, topLeftY, boxWidth, boxHeight, fillColor, scale = 1) {
     canvasContext.fillStyle = fillColor;
-    canvasContext.fillRect(topLeftX, topLeftY, boxWidth, boxHeight);
+    canvasContext.fillRect(topLeftX * scale, topLeftY * scale, boxWidth * scale, boxHeight * scale);
 }
 
 function drawRect(topLeftX, topLeftY, boxWidth, boxHeight, strokeColor){
@@ -10,10 +11,10 @@ function drawRect(topLeftX, topLeftY, boxWidth, boxHeight, strokeColor){
     canvasContext.stroke();
 }
 
-function colorCircle(centerX, centerY, radius, fillColor) {
+function colorCircle(centerX, centerY, radius, fillColor, scale) {
     canvasContext.fillStyle = fillColor;
     canvasContext.beginPath();
-    canvasContext.arc(centerX, centerY, radius, 0, Math.PI * 2, true);
+    canvasContext.arc(centerX * scale, centerY * scale, radius * scale, 0, Math.PI * 2, true);
     canvasContext.fill();
 }
 
@@ -25,29 +26,25 @@ function colorLine(x1, y1, x2, y2, color) {
     canvasContext.stroke();
 }
 
-function colorLineAtAngle(x, y, angle, length, color){
+function colorLineAtAngle(x, y, angle, length, color, scale = 1){
     canvasContext.beginPath();
     canvasContext.strokeStyle = color;
-    canvasContext.moveTo(x, y);
-    canvasContext.lineTo(x + Math.cos(angle) * length, y + Math.sin(angle) * length);
+    canvasContext.moveTo(x * scale, y * scale);
+    canvasContext.lineTo(x * scale + Math.cos(angle) * length * scale, y * scale + Math.sin(angle) * length * scale);
     canvasContext.stroke();
 }
 
 function rgb(r, g, b){
     return "rgb("+r+","+g+","+b+")";
 }
+//#endregion Graphics Functions
 
-function mapTileToIndex(tileCol, tileRow) {
-    return (tileCol + MAP_NUM_COLS * tileRow);
+//#region Math Functions
+function radiansToDegrees(radians){
+    return radians * (180 / Math.PI)
 }
 
-function getTileCoordinates(index) {
-    let x = (index % MAP_NUM_COLS);
-    let y = ((index - x) / MAP_NUM_COLS) * TILE_SIZE;
-    x *= TILE_SIZE;
-
-    return {
-        x: x,
-        y: y
-    };
+function degreesToRadians(degrees){
+    return degrees * (Math.PI / 180)
 }
+//#endregion Math Functions
