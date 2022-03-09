@@ -1,10 +1,15 @@
+//#region General Constants
+const FRAMES_PER_SECOND = 60;
+//#endregion
+
 //#region Projection Plane Constants
-const PROJECTION_PLANE_WIDTH = 640;
-const PROJECTION_PLANE_HEIGHT = 576;
+const PROJECTION_PLANE_WIDTH = 160;
+const PROJECTION_PLANE_HEIGHT = 144;
+const CANVAS_SCALE_FACTOR = 4;
 const FOV_DEGREES = 60;
-const FOV_RADS = FOV_DEGREES * (Math.PI / 180);
+const FOV_RADS = degreesToRadians(FOV_DEGREES);
 const PROJECTION_PLAIN_DISTANCE = (PROJECTION_PLANE_WIDTH / 2) / Math.tan(FOV_RADS / 2);
-const RAY_INCREMENT_WIDTH = 4;
+const RAY_INCREMENT_WIDTH = CANVAS_SCALE_FACTOR;
 const NUM_OF_RAYS = PROJECTION_PLANE_WIDTH / RAY_INCREMENT_WIDTH;
 const RAY_ANGLE_INCREMENT = FOV_RADS / NUM_OF_RAYS;
 //#endregion Projectionm Plan Constants
@@ -19,9 +24,9 @@ const NEUTRAL = 0;
 
 //#region Map Grid Constants
 const MINIMAP_SCALE_FACTOR = 1;
-const TILE_SIZE = 32;
 const MAP_NUM_ROWS = 11;
 const MAP_NUM_COLS = 15;
+const TILE_SIZE = 32;
 const TILE_TYPE_WALL = 1;
 const TILE_TYPE_FLOOR = 0;
 //#endregion Map Grid Constants
