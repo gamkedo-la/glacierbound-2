@@ -4,6 +4,8 @@ class Ray {
         this.wallHitX = 0;
         this.wallHitY = 0;
         this.distance = 0;
+        this.xStep;
+        this.yStep;
         this.wasHitVertical = false;
 
         this.isRayFacingDown = this.rayAngle > 0 && this.rayAngle < Math.PI;
@@ -14,79 +16,62 @@ class Ray {
 
     cast(columnID){
         var xIntercept, yIntercept;
-        var xStep, yStep;
-        
-        //Find Horizontal Intersections
-        var foundHorzWallHit = false;
-        var HorWallHitX = 0;
-        var HorWallHitY = 0;
 
+        //Find Horizontal Intersections
         yIntercept = Math.floor(player.y / TILE_SIZE) * TILE_SIZE
         yIntercept += this.isRayFacingDown ? TILE_SIZE : 0;
         
         xIntercept = player.x + ((yIntercept - player.y) / Math.tan(this.rayAngle));
       
-        yStep = TILE_SIZE;
-        yStep *= this.isRayFacingUp ? -1 : 1;
+        this.yStep = TILE_SIZE;
+        this.yStep *= this.isRayFacingUp ? -1 : 1;
 
-        xStep = TILE_SIZE / Math.tan(this.rayAngle);
-        xStep *= (this.isRayFacingLeft && xStep > 0) ? -1 : 1;
-        xStep *= (this.isRayFacingRight && xStep < 0) ? -1 : 1;
+        this.xStep = TILE_SIZE / Math.tan(this.rayAngle);
+        this.xStep *= (this.isRayFacingLeft && this.xStep > 0) ? -1 : 1;
+        this.xStep *= (this.isRayFacingRight && this.xStep < 0) ? -1 : 1;
 
-        var nextHorzTouchX = xIntercept;
-        var nextHorzTouchY = yIntercept;
-
-        while (isCoordWithinMapGrid(nextHorzTouchX, nextHorzTouchY)){
-            if (mapSection.getTileTypeAtPixelCoord(nextHorzTouchX, nextHorzTouchY - (this.isRayFacingUp ? 1 : 0)) === TILE_TYPE_WALL){
-                foundHorzWallHit = true;
-                HorWallHitX = nextHorzTouchX;
-                HorWallHitY = nextHorzTouchY;
-                break
-            } else {
-                nextHorzTouchX += xStep;
-                nextHorzTouchY += yStep;
-            }
-        }
-
-        //Find Vertical Intersections
-        var foundVertWallHit = false;
-        var vertWallHitX = 0;
-        var vertWallHitY = 0;
+        var horWallHitCoord = this.getWallHitCoord(xIntercept, yIntercept);
         
+        //Find Vertical Intersections
         xIntercept = Math.floor(player.x / TILE_SIZE) * TILE_SIZE;
         xIntercept += this.isRayFacingRight ? TILE_SIZE : 0;
                 
         yIntercept = player.y + ((xIntercept - player.x) * Math.tan(this.rayAngle));
               
-        xStep = TILE_SIZE;
-        xStep *= this.isRayFacingLeft ? -1 : 1;
+        this.xStep = TILE_SIZE;
+        this.xStep *= this.isRayFacingLeft ? -1 : 1;
         
-        yStep = TILE_SIZE * Math.tan(this.rayAngle);
-        yStep *= (this.isRayFacingUp && yStep > 0) ? -1 : 1;
-        yStep *= (this.isRayFacingDown && yStep < 0) ? -1 : 1;
+        this.yStep = TILE_SIZE * Math.tan(this.rayAngle);
+        this.yStep *= (this.isRayFacingUp && this.yStep > 0) ? -1 : 1;
+        this.yStep *= (this.isRayFacingDown && this.yStep < 0) ? -1 : 1;
         
-        var nextVertTouchX = xIntercept;
-        var nextVertTouchY = yIntercept;
+        var vertWallHitCoord = this.getWallHitCoord(xIntercept, yIntercept);
         
-        while (isCoordWithinMapGrid(nextVertTouchX, nextVertTouchY)){
-            if (mapSection.getTileTypeAtPixelCoord(nextVertTouchX - (this.isRayFacingLeft ? 1 : 0), nextVertTouchY) === TILE_TYPE_WALL){
-                foundVertWallHit = true;
-                vertWallHitX = nextVertTouchX;
-                vertWallHitY = nextVertTouchY;
-                break;
-            } else {
-                nextVertTouchX += xStep;
-                nextVertTouchY += yStep;
-            }
-        }
+        //Compare Distances
+        var horzHitDistance = (true) ? distanceBetweenPoints(player.x, player.y, horWallHitCoord.x, horWallHitCoord.y) : Number.MAX_VALUE;
+        var vertHitDistance = (true) ? distanceBetweenPoints(player.x, player.y, vertWallHitCoord.x, vertWallHitCoord.y) : Number.MAX_VALUE;
 
-        var horzHitDistance = (foundHorzWallHit) ? distanceBetweenPoints(player.x, player.y, HorWallHitX, HorWallHitY) : Number.MAX_VALUE;
-        var vertHitDistance = (foundVertWallHit) ? distanceBetweenPoints(player.x, player.y, vertWallHitX, vertWallHitY) : Number.MAX_VALUE;
-
-        this.wallHitX = horzHitDistance < vertHitDistance ? HorWallHitX : vertWallHitX;
-        this.wallHitY = horzHitDistance < vertHitDistance ? HorWallHitY : vertWallHitY;
+        this.wallHitX = horzHitDistance < vertHitDistance ? horWallHitCoord.x : vertWallHitCoord.x;
+        this.wallHitY = horzHitDistance < vertHitDistance ? horWallHitCoord.y : vertWallHitCoord.y;
         this.distance = horzHitDistance < vertHitDistance ? horzHitDistance : vertHitDistance;
         this.wasHitVertical = (vertHitDistance < horzHitDistance);
+    }
+
+    getWallHitCoord(nextTileEdgeX, nextTileEdgeY){
+        var xOffset = this.isRayFacingLeft ? -1 : 0;
+        var yOffSet = this.isRayFacingUp ? -1 : 0;
+        
+        while (true){
+            if (mapSection.getTileTypeAtPixelCoord(nextTileEdgeX + xOffset, nextTileEdgeY + yOffSet) === TILE_TYPE_WALL){
+                return {
+                    'x': nextTileEdgeX,
+                    'y': nextTileEdgeY
+                };
+            } else {
+                nextTileEdgeX += this.xStep;
+                nextTileEdgeY += this.yStep;
+            }
+        }
     }
 
     draw(){

@@ -27,10 +27,10 @@ class MapSection {
     }
 
     getTileTypeAtPixelCoord(pixelX, pixelY) {
+        if (!isCoordWithinMapGrid(pixelX, pixelY)) return TILE_TYPE_WALL;
+
         var tileCol = Math.floor(pixelX / TILE_SIZE);
         var tileRow = Math.floor(pixelY / TILE_SIZE);
-    
         return this.grid[tileRow][tileCol];
     }
-
 }
