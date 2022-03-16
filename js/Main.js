@@ -3,7 +3,6 @@ var canvasContext;
 
 var mapSection = new MapSection();
 var player = new Player();
-var rays = [];
 
 window.onload = function () {
     canvas = document.getElementById('gameCanvas');
@@ -24,14 +23,10 @@ function initRenderLoop() {
 
 function updateEverything(){
     player.update();
-    castAllRays();
 }
 
 function drawEverything(){
     clearScreen();
     mapSection.draw();
-    for (ray of rays){
-        ray.draw();
-    }
     player.draw();
 }
