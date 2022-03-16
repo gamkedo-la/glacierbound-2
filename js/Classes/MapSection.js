@@ -15,7 +15,17 @@ class MapSection {
             ]
     }
 
-    draw() {
+    draw3DProjectedWalls(){
+        for (var i = 0; i < NUM_OF_RAYS; i++){
+            var ray = player.rayCaster.rays[i];
+            var rayDistance = ray.distance * Math.cos(ray.rayAngle - player.rotationAngle);
+            var wallStripHeight = (TILE_SIZE / rayDistance) * PROJECTION_PLAIN_DISTANCE;
+    
+            colorRect(i * RAY_INCREMENT_WIDTH * CANVAS_SCALE_FACTOR, (canvasContext.canvas.height/2) - (wallStripHeight/2), RAY_INCREMENT_WIDTH * CANVAS_SCALE_FACTOR, wallStripHeight, 'blue');
+        }
+    }
+
+    draw2DMinimap() {
         for (var row = 0; row < MAP_NUM_ROWS; row++) {
             for ( var col = 0; col < MAP_NUM_COLS; col++) {
                 var tileX = col * TILE_SIZE;

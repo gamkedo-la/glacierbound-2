@@ -5,7 +5,7 @@ class Player {
         this.turnDirection = NEUTRAL;
         this.walkDirection = NEUTRAL;
         this.radius = TILE_SIZE/4;
-        this.moveSpeed = 2; // pixels/frame
+        this.moveSpeed = 1; // pixels/frame
         this.rotationSpeed = degreesToRadians(3); //degrees converted to radians/frame
         this.rotationAngle = degreesToRadians(90); //degrees converted to radians
         this.rayCaster;

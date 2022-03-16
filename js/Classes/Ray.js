@@ -1,5 +1,5 @@
 class Ray {
-    constructor(rayAngle, columnID) {
+    constructor(rayAngle) {
         this.rayAngle = normalizeAngle(rayAngle);
 
         this.isRayFacingDown = this.rayAngle > 0 && this.rayAngle < Math.PI;
@@ -70,6 +70,6 @@ class Ray {
     }
 
     draw(){
-        colorLine(player.x, player.y, this.closestWallHitCoord.x, this.closestWallHitCoord.y, 'blue');
+        colorLine(player.x, player.y, this.closestWallHitCoord.x, this.closestWallHitCoord.y, 'red', MINIMAP_SCALE_FACTOR);
     }
 }

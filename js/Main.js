@@ -26,7 +26,8 @@ function updateEverything(){
 }
 
 function drawEverything(){
-    clearScreen();
-    mapSection.draw();
+    clearScreen('grey');
+    mapSection.draw3DProjectedWalls();
+    mapSection.draw2DMinimap();
     player.draw();
 }

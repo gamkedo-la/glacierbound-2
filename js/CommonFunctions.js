@@ -15,18 +15,18 @@ function drawRect(topLeftX, topLeftY, boxWidth, boxHeight, strokeColor){
     canvasContext.stroke();
 }
 
-function colorCircle(centerX, centerY, radius, fillColor, scale) {
+function colorCircle(centerX, centerY, radius, fillColor, scale = 1) {
     canvasContext.fillStyle = fillColor;
     canvasContext.beginPath();
     canvasContext.arc(centerX * scale, centerY * scale, radius * scale, 0, Math.PI * 2, true);
     canvasContext.fill();
 }
 
-function colorLine(x1, y1, x2, y2, color) {
+function colorLine(x1, y1, x2, y2, color, scale = 1) {
     canvasContext.beginPath();
     canvasContext.strokeStyle = color;
-    canvasContext.moveTo(x1, y1);
-    canvasContext.lineTo(x2, y2);
+    canvasContext.moveTo(x1 * scale, y1 * scale);
+    canvasContext.lineTo(x2 * scale, y2 * scale);
     canvasContext.stroke();
 }
 
