@@ -1,11 +1,11 @@
 //#region Graphics Functions
 function clearScreen(color = 'white'){
-    colorRect(0, 0, canvas.width, canvas.height, color);
+    colorRect(0, 0, canvasBuffer.width, canvasBuffer.height, color, canvasBufferContext);
 }
 
-function colorRect(topLeftX, topLeftY, boxWidth, boxHeight, fillColor, scale = 1) {
-    canvasContext.fillStyle = fillColor;
-    canvasContext.fillRect(topLeftX * scale, topLeftY * scale, boxWidth * scale, boxHeight * scale);
+function colorRect(topLeftX, topLeftY, boxWidth, boxHeight, fillColor, targetCanvas, scale = 1) {
+    targetCanvas.fillStyle = fillColor;
+    targetCanvas.fillRect(topLeftX * scale, topLeftY * scale, boxWidth * scale, boxHeight * scale);
 }
 
 function drawRect(topLeftX, topLeftY, boxWidth, boxHeight, strokeColor){
