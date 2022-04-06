@@ -10,8 +10,9 @@ window.onload = function () {
     canvasContext.canvas.width = PROJECTION_PLANE_WIDTH * CANVAS_SCALE_FACTOR;
     canvasContext.canvas.height = PROJECTION_PLANE_HEIGHT * CANVAS_SCALE_FACTOR;
 
+    loadImages();
     initInput();
-    initRenderLoop();
+    //initRenderLoop();
 }
 
 function initRenderLoop() {
@@ -30,4 +31,6 @@ function drawEverything(){
     mapSection.draw3DProjectedWalls();
     mapSection.draw2DMinimap();
     player.draw();
+
+    //canvasContext.drawImage(spriteList['wall'], 0, 0);
 }
