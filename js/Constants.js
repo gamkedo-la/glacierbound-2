@@ -29,7 +29,7 @@ const MAP_NUM_COLS = 15;
 const TILE_SIZE = 32;
 const TILE_TYPE_WALL = 1;
 const TILE_TYPE_FLOOR = 0;
-const TEXTURE_SIZE = 256;
+const TEXTURE_SIZE = 32;
 //#endregion Map Grid Constants
 
 //#region Keyboard Code Constants
