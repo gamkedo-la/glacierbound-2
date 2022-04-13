@@ -1,41 +1,41 @@
 //#region Graphics Functions
 function clearScreen(color = 'white'){
-    colorRect(0, 0, canvasBuffer.width, canvasBuffer.height, color, canvasBufferContext);
+    colorRect(0, 0, bufferedGameCanvas.width, bufferedGameCanvas.height, color);
 }
 
-function colorRect(topLeftX, topLeftY, boxWidth, boxHeight, fillColor, targetCanvas, scale = 1) {
+function colorRect(topLeftX, topLeftY, boxWidth, boxHeight, fillColor, targetCanvas = bufferedGameCanvasContext, scale = 1) {
     targetCanvas.fillStyle = fillColor;
     targetCanvas.fillRect(topLeftX * scale, topLeftY * scale, boxWidth * scale, boxHeight * scale);
 }
 
-function drawRect(topLeftX, topLeftY, boxWidth, boxHeight, strokeColor){
-    canvasContext.beginPath();
-    canvasContext.strokeStyle = strokeColor;
-    canvasContext.rect(topLeftX, topLeftY, boxWidth, boxHeight);
-    canvasContext.stroke();
+function drawRect(topLeftX, topLeftY, boxWidth, boxHeight, strokeColor, targetCanvas = bufferedGameCanvasContext){
+    targetCanvas.beginPath();
+    targetCanvas.strokeStyle = strokeColor;
+    targetCanvas.rect(topLeftX, topLeftY, boxWidth, boxHeight);
+    targetCanvas.stroke();
 }
 
-function colorCircle(centerX, centerY, radius, fillColor, scale = 1) {
-    canvasContext.fillStyle = fillColor;
-    canvasContext.beginPath();
-    canvasContext.arc(centerX * scale, centerY * scale, radius * scale, 0, Math.PI * 2, true);
-    canvasContext.fill();
+function colorCircle(centerX, centerY, radius, fillColor, targetCanvas = bufferedGameCanvasContext, scale = 1) {
+    targetCanvas.fillStyle = fillColor;
+    targetCanvas.beginPath();
+    targetCanvas.arc(centerX * scale, centerY * scale, radius * scale, 0, Math.PI * 2, true);
+    targetCanvas.fill();
 }
 
-function colorLine(x1, y1, x2, y2, color, scale = 1) {
-    canvasContext.beginPath();
-    canvasContext.strokeStyle = color;
-    canvasContext.moveTo(x1 * scale, y1 * scale);
-    canvasContext.lineTo(x2 * scale, y2 * scale);
-    canvasContext.stroke();
+function colorLine(x1, y1, x2, y2, color, targetCanvas = bufferedGameCanvasContext, scale = 1) {
+    targetCanvas.beginPath();
+    targetCanvas.strokeStyle = color;
+    targetCanvas.moveTo(x1 * scale, y1 * scale);
+    targetCanvas.lineTo(x2 * scale, y2 * scale);
+    targetCanvas.stroke();
 }
 
-function colorLineAtAngle(x, y, angle, length, color, scale = 1){
-    canvasContext.beginPath();
-    canvasContext.strokeStyle = color;
-    canvasContext.moveTo(x * scale, y * scale);
-    canvasContext.lineTo(x * scale + Math.cos(angle) * length * scale, y * scale + Math.sin(angle) * length * scale);
-    canvasContext.stroke();
+function colorLineAtAngle(x, y, angle, length, color, targetCanvas = bufferedGameCanvasContext, scale = 1){
+    targetCanvas.beginPath();
+    targetCanvas.strokeStyle = color;
+    targetCanvas.moveTo(x * scale, y * scale);
+    targetCanvas.lineTo(x * scale + Math.cos(angle) * length * scale, y * scale + Math.sin(angle) * length * scale);
+    targetCanvas.stroke();
 }
 
 function rgb(r, g, b){
@@ -43,7 +43,7 @@ function rgb(r, g, b){
 }
 
 function isCoordWithinCanvas(xPixel, yPixel){
-    return xPixel >= 0 && xPixel < canvasContext.canvas.width && yPixel >= 0 && yPixel < canvasContext.canvas.height;
+    return xPixel >= 0 && xPixel < screenCanvasContext.canvas.width && yPixel >= 0 && yPixel < screenCanvasContext.canvas.height;
 }
 
 function isCoordWithinMapGrid(xPixel, yPixel){

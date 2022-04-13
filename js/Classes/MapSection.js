@@ -21,36 +21,20 @@ class MapSection {
             var rayDistance = ray.distance * Math.cos(ray.rayAngle - player.rotationAngle);
             var wallStripHeight = (TILE_SIZE / rayDistance) * PROJECTION_PLAIN_DISTANCE;
 
-            var wallTopPixel = (canvasBufferContext.canvas.height/2) - (wallStripHeight/2);
+            var wallTopPixel = (bufferedGameCanvasContext.canvas.height/2) - (wallStripHeight/2);
             wallTopPixel = wallTopPixel < 0 ? 0 : wallTopPixel;
 
-            var wallBottomPixel = (canvasBufferContext.canvas.height/2) + (wallStripHeight/2);
-            wallBottomPixel = wallBottomPixel > canvasBufferContext.canvas.height ? canvasBufferContext.canvas.height : wallBottomPixel;
+            var wallBottomPixel = (bufferedGameCanvasContext.canvas.height/2) + (wallStripHeight/2);
+            wallBottomPixel = wallBottomPixel > bufferedGameCanvasContext.canvas.height ? bufferedGameCanvasContext.canvas.height : wallBottomPixel;
 
             if (ray.closestWallHitCoord.x % TILE_SIZE === 0){ // if Vertical Hit
                 var textureOffSetX = ray.closestWallHitCoord.y % TILE_SIZE;
             } else { //else if Horizonal Hit
                 var textureOffSetX = ray.closestWallHitCoord.x % TILE_SIZE;
             }
+
             textureOffSetX *= (TEXTURE_SIZE / TILE_SIZE);
-            //for(var y = wallStripHeight; y < wallBottomPixel; y++) {
-            //    var textureOffSetY = (y - wallTopPixel) * (TEXTURE_SIZE / wallStripHeight)
-            //}
-
-            canvasBufferContext.drawImage(spriteList['wall2'], 
-                    textureOffSetX, //sx
-                    0, //sy
-                    1, //sWidth
-                    TEXTURE_SIZE, //sHeight
-                    i * RAY_INCREMENT_WIDTH, //dx
-                    wallTopPixel, //dy
-                    RAY_INCREMENT_WIDTH, //dWidth
-                    wallStripHeight //dHeight
-                ); 
-    
-            //colorRect(i * RAY_INCREMENT_WIDTH * CANVAS_SCALE_FACTOR, wallTopPixel, RAY_INCREMENT_WIDTH * CANVAS_SCALE_FACTOR, wallStripHeight, 'blue');
-
-            
+            bufferedGameCanvasContext.drawImage(spriteList['wall2'], textureOffSetX, 0, 1, TEXTURE_SIZE, i * RAY_INCREMENT_WIDTH, wallTopPixel, RAY_INCREMENT_WIDTH, wallStripHeight); 
         }
     }
 
@@ -60,7 +44,7 @@ class MapSection {
                 var tileX = col * TILE_SIZE;
                 var tileY = row * TILE_SIZE;
                 var tileColor = this.grid[row][col] === 1 ? 'black' : 'white';
-                colorRect(tileX, tileY, TILE_SIZE, TILE_SIZE, tileColor, canvasContext, MINIMAP_SCALE_FACTOR);
+                colorRect(tileX, tileY, TILE_SIZE, TILE_SIZE, tileColor, bufferedDebugCanvasContext, MINIMAP_SCALE_FACTOR);
             }
         }
     }

@@ -70,6 +70,6 @@ class Ray {
     }
 
     draw(){
-        colorLine(player.x, player.y, this.closestWallHitCoord.x, this.closestWallHitCoord.y, 'red', MINIMAP_SCALE_FACTOR);
+        colorLine(player.x, player.y, this.closestWallHitCoord.x, this.closestWallHitCoord.y, 'red', bufferedDebugCanvasContext, MINIMAP_SCALE_FACTOR);
     }
 }

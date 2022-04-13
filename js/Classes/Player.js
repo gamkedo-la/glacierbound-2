@@ -30,7 +30,7 @@ class Player {
 
     draw() {
         this.rayCaster.draw();
-        colorCircle(this.x, this.y, this.radius, 'red', MINIMAP_SCALE_FACTOR);
-        colorLineAtAngle(this.x, this.y, this.rotationAngle, this.radius * 2, 'red', MINIMAP_SCALE_FACTOR)
+        colorCircle(this.x, this.y, this.radius, 'red', bufferedDebugCanvasContext, MINIMAP_SCALE_FACTOR);
+        colorLineAtAngle(this.x, this.y, this.rotationAngle, this.radius * 2, 'red', bufferedDebugCanvasContext, MINIMAP_SCALE_FACTOR)
     }
 }
