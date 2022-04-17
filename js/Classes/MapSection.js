@@ -22,8 +22,6 @@ class MapSection {
             var wallStripHeight = (TILE_SIZE / rayDistance) * PROJECTION_PLAIN_DISTANCE;
 
             var wallTopPixel = (bufferedGameCanvasContext.canvas.height/2) - (wallStripHeight/2);
-            wallTopPixel = wallTopPixel < 0 ? 0 : wallTopPixel;
-
             var wallBottomPixel = (bufferedGameCanvasContext.canvas.height/2) + (wallStripHeight/2);
             wallBottomPixel = wallBottomPixel > bufferedGameCanvasContext.canvas.height ? bufferedGameCanvasContext.canvas.height : wallBottomPixel;
 
