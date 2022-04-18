@@ -1,5 +1,6 @@
 function initCanvases(){
     screenCanvas = document.getElementById('screenCanvas');
+    screenCanvas.style.cursor = "none";
     screenCanvasContext = screenCanvas.getContext('2d');
     setCanvasContextSizeAndSmoothing(screenCanvasContext, CANVAS_SCALE_FACTOR);
 
