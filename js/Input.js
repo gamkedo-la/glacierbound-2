@@ -36,4 +36,8 @@ function keyReleased(evt) {
   if (evt.keyCode === KEY_LETTER_D || evt.keyCode === KEY_RIGHT_ARROW) {
     player.turnDirection = NEUTRAL;
   }
+  if (evt.keyCode === KEY_LETTER_P) {
+    // toggle pause menu
+    paused = !paused;
+  }
 }
