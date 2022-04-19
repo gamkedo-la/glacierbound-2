@@ -10,11 +10,11 @@ function initCanvases(){
 
     bufferedHUDCanvas = document.createElement("canvas");
     bufferedHUDCanvasContext = bufferedHUDCanvas.getContext('2d');
-    setCanvasContextSizeAndSmoothing(bufferedHUDCanvasContext);
+    setCanvasContextSizeAndSmoothing(bufferedHUDCanvasContext, CANVAS_SCALE_FACTOR);
 
     bufferedDebugCanvas = document.createElement("canvas");
     bufferedDebugCanvasContext = bufferedDebugCanvas.getContext('2d');
-    setCanvasContextSizeAndSmoothing(bufferedDebugCanvasContext);
+    setCanvasContextSizeAndSmoothing(bufferedDebugCanvasContext, CANVAS_SCALE_FACTOR);
 }
 
 function setCanvasContextSizeAndSmoothing(thisCanvasContext, scale = 1){

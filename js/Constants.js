@@ -23,7 +23,7 @@ const NEUTRAL = 0;
 //#endregion
 
 //#region Map Grid Constants
-const MINIMAP_SCALE_FACTOR = 0.1;
+const MINIMAP_SCALE_FACTOR = 0.4;
 const MAP_NUM_ROWS = 11;
 const MAP_NUM_COLS = 15;
 const TILE_SIZE = 32;
