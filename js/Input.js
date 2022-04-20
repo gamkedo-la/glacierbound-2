@@ -1,6 +1,12 @@
+var mousePos = null;
+
 function initInput() {
   document.addEventListener("keydown", keyPressed);
   document.addEventListener("keyup", keyReleased);
+
+  document.addEventListener("mousemove", moveMouse);
+  //document.addEventListener("mousedown", mouseDown);
+  //document.addEventListener("mouseup", mouseUp);
 }
 
 function pollInput() {
@@ -40,4 +46,21 @@ function keyReleased(evt) {
     // toggle pause menu
     paused = !paused;
   }
+}
+
+function moveMouse(evt){
+  mousePos = calculateMousePos(evt);
+  //console.log(mousePos);
+}
+
+function calculateMousePos(evt) {
+  var rect = screenCanvas.getBoundingClientRect();
+  var root = document.documentElement;
+  var mouseX = evt.clientX - rect.left - root.scrollLeft;
+  var mouseY = evt.clientY - rect.top - root.scrollTop;
+
+  return {
+      x: mouseX,
+      y: mouseY
+  };
 }

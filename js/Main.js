@@ -42,6 +42,12 @@ function drawEverything(){
 
         drawBufferedCanvasToScreenCanvas(bufferedGameCanvas);
         drawBufferedCanvasToScreenCanvas(bufferedHUDCanvas);
-        if (debugModeEnabled) drawBufferedCanvasToScreenCanvas(bufferedDebugCanvas);
+
+        if (debugModeEnabled){
+            screenCanvas.style.cursor = "auto";
+            drawBufferedCanvasToScreenCanvas(bufferedDebugCanvas);
+        } else {
+            screenCanvas.style.cursor = "none";
+        }
     }
 }
