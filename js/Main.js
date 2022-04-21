@@ -28,12 +28,13 @@ function drawEverything(){
     if (paused) {
         // if the game is paused, display the pause menu
         // currently this only shows the text 'PAUSED', there is no menu
-        screenCanvasContext.font = '50px sans-serif';
-        screenCanvasContext.textAlign = "center";
-        screenCanvasContext.fillStyle = "yellow";
-        screenCanvasContext.fillText('PAUSED', screenCanvas.width / 2, screenCanvas.height / 2);
-        screenCanvasContext.fillStyle = "black";
-        screenCanvasContext.strokeText('PAUSED', screenCanvas.width / 2, screenCanvas.height / 2);
+        bufferedHUDCanvasContext.font = '50px sans-serif';
+        bufferedHUDCanvasContext.textAlign = "center";
+        bufferedHUDCanvasContext.fillStyle = "yellow";
+        bufferedHUDCanvasContext.fillText('PAUSED', bufferedHUDCanvas.width / 2, bufferedHUDCanvas.height / 2);
+        bufferedHUDCanvasContext.fillStyle = "black";
+        bufferedHUDCanvasContext.strokeText('PAUSED', bufferedHUDCanvas.width / 2, bufferedHUDCanvas.height / 2);
+        drawBufferedCanvasToScreenCanvas(bufferedHUDCanvas);
     } else {
         clearScreen('grey');
         mapSection.draw3DProjectedWalls();
