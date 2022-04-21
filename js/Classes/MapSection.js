@@ -15,6 +15,20 @@ class MapSection {
             ]
     }
 
+    // this is not perspective correct so it would not work for floors
+    // but we can assume the sky is infinitely far away
+    // for simple math and very fast performance
+    drawSkyPanorama(){
+        var imgW = spriteList['sky_clouds'].width;
+        var skyW = bufferedGameCanvasContext.canvas.width;
+        var skyH = Math.round(bufferedGameCanvasContext.canvas.height/2);
+        var skyX = -(player.rotationAngle)/(Math.PI*2)*imgW-imgW/2+skyW/2;
+        skyX *= 0.25; // FIXME.. this ratio related to screen/panarama width
+        var skyY = -spriteList['sky_clouds'].height + skyH;
+        //console.log('skyX='+skyX);
+        bufferedGameCanvasContext.drawImage(spriteList['sky_clouds'],skyX,skyY);
+    }
+
     draw3DProjectedWalls(){
         for (var i = 0; i < NUM_OF_RAYS; i++){
             var ray = player.rayCaster.rays[i];

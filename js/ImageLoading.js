@@ -4,7 +4,8 @@ var spriteList = {};
 function loadImages() {
 
 	var imageList = [
-		{spriteName: 'ice_wall', fileName: 'ice_wall.png'}
+		{spriteName: 'ice_wall', fileName: 'ice_wall.png'},
+        {spriteName: 'sky_clouds', fileName: 'sky_clouds.png'}
 	]
 
 	imagesToLoad = imageList.length;

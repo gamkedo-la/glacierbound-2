@@ -37,6 +37,7 @@ function drawEverything(){
         drawBufferedCanvasToScreenCanvas(bufferedHUDCanvas);
     } else {
         clearScreen('grey');
+        mapSection.drawSkyPanorama();
         mapSection.draw3DProjectedWalls();
         mapSection.draw2DMinimap();
         player.draw();
