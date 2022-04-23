@@ -5,6 +5,9 @@ function loadImages() {
 
 	var imageList = [
 		{spriteName: 'ice_wall', fileName: 'ice_wall.png'},
+		{spriteName: 'rock_snowy_wall', fileName: 'rock_snowy_wall_texture_32x32.png'},
+		{spriteName: 'rock_wall', fileName: 'rock_wall_texture_32x32.png'},
+		{spriteName: 'snowy_wall', fileName: 'snowy_wall_texture_32x32.png'},
         {spriteName: 'sky_clouds', fileName: 'sky_clouds.png'}
 	]
 
