@@ -8,6 +8,7 @@ window.onload = function () {
     loadImages();
     initInput();
     initCanvases();
+    initLevelEditor();
 }
 
 function initRenderLoop() { //called from ImageLoading.js
