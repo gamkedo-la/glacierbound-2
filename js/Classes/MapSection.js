@@ -68,4 +68,15 @@ class MapSection {
         var tileRow = Math.floor(pixelY / TILE_SIZE);
         return this.grid[tileRow][tileCol];
     }
+
+    setTileTypeAtPixelCoord(pixelX, pixelY) {
+        if (!isCoordWithinMapGrid(pixelX / MINIMAP_SCALE_FACTOR, pixelY / MINIMAP_SCALE_FACTOR)) return;
+
+        var tileCol = Math.floor((pixelX / MINIMAP_SCALE_FACTOR) / (TILE_SIZE));
+        var tileRow = Math.floor((pixelY / MINIMAP_SCALE_FACTOR) / (TILE_SIZE));
+        //console.log(pixelX+", "+pixelY);
+        //console.log(tileCol+", "+tileRow);
+        this.grid[tileRow][tileCol] = 1;
+    }
+
 }

@@ -58,7 +58,10 @@ function moveMouse(evt){
 }
 
 function mouseDown(evt){
-  if (levelEditorEnabled) setSelectedTile();
+  if (levelEditorEnabled) {
+    mapSection.setTileTypeAtPixelCoord(mousePos.x, mousePos.y);
+    setSelectedTile();
+  }
 }
 
 function calculateMousePos(evt) {
