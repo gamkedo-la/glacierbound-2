@@ -1,6 +1,7 @@
 var mapSection = new MapSection();
 var player = new Player();
 var debugModeEnabled = true;
+var levelEditorEnabled = false;
 var paused = false;
 
 window.onload = function () {
@@ -50,6 +51,11 @@ function drawEverything(){
             drawBufferedCanvasToScreenCanvas(bufferedDebugCanvas);
         } else {
             screenCanvas.style.cursor = "none";
+        }
+
+        if (levelEditorEnabled) {
+            drawBufferedCanvasToScreenCanvas(bufferedLevelEditorCanvas);
+            drawLevelEditor();
         }
     }
 }

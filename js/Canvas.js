@@ -15,6 +15,10 @@ function initCanvases(){
     bufferedDebugCanvas = document.createElement("canvas");
     bufferedDebugCanvasContext = bufferedDebugCanvas.getContext('2d');
     setCanvasContextSizeAndSmoothing(bufferedDebugCanvasContext, CANVAS_SCALE_FACTOR);
+
+    bufferedLevelEditorCanvas = document.createElement("canvas");
+    bufferedLevelEditorCanvasContext = bufferedLevelEditorCanvas.getContext('2d');
+    setCanvasContextSizeAndSmoothing(bufferedLevelEditorCanvasContext, CANVAS_SCALE_FACTOR);
 }
 
 function setCanvasContextSizeAndSmoothing(thisCanvasContext, scale = 1){

@@ -47,6 +47,9 @@ function keyReleased(evt) {
     paused = !paused;
     bufferedHUDCanvasContext.clearRect(0, 0, bufferedHUDCanvas.width, bufferedHUDCanvas.height);
   }
+  if (evt.keyCode === KEY_LETTER_L) {
+    levelEditorEnabled = !levelEditorEnabled;
+  }
 }
 
 function moveMouse(evt){
