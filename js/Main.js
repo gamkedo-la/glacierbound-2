@@ -27,13 +27,16 @@ function updateEverything(){
 }
 
 function drawEverything(){
+    
+    clearAllCanvases();
+    colorRect(0, 0, bufferedGameCanvas.width, bufferedGameCanvas.height, 'grey', bufferedGameCanvasContext, 1);
+
     if (paused) {
         // if the game is paused, display the pause menu
         // currently this only shows the text 'PAUSED', there is no menu
         colorText('PAUSED', bufferedHUDCanvasContext, bufferedHUDCanvas.width / 2, bufferedHUDCanvas.height / 2, '50px sans-serif', "center", "yellow");
         drawBufferedCanvasToScreenCanvas(bufferedHUDCanvas);
     } else {
-        clearScreen('grey');
         mapSection.drawSkyPanorama();
         mapSection.draw3DProjectedWalls();
         mapSection.draw2DMinimap();
@@ -50,8 +53,8 @@ function drawEverything(){
         }
 
         if (levelEditorEnabled) {
-            drawBufferedCanvasToScreenCanvas(bufferedLevelEditorCanvas);
             drawLevelEditor();
+            drawBufferedCanvasToScreenCanvas(bufferedLevelEditorCanvas);
         }
     }
 }

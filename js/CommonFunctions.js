@@ -1,6 +1,10 @@
 //#region Graphics Functions
-function clearScreen(color = 'white'){
-    colorRect(0, 0, bufferedGameCanvas.width, bufferedGameCanvas.height, color);
+function clearAllCanvases(){
+    screenCanvasContext.clearRect(0, 0, screenCanvasContext.canvas.width, screenCanvasContext.canvas.height);
+    bufferedGameCanvasContext.clearRect(0, 0, bufferedGameCanvasContext.canvas.width, bufferedGameCanvasContext.canvas.height);
+    bufferedDebugCanvasContext.clearRect(0, 0, bufferedDebugCanvasContext.canvas.width, bufferedDebugCanvasContext.canvas.height);
+    bufferedHUDCanvasContext.clearRect(0, 0, bufferedHUDCanvasContext.canvas.width, bufferedHUDCanvasContext.canvas.height);
+    bufferedLevelEditorCanvasContext.clearRect(0, 0, bufferedLevelEditorCanvasContext.canvas.width, bufferedLevelEditorCanvasContext.canvas.height);
 }
 
 function colorRect(topLeftX, topLeftY, boxWidth, boxHeight, fillColor, targetCanvas = bufferedGameCanvasContext, scale = 1) {

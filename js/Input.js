@@ -5,7 +5,7 @@ function initInput() {
   document.addEventListener("keyup", keyReleased);
 
   document.addEventListener("mousemove", moveMouse);
-  //document.addEventListener("mousedown", mouseDown);
+  document.addEventListener("mousedown", mouseDown);
   //document.addEventListener("mouseup", mouseUp);
 }
 
@@ -55,6 +55,10 @@ function keyReleased(evt) {
 function moveMouse(evt){
   mousePos = calculateMousePos(evt);
   //console.log(mousePos);
+}
+
+function mouseDown(evt){
+  if (levelEditorEnabled) setSelectedTile();
 }
 
 function calculateMousePos(evt) {
