@@ -29,12 +29,7 @@ function drawEverything(){
     if (paused) {
         // if the game is paused, display the pause menu
         // currently this only shows the text 'PAUSED', there is no menu
-        bufferedHUDCanvasContext.font = '50px sans-serif';
-        bufferedHUDCanvasContext.textAlign = "center";
-        bufferedHUDCanvasContext.fillStyle = "yellow";
-        bufferedHUDCanvasContext.fillText('PAUSED', bufferedHUDCanvas.width / 2, bufferedHUDCanvas.height / 2);
-        bufferedHUDCanvasContext.fillStyle = "black";
-        bufferedHUDCanvasContext.strokeText('PAUSED', bufferedHUDCanvas.width / 2, bufferedHUDCanvas.height / 2);
+        colorText('PAUSED', bufferedHUDCanvasContext, bufferedHUDCanvas.width / 2, bufferedHUDCanvas.height / 2, '50px sans-serif', "center", "yellow");
         drawBufferedCanvasToScreenCanvas(bufferedHUDCanvas);
     } else {
         clearScreen('grey');

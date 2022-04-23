@@ -38,6 +38,16 @@ function colorLineAtAngle(x, y, angle, length, color, targetCanvas = bufferedGam
     targetCanvas.stroke();
 }
 
+function colorText(text, canvasContext, x, y, font, textAlign, fillColor, strokeColor = fillColor){
+    canvasContext.font = font;
+    canvasContext.textAlign = textAlign;
+    canvasContext.fillStyle = fillColor;
+    canvasContext.strokeStyle = strokeColor;
+    
+    canvasContext.fillText(text, x, y);
+    if (fillColor != strokeColor) canvasContext.strokeText(text, x, y);
+}
+
 function rgb(r, g, b){
     return "rgb("+r+","+g+","+b+")";
 }
