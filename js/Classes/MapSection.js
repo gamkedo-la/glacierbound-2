@@ -46,6 +46,7 @@ class MapSection {
             }
 
             textureOffSetX *= (TEXTURE_SIZE / TILE_SIZE);
+            textureOffSetX = Math.floor(textureOffSetX);
             bufferedGameCanvasContext.drawImage(spriteList['ice_wall'], textureOffSetX, 0, 1, TEXTURE_SIZE, i * RAY_INCREMENT_WIDTH, wallTopPixel, RAY_INCREMENT_WIDTH, wallStripHeight); 
         }
     }
