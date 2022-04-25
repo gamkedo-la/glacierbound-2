@@ -20,13 +20,18 @@ class MapSection {
     // for simple math and very fast performance
     drawSkyPanorama(){
         var imgW = spriteList['sky_clouds'].width;
-        var skyW = bufferedGameCanvasContext.canvas.width;
+        var imgH = spriteList['sky_clouds'].height;
         var skyH = Math.round(bufferedGameCanvasContext.canvas.height/2);
-        var skyX = -(player.rotationAngle)/(Math.PI*2)*imgW-imgW/2+skyW/2;
-        skyX *= 0.25; // FIXME.. this ratio related to screen/panarama width
-        var skyY = -spriteList['sky_clouds'].height + skyH;
-        //console.log('skyX='+skyX);
-        bufferedGameCanvasContext.drawImage(spriteList['sky_clouds'],skyX,skyY);
+        //adjust the width of the image for the available height
+        var width = imgW * (skyH/imgH);
+        //how far left to draw the image
+        var skyX = -(player.rotationAngle*width)/(Math.PI*2);
+        //draw the image
+        bufferedGameCanvasContext.drawImage(spriteList['sky_clouds'],skyX,0,width,skyH);
+        //if the image ends before the end of the screen draw another starting where the last one stopped (left+width)
+        if(skyX < width - bufferedGameCanvasContext.canvas.width){
+            bufferedGameCanvasContext.drawImage(spriteList['sky_clouds'],skyX+width,0,width,skyH);
+        }
     }
 
     draw3DProjectedWalls(){
