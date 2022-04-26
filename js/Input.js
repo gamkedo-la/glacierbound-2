@@ -45,7 +45,6 @@ function keyReleased(evt) {
   if (evt.keyCode === KEY_LETTER_P) {
     // toggle pause menu
     paused = !paused;
-    bufferedHUDCanvasContext.clearRect(0, 0, bufferedHUDCanvas.width, bufferedHUDCanvas.height);
   }
   if (evt.keyCode === KEY_LETTER_L) {
     levelEditorEnabled = !levelEditorEnabled;
