@@ -76,13 +76,20 @@ class MapSection {
     }
 
     setTileTypeAtPixelCoord(pixelX, pixelY) {
-        if (!isCoordWithinMapGrid(pixelX / MINIMAP_SCALE_FACTOR, pixelY / MINIMAP_SCALE_FACTOR)) return;
 
-        var tileCol = Math.floor((pixelX / MINIMAP_SCALE_FACTOR) / (TILE_SIZE));
-        var tileRow = Math.floor((pixelY / MINIMAP_SCALE_FACTOR) / (TILE_SIZE));
-        //console.log(pixelX+", "+pixelY);
-        //console.log(tileCol+", "+tileRow);
-        this.grid[tileRow][tileCol] = 1;
+        var scaledPixelX = pixelX / MINIMAP_SCALE_FACTOR;
+        var scaledPixelY = pixelY / MINIMAP_SCALE_FACTOR;
+
+        if (!isCoordWithinMapGrid(scaledPixelX, scaledPixelY)) return;
+
+        var tileCol = Math.floor((scaledPixelX) / (TILE_SIZE));
+        var tileRow = Math.floor((scaledPixelY) / (TILE_SIZE));
+
+        if (this.getTileTypeAtPixelCoord(scaledPixelX, scaledPixelY) == TILE_TYPE_WALL) {
+            this.grid[tileRow][tileCol] = TILE_TYPE_FLOOR;
+        } else {
+            this.grid[tileRow][tileCol] = TILE_TYPE_WALL;
+        }
     }
 
 }
