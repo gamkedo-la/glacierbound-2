@@ -4,11 +4,11 @@ class MapSection {
             [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
             [1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
             [1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1],
-            [1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 1],
+            [1, 0, 0, 1, 3, 1, 1, 1, 1, 1, 0, 1, 0, 1, 1],
             [1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 0, 0, 1],
-            [1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1],
-            [1, 1, 0, 1, 1, 0, 0, 0, 1, 1, 0, 1, 0, 0, 1],
-            [1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 0, 1],
+            [1, 0, 0, 1, 3, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1],
+            [1, 1, 0, 1, 3, 0, 0, 0, 3, 3, 0, 1, 0, 0, 1],
+            [1, 0, 0, 1, 3, 1, 2, 3, 3, 1, 0, 1, 0, 0, 1],
             [1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1],
             [1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 1, 0, 1],
             [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
@@ -52,7 +52,9 @@ class MapSection {
 
             textureOffSetX *= (TEXTURE_SIZE / TILE_SIZE);
             textureOffSetX = Math.floor(textureOffSetX);
-            bufferedGameCanvasContext.drawImage(spriteList['ice_wall'], textureOffSetX, 0, 1, TEXTURE_SIZE, i * RAY_INCREMENT_WIDTH, wallTopPixel, RAY_INCREMENT_WIDTH, wallStripHeight); 
+
+            bufferedGameCanvasContext.drawImage(ray.wallStripTexture, textureOffSetX, 0, 1, TEXTURE_SIZE, i * RAY_INCREMENT_WIDTH, wallTopPixel, RAY_INCREMENT_WIDTH, wallStripHeight);
+    
         }
     }
 
@@ -61,18 +63,25 @@ class MapSection {
             for ( var col = 0; col < MAP_NUM_COLS; col++) {
                 var tileX = col * TILE_SIZE;
                 var tileY = row * TILE_SIZE;
-                var tileColor = this.grid[row][col] === 1 ? 'black' : 'white';
-                colorRect(tileX, tileY, TILE_SIZE, TILE_SIZE, tileColor, bufferedDebugCanvasContext, MINIMAP_SCALE_FACTOR);
+                var tileType = this.getTileTypeAtGridCoord(col, row);
+
+                if (tileType != TILE_TYPE_FLOOR) bufferedDebugCanvasContext.drawImage(wallTextures[tileType - 1], tileX * MINIMAP_SCALE_FACTOR, tileY * MINIMAP_SCALE_FACTOR, TEXTURE_SIZE * MINIMAP_SCALE_FACTOR, TEXTURE_SIZE * MINIMAP_SCALE_FACTOR);
             }
         }
     }
 
     getTileTypeAtPixelCoord(pixelX, pixelY) {
-        if (!isCoordWithinMapGrid(pixelX, pixelY)) return TILE_TYPE_WALL;
+        if (!isPixelCoordWithinMapGrid(pixelX, pixelY)) return TILE_TYPE_WALL;
 
         var tileCol = Math.floor(pixelX / TILE_SIZE);
         var tileRow = Math.floor(pixelY / TILE_SIZE);
         return this.grid[tileRow][tileCol];
+    }
+
+    getTileTypeAtGridCoord(col, row) {
+        if (!isGridCoordWithinMapGrid(col, row)) return TILE_TYPE_WALL;
+
+        return this.grid[row][col];
     }
 
     setTileTypeAtPixelCoord(pixelX, pixelY) {
@@ -80,15 +89,15 @@ class MapSection {
         var scaledPixelX = pixelX / MINIMAP_SCALE_FACTOR;
         var scaledPixelY = pixelY / MINIMAP_SCALE_FACTOR;
 
-        if (!isCoordWithinMapGrid(scaledPixelX, scaledPixelY)) return;
+        if (!isPixelCoordWithinMapGrid(scaledPixelX, scaledPixelY)) return;
 
         var tileCol = Math.floor((scaledPixelX) / (TILE_SIZE));
         var tileRow = Math.floor((scaledPixelY) / (TILE_SIZE));
 
-        if (this.getTileTypeAtPixelCoord(scaledPixelX, scaledPixelY) == TILE_TYPE_WALL) {
+        if (this.getTileTypeAtPixelCoord(scaledPixelX, scaledPixelY) != TILE_TYPE_FLOOR) {
             this.grid[tileRow][tileCol] = TILE_TYPE_FLOOR;
         } else {
-            this.grid[tileRow][tileCol] = TILE_TYPE_WALL;
+            this.grid[tileRow][tileCol] = selectedTileTextureIndex + 1;
         }
     }
 

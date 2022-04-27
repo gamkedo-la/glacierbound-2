@@ -1,5 +1,6 @@
 var wallTextures = [];
 var selectedTile;
+var selectedTileTextureIndex;
 
 function initLevelEditor(){
     wallTextures.push(spriteList['ice_wall']);
@@ -7,7 +8,8 @@ function initLevelEditor(){
     wallTextures.push(spriteList['snowy_wall']);
     wallTextures.push(spriteList['rock_wall']);
 
-    selectedTile = spriteList['ice_wall'];
+    selectedTileTextureIndex = 0;
+    selectedTile = wallTextures[selectedTileTextureIndex];
 }
 
 function drawLevelEditor(){
@@ -23,11 +25,13 @@ function drawLevelEditor(){
 function setSelectedTile() {
     for (var i = 0; i < wallTextures.length; i++) {
         if (mousePos.x > 0 &&
-            mousePos.x < MAP_NUM_COLS * TILE_SIZE &&
-            mousePos.y > bufferedLevelEditorCanvas.height - TEXTURE_SIZE &&
-            mousePos.y < bufferedLevelEditorCanvas.height){
-            selectedTile = wallTextures[Math.floor(mousePos.x / TILE_SIZE)];
-            //selectedTileTexValue = (Math.floor(mousePos.y / TILE_SIZE) + 1) / 100;
+        mousePos.x < MAP_NUM_COLS * TILE_SIZE &&
+        mousePos.y > bufferedLevelEditorCanvas.height - TEXTURE_SIZE &&
+        mousePos.y < bufferedLevelEditorCanvas.height){
+
+            selectedTileTextureIndex = Math.floor(mousePos.x / TILE_SIZE);
+            selectedTile = wallTextures[selectedTileTextureIndex];
+            
         }
     }
 }

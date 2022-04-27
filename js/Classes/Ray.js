@@ -7,10 +7,16 @@ class Ray {
         this.isRayFacingRight = this.rayAngle < (Math.PI / 2) || this.rayAngle > ((3 * Math.PI) / 2);
         this.isRayFacingLeft = !this.isRayFacingRight;
 
+        this.xOffset = this.isRayFacingLeft ? -1 : 0;
+        this.yOffset = this.isRayFacingUp ? -1 : 0;
+
         this.horWallHitCoord = this.getHorWallHitCoord();
         this.vertWallHitCoord = this.getVertWallHitCoord();
         this.closestWallHitCoord = this.getClosestWallHitCoord(this.horWallHitCoord, this.vertWallHitCoord);
         this.distance = distanceBetweenPoints(player.x, player.y, this.closestWallHitCoord.x, this.closestWallHitCoord.y);
+
+        this.tileTypeHit = mapSection.getTileTypeAtPixelCoord(this.closestWallHitCoord.x + this.xOffset, this.closestWallHitCoord.y + this.yOffset);
+        this.wallStripTexture = wallTextures[this.tileTypeHit - 1];
     }
 
     getHorWallHitCoord(){
@@ -45,12 +51,9 @@ class Ray {
         return this.getWallHitCoord(xIntercept, yIntercept, xStep, yStep);
     }
 
-    getWallHitCoord(nextTileEdgeX, nextTileEdgeY, xStep, yStep){
-        var xOffset = this.isRayFacingLeft ? -1 : 0;
-        var yOffSet = this.isRayFacingUp ? -1 : 0;
-        
+    getWallHitCoord(nextTileEdgeX, nextTileEdgeY, xStep, yStep){    
         while (true){
-            if (mapSection.getTileTypeAtPixelCoord(nextTileEdgeX + xOffset, nextTileEdgeY + yOffSet) === TILE_TYPE_WALL){
+            if (mapSection.getTileTypeAtPixelCoord(nextTileEdgeX + this.xOffset, nextTileEdgeY + this.yOffset) != TILE_TYPE_FLOOR){
                 return {
                     'x': nextTileEdgeX,
                     'y': nextTileEdgeY

@@ -60,8 +60,12 @@ function isCoordWithinCanvas(xPixel, yPixel){
     return xPixel >= 0 && xPixel < screenCanvasContext.canvas.width && yPixel >= 0 && yPixel < screenCanvasContext.canvas.height;
 }
 
-function isCoordWithinMapGrid(xPixel, yPixel){
+function isPixelCoordWithinMapGrid(xPixel, yPixel){
     return xPixel >= 0 && xPixel < MAP_NUM_COLS * TILE_SIZE && yPixel >= 0 && yPixel < MAP_NUM_ROWS * TILE_SIZE;
+}
+
+function isGridCoordWithinMapGrid(col, row){
+    return col >= 0 && col < MAP_NUM_COLS && row >= 0 && row < MAP_NUM_ROWS;
 }
 //#endregion Graphics Functions
 
