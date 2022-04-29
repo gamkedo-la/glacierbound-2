@@ -47,6 +47,7 @@ const KEY_LETTER_E = 69;
 const KEY_LETTER_L = 76;
 const KEY_LETTER_M = 77;
 const KEY_LETTER_P = 80;
+const KEY_LETTER_Q = 81;
 const KEY_ALT = 18;
 const KEY_SPACE = 32;
 const KEY_NUMBER_1 =  49;

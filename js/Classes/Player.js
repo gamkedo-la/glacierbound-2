@@ -4,6 +4,8 @@ class Player {
         this.y = TILE_SIZE * 5;
         this.turnDirection = NEUTRAL;
         this.walkDirection = NEUTRAL;
+        this.stepLeft = false;
+        this.stepRight = false;
         this.radius = TILE_SIZE/4;
         this.moveSpeed = 1; // pixels/frame
         this.rotationSpeed = degreesToRadians(3); //degrees converted to radians/frame
@@ -17,6 +19,10 @@ class Player {
         
         let nextX = this.x + Math.cos(this.rotationAngle) * this.moveSpeed * this.walkDirection;
         let nextY = this.y + Math.sin(this.rotationAngle) * this.moveSpeed * this.walkDirection;
+
+        // side stepping (strafe)
+        if (this.stepLeft) nextX -= Math.cos(this.rotationAngle+(Math.PI/2)) * this.moveSpeed;
+        if (this.stepRight) nextX += Math.cos(this.rotationAngle+(Math.PI/2)) * this.moveSpeed;
 
         if (mapSection.getTileTypeAtPixelCoord(this.x, nextY) === TILE_TYPE_FLOOR) {
             this.y = nextY;
