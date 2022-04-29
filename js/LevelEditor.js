@@ -7,6 +7,9 @@ function initLevelEditor(){
     wallTextures.push(spriteList['rock_snowy_wall']);
     wallTextures.push(spriteList['snowy_wall']);
     wallTextures.push(spriteList['rock_wall']);
+    wallTextures.push(spriteList['ice_spikes']);
+    wallTextures.push(spriteList['cliff_ice']);
+    wallTextures.push(spriteList['cliff_rock']);
 
     selectedTileTextureIndex = 0;
     selectedTile = wallTextures[selectedTileTextureIndex];
