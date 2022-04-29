@@ -1,3 +1,7 @@
+// slowly scroll the sky
+var sky_scroll_x = 0;
+var WIND_SPEED = 0.00025;
+
 class MapSection {
     constructor() {
         this.grid = [
@@ -25,7 +29,8 @@ class MapSection {
         //adjust the width of the image for the available height
         var width = imgW * (skyH/imgH);
         //how far left to draw the image
-        var skyX = -(player.rotationAngle*width)/(Math.PI*2);
+        var skyX = -((player.rotationAngle+sky_scroll_x)*width)/(Math.PI*2);
+        sky_scroll_x += WIND_SPEED;
         //draw the image
         bufferedGameCanvasContext.drawImage(spriteList['sky_clouds'],skyX,0,width,skyH);
         //if the image ends before the end of the screen draw another starting where the last one stopped (left+width)
