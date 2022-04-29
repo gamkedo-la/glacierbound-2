@@ -34,12 +34,13 @@ function drawEverything(){
         colorText('PAUSED', bufferedHUDCanvasContext, bufferedHUDCanvas.width / 2, bufferedHUDCanvas.height / 2, '50px sans-serif', "center", "yellow", "black");
         drawBufferedCanvasToScreenCanvas(bufferedHUDCanvas);
     } else {
+
         clearAllCanvases();
-        colorRect(0, 0, bufferedGameCanvas.width, bufferedGameCanvas.height, 'grey', bufferedGameCanvasContext, 1);
 
         mapSection.drawSkyPanorama();
         mapSection.draw3DProjectedWalls();
         mapSection.draw2DMinimap();
+
         player.draw();
 
         drawBufferedCanvasToScreenCanvas(bufferedGameCanvas);

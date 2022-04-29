@@ -1,5 +1,7 @@
 //#region General Constants
 const FRAMES_PER_SECOND = 60;
+const BACKGROUND_FILL_COLOR = "rgba(100,100,100,1)";
+const GROUND_FILL_COLOR = "rgba(200,200,200,1)";
 //#endregion
 
 //#region Projection Plane Constants

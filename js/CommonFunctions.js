@@ -1,7 +1,9 @@
 //#region Graphics Functions
 function clearAllCanvases(){
-    screenCanvasContext.clearRect(0, 0, screenCanvasContext.canvas.width, screenCanvasContext.canvas.height);
-    bufferedGameCanvasContext.clearRect(0, 0, bufferedGameCanvasContext.canvas.width, bufferedGameCanvasContext.canvas.height);
+    //screenCanvasContext.clearRect(0, 0, screenCanvasContext.canvas.width, screenCanvasContext.canvas.height);
+    //bufferedGameCanvasContext.clearRect(0, 0, bufferedGameCanvasContext.canvas.width, bufferedGameCanvasContext.canvas.height);
+    colorRect(0,0,screenCanvasContext.width, screenCanvasContext.height, BACKGROUND_FILL_COLOR, screenCanvasContext, 1);
+    colorRect(0,0,bufferedGameCanvas.width, bufferedGameCanvas.height, GROUND_FILL_COLOR, bufferedGameCanvasContext, 1);
     bufferedDebugCanvasContext.clearRect(0, 0, bufferedDebugCanvasContext.canvas.width, bufferedDebugCanvasContext.canvas.height);
     bufferedHUDCanvasContext.clearRect(0, 0, bufferedHUDCanvasContext.canvas.width, bufferedHUDCanvasContext.canvas.height);
     bufferedLevelEditorCanvasContext.clearRect(0, 0, bufferedLevelEditorCanvasContext.canvas.width, bufferedLevelEditorCanvasContext.canvas.height);
