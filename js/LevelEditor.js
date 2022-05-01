@@ -23,6 +23,7 @@ function drawLevelEditor(){
     }
 
     bufferedLevelEditorCanvasContext.drawImage(selectedTile, bufferedLevelEditorCanvas.width - TEXTURE_SIZE, bufferedLevelEditorCanvas.height - TEXTURE_SIZE);
+
 }
 
 function setSelectedTile() {
@@ -37,4 +38,25 @@ function setSelectedTile() {
             
         }
     }
+
+    displayLevelData();
+}
+
+function displayLevelData() {
+    var levelData = document.getElementById('EditorExport');
+    var outPutString = "";
+    
+    for (var eachRow = 0; eachRow < MAP_NUM_ROWS; eachRow++) {
+        for (var eachCol = 0; eachCol < MAP_NUM_COLS; eachCol++) {
+
+            if (eachCol == 0) outPutString += "[";
+            outPutString += mapSection.grid[eachRow][eachCol];
+            outPutString += (eachCol == MAP_NUM_COLS - 1) ? "]" : ", ";
+
+        }
+
+        outPutString += (eachRow == MAP_NUM_ROWS - 1) ? "<br>" : ",<br>";
+    }
+
+    levelData.innerHTML = outPutString;
 }

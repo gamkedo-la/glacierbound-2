@@ -60,6 +60,7 @@ function keyReleased(evt) {
   }
   if (evt.keyCode === KEY_LETTER_L) {
     levelEditorEnabled = !levelEditorEnabled;
+    displayLevelData();
   }
 }
 
