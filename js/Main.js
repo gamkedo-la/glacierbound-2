@@ -4,6 +4,7 @@ var debugModeEnabled = true;
 var levelEditorEnabled = false;
 var paused = false;
 
+// Practice Commit - will remove
 window.onload = function () {
     loadImages();
     initInput();
