@@ -4,8 +4,7 @@ class Player {
         this.y = TILE_SIZE * 5;
         this.turnDirection = NEUTRAL;
         this.walkDirection = NEUTRAL;
-        this.stepLeft = false;
-        this.stepRight = false;
+        this.strafeDirection = NEUTRAL;
         this.radius = TILE_SIZE/4;
         this.moveSpeed = 1; // pixels/frame
         this.rotationSpeed = degreesToRadians(3); //degrees converted to radians/frame
@@ -16,19 +15,27 @@ class Player {
     update() {
         this.rotationAngle += this.rotationSpeed * this.turnDirection;
         this.rotationAngle = normalizeAngle(this.rotationAngle);
+
+
+
+        let inputDirectionMagnitude = Math.sqrt(Math.pow(this.walkDirection,2)+Math.pow(this.strafeDirection,2));
+
+        let inputDirection = [this.walkDirection/inputDirectionMagnitude,this.strafeDirection/inputDirectionMagnitude];
+
+        let movementDirectionX = Math.cos(this.rotationAngle)*inputDirection[0]
+                                + Math.cos(this.rotationAngle+Math.PI/2)*inputDirection[1];
+
+        let movementDirectionY = Math.sin(this.rotationAngle)*inputDirection[0]
+                                + Math.sin(this.rotationAngle+Math.PI/2)*inputDirection[1];
+
+        movementDirectionX *= this.moveSpeed;
+        movementDirectionY *= this.moveSpeed;
         
-        let nextX = this.x + Math.cos(this.rotationAngle) * this.moveSpeed * this.walkDirection;
-        let nextY = this.y + Math.sin(this.rotationAngle) * this.moveSpeed * this.walkDirection;
-
-        // side stepping (strafe)
-        if (this.stepLeft) nextX -= Math.cos(this.rotationAngle+(Math.PI/2)) * this.moveSpeed;
-        if (this.stepRight) nextX += Math.cos(this.rotationAngle+(Math.PI/2)) * this.moveSpeed;
-
-        if (mapSection.getTileTypeAtPixelCoord(this.x, nextY) === TILE_TYPE_FLOOR) {
-            this.y = nextY;
+        if (mapSection.getTileTypeAtPixelCoord(this.x, this.y+movementDirectionY) === TILE_TYPE_FLOOR) {
+            this.y += movementDirectionY;
         }
-        if (mapSection.getTileTypeAtPixelCoord(nextX, this.y) === TILE_TYPE_FLOOR) {
-            this.x = nextX;
+        if (mapSection.getTileTypeAtPixelCoord(this.x+movementDirectionX, this.y) === TILE_TYPE_FLOOR) {
+            this.x += movementDirectionX;
         }
 
         this.rayCaster = new RayCaster(player.rotationAngle);

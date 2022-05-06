@@ -21,10 +21,10 @@ function keyPressed(evt) {
     player.walkDirection = BACKWARD;
   }
   if (evt.keyCode === KEY_LETTER_Q) {
-    player.stepLeft = true;
+    player.strafeDirection = LEFT;
   }
   if (evt.keyCode === KEY_LETTER_E) {
-    player.stepRight = true;
+    player.strafeDirection = RIGHT;
   }
   if (evt.keyCode === KEY_LETTER_A || evt.keyCode === KEY_LEFT_ARROW) {
     player.turnDirection = LEFT;
@@ -43,10 +43,10 @@ function keyReleased(evt) {
     player.walkDirection = NEUTRAL;
   }
   if (evt.keyCode === KEY_LETTER_Q) {
-    player.stepLeft = false;
+    player.strafeDirection = NEUTRAL;
   }
   if (evt.keyCode === KEY_LETTER_E) {
-    player.stepRight = false;
+    player.strafeDirection = NEUTRAL;
   }
   if (evt.keyCode === KEY_LETTER_A || evt.keyCode === KEY_LEFT_ARROW) {
     player.turnDirection = NEUTRAL;
