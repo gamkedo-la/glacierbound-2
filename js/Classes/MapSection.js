@@ -29,7 +29,7 @@ class MapSection {
         //adjust the width of the image for the available height
         var width = imgW * (skyH/imgH);
         //how far left to draw the image
-        var skyX = -((player.rotationAngle+sky_scroll_x)*width)/(Math.PI*2);
+        var skyX = -(((player.rotationAngle+sky_scroll_x)*width)/(Math.PI*2))%width;
         sky_scroll_x += WIND_SPEED;
         //draw the image
         bufferedGameCanvasContext.drawImage(spriteList['sky_clouds'],skyX,0,width,skyH);
