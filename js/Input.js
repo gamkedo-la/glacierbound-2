@@ -38,9 +38,29 @@ function keyPressed(evt) {
 function keyReleased(evt) {
   if (evt.keyCode === KEY_LETTER_W || evt.keyCode === KEY_UP_ARROW) {
     player.walkDirection = NEUTRAL;
+    // the following allows the player to choose menu items on the pause menu
+    if (paused) {
+      if (selected == 0) { 
+        selected = 2;
+      } else if (selected == 1) {
+        selected = 0;
+      } else if (selected == 2) {
+        selected = 1;
+      }
+    }
   }
   if (evt.keyCode === KEY_LETTER_S || evt.keyCode === KEY_DOWN_ARROW) {
     player.walkDirection = NEUTRAL;
+    // the following allows the player to choose menu items on the pause menu
+    if (paused) {
+      if (selected == 0) { 
+        selected = 1;
+      } else if (selected == 1) {
+        selected = 2;
+      } else if (selected == 2) {
+        selected = 0;
+      }
+    }
   }
   if (evt.keyCode === KEY_LETTER_Q) {
     player.strafeDirection = NEUTRAL;
