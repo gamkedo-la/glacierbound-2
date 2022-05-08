@@ -11,7 +11,9 @@ function loadImages() {
         {spriteName: 'sky_clouds', fileName: 'sky_clouds.png'},
         {spriteName: 'ice_spikes', fileName: 'ice_spikes.png'},
         {spriteName: 'cliff_ice', fileName: 'cliff_ice.png'},
-        {spriteName: 'cliff_rock', fileName: 'cliff_rock.png'}
+        {spriteName: 'cliff_rock', fileName: 'cliff_rock.png'},
+        {spriteName: 'ship_window', fileName: 'ship_interior_window_32x32.png'},
+        {spriteName: 'ship_shelves', fileName: 'ship_interior_shelves_32x32.png'}
 	]
 
 	imagesToLoad = imageList.length;

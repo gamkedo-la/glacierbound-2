@@ -10,6 +10,8 @@ function initLevelEditor(){
     wallTextures.push(spriteList['ice_spikes']);
     wallTextures.push(spriteList['cliff_ice']);
     wallTextures.push(spriteList['cliff_rock']);
+    wallTextures.push(spriteList['ship_window']);
+    wallTextures.push(spriteList['ship_shelves']);
 
     selectedTileTextureIndex = 0;
     selectedTile = wallTextures[selectedTileTextureIndex];
