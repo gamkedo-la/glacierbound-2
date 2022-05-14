@@ -70,21 +70,21 @@ function showPauseMenu() {
     drawRect((bufferedHUDCanvas.width - pauseWidth) / 2, (bufferedHUDCanvas.height - 250) / 2, pauseWidth, 250, "#ff00ff", 5, bufferedHUDCanvasContext);
     
     // menu text
-    colorText('PAUSED', bufferedHUDCanvasContext, bufferedHUDCanvas.width / 2, 215, '50px sans-serif', "center", "yellow", "black");
+    colorText('PAUSED', bufferedHUDCanvasContext, bufferedHUDCanvas.width / 2, 215, '50px Share Tech Mono', "center", "yellow", "black");
     if (selected == 0) {
-        colorText('[OPTIONS]', bufferedHUDCanvasContext, bufferedHUDCanvas.width / 2, 275, '40px monospace', 'center', 'yellow', 'black');
+        colorText('[OPTIONS]', bufferedHUDCanvasContext, bufferedHUDCanvas.width / 2, 275, '40px Share Tech Mono', 'center', 'yellow', 'black');
     } else {
-        colorText(' OPTIONS ', bufferedHUDCanvasContext, bufferedHUDCanvas.width / 2, 275, '40px monospace', 'center', 'yellow', 'black');
+        colorText(' OPTIONS ', bufferedHUDCanvasContext, bufferedHUDCanvas.width / 2, 275, '40px Share Tech Mono', 'center', 'yellow', 'black');
     }
     if (selected == 1) {
-        colorText('[CONTROLS]', bufferedHUDCanvasContext, bufferedHUDCanvas.width / 2, 325, '40px monospace', 'center', 'yellow', 'black');
+        colorText('[CONTROLS]', bufferedHUDCanvasContext, bufferedHUDCanvas.width / 2, 325, '40px Share Tech Mono', 'center', 'yellow', 'black');
     } else {
-        colorText(' CONTROLS ', bufferedHUDCanvasContext, bufferedHUDCanvas.width / 2, 325, '40px monospace', 'center', 'yellow', 'black');
+        colorText(' CONTROLS ', bufferedHUDCanvasContext, bufferedHUDCanvas.width / 2, 325, '40px Share Tech Mono', 'center', 'yellow', 'black');
     }
     if (selected == 2) {
-        colorText('[QUIT]', bufferedHUDCanvasContext, bufferedHUDCanvas.width / 2, 375, '40px monospace', 'center', 'yellow', 'black');
+        colorText('[QUIT]', bufferedHUDCanvasContext, bufferedHUDCanvas.width / 2, 375, '40px Share Tech Mono', 'center', 'yellow', 'black');
     } else {
-        colorText(' QUIT ', bufferedHUDCanvasContext, bufferedHUDCanvas.width / 2, 375, '40px monospace', 'center', 'yellow', 'black');
+        colorText(' QUIT ', bufferedHUDCanvasContext, bufferedHUDCanvas.width / 2, 375, '40px Share Tech Mono', 'center', 'yellow', 'black');
     }
     
     drawBufferedCanvasToScreenCanvas(bufferedHUDCanvas);
