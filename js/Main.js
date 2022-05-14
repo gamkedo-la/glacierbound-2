@@ -65,8 +65,9 @@ function showPauseMenu() {
     // currently this only shows the text 'PAUSED', there is no menu
     var pauseWidth = bufferedHUDCanvas.width / 2; // width of pause menu, to center it
 
-    // grey background
-    colorRect((bufferedHUDCanvas.width - pauseWidth) / 2, (bufferedHUDCanvas.height - 250) / 2, pauseWidth, 250, "#d1d1d1", bufferedHUDCanvasContext);
+    // black background
+    colorRect((bufferedHUDCanvas.width - pauseWidth) / 2, (bufferedHUDCanvas.height - 250) / 2, pauseWidth, 250, "#000000", bufferedHUDCanvasContext);
+    // pink border
     drawRect((bufferedHUDCanvas.width - pauseWidth) / 2, (bufferedHUDCanvas.height - 250) / 2, pauseWidth, 250, "#ff00ff", 5, bufferedHUDCanvasContext);
     
     // menu text
