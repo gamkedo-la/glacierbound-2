@@ -14,11 +14,13 @@ function colorRect(topLeftX, topLeftY, boxWidth, boxHeight, fillColor, targetCan
     targetCanvas.fillRect(topLeftX * scale, topLeftY * scale, boxWidth * scale, boxHeight * scale);
 }
 
-function drawRect(topLeftX, topLeftY, boxWidth, boxHeight, strokeColor, targetCanvas = bufferedGameCanvasContext){
+function drawRect(topLeftX, topLeftY, boxWidth, boxHeight, strokeColor, width = 1, targetCanvas = bufferedGameCanvasContext){
     targetCanvas.beginPath();
     targetCanvas.strokeStyle = strokeColor;
+    targetCanvas.lineWidth = width;
     targetCanvas.rect(topLeftX, topLeftY, boxWidth, boxHeight);
     targetCanvas.stroke();
+    targetCanvas.lineWidth = 1; // reset lineWidth to default value - keeps other stroke calls after this from getting same stroke width applied
 }
 
 function colorCircle(centerX, centerY, radius, fillColor, targetCanvas = bufferedGameCanvasContext, scale = 1) {
