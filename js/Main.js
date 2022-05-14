@@ -67,6 +67,7 @@ function showPauseMenu() {
 
     // grey background
     colorRect((bufferedHUDCanvas.width - pauseWidth) / 2, (bufferedHUDCanvas.height - 250) / 2, pauseWidth, 250, "#d1d1d1", bufferedHUDCanvasContext);
+    drawRect((bufferedHUDCanvas.width - pauseWidth) / 2, (bufferedHUDCanvas.height - 250) / 2, pauseWidth, 250, "#ff00ff", 5, bufferedHUDCanvasContext);
     
     // menu text
     colorText('PAUSED', bufferedHUDCanvasContext, bufferedHUDCanvas.width / 2, 215, '50px sans-serif', "center", "yellow", "black");
