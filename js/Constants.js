@@ -26,8 +26,8 @@ const NEUTRAL = 0;
 
 //#region Map Grid Constants
 const MINIMAP_SCALE_FACTOR = 0.4;
-const MAP_NUM_ROWS = 11;
-const MAP_NUM_COLS = 15;
+const MAP_NUM_ROWS = 15;
+const MAP_NUM_COLS = 20;
 const TILE_SIZE = 32;
 const TILE_TYPE_WALL = 1;
 const TILE_TYPE_FLOOR = 0;
