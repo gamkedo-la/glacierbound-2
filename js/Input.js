@@ -32,6 +32,13 @@ function keyPressed(evt) {
   if (evt.keyCode === KEY_LETTER_D || evt.keyCode === KEY_RIGHT_ARROW) {
     player.turnDirection = RIGHT;
   }
+  
+  if (evt.keyCode === KEY_NUMBER_1) {
+    mapSection.changeMap(shipInterior);
+  }
+  if (evt.keyCode === KEY_NUMBER_2) {
+    mapSection.changeMap(arcticExterior);
+  }
   evt.preventDefault(); // without this, arrow keys scroll the browser!
 }
 

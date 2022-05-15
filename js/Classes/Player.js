@@ -1,7 +1,7 @@
 class Player {
     constructor() {
-        this.x = TILE_SIZE * 6;
-        this.y = TILE_SIZE * 5;
+        this.x = TILE_SIZE * 6.5;
+        this.y = TILE_SIZE * 2.5;
         this.turnDirection = NEUTRAL;
         this.walkDirection = NEUTRAL;
         this.strafeDirection = NEUTRAL;
