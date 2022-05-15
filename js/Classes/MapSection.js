@@ -52,6 +52,11 @@ class MapSection {
     }
 
     draw2DMinimap() {
+
+        var minimapWidth = MAP_NUM_COLS * TILE_SIZE * MINIMAP_SCALE_FACTOR;
+        var minimapHeight = MAP_NUM_ROWS * TILE_SIZE * MINIMAP_SCALE_FACTOR;
+        colorRect(0, 0, minimapWidth, minimapHeight, 'lightgrey', bufferedDebugCanvasContext);
+
         for (var row = 0; row < MAP_NUM_ROWS; row++) {
             for ( var col = 0; col < MAP_NUM_COLS; col++) {
                 var tileX = col * TILE_SIZE;
