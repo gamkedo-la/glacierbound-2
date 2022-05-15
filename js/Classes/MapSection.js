@@ -4,7 +4,7 @@ var WIND_SPEED = 0.00025;
 
 class MapSection {
     constructor() {
-        this.grid = arcticExterior.grid;
+        this.grid = shipInterior.grid;
     }
 
     // this is not perspective correct so it would not work for floors
