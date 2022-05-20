@@ -39,6 +39,18 @@ function keyPressed(evt) {
   if (evt.keyCode === KEY_NUMBER_2) {
     mapSection.changeMap(arcticExterior);
   }
+
+  if(evt.keyCode === KEY_LETTER_I){
+    inventory.toggleShowInventory();
+  }
+
+  //TODO: Remove this. Inventory Testing Commands
+  if(evt.keyCode === KEY_LETTER_T){
+    inventory.addItem(new Item(0,'ship_shelves'));
+  }
+  if(evt.keyCode === KEY_LETTER_R){
+    console.log(inventory.removeItem(0));
+  }
   evt.preventDefault(); // without this, arrow keys scroll the browser!
 }
 

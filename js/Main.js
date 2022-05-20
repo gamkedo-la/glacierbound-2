@@ -1,5 +1,6 @@
 var mapSection = new MapSection();
 var player = new Player();
+var inventory = new Inventory();
 var debugModeEnabled = true;
 var levelEditorEnabled = false;
 var paused = false;
@@ -42,6 +43,8 @@ function drawEverything(){
         mapSection.draw2DMinimap();
 
         player.draw();
+
+        inventory.draw();
 
         drawBufferedCanvasToScreenCanvas(bufferedGameCanvas);
         drawBufferedCanvasToScreenCanvas(bufferedHUDCanvas);
