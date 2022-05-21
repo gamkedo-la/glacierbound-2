@@ -6,6 +6,8 @@ var levelEditorEnabled = false;
 var paused = false;
 var selected = 0; // default pause menu option selected
 
+//First commit - Lance
+
 window.onload = function () {
     loadImages();
     initInput();
