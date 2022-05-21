@@ -5,6 +5,10 @@ var WIND_SPEED = 0.00025;
 class MapSection {
     constructor() {
         this.grid = shipInterior.grid;
+        this.minimapIsDirty = true;
+        this.minimapImage = document.createElement('img')
+        this.minimapWidth = MAP_NUM_COLS * TILE_SIZE * MINIMAP_SCALE_FACTOR;
+        this.minimapHeight = MAP_NUM_ROWS * TILE_SIZE * MINIMAP_SCALE_FACTOR;
     }
 
     // this is not perspective correct so it would not work for floors
@@ -53,18 +57,25 @@ class MapSection {
 
     draw2DMinimap() {
 
-        var minimapWidth = MAP_NUM_COLS * TILE_SIZE * MINIMAP_SCALE_FACTOR;
-        var minimapHeight = MAP_NUM_ROWS * TILE_SIZE * MINIMAP_SCALE_FACTOR;
-        colorRect(0, 0, minimapWidth, minimapHeight, 'lightgrey', bufferedDebugCanvasContext);
-
-        for (var row = 0; row < MAP_NUM_ROWS; row++) {
-            for ( var col = 0; col < MAP_NUM_COLS; col++) {
-                var tileX = col * TILE_SIZE;
-                var tileY = row * TILE_SIZE;
-                var tileType = this.getTileTypeAtGridCoord(col, row);
-
-                if (tileType != TILE_TYPE_FLOOR) bufferedDebugCanvasContext.drawImage(wallTextures[tileType - 1], tileX * MINIMAP_SCALE_FACTOR, tileY * MINIMAP_SCALE_FACTOR, TEXTURE_SIZE * MINIMAP_SCALE_FACTOR, TEXTURE_SIZE * MINIMAP_SCALE_FACTOR);
+        if (this.minimapIsDirty) {
+            colorRect(0, 0, this.minimapWidth, this.minimapHeight, 'lightgrey', bufferedDebugCanvasContext);
+    
+            for (var row = 0; row < MAP_NUM_ROWS; row++) {
+                for ( var col = 0; col < MAP_NUM_COLS; col++) {
+                    var tileX = col * TILE_SIZE;
+                    var tileY = row * TILE_SIZE;
+                    var tileType = this.getTileTypeAtGridCoord(col, row);
+    
+                    if (tileType != TILE_TYPE_FLOOR) bufferedDebugCanvasContext.drawImage(wallTextures[tileType - 1], tileX * MINIMAP_SCALE_FACTOR, tileY * MINIMAP_SCALE_FACTOR, TEXTURE_SIZE * MINIMAP_SCALE_FACTOR, TEXTURE_SIZE * MINIMAP_SCALE_FACTOR);
+                }
             }
+
+            this.minimapIsDirty = false;
+            this.minimapImage.width = this.minimapWidth
+            this.minimapImage.height = this.minimapHeight
+            this.minimapImage.src = bufferedDebugCanvas.toDataURL()
+        } else {
+            bufferedDebugCanvasContext.drawImage(this.minimapImage, 0, 0);
         }
     }
 
