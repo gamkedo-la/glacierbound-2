@@ -1,6 +1,6 @@
 var mapSection = new MapSection();
-var player = new Player();
 var inventory = new Inventory();
+var player = new Player();
 var debugModeEnabled = true;
 var levelEditorEnabled = false;
 var paused = false;

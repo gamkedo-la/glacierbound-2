@@ -10,6 +10,10 @@ class Player {
         this.rotationSpeed = degreesToRadians(3); //degrees converted to radians/frame
         this.rotationAngle = degreesToRadians(90); //degrees converted to radians
         this.rayCaster;
+
+        //Testing inventory item functionality
+        var bookItem = new Item(0,"book_blue_icon");
+        inventory.addItem(bookItem);
     }
 
     update() {

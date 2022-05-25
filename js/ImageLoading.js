@@ -13,7 +13,8 @@ function loadImages() {
         {spriteName: 'cliff_ice', fileName: 'cliff_ice.png'},
         {spriteName: 'cliff_rock', fileName: 'cliff_rock.png'},
         {spriteName: 'ship_window', fileName: 'ship_interior_window_32x32.png'},
-        {spriteName: 'ship_shelves', fileName: 'ship_interior_shelves_32x32.png'}
+        {spriteName: 'ship_shelves', fileName: 'ship_interior_shelves_32x32.png'},
+        {spriteName: 'book_blue_icon', fileName: 'itemIcons/book_blue_icon.png'}
 	]
 
 	imagesToLoad = imageList.length;
