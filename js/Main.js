@@ -38,7 +38,14 @@ function drawEverything(){
 
         clearAllCanvases();
 
-        mapSection.drawSkyPanorama();
+        if (mapSection.grid == shipInterior.grid) {
+            mapSection.drawSky('sky_ship');
+            mapSection.drawFloor('floor_ship');
+        } else {
+            mapSection.drawSky('sky_clouds');
+            mapSection.drawFloor('floor_snow');
+        }
+
         mapSection.draw3DProjectedWalls();
         mapSection.draw2DMinimap();
 

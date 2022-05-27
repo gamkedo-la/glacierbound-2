@@ -9,12 +9,15 @@ function loadImages() {
 		{spriteName: 'rock_wall', fileName: 'rock_wall_texture_32x32.png'},
 		{spriteName: 'snowy_wall', fileName: 'snowy_wall_texture_32x32.png'},
         {spriteName: 'sky_clouds', fileName: 'sky_clouds.png'},
+        {spriteName: 'sky_ship', fileName: 'sky_ship.png'},
         {spriteName: 'ice_spikes', fileName: 'ice_spikes.png'},
         {spriteName: 'cliff_ice', fileName: 'cliff_ice.png'},
         {spriteName: 'cliff_rock', fileName: 'cliff_rock.png'},
         {spriteName: 'ship_window', fileName: 'ship_interior_window_32x32.png'},
         {spriteName: 'ship_shelves', fileName: 'ship_interior_shelves_32x32.png'},
-        {spriteName: 'book_blue_icon', fileName: 'itemIcons/book_blue_icon.png'}
+        {spriteName: 'book_blue_icon', fileName: 'itemIcons/book_blue_icon.png'},
+        {spriteName: 'floor_snow', fileName: 'floor_snow.png'},
+        {spriteName: 'floor_ship', fileName: 'floor_ship.png'},
 	]
 
 	imagesToLoad = imageList.length;

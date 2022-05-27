@@ -14,22 +14,41 @@ class MapSection {
     // this is not perspective correct so it would not work for floors
     // but we can assume the sky is infinitely far away
     // for simple math and very fast performance
-    drawSkyPanorama(){
-        var imgW = spriteList['sky_clouds'].width;
-        var imgH = spriteList['sky_clouds'].height;
+    drawSky(img='sky_clouds'){
+        var tex = spriteList[img];
+        var imgW = tex.width;
+        var imgH = tex.height;
         var skyH = Math.round(bufferedGameCanvasContext.canvas.height/2);
         //adjust the width of the image for the available height
-        var width = imgW * (skyH/imgH);
+        var skyW = imgW * (skyH/imgH);
         //how far left to draw the image
-        var skyX = -((((player.rotationAngle/2)+sky_scroll_x)*width)/(Math.PI*2))%width;
+        var skyX = -((((player.rotationAngle/2)+sky_scroll_x)*skyW)/(Math.PI*2))%skyW;
+        //slowly scroll clouds in the sky
         sky_scroll_x += WIND_SPEED;
         //draw the image
-        bufferedGameCanvasContext.drawImage(spriteList['sky_clouds'],skyX,0,width,skyH);
+        bufferedGameCanvasContext.drawImage(tex,skyX,0,skyW,skyH);
         //if the image ends before the end of the screen draw another starting where the last one stopped (left+width)
-        if(skyX < width - bufferedGameCanvasContext.canvas.width){
-            bufferedGameCanvasContext.drawImage(spriteList['sky_clouds'],skyX+width,0,width,skyH);
+        if(skyX < skyW - bufferedGameCanvasContext.canvas.width){
+            bufferedGameCanvasContext.drawImage(tex,skyX+skyW,0,skyW,skyH);
         }
     }
+
+    // not perspective correct:
+    // looks good with a flat gradient, not a texture
+    drawFloor(img='floor_snow'){
+        var tex = spriteList[img];
+        var imgW = tex.width;
+        var imgH = tex.height;
+        var floorH = Math.round(bufferedGameCanvasContext.canvas.height/2);
+        var floorW = imgW * (floorH/imgH);
+        var floorX = -((((player.rotationAngle/2))*floorW)/(Math.PI*2))%floorW;
+        var floorY = floorH; // bottom half of screen
+        bufferedGameCanvasContext.drawImage(tex,floorX,floorY,floorW,floorH);
+        if(floorX < floorW - bufferedGameCanvasContext.canvas.width){
+            bufferedGameCanvasContext.drawImage(tex,floorX+floorW,floorY,floorW,floorH);
+        }
+    }
+
 
     draw3DProjectedWalls(){
         for (var i = 0; i < NUM_OF_RAYS; i++){
