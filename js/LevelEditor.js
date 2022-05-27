@@ -40,7 +40,7 @@ function setSelectedTile() {
             
         }
     }
-
+    mapSection.minimapIsDirty = true;
     displayLevelData();
 }
 
