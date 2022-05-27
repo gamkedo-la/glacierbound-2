@@ -3,6 +3,7 @@ var inventory = new Inventory();
 var player = new Player();
 var debugModeEnabled = true;
 var levelEditorEnabled = false;
+var showDebugText = true;
 var paused = false;
 var selected = 0; // default pause menu option selected
 
@@ -27,6 +28,10 @@ function initRenderLoop() { //called from ImageLoading.js
 
 function updateEverything(){
     player.update();
+    if (showDebugText) {
+        const debugParagraph = document.getElementById('debug-text')
+        debugParagraph.innerText = levelEditorEnabled ? `Press 'L' to exit Editor Mode` : `Press 'L' to enter Editor Mode`
+    }
     if(levelEditorEnabled){
         updateLevelEditor();
     }
