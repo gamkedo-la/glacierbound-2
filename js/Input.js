@@ -39,7 +39,9 @@ function keyPressed(evt) {
   if (evt.keyCode === KEY_NUMBER_2) {
     mapSection.changeMap(arcticExterior);
   }
-
+  if(evt.keyCode === KEY_LEFT_SHIFT){
+    player.isSprinting = true;
+  }
   if(evt.keyCode === KEY_LETTER_I){
     inventory.toggleShowInventory();
   }
@@ -96,6 +98,9 @@ function keyReleased(evt) {
   if (evt.keyCode === KEY_LETTER_P) {
     // toggle pause menu
     paused = !paused;
+  }
+  if(evt.keyCode === KEY_LEFT_SHIFT){
+    player.isSprinting = false;
   }
   if (evt.keyCode === KEY_LETTER_L) {
     levelEditorEnabled = !levelEditorEnabled;

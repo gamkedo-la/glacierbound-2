@@ -51,6 +51,7 @@ const KEY_LETTER_P = 80;
 const KEY_LETTER_Q = 81;
 const KEY_LETTER_R = 82;
 const KEY_LETTER_T = 84;
+const KEY_LEFT_SHIFT = 16;
 const KEY_ALT = 18;
 const KEY_SPACE = 32;
 const KEY_NUMBER_1 =  49;

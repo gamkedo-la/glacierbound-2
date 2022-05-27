@@ -7,6 +7,8 @@ class Player {
         this.strafeDirection = NEUTRAL;
         this.radius = TILE_SIZE/4;
         this.moveSpeed = 1; // pixels/frame
+        this.sprintSpeed = 2;
+        this.isSprinting = false;
         this.rotationSpeed = degreesToRadians(3); //degrees converted to radians/frame
         this.rotationAngle = degreesToRadians(90); //degrees converted to radians
         this.rayCaster;
@@ -15,7 +17,6 @@ class Player {
         var bookItem = new Item(0,"book_blue_icon");
         inventory.addItem(bookItem);
     }
-
     update() {
         this.rotationAngle += this.rotationSpeed * this.turnDirection;
         this.rotationAngle = normalizeAngle(this.rotationAngle);
@@ -32,9 +33,13 @@ class Player {
         let movementDirectionY = Math.sin(this.rotationAngle)*inputDirection[0]
                                 + Math.sin(this.rotationAngle+Math.PI/2)*inputDirection[1];
 
-        movementDirectionX *= this.moveSpeed;
-        movementDirectionY *= this.moveSpeed;
-        
+        if(this.isSprinting){
+            movementDirectionX *= this.sprintSpeed;
+            movementDirectionY *= this.sprintSpeed;
+        }else {
+            movementDirectionX *= this.moveSpeed;
+            movementDirectionY *= this.moveSpeed;
+        }
         if (mapSection.getTileTypeAtPixelCoord(this.x, this.y+movementDirectionY) === TILE_TYPE_FLOOR) {
             this.y += movementDirectionY;
         }
