@@ -1,5 +1,4 @@
 var wallTextures = [];
-var selectedTile;
 var selectedTileTextureIndex;
 
 function initLevelEditor(){
@@ -14,33 +13,51 @@ function initLevelEditor(){
     wallTextures.push(spriteList['ship_shelves']);
 
     selectedTileTextureIndex = 0;
-    selectedTile = wallTextures[selectedTileTextureIndex];
 }
-
+function updateLevelEditor(){
+    //if the mouse is down
+    if (isMouseDown) {
+        //set a selected tile if one was clicked
+        setSelectedTile();
+        //set the tile at the coord
+        mapSection.setTileTypeAtPixelCoord(mousePos.x, mousePos.y);
+    }
+}
 function drawLevelEditor(){
     colorText('Level Editor', bufferedLevelEditorCanvasContext, bufferedLevelEditorCanvas.width / 2, bufferedLevelEditorCanvas.height / 2, '50px sans-serif', "center", "yellow");
 
+    //draw delete image
+    bufferedLevelEditorCanvasContext.fillStyle = "white";
+    bufferedLevelEditorCanvasContext.fillRect(0,bufferedLevelEditorCanvas.height - TEXTURE_SIZE,TEXTURE_SIZE,TEXTURE_SIZE)
+
+    //draw textures
     for (var i = 0; i < wallTextures.length; i++){
-        bufferedLevelEditorCanvasContext.drawImage(wallTextures[i],TEXTURE_SIZE * i, bufferedLevelEditorCanvas.height - TEXTURE_SIZE);
+        bufferedLevelEditorCanvasContext.drawImage(wallTextures[i],TEXTURE_SIZE+TEXTURE_SIZE * i, bufferedLevelEditorCanvas.height - TEXTURE_SIZE);
     }
 
-    bufferedLevelEditorCanvasContext.drawImage(selectedTile, bufferedLevelEditorCanvas.width - TEXTURE_SIZE, bufferedLevelEditorCanvas.height - TEXTURE_SIZE);
-
+    //draw highlight around selected
+    bufferedLevelEditorCanvasContext.strokeStyle = "red";
+    bufferedLevelEditorCanvasContext.lineWidth = 3;
+    bufferedLevelEditorCanvasContext.beginPath();
+    bufferedLevelEditorCanvasContext.moveTo(TEXTURE_SIZE+TEXTURE_SIZE * selectedTileTextureIndex,bufferedLevelEditorCanvas.height - TEXTURE_SIZE);
+    bufferedLevelEditorCanvasContext.lineTo(TEXTURE_SIZE*2+TEXTURE_SIZE * selectedTileTextureIndex,bufferedLevelEditorCanvas.height - TEXTURE_SIZE);
+    bufferedLevelEditorCanvasContext.lineTo(TEXTURE_SIZE*2+TEXTURE_SIZE * selectedTileTextureIndex,bufferedLevelEditorCanvas.height);
+    bufferedLevelEditorCanvasContext.lineTo(TEXTURE_SIZE+TEXTURE_SIZE * selectedTileTextureIndex,bufferedLevelEditorCanvas.height);
+    bufferedLevelEditorCanvasContext.lineTo(TEXTURE_SIZE+TEXTURE_SIZE * selectedTileTextureIndex,bufferedLevelEditorCanvas.height - TEXTURE_SIZE);
+    bufferedLevelEditorCanvasContext.stroke();
 }
 
 function setSelectedTile() {
     for (var i = 0; i < wallTextures.length; i++) {
         if (mousePos.x > 0 &&
-        mousePos.x < MAP_NUM_COLS * TILE_SIZE &&
+        mousePos.x < (wallTextures.length+1) * TILE_SIZE &&
         mousePos.y > bufferedLevelEditorCanvas.height - TEXTURE_SIZE &&
         mousePos.y < bufferedLevelEditorCanvas.height){
+            //set selectedTileTexture where -1 = delete, and 0+ is a texture
+            selectedTileTextureIndex = Math.floor(mousePos.x / TILE_SIZE)-1;
 
-            selectedTileTextureIndex = Math.floor(mousePos.x / TILE_SIZE);
-            selectedTile = wallTextures[selectedTileTextureIndex];
-            
         }
     }
-    mapSection.minimapIsDirty = true;
     displayLevelData();
 }
 

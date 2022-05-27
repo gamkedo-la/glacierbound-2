@@ -27,6 +27,9 @@ function initRenderLoop() { //called from ImageLoading.js
 
 function updateEverything(){
     player.update();
+    if(levelEditorEnabled){
+        updateLevelEditor();
+    }
 }
 
 function drawEverything(){

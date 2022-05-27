@@ -1,4 +1,5 @@
 var mousePos = null;
+var isMouseDown = false;
 
 function initInput() {
   document.addEventListener("keydown", keyPressed);
@@ -6,7 +7,7 @@ function initInput() {
 
   document.addEventListener("mousemove", moveMouse);
   document.addEventListener("mousedown", mouseDown);
-  //document.addEventListener("mouseup", mouseUp);
+  document.addEventListener("mouseup", mouseUp);
 }
 
 function pollInput() {
@@ -114,10 +115,10 @@ function moveMouse(evt){
 }
 
 function mouseDown(evt){
-  if (levelEditorEnabled) {
-    mapSection.setTileTypeAtPixelCoord(mousePos.x, mousePos.y);
-    setSelectedTile();
-  }
+  isMouseDown = true;
+}
+function mouseUp(evt){
+  isMouseDown = false;
 }
 
 function calculateMousePos(evt) {

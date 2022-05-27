@@ -113,7 +113,6 @@ class MapSection {
     }
 
     setTileTypeAtPixelCoord(pixelX, pixelY) {
-
         var scaledPixelX = pixelX / MINIMAP_SCALE_FACTOR;
         var scaledPixelY = pixelY / MINIMAP_SCALE_FACTOR;
 
@@ -122,11 +121,12 @@ class MapSection {
         var tileCol = Math.floor((scaledPixelX) / (TILE_SIZE));
         var tileRow = Math.floor((scaledPixelY) / (TILE_SIZE));
 
-        if (this.getTileTypeAtPixelCoord(scaledPixelX, scaledPixelY) != TILE_TYPE_FLOOR) {
-            this.grid[tileRow][tileCol] = TILE_TYPE_FLOOR;
-        } else {
+        if(this.grid[tileRow][tileCol] != selectedTileTextureIndex+1){
             this.grid[tileRow][tileCol] = selectedTileTextureIndex + 1;
+            mapSection.minimapIsDirty = true;
         }
+
+
     }
 
     changeMap(newMap){
