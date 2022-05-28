@@ -1,3 +1,5 @@
+var bookItem;
+
 class Player {
     constructor() {
         this.x = TILE_SIZE * 6.5;
@@ -14,7 +16,7 @@ class Player {
         this.rayCaster;
 
         //Testing inventory item functionality
-        var bookItem = new Item(0,"book_blue_icon");
+        bookItem = new Item(0, "book_blue_spritesheet", 8, 1, 960, 800);
         inventory.addItem(bookItem);
     }
     update() {

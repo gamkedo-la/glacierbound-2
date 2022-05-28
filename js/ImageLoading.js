@@ -15,7 +15,7 @@ function loadImages() {
         {spriteName: 'cliff_rock', fileName: 'cliff_rock.png'},
         {spriteName: 'ship_window', fileName: 'ship_interior_window_32x32.png'},
         {spriteName: 'ship_shelves', fileName: 'ship_interior_shelves_32x32.png'},
-        {spriteName: 'book_blue_icon', fileName: 'itemIcons/book_blue_icon.png'},
+        {spriteName: 'book_blue_spritesheet', fileName: 'spritesheets/book_blue_spritesheet.png'},
         {spriteName: 'floor_snow', fileName: 'floor_snow.png'},
         {spriteName: 'floor_ship', fileName: 'floor_ship.png'},
 	]

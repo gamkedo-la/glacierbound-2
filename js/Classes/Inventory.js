@@ -43,7 +43,16 @@ class Inventory{
             for(let j = 0; j < this.slotsPerRow; j++){
                 colorRect(this.x+j*this.slotSize,this.y+i*this.slotSize,this.slotSize,this.slotSize, this.backgroundColor);
                 if(inventoryIndex < this.inventorySlots.length){
-                    bufferedGameCanvasContext.drawImage(spriteList[this.inventorySlots[inventoryIndex].spriteName],this.x+j*this.slotSize,this.y+i*this.slotSize,this.slotSize,this.slotSize);
+                    bufferedGameCanvasContext.drawImage(
+                        spriteList[this.inventorySlots[inventoryIndex].spriteName], //image
+                        this.inventorySlots[inventoryIndex].frameW * this.inventorySlots[inventoryIndex].currentFrameRowIndex, //sx
+                        this.inventorySlots[inventoryIndex].frameH * this.inventorySlots[inventoryIndex].currentFrameColIndex, //sy
+                        this.inventorySlots[inventoryIndex].frameW, //sw
+                        this.inventorySlots[inventoryIndex].frameH, //sh
+                        this.x+j*this.slotSize, //dx
+                        this.y+i*this.slotSize, //dy
+                        this.slotSize, //dw
+                        this.slotSize); //dh
                 }
                 drawRect(this.x+j*this.slotSize,this.y+i*this.slotSize,this.slotSize,this.slotSize, this.borderColor,this.borderSize);
                 inventoryIndex++;

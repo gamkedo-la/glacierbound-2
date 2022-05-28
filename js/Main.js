@@ -28,6 +28,7 @@ function initRenderLoop() { //called from ImageLoading.js
 
 function updateEverything(){
     player.update();
+    bookItem.update();
     if (showDebugText) {
         const debugParagraph = document.getElementById('debug-text')
         debugParagraph.innerText = levelEditorEnabled ? `Press 'L' to exit Editor Mode` : `Press 'L' to enter Editor Mode`
