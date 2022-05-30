@@ -131,6 +131,7 @@ class MapSection {
 
     changeMap(newMap){
         this.grid = newMap.grid;
+        this.minimapIsDirty = true;
     }
 
 }
