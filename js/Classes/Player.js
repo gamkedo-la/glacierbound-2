@@ -16,7 +16,7 @@ class Player {
         this.rayCaster;
 
         //Testing inventory item functionality
-        bookItem = new Item(0, "book_blue_spritesheet", 8, 1, 960, 800);
+        bookItem = new Item(0, "book_blue_spritesheet", 8, 1, 128, 128);
         inventory.addItem(bookItem);
     }
     update() {
