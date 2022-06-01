@@ -74,6 +74,44 @@ class MapSection {
         }
     }
 
+    draw3DProjectedWallReflections(){ // work in progress - it should flip them upside down!
+        //bufferedGameCanvasContext.save(); // hmm I can't get this to work right
+        bufferedGameCanvasContext.globalAlpha = 0.05; // see-thru
+        //bufferedGameCanvasContext.rotate(180 * Math.PI / 180);
+        //bufferedGameCanvasContext.scale(1,-1); // upside down?
+        //bufferedGameCanvasContext.setTransform(1, 0, 0, -1, 0, 0); // flipped?
+        for (var i = 0; i < NUM_OF_RAYS; i++){
+            var ray = player.rayCaster.rays[i];
+            var rayDistance = ray.distance * Math.cos(ray.rayAngle - player.rotationAngle);
+            var wallStripHeight = (TILE_SIZE / rayDistance) * PROJECTION_PLAIN_DISTANCE;
+            var wallTopPixel = (bufferedGameCanvasContext.canvas.height/2) - (wallStripHeight/2);
+            var wallBottomPixel = (bufferedGameCanvasContext.canvas.height/2) + (wallStripHeight/2);
+            wallBottomPixel = wallBottomPixel > bufferedGameCanvasContext.canvas.height ? bufferedGameCanvasContext.canvas.height : wallBottomPixel;
+            if (ray.closestWallHitCoord.x % TILE_SIZE === 0){ // if Vertical Hit
+                var textureOffSetX = ray.closestWallHitCoord.y % TILE_SIZE;
+            } else { //else if Horizonal Hit
+                var textureOffSetX = ray.closestWallHitCoord.x % TILE_SIZE;
+            }
+            textureOffSetX *= (TEXTURE_SIZE / TILE_SIZE);
+            textureOffSetX = Math.floor(textureOffSetX);
+
+            // floors start at BOTTOM pixels of a hit wall and extend to the bottom of the screen
+            // FIXME change to floorStripTexture and do once for each horizontal line
+            // with perspective correction via matrix skew transform??? HMMMM TODO FIXME
+            bufferedGameCanvasContext.drawImage(ray.wallStripTexture, textureOffSetX, 0, 1, TEXTURE_SIZE, i * RAY_INCREMENT_WIDTH, wallBottomPixel, RAY_INCREMENT_WIDTH, wallStripHeight);
+        }
+        bufferedGameCanvasContext.globalAlpha = 1; // reset
+        //bufferedGameCanvasContext.scale(1,-1); // reset
+        //a Horizontal scaling	
+        //b	Horizontal skewing	
+        //c	Vertical skewing	
+        //d	Vertical scaling	
+        //e	Horizontal moving	
+        //f	Vertical moving
+        //bufferedGameCanvasContext.setTransform(1, 0, 0, 1, 0, 0); // reset
+        //bufferedGameCanvasContext.restore();
+    }
+
     draw2DMinimap() {
 
         if (this.minimapIsDirty) {
