@@ -5,7 +5,12 @@ var debugModeEnabled = true;
 var levelEditorEnabled = false;
 var showDebugText = true;
 var paused = false;
-var selected = 0; // default pause menu option selected
+const MENU_RESUME = 0;
+const MENU_OPTIONS = 1;
+const MENU_CONTROLS = 2;
+const MENU_QUIT = 3;
+const MENU_LAST_ITEM = MENU_QUIT;
+var selected = MENU_RESUME; // default pause menu option selected
 
 window.onload = function () {
     loadImages();
@@ -80,32 +85,34 @@ function drawEverything(){
     }
 }
 
+var optionsList = ['RESUME', 'OPTIONS', 'CONTROLS', 'QUIT'];
 function showPauseMenu() {
     // if the game is paused, display the pause menu
     // currently this only shows the text 'PAUSED', there is no menu
     var pauseWidth = bufferedHUDCanvas.width / 2; // width of pause menu, to center it
+    var headingHeight = 60;
+    var optionHeight = 50;
+    var extraBottom = 50;
+    var menuShiftY = 10;
+    var boxHeight = headingHeight + optionHeight * optionsList.length + extraBottom;
 
     // black background
-    colorRect((bufferedHUDCanvas.width - pauseWidth) / 2, (bufferedHUDCanvas.height - 250) / 2, pauseWidth, 250, "#000000", bufferedHUDCanvasContext);
+    colorRect((bufferedHUDCanvas.width - pauseWidth) / 2, (bufferedHUDCanvas.height - boxHeight) / 2 + menuShiftY, pauseWidth, boxHeight, "#000000", bufferedHUDCanvasContext);
     // pink border
-    drawRect((bufferedHUDCanvas.width - pauseWidth) / 2, (bufferedHUDCanvas.height - 250) / 2, pauseWidth, 250, "#ff00ff", 5, bufferedHUDCanvasContext);
+    drawRect((bufferedHUDCanvas.width - pauseWidth) / 2, (bufferedHUDCanvas.height - boxHeight) / 2 + menuShiftY, pauseWidth, boxHeight, "#ff00ff", 5, bufferedHUDCanvasContext);
     
     // menu text
-    colorText('PAUSED', bufferedHUDCanvasContext, bufferedHUDCanvas.width / 2, 215, '50px Share Tech Mono', "center", "#ffffff");
-    if (selected == 0) {
-        colorText('[OPTIONS]', bufferedHUDCanvasContext, bufferedHUDCanvas.width / 2, 275, '40px Share Tech Mono', 'center', '#00ff00');
-    } else {
-        colorText(' OPTIONS ', bufferedHUDCanvasContext, bufferedHUDCanvas.width / 2, 275, '40px Share Tech Mono', 'center', '#00ff00');
-    }
-    if (selected == 1) {
-        colorText('[CONTROLS]', bufferedHUDCanvasContext, bufferedHUDCanvas.width / 2, 325, '40px Share Tech Mono', 'center', '#00ff00');
-    } else {
-        colorText(' CONTROLS ', bufferedHUDCanvasContext, bufferedHUDCanvas.width / 2, 325, '40px Share Tech Mono', 'center', '#00ff00');
-    }
-    if (selected == 2) {
-        colorText('[QUIT]', bufferedHUDCanvasContext, bufferedHUDCanvas.width / 2, 375, '40px Share Tech Mono', 'center', '#00ff00');
-    } else {
-        colorText(' QUIT ', bufferedHUDCanvasContext, bufferedHUDCanvas.width / 2, 375, '40px Share Tech Mono', 'center', '#00ff00');
+    var textY = 215;
+
+    colorText('PAUSED', bufferedHUDCanvasContext, bufferedHUDCanvas.width / 2, textY, '50px Share Tech Mono', "center", "#ffffff");
+    textY += headingHeight;
+    for (var i = 0; i < optionsList.length; i++) {
+        var showIfSelected = optionsList[i];
+        if (i == selected) {
+            showIfSelected = '[' + showIfSelected + ']';
+        }
+        colorText(showIfSelected, bufferedHUDCanvasContext, bufferedHUDCanvas.width / 2, textY, '40px Share Tech Mono', 'center', '#00ff00');
+        textY += optionHeight;
     }
     
     drawBufferedCanvasToScreenCanvas(bufferedHUDCanvas);

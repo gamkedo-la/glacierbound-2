@@ -70,24 +70,19 @@ function keyReleased(evt) {
   if (paused)
   {
     if (evt.keyCode === KEY_ENTER) {
-      console.log(selected);
+      console.log(optionsList[selected]);
+
     }
     if (evt.keyCode === KEY_LETTER_W || evt.keyCode === KEY_UP_ARROW) {
-      if (selected == 0) { 
-        selected = 2;
-      } else if (selected == 1) {
-        selected = 0;
-      } else if (selected == 2) {
-        selected = 1;
+      selected--;
+      if (selected < 0) {
+        selected = optionsList.length - 1;
       }
     }
 
     if (evt.keyCode === KEY_LETTER_S || evt.keyCode === KEY_DOWN_ARROW) {
-      if (selected == 0) { 
-        selected = 1;
-      } else if (selected == 1) {
-        selected = 2;
-      } else if (selected == 2) {
+      selected++;
+      if (selected >= optionsList.length) {
         selected = 0;
       }
     }
