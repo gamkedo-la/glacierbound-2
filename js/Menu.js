@@ -1,4 +1,13 @@
-var paused = false;
+const MENUSTATE_NONE = 0;
+const MENUSTATE_PAUSED = 1;
+const MENUSTATE_OPTIONS = 2;
+const MENUSTATE_CONTROLS = 3;
+var menuState = MENUSTATE_NONE;
+
+function isPaused() {
+    return (menuState != MENUSTATE_NONE);
+}
+
 const MENU_RESUME = 0;
 const MENU_OPTIONS = 1;
 const MENU_CONTROLS = 2;
@@ -44,7 +53,7 @@ function pauseInputHandler(evt) {
         console.log(optionsList[selected]);
         switch (selected) {
             case MENU_RESUME:
-                paused = !paused;
+                menuState = MENUSTATE_NONE;
                 break;
             case MENU_OPTIONS:
                 console.log('options menu not yet implemented');
@@ -72,3 +81,4 @@ function pauseInputHandler(evt) {
         }
     }
 }
+

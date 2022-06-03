@@ -14,7 +14,7 @@ window.onload = function () {
 
 function initRenderLoop() { //called from ImageLoading.js
     gameRunning = setInterval(function () {
-        if (paused) {
+        if (isPaused()) {
             // if the game is paused, we only want to draw the game as it stands, we don't want it updated
             drawEverything();
         } else {
@@ -38,7 +38,7 @@ function updateEverything(){
 
 function drawEverything(){
 
-    if (paused) {
+    if (isPaused()) {
         // show the pause menu, contained in its own function
         showPauseMenu();
     } else {

@@ -22,7 +22,7 @@ function pollInput() {
 }
 
 function keyPressed(evt) {
-  if (paused) {
+  if (isPaused()) {
     // paused handled in keyReleased()
     return;
   }
@@ -72,9 +72,14 @@ function keyPressed(evt) {
 function keyReleased(evt) {
   if (evt.keyCode === KEY_LETTER_P) {
     // toggle pause menu
-    paused = !paused;
+    if (isPaused()) {
+      menuState = MENUSTATE_NONE;
+    }
+    else {
+      menuState = MENUSTATE_PAUSED;
+    }
   }
-  if (paused)
+  if (isPaused())
   {
     // handle input during pause menu
     pauseInputHandler(evt);
