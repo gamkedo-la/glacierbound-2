@@ -35,6 +35,7 @@ const TEXTURE_SIZE = 32;
 //#endregion Map Grid Constants
 
 //#region Keyboard Code Constants
+const KEY_ENTER = 13;
 const KEY_LEFT_ARROW = 37;
 const KEY_UP_ARROW = 38;
 const KEY_RIGHT_ARROW = 39;

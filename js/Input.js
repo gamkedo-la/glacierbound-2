@@ -15,6 +15,11 @@ function pollInput() {
 }
 
 function keyPressed(evt) {
+  if (paused) {
+    // paused handled in keyReleased()
+    return;
+  }
+
   if (evt.keyCode === KEY_LETTER_W || evt.keyCode === KEY_UP_ARROW) { 
     player.walkDirection = FORWARD;
   }
@@ -58,32 +63,44 @@ function keyPressed(evt) {
 }
 
 function keyReleased(evt) {
+  if (evt.keyCode === KEY_LETTER_P) {
+    // toggle pause menu
+    paused = !paused;
+  }
+  if (paused)
+  {
+    if (evt.keyCode === KEY_ENTER) {
+      console.log(selected);
+    }
+    if (evt.keyCode === KEY_LETTER_W || evt.keyCode === KEY_UP_ARROW) {
+      if (selected == 0) { 
+        selected = 2;
+      } else if (selected == 1) {
+        selected = 0;
+      } else if (selected == 2) {
+        selected = 1;
+      }
+    }
+
+    if (evt.keyCode === KEY_LETTER_S || evt.keyCode === KEY_DOWN_ARROW) {
+      if (selected == 0) { 
+        selected = 1;
+      } else if (selected == 1) {
+        selected = 2;
+      } else if (selected == 2) {
+        selected = 0;
+      }
+    }
+    return;
+  }
   if (evt.keyCode === KEY_LETTER_W || evt.keyCode === KEY_UP_ARROW) {
     player.walkDirection = NEUTRAL;
-    // the following allows the player to choose menu items on the pause menu
-    if (paused) {
-      if (selected == 0) { 
-        selected = 2;
-      } else if (selected == 1) {
-        selected = 0;
-      } else if (selected == 2) {
-        selected = 1;
-      }
-    }
   }
+
   if (evt.keyCode === KEY_LETTER_S || evt.keyCode === KEY_DOWN_ARROW) {
     player.walkDirection = NEUTRAL;
-    // the following allows the player to choose menu items on the pause menu
-    if (paused) {
-      if (selected == 0) { 
-        selected = 1;
-      } else if (selected == 1) {
-        selected = 2;
-      } else if (selected == 2) {
-        selected = 0;
-      }
-    }
   }
+
   if (evt.keyCode === KEY_LETTER_Q) {
     player.strafeDirection = NEUTRAL;
   }
@@ -96,10 +113,7 @@ function keyReleased(evt) {
   if (evt.keyCode === KEY_LETTER_D || evt.keyCode === KEY_RIGHT_ARROW) {
     player.turnDirection = NEUTRAL;
   }
-  if (evt.keyCode === KEY_LETTER_P) {
-    // toggle pause menu
-    paused = !paused;
-  }
+
   if(evt.keyCode === KEY_LEFT_SHIFT){
     player.isSprinting = false;
   }
