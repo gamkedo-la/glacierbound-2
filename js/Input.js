@@ -1,7 +1,14 @@
 var mousePos = null;
 var isMouseDown = false;
+var inputMapping = [KEY_LETTER_W, KEY_LETTER_S, KEY_LETTER_A, KEY_LETTER_D, KEY_LETTER_Q, KEY_LETTER_E];
+var inputAction = ['FORWARD', 'BACKWARD', 'TURN LEFT', 'TURN RIGHT', 'STRAFE LEFT', 'STRAFE RIGHT'];
+var inputLookup = [];
 
 function initInput() {
+  for (var i = 0; i < inputMapping.length; i++) {
+    var action = inputAction[i];
+    inputLookup[action] = inputMapping[i];
+  }
   document.addEventListener("keydown", keyPressed);
   document.addEventListener("keyup", keyReleased);
 
@@ -20,22 +27,22 @@ function keyPressed(evt) {
     return;
   }
 
-  if (evt.keyCode === KEY_LETTER_W || evt.keyCode === KEY_UP_ARROW) { 
+  if (evt.keyCode === inputLookup['FORWARD'] || evt.keyCode === KEY_UP_ARROW) { 
     player.walkDirection = FORWARD;
   }
-  if (evt.keyCode === KEY_LETTER_S || evt.keyCode === KEY_DOWN_ARROW) {
+  if (evt.keyCode === inputLookup['BACKWARD'] || evt.keyCode === KEY_DOWN_ARROW) {
     player.walkDirection = BACKWARD;
   }
-  if (evt.keyCode === KEY_LETTER_Q) {
+  if (evt.keyCode === inputLookup['STRAFE LEFT']) {
     player.strafeDirection = LEFT;
   }
-  if (evt.keyCode === KEY_LETTER_E) {
+  if (evt.keyCode === inputLookup['STRAFE RIGHT']) {
     player.strafeDirection = RIGHT;
   }
-  if (evt.keyCode === KEY_LETTER_A || evt.keyCode === KEY_LEFT_ARROW) {
+  if (evt.keyCode === inputLookup['TURN LEFT'] || evt.keyCode === KEY_LEFT_ARROW) {
     player.turnDirection = LEFT;
   }
-  if (evt.keyCode === KEY_LETTER_D || evt.keyCode === KEY_RIGHT_ARROW) {
+  if (evt.keyCode === inputLookup['TURN RIGHT'] || evt.keyCode === KEY_RIGHT_ARROW) {
     player.turnDirection = RIGHT;
   }
   
@@ -73,24 +80,24 @@ function keyReleased(evt) {
     pauseInputHandler(evt);
     return;
   }
-  if (evt.keyCode === KEY_LETTER_W || evt.keyCode === KEY_UP_ARROW) {
+  if (evt.keyCode === inputLookup['FORWARD'] || evt.keyCode === KEY_UP_ARROW) {
     player.walkDirection = NEUTRAL;
   }
 
-  if (evt.keyCode === KEY_LETTER_S || evt.keyCode === KEY_DOWN_ARROW) {
+  if (evt.keyCode === inputLookup['BACKWARD'] || evt.keyCode === KEY_DOWN_ARROW) {
     player.walkDirection = NEUTRAL;
   }
 
-  if (evt.keyCode === KEY_LETTER_Q) {
+  if (evt.keyCode === inputLookup['STRAFE LEFT']) {
     player.strafeDirection = NEUTRAL;
   }
-  if (evt.keyCode === KEY_LETTER_E) {
+  if (evt.keyCode === inputLookup['STRAFE RIGHT']) {
     player.strafeDirection = NEUTRAL;
   }
-  if (evt.keyCode === KEY_LETTER_A || evt.keyCode === KEY_LEFT_ARROW) {
+  if (evt.keyCode === inputLookup['TURN LEFT'] || evt.keyCode === KEY_LEFT_ARROW) {
     player.turnDirection = NEUTRAL;
   }
-  if (evt.keyCode === KEY_LETTER_D || evt.keyCode === KEY_RIGHT_ARROW) {
+  if (evt.keyCode === inputLookup['TURN RIGHT'] || evt.keyCode === KEY_RIGHT_ARROW) {
     player.turnDirection = NEUTRAL;
   }
 
