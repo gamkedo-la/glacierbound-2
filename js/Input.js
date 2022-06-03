@@ -1,7 +1,7 @@
 var mousePos = null;
 var isMouseDown = false;
-var inputMapping = [KEY_LETTER_W, KEY_LETTER_S, KEY_LETTER_A, KEY_LETTER_D, KEY_LETTER_Q, KEY_LETTER_E];
-var inputAction = ['FORWARD', 'BACKWARD', 'TURN LEFT', 'TURN RIGHT', 'STRAFE LEFT', 'STRAFE RIGHT'];
+var inputMapping = [KEY_LETTER_W, KEY_LETTER_S, KEY_LETTER_A, KEY_LETTER_D, KEY_LETTER_Q, KEY_LETTER_E, KEY_LEFT_SHIFT, KEY_LETTER_I];
+var inputAction = ['FORWARD', 'BACKWARD', 'TURN LEFT', 'TURN RIGHT', 'STRAFE LEFT', 'STRAFE RIGHT', 'SPRINT', 'INVENTORY'];
 var inputLookup = [];
 
 function initInput() {
@@ -52,10 +52,10 @@ function keyPressed(evt) {
   if (evt.keyCode === KEY_NUMBER_2) {
     mapSection.changeMap(arcticExterior);
   }
-  if(evt.keyCode === KEY_LEFT_SHIFT){
+  if(evt.keyCode === inputLookup['SPRINT']){
     player.isSprinting = true;
   }
-  if(evt.keyCode === KEY_LETTER_I){
+  if(evt.keyCode === inputLookup['INVENTORY']){
     inventory.toggleShowInventory();
   }
 
