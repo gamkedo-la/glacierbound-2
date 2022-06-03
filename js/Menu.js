@@ -42,19 +42,33 @@ function showPauseMenu() {
 function pauseInputHandler(evt) {
     if (evt.keyCode === KEY_ENTER) {
         console.log(optionsList[selected]);
-  
-      }
-      if (evt.keyCode === KEY_LETTER_W || evt.keyCode === KEY_UP_ARROW) {
+        switch (selected) {
+            case MENU_RESUME:
+                paused = !paused;
+                break;
+            case MENU_OPTIONS:
+                console.log('options menu not yet implemented');
+                break;
+            case MENU_CONTROLS:
+                console.log('controls menu not yet implemented');
+                break;
+            case MENU_QUIT:
+                console.log('quit not yet implemented');
+                break;
+        }
+    }
+
+    if (evt.keyCode === KEY_LETTER_W || evt.keyCode === KEY_UP_ARROW) {
         selected--;
         if (selected < 0) {
-          selected = optionsList.length - 1;
+            selected = optionsList.length - 1;
         }
-      }
-  
-      if (evt.keyCode === KEY_LETTER_S || evt.keyCode === KEY_DOWN_ARROW) {
+    }
+
+    if (evt.keyCode === KEY_LETTER_S || evt.keyCode === KEY_DOWN_ARROW) {
         selected++;
         if (selected >= optionsList.length) {
-          selected = 0;
+            selected = 0;
         }
-      }
+    }
 }
