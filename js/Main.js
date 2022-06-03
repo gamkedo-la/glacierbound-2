@@ -40,7 +40,12 @@ function drawEverything(){
 
     if (isPaused()) {
         // show the pause menu, contained in its own function
-        showPauseMenu();
+        if (menuState === MENUSTATE_CONTROLS) {
+            showControlsMenu();
+        }
+        if (menuState === MENUSTATE_PAUSED) {
+            showPauseMenu();
+        }
     } else {
 
         clearAllCanvases();
