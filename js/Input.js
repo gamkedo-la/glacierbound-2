@@ -69,23 +69,8 @@ function keyReleased(evt) {
   }
   if (paused)
   {
-    if (evt.keyCode === KEY_ENTER) {
-      console.log(optionsList[selected]);
-
-    }
-    if (evt.keyCode === KEY_LETTER_W || evt.keyCode === KEY_UP_ARROW) {
-      selected--;
-      if (selected < 0) {
-        selected = optionsList.length - 1;
-      }
-    }
-
-    if (evt.keyCode === KEY_LETTER_S || evt.keyCode === KEY_DOWN_ARROW) {
-      selected++;
-      if (selected >= optionsList.length) {
-        selected = 0;
-      }
-    }
+    // handle input during pause menu
+    pauseInputHandler(evt);
     return;
   }
   if (evt.keyCode === KEY_LETTER_W || evt.keyCode === KEY_UP_ARROW) {
