@@ -8,9 +8,9 @@ var inputLookup = [];
 for (var i = 0; i < inputAction.length; i++) {
   if (localStorage.getItem(inputAction[i]) != null) {
     inputMapping[i] = parseInt(localStorage.getItem(inputAction[i]));
-    console.log(inputAction[i] + ": " + inputMapping[i]);
+    console.log(inputAction[i] + ": " + String.fromCharCode(inputMapping[i]));
   } else {
-    console.log('No input mapping found for ' + inputAction[i]);
+    console.log('No custom input mapping found for ' + inputAction[i]);
   }
 }
 
