@@ -4,6 +4,16 @@ var inputMapping = [KEY_LETTER_W, KEY_LETTER_S, KEY_LETTER_A, KEY_LETTER_D, KEY_
 var inputAction = ['FORWARD', 'BACKWARD', 'TURN LEFT', 'TURN RIGHT', 'STRAFE LEFT', 'STRAFE RIGHT', 'SPRINT', 'INVENTORY'];
 var inputLookup = [];
 
+// if there are custom controls set, use those
+for (var i = 0; i < inputAction.length; i++) {
+  if (localStorage.getItem(inputAction[i]) != null) {
+    inputMapping[i] = parseInt(localStorage.getItem(inputAction[i]));
+    console.log(inputMapping[i]);
+  } else {
+    console.log('No input mapping found for ' + inputAction[i]);
+  }
+}
+
 function initInput() {
   for (var i = 0; i < inputMapping.length; i++) {
     var action = inputAction[i];
@@ -79,12 +89,14 @@ function keyReleased(evt) {
       menuState = MENUSTATE_PAUSED;
     }
   }
+
   if (isPaused())
   {
-    // handle input during pause menu
+    // handle input during pause menu (in Menu.js)
     pauseInputHandler(evt);
     return;
   }
+  
   if (evt.keyCode === inputLookup['FORWARD'] || evt.keyCode === KEY_UP_ARROW) {
     player.walkDirection = NEUTRAL;
   }

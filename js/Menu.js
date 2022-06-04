@@ -47,7 +47,6 @@ function showPauseMenu() {
     drawBufferedCanvasToScreenCanvas(bufferedHUDCanvas);
 }
 
-controlsList = ['FORWARD', 'BACKWARD', 'TURN LEFT', 'TURN RIGHT', 'STRAFE LEFT', 'STRAFE RIGHT', 'SPRINT', 'INVENTORY'];
 function showControlsMenu() {
     // Display the CONTROLS menu where the player can modify the keyboard inputs
     var windowWidth = bufferedHUDCanvas.width / 2; // width of pause menu, to center it
@@ -55,7 +54,8 @@ function showControlsMenu() {
     var optionHeight = 30;
     var extraBottom = 80;
     var menuShiftY = 40;
-    var boxHeight = headingHeight + optionHeight * controlsList.length + extraBottom;
+    var centerOffset = 50;
+    var boxHeight = headingHeight + optionHeight * inputAction.length + extraBottom;
 
     // black background
     colorRect((bufferedHUDCanvas.width - windowWidth) / 2, (bufferedHUDCanvas.height - boxHeight) / 2 + menuShiftY, windowWidth, boxHeight, "#000000", bufferedHUDCanvasContext);
@@ -67,8 +67,8 @@ function showControlsMenu() {
 
     colorText('CONTROLS', bufferedHUDCanvasContext, bufferedHUDCanvas.width / 2, textY, '50px Share Tech Mono', "center", "#ffffff");
     textY += 55;
-    for (var i = 0; i < controlsList.length; i++) {
-        colorText(controlsList[i] + ":", bufferedHUDCanvasContext, bufferedHUDCanvas.width / 2 + 25, textY, '20px Share Tech Mono', 'right', '#00ff00');
+    for (var i = 0; i < inputAction.length; i++) {
+        colorText(inputAction[i] + ": " + String.fromCharCode(inputLookup[inputAction[i]]), bufferedHUDCanvasContext, bufferedHUDCanvas.width / 2 + centerOffset, textY, '20px Share Tech Mono', 'right', '#00ff00');
         textY += optionHeight;
     }
     
