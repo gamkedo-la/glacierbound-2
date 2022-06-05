@@ -10,6 +10,8 @@ class Item{
         this.currentFrameColIndex = 0;
         this.tickCount = 0;
         this.ticksPerFrame = 20;
+
+        objectsToUpdate.push(this);
     }
 
     update (){

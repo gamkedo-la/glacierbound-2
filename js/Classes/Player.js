@@ -18,6 +18,8 @@ class Player {
         //Testing inventory item functionality
         bookItem = new Item(0, "book_blue_spritesheet", 8, 1, 128, 128);
         inventory.addItem(bookItem);
+
+        objectsToUpdate.push(this);
     }
     update() {
         this.rotationAngle += this.rotationSpeed * this.turnDirection;

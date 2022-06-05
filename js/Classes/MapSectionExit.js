@@ -5,6 +5,8 @@ class MapSectionExit {
         this.destinationMapSection = destinationMapSection;
         this.radius = TILE_SIZE / 2;
         this.distanceToPlayer = Infinity;
+
+        objectsToUpdate.push(this);
     }
 
     update() {
