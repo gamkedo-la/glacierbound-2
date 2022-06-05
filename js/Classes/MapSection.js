@@ -164,12 +164,13 @@ class MapSection {
             mapSection.minimapIsDirty = true;
         }
 
-
     }
 
     changeMap(newMap){
         this.grid = newMap.grid;
         this.minimapIsDirty = true;
+        player.x = newMap.startingTileX * TILE_SIZE;
+        player.y = newMap.startingTileY * TILE_SIZE;
     }
 
 }
