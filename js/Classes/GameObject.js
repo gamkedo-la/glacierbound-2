@@ -14,7 +14,8 @@ class GameObject {
     }
 
     update() {
-        this.distance = DistanceBetweenTwoPixelCoords(this.x, this.y, player.x, player.y);
+        this.distanceToPlayer = distanceBetweenPoints(this.x, this.y, player.x, player.y);
+
         let movePos = getPixelCoordFromAngleAndSpeed(this.x, this.y, this.direction, this.moveSpeed);
         this.x = movePos[0];
         this.y = movePos[1];
