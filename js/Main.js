@@ -1,6 +1,7 @@
 var mapSection = new MapSection();
 var inventory = new Inventory();
 var player = new Player();
+var testObject = new GameObject(100, 240, 0, "book_blue_spritesheet", 0, 1, 0);
 var debugModeEnabled = true;
 var levelEditorEnabled = false;
 var showDebugText = true;
@@ -61,6 +62,7 @@ function drawEverything(){
 
         mapSection.draw3DProjectedWalls();
         mapSection.draw2DMinimap();
+        testObject.draw2D();
 
         player.draw();
 
