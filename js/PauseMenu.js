@@ -68,7 +68,7 @@ function showControlsMenu() {
     colorText('CONTROLS', bufferedHUDCanvasContext, bufferedHUDCanvas.width / 2, textY, '50px Share Tech Mono', "center", "#ffffff");
     textY += 55;
     for (var i = 0; i < inputAction.length; i++) {
-        colorText(inputAction[i] + ": " + String.fromCharCode(inputLookup[inputAction[i]]), bufferedHUDCanvasContext, bufferedHUDCanvas.width / 2 + centerOffset, textY, '20px Share Tech Mono', 'right', '#00ff00');
+        colorText(inputAction[i] + ": " + inputMap[inputMapping[i]], bufferedHUDCanvasContext, bufferedHUDCanvas.width / 2 + centerOffset, textY, '20px Share Tech Mono', 'right', '#00ff00');
         textY += optionHeight;
     }
     

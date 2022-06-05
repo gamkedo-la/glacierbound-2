@@ -4,6 +4,14 @@ var inputMapping = [KEY_LETTER_W, KEY_LETTER_S, KEY_LETTER_A, KEY_LETTER_D, KEY_
 var inputAction = ['FORWARD', 'BACKWARD', 'TURN LEFT', 'TURN RIGHT', 'STRAFE LEFT', 'STRAFE RIGHT', 'SPRINT', 'INVENTORY'];
 var inputLookup = [];
 
+// homemade ascii to character map
+// this will make it possible to display accurate info on the controls menu
+var inputMap = {
+  65: 'A', 66: 'B', 67: 'C', 68: 'D', 69: 'E', 70: 'F', 71: 'G', 72: 'H', 73: 'I', 74: 'J', 75: 'K', 76: 'L', 77: 'M',
+  78: 'N', 79: 'O', 80: 'P', 81: 'Q', 82: 'R', 83: 'S', 84: 'T', 85: 'U', 86: 'V', 87: 'W', 88: 'X', 89: 'Y', 90: 'Z',
+  13: 'ENTER', 16: 'SHIFT', 18: 'ALT', 32: 'SPACE'
+};
+
 // if there are custom controls set, use those
 for (var i = 0; i < inputAction.length; i++) {
   if (localStorage.getItem(inputAction[i]) != null) {
