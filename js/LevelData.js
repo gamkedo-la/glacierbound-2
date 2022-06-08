@@ -17,7 +17,10 @@ var arcticExterior = {
         [2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 5, 5, 5, 5, 5, 5, 5, 5, 5]
     ],
     startingTileX: 6,
-    startingTileY: 2
+    startingTileY: 2,
+    skyMapName: 'sky_clouds',
+    floorMapName: 'floor_snow',
+    floorReflection: false
 }
 
 var shipInterior = {

@@ -14,7 +14,7 @@ class MapSection {
     // this is not perspective correct so it would not work for floors
     // but we can assume the sky is infinitely far away
     // for simple math and very fast performance
-    drawSky(img='sky_clouds'){
+    drawSky(img){
         var tex = spriteList[img];
         var imgW = tex.width;
         var imgH = tex.height;
@@ -35,7 +35,7 @@ class MapSection {
 
     // not perspective correct:
     // looks good with a flat gradient, not a texture
-    drawFloor(img='floor_snow'){
+    drawFloor(img){
         var tex = spriteList[img];
         var imgW = tex.width;
         var imgH = tex.height;
@@ -137,10 +137,10 @@ class MapSection {
     }
 
     drawCeilingAndFloor(){
-        mapSection.drawSky(levelList[currentRoom].skyMapName);
-        mapSection.drawFloor(levelList[currentRoom].floorMapName);
+        this.drawSky(levelList[currentRoom].skyMapName);
+        this.drawFloor(levelList[currentRoom].floorMapName);
         if (levelList[currentRoom].floorReflection) {
-            mapSection.draw3DProjectedWallReflections(); // work in progress...
+            this.draw3DProjectedWallReflections(); // work in progress...
         }
     }
 
