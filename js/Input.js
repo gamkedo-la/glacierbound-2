@@ -65,10 +65,10 @@ function keyPressed(evt) {
   }
   
   if (evt.keyCode === KEY_NUMBER_1) {
-    mapSection.changeMap(shipInterior);
+    mapSection.changeMap(0);
   }
   if (evt.keyCode === KEY_NUMBER_2) {
-    mapSection.changeMap(arcticExterior);
+    mapSection.changeMap(1);
   }
   if(evt.keyCode === inputLookup['SPRINT']){
     player.isSprinting = true;

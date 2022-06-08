@@ -52,15 +52,7 @@ function drawEverything(){
     } else {
 
         clearAllCanvases();
-
-        if (mapSection.grid == shipInterior.grid) {
-            mapSection.drawSky('sky_ship');
-            mapSection.drawFloor('floor_ship');
-            mapSection.draw3DProjectedWallReflections(); // work in progress...
-        } else {
-            mapSection.drawSky('sky_clouds');
-            mapSection.drawFloor('floor_snow');
-        }
+        mapSection.drawCeilingAndFloor();
 
         mapSection.draw3DProjectedWalls();
         mapSection.draw2DMinimap();

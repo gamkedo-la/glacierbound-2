@@ -4,7 +4,7 @@ var WIND_SPEED = 0.00025;
 
 class MapSection {
     constructor() {
-        this.grid = shipInterior.grid;
+        this.grid = JSON.parse(JSON.stringify(shipInterior.grid));
         this.minimapIsDirty = true;
         this.minimapImage = document.createElement('img')
         this.minimapWidth = MAP_NUM_COLS * TILE_SIZE * MINIMAP_SCALE_FACTOR;
@@ -136,6 +136,14 @@ class MapSection {
         }
     }
 
+    drawCeilingAndFloor(){
+        mapSection.drawSky(levelList[currentRoom].skyMapName);
+        mapSection.drawFloor(levelList[currentRoom].floorMapName);
+        if (levelList[currentRoom].floorReflection) {
+            mapSection.draw3DProjectedWallReflections(); // work in progress...
+        }
+    }
+
     getTileTypeAtPixelCoord(pixelX, pixelY) {
         if (!isPixelCoordWithinMapGrid(pixelX, pixelY)) return TILE_TYPE_WALL;
 
@@ -166,8 +174,10 @@ class MapSection {
 
     }
 
-    changeMap(newMap){
-        this.grid = newMap.grid;
+    changeMap(newMapIndex){
+        currentRoom = newMapIndex;
+        var newMap = levelList[currentRoom];
+        this.grid = JSON.parse(JSON.stringify(newMap.grid));
         this.minimapIsDirty = true;
         player.x = newMap.startingTileX * TILE_SIZE;
         player.y = newMap.startingTileY * TILE_SIZE;

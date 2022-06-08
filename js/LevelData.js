@@ -39,8 +39,14 @@ var shipInterior = {
         [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
     ],
     startingTileX: 16,
-    startingTileY: 5
+    startingTileY: 5,
+    skyMapName: 'sky_ship',
+    floorMapName: 'floor_ship',
+    floorReflection: true
 }
+
+var levelList = [shipInterior, arcticExterior];
+var currentRoom = 0;
 
 var empty = {
     grid: [
@@ -61,5 +67,8 @@ var empty = {
         [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
     ],
     startingTileX: 0,
-    startingTileY: 0
+    startingTileY: 0,
+    skyMapName: 'sky_clouds',
+    floorMapName: 'floor_snow',
+    floorReflection: false
 }
