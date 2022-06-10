@@ -33,6 +33,7 @@ function initInput() {
   document.addEventListener("mousemove", moveMouse);
   document.addEventListener("mousedown", mouseDown);
   document.addEventListener("mouseup", mouseUp);
+  document.addEventListener("wheel", mousewheel);
 }
 
 function pollInput() {
@@ -146,7 +147,13 @@ function mouseDown(evt){
 function mouseUp(evt){
   isMouseDown = false;
 }
-
+function mousewheel(evt){
+  if(evt.deltaY > 0){
+    inventory.incrementSelectedItemIndex();
+  }else if (evt.deltaY < 0){
+    inventory.decrementSelectedItemIndex();
+  }
+}
 function calculateMousePos(evt) {
   var rect = screenCanvas.getBoundingClientRect();
   var root = document.documentElement;

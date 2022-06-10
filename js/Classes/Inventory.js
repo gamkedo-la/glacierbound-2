@@ -10,6 +10,8 @@ class Inventory{
         this.backgroundColor = "white";
         this.borderColor = "black";
         this.borderSize = 2;
+        this.selectedColor = "red";
+        this.selectedIndex = 0;
     }
     addItem(item){
         if(this.inventorySlots.length >= this.inventorySize){
@@ -32,6 +34,19 @@ class Inventory{
     }
     toggleShowInventory(){
         this.showInventory = !this.showInventory;
+    }
+    incrementSelectedItemIndex(){
+        this.selectedIndex++;
+        this.selectedIndex %= this.inventorySize;
+    }
+    getSelectedItem(){
+        return this.inventorySlots[this.selectedIndex];
+    }
+    decrementSelectedItemIndex(){
+        this.selectedIndex--;
+        if(this.selectedIndex < 0){
+            this.selectedIndex = this.inventorySize-1;
+        }
     }
     draw(){
         if(!this.showInventory){
@@ -58,5 +73,10 @@ class Inventory{
                 inventoryIndex++;
             }
         }
+
+        //draw selected
+        let selectedItemRow = Math.floor(this.selectedIndex / this.slotsPerRow);
+        let selectedItemColumn = this.selectedIndex % this.slotsPerRow;
+        drawRect(this.x + selectedItemColumn * this.slotSize, this.y + selectedItemRow * this.slotSize, this.slotSize, this.slotSize, this.selectedColor, this.borderSize);
     }
 }
