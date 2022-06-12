@@ -13,7 +13,7 @@ class MapSectionExit {
         this.distanceToPlayer = distanceBetweenPoints(this.x, this.y, player.x, player.y);
 
         if (this.distanceToPlayer < 10) {
-            mapSection.changeMap(this.destinationMapSection);
+            mapSection.changeMap(1);
         }
     }
 

@@ -71,6 +71,13 @@ function keyPressed(evt) {
   if (evt.keyCode === KEY_NUMBER_2) {
     mapSection.changeMap(1);
   }
+  if (evt.keyCode === KEY_NUMBER_3) {
+    mapSection.changeMap(2);
+  }
+  if (evt.keyCode === KEY_NUMBER_4) {
+    mapSection.changeMap(3);
+  }
+
   if(evt.keyCode === inputLookup['SPRINT']){
     player.isSprinting = true;
   }
