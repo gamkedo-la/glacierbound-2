@@ -17,7 +17,7 @@ var gamepad = {
     down:function() { return this.axis(1)>this.deadzone; },
     up:function() { return this.axis(1)<-this.deadzone; },
     lookleft:function() { return this.axis(2)<-this.deadzone; },
-    lookright:function() { return this.axis(3)>this.deadzone; },
+    lookright:function() { return this.axis(2)>this.deadzone; },
 
     // float -1..0..1 values for analog control
     leftStick_xAxis:function() { return this.axis(0); },

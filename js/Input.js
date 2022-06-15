@@ -53,8 +53,13 @@ function pollGamepad() {
     if (gamepad.down()) { player.walkDirection = BACKWARD;  gamepad.prevD=true; } 
     else if (gamepad.prevD) { player.walkDirection = NEUTRAL; gamepad.prevD=false; }
 
+    if (gamepad.lookleft()) { player.turnDirection = LEFT; gamepad.prevLL=true; } 
+    else if (gamepad.prevLL) { player.turnDirection = NEUTRAL; gamepad.prevLL=false; }
+
+    if (gamepad.lookright()) { player.turnDirection = RIGHT; gamepad.prevLR=true; } 
+    else if (gamepad.prevLR) { player.turnDirection = NEUTRAL; gamepad.prevLR=false; }
+
     // FIXME analong movement speed would be cool
-    // and looking around with left thumbstick
 }
 
 function keyPressed(evt) {
