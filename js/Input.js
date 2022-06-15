@@ -40,6 +40,23 @@ function pollInput() {
   pollMouseButtons();
 }
 
+function pollGamepad() {
+    if (gamepad.right()) { player.strafeDirection = RIGHT; gamepad.prevR=true; } 
+    else if (gamepad.prevR) { player.strafeDirection = NEUTRAL; gamepad.prevR=false; }
+    
+    if (gamepad.left()) { player.strafeDirection = LEFT;  gamepad.prevL=true; } 
+    else if (gamepad.prevL) { player.strafeDirection = NEUTRAL; gamepad.prevL=false; }
+
+    if (gamepad.up()) { player.walkDirection = FORWARD;  gamepad.prevU=true; } 
+    else if (gamepad.prevU) { player.walkDirection = NEUTRAL; gamepad.prevU=false; }
+    
+    if (gamepad.down()) { player.walkDirection = BACKWARD;  gamepad.prevD=true; } 
+    else if (gamepad.prevD) { player.walkDirection = NEUTRAL; gamepad.prevD=false; }
+
+    // FIXME analong movement speed would be cool
+    // and looking around with left thumbstick
+}
+
 function keyPressed(evt) {
   if (isPaused()) {
     // paused handled in keyReleased()

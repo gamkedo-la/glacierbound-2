@@ -28,6 +28,8 @@ function initRenderLoop() { //called from ImageLoading.js
 
 function updateEverything(){
 
+    pollGamepad();
+    
     objectsToUpdate.forEach(object => object.update());
 
     if (showDebugText) {
