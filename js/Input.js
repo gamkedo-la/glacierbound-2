@@ -41,6 +41,9 @@ function pollInput() {
 }
 
 function pollGamepad() {
+
+    // FIXME: currently just binary on/off gamepad input not 0..1 smooth movement
+
     if (gamepad.right()) { player.strafeDirection = RIGHT; gamepad.prevR=true; } 
     else if (gamepad.prevR) { player.strafeDirection = NEUTRAL; gamepad.prevR=false; }
     
@@ -59,7 +62,12 @@ function pollGamepad() {
     if (gamepad.lookright()) { player.turnDirection = RIGHT; gamepad.prevLR=true; } 
     else if (gamepad.prevLR) { player.turnDirection = NEUTRAL; gamepad.prevLR=false; }
 
-    // FIXME analong movement speed would be cool
+    if (gamepad.buttonX()) { if (!gamepad.prevX) inventory.toggleShowInventory(); gamepad.prevX=true; } 
+    else { gamepad.prevX=false; }
+
+    if (gamepad.buttonA()) { player.isSprinting = true; gamepad.prevA=true; } 
+    else if (gamepad.prevA) { player.isSprinting = false; gamepad.prevA=false; }
+   
 }
 
 function keyPressed(evt) {
