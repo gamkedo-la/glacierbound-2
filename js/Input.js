@@ -128,7 +128,7 @@ function keyPressed(evt) {
 }
 
 function keyReleased(evt) {
-  if (evt.keyCode === KEY_LETTER_P) {
+  if (evt.keyCode === KEY_LETTER_P || evt.keyCode === KEY_ESCAPE) {
     // toggle pause menu
     if (isPaused()) {
       menuState = MENUSTATE_NONE;
@@ -140,7 +140,7 @@ function keyReleased(evt) {
 
   if (isPaused())
   {
-    // handle input during pause menu (in Menu.js)
+    // handle input during pause menu (in PauseMenu.js)
     pauseInputHandler(evt);
     return;
   }

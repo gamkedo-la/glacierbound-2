@@ -61,4 +61,5 @@ const KEY_NUMBER_3  = 51;
 const KEY_NUMBER_4  = 52;
 const KEY_RIGHT_BRACKET = 221;
 const KEY_LEFT_BRACKET = 219;
+const KEY_ESCAPE = 27;
 //#endregion Keyboard Code Constants
