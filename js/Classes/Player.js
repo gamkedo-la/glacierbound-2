@@ -4,6 +4,10 @@ class Player {
     constructor() {
         this.x = TILE_SIZE * 6.5;
         this.y = TILE_SIZE * 2.5;
+        this.col = mapSection.getGridCoordFromPixelCoord(this.x, this.y).col;
+        this.row = mapSection.getGridCoordFromPixelCoord(this.x, this.y).row;
+        this.startingCol = this.col;
+        this.startingRow = this.row;
         this.turnDirection = NEUTRAL;
         this.walkDirection = NEUTRAL;
         this.strafeDirection = NEUTRAL;
@@ -15,6 +19,8 @@ class Player {
         this.rotationAngle = degreesToRadians(90); //degrees converted to radians
         this.rayCaster;
         this.currentTileType = 0;
+        this.previousMapSection = 0;
+        this.canExitMapSection = true;
 
         //Testing inventory item functionality
         bookItem = new Item(0, "book_blue_spritesheet", 8, 1, 128, 128);
@@ -23,10 +29,15 @@ class Player {
         objectsToUpdate.push(this);
     }
     update() {
+        this.col = mapSection.getGridCoordFromPixelCoord(this.x, this.y).col;
+        this.row = mapSection.getGridCoordFromPixelCoord(this.x, this.y).row;
+
+        if (this.col != this.startingCol || this.row != this.startingRow){
+            this.canExitMapSection = true;
+        }
+
         this.rotationAngle += this.rotationSpeed * this.turnDirection;
         this.rotationAngle = normalizeAngle(this.rotationAngle);
-
-
 
         let inputDirectionMagnitude = Math.sqrt(Math.pow(this.walkDirection,2)+Math.pow(this.strafeDirection,2));
 

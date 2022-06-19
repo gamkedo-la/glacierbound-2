@@ -176,13 +176,47 @@ class MapSection {
 
     }
 
+    getGridCoordFromPixelCoord(pixelX, pixelY){
+        if (!isPixelCoordWithinMapGrid(pixelX, pixelY)) return;
+
+        var gridCoord = {
+            col: Math.floor((pixelX) / (TILE_SIZE)),
+            row: Math.floor((pixelY) / (TILE_SIZE))
+        }
+
+        return gridCoord;
+    }
+
     changeMap(newMapIndex){
+
+        if (!player.canExitMapSection) return;
+
+        player.previousMapSection = currentRoom;
         currentRoom = newMapIndex;
         var newMap = levelList[currentRoom];
         this.grid = JSON.parse(JSON.stringify(newMap.grid));
         this.minimapIsDirty = true;
-        player.x = newMap.startingTileX * TILE_SIZE;
-        player.y = newMap.startingTileY * TILE_SIZE;
+        var startingPosition = this.findPlayerStartPosition();
+        player.x = startingPosition.col * TILE_SIZE;
+        player.y = startingPosition.row * TILE_SIZE;
+        player.startingCol = startingPosition.col
+        player.startingRow = startingPosition.row
+        player.canExitMapSection = false;
+    }
+
+    findPlayerStartPosition() {
+        for (var row = 0; row < MAP_NUM_ROWS; row++) {
+            for ( var col = 0; col < MAP_NUM_COLS; col++) {
+                if (levelList[currentRoom].grid[row][col] >= 80) {
+                    var startPosition = {
+                        row: row,
+                        col: col
+                    }
+                    console.log(startPosition);
+                    return startPosition;
+                }
+            }
+        }
     }
 
 }
