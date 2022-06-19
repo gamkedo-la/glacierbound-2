@@ -1,5 +1,6 @@
 var objectsToUpdate = [];
 var mapSection = new MapSection();
+var testObject = new GameObject(400, 240, 0, shipExterior, 0, 1, 0);
 var inventory = new Inventory();
 var player = new Player();
 var debugModeEnabled = true;
@@ -59,6 +60,8 @@ function drawEverything(){
         mapSection.draw2DMinimap();
 
         player.draw();
+
+        testObject.draw2D();
 
         inventory.draw();
 
