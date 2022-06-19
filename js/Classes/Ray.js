@@ -53,7 +53,8 @@ class Ray {
 
     getWallHitCoord(nextTileEdgeX, nextTileEdgeY, xStep, yStep){    
         while (true){
-            if (mapSection.getTileTypeAtPixelCoord(nextTileEdgeX + this.xOffset, nextTileEdgeY + this.yOffset) != TILE_TYPE_FLOOR){
+            if (mapSection.getTileTypeAtPixelCoord(nextTileEdgeX + this.xOffset, nextTileEdgeY + this.yOffset) != TILE_TYPE_FLOOR &&
+                mapSection.getTileTypeAtPixelCoord(nextTileEdgeX + this.xOffset, nextTileEdgeY + this.yOffset) < 80) {
                 return {
                     'x': nextTileEdgeX,
                     'y': nextTileEdgeY

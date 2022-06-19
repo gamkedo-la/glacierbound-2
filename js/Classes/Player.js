@@ -14,6 +14,7 @@ class Player {
         this.rotationSpeed = degreesToRadians(3); //degrees converted to radians/frame
         this.rotationAngle = degreesToRadians(90); //degrees converted to radians
         this.rayCaster;
+        this.currentTileType = 0;
 
         //Testing inventory item functionality
         bookItem = new Item(0, "book_blue_spritesheet", 8, 1, 128, 128);
@@ -44,14 +45,21 @@ class Player {
             movementDirectionX *= this.moveSpeed;
             movementDirectionY *= this.moveSpeed;
         }
-        if (mapSection.getTileTypeAtPixelCoord(this.x, this.y+movementDirectionY) === TILE_TYPE_FLOOR) {
+        if (mapSection.getTileTypeAtPixelCoord(this.x, this.y+movementDirectionY) === TILE_TYPE_FLOOR ||
+            mapSection.getTileTypeAtPixelCoord(this.x, this.y+movementDirectionY) >= 80) {
             this.y += movementDirectionY;
         }
-        if (mapSection.getTileTypeAtPixelCoord(this.x+movementDirectionX, this.y) === TILE_TYPE_FLOOR) {
+        if (mapSection.getTileTypeAtPixelCoord(this.x+movementDirectionX, this.y) === TILE_TYPE_FLOOR ||
+            mapSection.getTileTypeAtPixelCoord(this.x+movementDirectionX, this.y) >= 80) {
             this.x += movementDirectionX;
         }
 
         this.rayCaster = new RayCaster(player.rotationAngle);
+
+        this.currentTileType = mapSection.getTileTypeAtPixelCoord(this.x, this.y);
+        if (this.currentTileType >= 80){
+            mapSection.changeMap(this.currentTileType - 80);
+        }
     }
 
     draw() {

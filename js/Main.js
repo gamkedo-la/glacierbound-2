@@ -2,7 +2,6 @@ var objectsToUpdate = [];
 var mapSection = new MapSection();
 var inventory = new Inventory();
 var player = new Player();
-var shipExit = new MapSectionExit(100, 240, shipExterior);
 var debugModeEnabled = true;
 var levelEditorEnabled = false;
 var showDebugText = true;
@@ -58,7 +57,6 @@ function drawEverything(){
 
         mapSection.draw3DProjectedWalls();
         mapSection.draw2DMinimap();
-        shipExit.draw2D();
 
         player.draw();
 

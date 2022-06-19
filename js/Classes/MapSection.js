@@ -123,7 +123,9 @@ class MapSection {
                     var tileY = row * TILE_SIZE;
                     var tileType = this.getTileTypeAtGridCoord(col, row);
     
-                    if (tileType != TILE_TYPE_FLOOR) bufferedDebugCanvasContext.drawImage(wallTextures[tileType - 1], tileX * MINIMAP_SCALE_FACTOR, tileY * MINIMAP_SCALE_FACTOR, TEXTURE_SIZE * MINIMAP_SCALE_FACTOR, TEXTURE_SIZE * MINIMAP_SCALE_FACTOR);
+                    if (tileType != TILE_TYPE_FLOOR && tileType < 80) {
+                        bufferedDebugCanvasContext.drawImage(wallTextures[tileType - 1], tileX * MINIMAP_SCALE_FACTOR, tileY * MINIMAP_SCALE_FACTOR, TEXTURE_SIZE * MINIMAP_SCALE_FACTOR, TEXTURE_SIZE * MINIMAP_SCALE_FACTOR);
+                    }
                 }
             }
 
