@@ -126,6 +126,11 @@ class MapSection {
                     if (tileType != TILE_TYPE_FLOOR && tileType < 80) {
                         bufferedDebugCanvasContext.drawImage(wallTextures[tileType - 1], tileX * MINIMAP_SCALE_FACTOR, tileY * MINIMAP_SCALE_FACTOR, TEXTURE_SIZE * MINIMAP_SCALE_FACTOR, TEXTURE_SIZE * MINIMAP_SCALE_FACTOR);
                     }
+
+                    if (tileType >= 80) {
+                        //exitCoord = getPixelCoordFromGridCoord(pixelX, pixelY)
+                        colorCircle((tileX + TILE_SIZE/2) * MINIMAP_SCALE_FACTOR, (tileY + TILE_SIZE/2) * MINIMAP_SCALE_FACTOR, 5, "blue", bufferedDebugCanvasContext);
+                    }
                 }
             }
 
