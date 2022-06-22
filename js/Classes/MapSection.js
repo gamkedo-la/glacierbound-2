@@ -119,18 +119,21 @@ class MapSection {
     
             for (var row = 0; row < MAP_NUM_ROWS; row++) {
                 for ( var col = 0; col < MAP_NUM_COLS; col++) {
-                    var tileX = col * TILE_SIZE;
-                    var tileY = row * TILE_SIZE;
-                    var tileType = this.getTileTypeAtGridCoord(col, row);
+                    if (seenGrid[row][col] == 1) {
+                        var tileX = col * TILE_SIZE;
+                        var tileY = row * TILE_SIZE;
+                        var tileType = this.getTileTypeAtGridCoord(col, row);
     
-                    if (tileType != TILE_TYPE_FLOOR && tileType < 80) {
-                        bufferedDebugCanvasContext.drawImage(wallTextures[tileType - 1], tileX * MINIMAP_SCALE_FACTOR, tileY * MINIMAP_SCALE_FACTOR, TEXTURE_SIZE * MINIMAP_SCALE_FACTOR, TEXTURE_SIZE * MINIMAP_SCALE_FACTOR);
-                    }
+                        if (tileType != TILE_TYPE_FLOOR && tileType < 80) {
+                            bufferedDebugCanvasContext.drawImage(wallTextures[tileType - 1], tileX * MINIMAP_SCALE_FACTOR, tileY * MINIMAP_SCALE_FACTOR, TEXTURE_SIZE * MINIMAP_SCALE_FACTOR, TEXTURE_SIZE * MINIMAP_SCALE_FACTOR);
+                        }
 
-                    if (tileType >= 80) {
-                        //exitCoord = getPixelCoordFromGridCoord(pixelX, pixelY)
-                        colorCircle((tileX + TILE_SIZE/2) * MINIMAP_SCALE_FACTOR, (tileY + TILE_SIZE/2) * MINIMAP_SCALE_FACTOR, 5, "blue", bufferedDebugCanvasContext);
-                    }
+                        if (tileType >= 80) {
+                            //exitCoord = getPixelCoordFromGridCoord(pixelX, pixelY)
+                            colorCircle((tileX + TILE_SIZE/2) * MINIMAP_SCALE_FACTOR, (tileY + TILE_SIZE/2) * MINIMAP_SCALE_FACTOR, 5, "blue", bufferedDebugCanvasContext);
+                        }
+                    };
+                    
                 }
             }
 
@@ -207,6 +210,24 @@ class MapSection {
         player.startingCol = startingPosition.col
         player.startingRow = startingPosition.row
         player.canExitMapSection = false;
+
+        seenGrid = [
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+        ];
     }
 
     findPlayerStartPosition() {

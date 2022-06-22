@@ -16,6 +16,12 @@ class Ray {
         this.distance = distanceBetweenPoints(player.x, player.y, this.closestWallHitCoord.x, this.closestWallHitCoord.y);
 
         this.tileTypeHit = mapSection.getTileTypeAtPixelCoord(this.closestWallHitCoord.x + this.xOffset, this.closestWallHitCoord.y + this.yOffset);
+        this.gridCoord = mapSection.getGridCoordFromPixelCoord(this.closestWallHitCoord.x + this.xOffset, this.closestWallHitCoord.y + this.yOffset)
+        if (seenGrid[this.gridCoord.row][this.gridCoord.col] != 1){
+            mapSection.minimapIsDirty = true;
+            seenGrid[this.gridCoord.row][this.gridCoord.col]
+        }
+        seenGrid[this.gridCoord.row][this.gridCoord.col] = 1;
         this.wallStripTexture = wallTextures[this.tileTypeHit - 1];
     }
 
@@ -54,7 +60,7 @@ class Ray {
     getWallHitCoord(nextTileEdgeX, nextTileEdgeY, xStep, yStep){    
         while (true){
             if (mapSection.getTileTypeAtPixelCoord(nextTileEdgeX + this.xOffset, nextTileEdgeY + this.yOffset) != TILE_TYPE_FLOOR &&
-                mapSection.getTileTypeAtPixelCoord(nextTileEdgeX + this.xOffset, nextTileEdgeY + this.yOffset) < 80) {
+                mapSection.getTileTypeAtPixelCoord(nextTileEdgeX + this.xOffset, nextTileEdgeY + this.yOffset) < 80) { //make constant
                 return {
                     'x': nextTileEdgeX,
                     'y': nextTileEdgeY
