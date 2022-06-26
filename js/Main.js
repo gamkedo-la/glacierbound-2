@@ -39,6 +39,8 @@ function updateEverything(){
     if(levelEditorEnabled){
         updateLevelEditor();
     }
+
+    objectsToUpdate.sort((a, b) => (a.distanceToPlayer < b.distanceToPlayer) ? 1 : -1);
 }
 
 function drawEverything(){

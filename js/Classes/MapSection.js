@@ -53,6 +53,12 @@ class MapSection {
     draw3DProjectedWalls(){
         for (var i = 0; i < NUM_OF_RAYS; i++){
             var ray = player.rayCaster.rays[i];
+
+            for (var o = 0; o < objectsToUpdate.length; o++) {
+                if (objectsToUpdate[o].distanceToPlayer > ray.distance) objectsToUpdate[o].draw();
+                else break;
+            }
+            
             var rayDistance = ray.distance * Math.cos(ray.rayAngle - player.rotationAngle);
             var wallStripHeight = (TILE_SIZE / rayDistance) * PROJECTION_PLAIN_DISTANCE;
 
@@ -69,7 +75,7 @@ class MapSection {
             textureOffSetX *= (TEXTURE_SIZE / TILE_SIZE);
             textureOffSetX = Math.floor(textureOffSetX);
 
-            bufferedGameCanvasContext.drawImage(ray.wallStripTexture, textureOffSetX, 0, 1, TEXTURE_SIZE, i * RAY_INCREMENT_WIDTH, wallTopPixel, RAY_INCREMENT_WIDTH, wallStripHeight);
+            bufferedGameCanvasContext.drawImage(ray.wallStripTexture, textureOffSetX, 0, 1, TEXTURE_SIZE, ray.id * RAY_INCREMENT_WIDTH, wallTopPixel, RAY_INCREMENT_WIDTH, wallStripHeight);
     
         }
     }
@@ -98,7 +104,7 @@ class MapSection {
             // floors start at BOTTOM pixels of a hit wall and extend to the bottom of the screen
             // FIXME change to floorStripTexture and do once for each horizontal line
             // with perspective correction via matrix skew transform??? HMMMM TODO FIXME
-            bufferedGameCanvasContext.drawImage(ray.wallStripTexture, textureOffSetX, 0, 1, TEXTURE_SIZE, i * RAY_INCREMENT_WIDTH, wallBottomPixel, RAY_INCREMENT_WIDTH, wallStripHeight);
+            bufferedGameCanvasContext.drawImage(ray.wallStripTexture, textureOffSetX, 0, 1, TEXTURE_SIZE, ray.id * RAY_INCREMENT_WIDTH, wallBottomPixel, RAY_INCREMENT_WIDTH, wallStripHeight);
         }
         bufferedGameCanvasContext.globalAlpha = 1; // reset
         //bufferedGameCanvasContext.scale(1,-1); // reset

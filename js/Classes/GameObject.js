@@ -11,6 +11,8 @@ class GameObject {
         this.distanceToPlayer = Infinity;
         this.isDead = false;
         this.animTimer = 0;
+        this.renderedThisFrame = false;
+        this.pic = spriteList[0];
 
         objectsToUpdate.push(this);
     }
@@ -32,7 +34,19 @@ class GameObject {
     }
 
     draw() {
+        if (!this.renderedThisFrame) {
+            var dist = distanceBetweenPoints(this.x, this.y, player.x, player.y);
+            var drawAngle = Math.atan2(this.y - player.y, this.x - player.x) - player.rotationAngle;
+            var size = Math.cos(drawAngle);
+            if (size <= Math.cos(FOV_RADS)) return;
+
+            var drawHeight = (TILE_SIZE / dist) * PROJECTION_PLAIN_DISTANCE;
+            var drawWidth = (100 / 100) * drawHeight;
+            var drawX = bufferedGameCanvas.width / 2 + Math.tan(drawAngle) * PROJECTION_PLAIN_DISTANCE;
         
+            bufferedGameCanvasContext.drawImage(spriteList['ice_wall'], 0, 0, 32, 32, drawX - drawWidth / 2, (bufferedGameCanvas.height / 2) - (drawHeight / 2), drawWidth /2, drawHeight /2);
+            this.renderedThisFrame = true;
+        }
     }
 
     draw2D() {
