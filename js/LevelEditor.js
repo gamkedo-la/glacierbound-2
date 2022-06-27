@@ -12,6 +12,15 @@ function initLevelEditor(){
     wallTextures.push(spriteList['ship_window']);
     wallTextures.push(spriteList['ship_shelves']);
 
+    wallTextures.push(spriteList['ship_interior_wall_simple_panels']);
+    wallTextures.push(spriteList['ship_interior_wall_panels']);
+    wallTextures.push(spriteList['ship_interior_wall']);
+    wallTextures.push(spriteList['ship_interior_plain_wall']);
+    wallTextures.push(spriteList['ship_interior_wall_simple']);
+    wallTextures.push(spriteList['ship_interior_wall_no_pipes']);
+
+    wallTextures.push(spriteList['cave_wall']);
+
     selectedTileTextureIndex = 0;
 }
 function updateLevelEditor(){

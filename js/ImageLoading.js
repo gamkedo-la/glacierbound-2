@@ -18,6 +18,15 @@ function loadImages() {
         {spriteName: 'book_blue_spritesheet', fileName: 'spritesheets/book_blue_spritesheet.png'},
         {spriteName: 'floor_snow', fileName: 'floor_snow.png'},
         {spriteName: 'floor_ship', fileName: 'floor_ship.png'},
+
+        {spriteName: 'ship_interior_wall_simple_panels', fileName: 'ship_interior_wall_simple_panels.png'},
+        {spriteName: 'ship_interior_wall_panels', fileName: 'ship_interior_wall_panels.png'},
+        {spriteName: 'ship_interior_wall', fileName: 'ship_interior_wall.png'},
+        {spriteName: 'ship_interior_plain_wall', fileName: 'ship_interior_plain_wall.png'},
+        {spriteName: 'ship_interior_wall_simple', fileName: 'ship_interior_wall_simple.png'},
+        {spriteName: 'ship_interior_wall_no_pipes', fileName: 'ship_interior_wall_no_pipes.png'},
+
+        {spriteName: 'cave_wall', fileName: 'cave_wall.png'},
 	]
 
 	imagesToLoad = imageList.length;
