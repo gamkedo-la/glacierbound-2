@@ -1,6 +1,6 @@
 var allObjects = [];
 var mapSection = new MapSection();
-var testObject = new GameObject(400, 240, 0, shipExterior, 0, 1, 0);
+var testObject;
 var inventory = new Inventory();
 var player = new Player();
 var debugModeEnabled = true;
@@ -12,6 +12,9 @@ window.onload = function () {
     initInput();
     initCanvases();
     initLevelEditor();
+
+    //TODO: move to level initialization
+    testObject = new GameObject(TILE_SIZE * 6.5, TILE_SIZE * 3.5, 0, "book_blue_spritesheet", 0, 1, 0);
 }
 
 function initRenderLoop() { //called from ImageLoading.js
@@ -64,6 +67,7 @@ function drawEverything(){
         player.draw();
 
         testObject.draw2D();
+        testObject.draw();
 
         inventory.draw();
 

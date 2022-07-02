@@ -11,8 +11,7 @@ class GameObject {
         this.distanceToPlayer = Infinity;
         this.isDead = false;
         this.animTimer = 0;
-        this.renderedThisFrame = false;
-        this.pic = spriteList[0];
+        this.sprite = spriteList['ice_wall'];
 
         allObjects.push(this);
     }
@@ -29,27 +28,34 @@ class GameObject {
         }
     }
 
-    activate(){
+    activate() {
         console.log(this + " Activated");
     }
 
     draw() {
-        if (!this.renderedThisFrame) {
-            var dist = distanceBetweenPoints(this.x, this.y, player.x, player.y);
-            var drawAngle = Math.atan2(this.y - player.y, this.x - player.x) - player.rotationAngle;
-            var size = Math.cos(drawAngle);
-            if (size <= Math.cos(FOV_RADS)) return;
+        var dist = distanceBetweenPoints(this.x, this.y, player.x, player.y);
+        var drawAngle = Math.atan2(this.y - player.y, this.x - player.x) - player.rotationAngle;
+        var size = Math.cos(drawAngle);
+        if (size <= Math.cos(FOV_RADS)) return;
 
-            var drawHeight = (TILE_SIZE / dist) * PROJECTION_PLAIN_DISTANCE;
-            var drawWidth = (100 / 100) * drawHeight;
-            var drawX = bufferedGameCanvas.width / 2 + Math.tan(drawAngle) * PROJECTION_PLAIN_DISTANCE;
-        
-            bufferedGameCanvasContext.drawImage(spriteList['ice_wall'], 0, 0, 32, 32, drawX - drawWidth / 2, (bufferedGameCanvas.height / 2) - (drawHeight / 2), drawWidth /2, drawHeight /2);
-            this.renderedThisFrame = true;
-        }
+        var drawHeight = (this.sprite.height / dist) * PROJECTION_PLAIN_DISTANCE;
+        var drawWidth = (this.sprite.width / this.sprite.height) * drawHeight;
+        var drawX = (bufferedGameCanvas.width / 2) + (Math.tan(drawAngle) * PROJECTION_PLAIN_DISTANCE);
+
+        bufferedGameCanvasContext.drawImage(
+            this.sprite, //image
+            //0, //sx
+            //0, //sy
+            //this.sprite.width, //sW
+            //this.sprite.height, //sH
+            (drawX - drawWidth / 2), //dx
+            (bufferedGameCanvas.height / 2) - (drawHeight / 2), //dyad
+            drawWidth / 2, //dW
+            drawHeight / 2 //dH
+        );
     }
 
     draw2D() {
-        colorCircle(this.x * MINIMAP_SCALE_FACTOR, this.y * MINIMAP_SCALE_FACTOR, this.radius * MINIMAP_SCALE_FACTOR, "yellow", bufferedDebugCanvasContext);
+        colorCircle(this.x * MINIMAP_SCALE_FACTOR, this.y * MINIMAP_SCALE_FACTOR, this.radius * MINIMAP_SCALE_FACTOR, "green", bufferedDebugCanvasContext);
     }
 }
