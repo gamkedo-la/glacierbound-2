@@ -1,4 +1,4 @@
-var objectsToUpdate = [];
+var allObjects = [];
 var mapSection = new MapSection();
 var testObject = new GameObject(400, 240, 0, shipExterior, 0, 1, 0);
 var inventory = new Inventory();
@@ -30,7 +30,7 @@ function updateEverything(){
 
     pollGamepad();
     
-    objectsToUpdate.forEach(object => object.update());
+    allObjects.forEach(object => object.update());
 
     if (showDebugText) {
         const debugParagraph = document.getElementById('debug-text')
@@ -40,7 +40,7 @@ function updateEverything(){
         updateLevelEditor();
     }
 
-    objectsToUpdate.sort((a, b) => (a.distanceToPlayer < b.distanceToPlayer) ? 1 : -1);
+    allObjects.sort((a, b) => (a.distanceToPlayer < b.distanceToPlayer) ? 1 : -1);
 }
 
 function drawEverything(){

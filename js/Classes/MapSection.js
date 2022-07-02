@@ -54,8 +54,8 @@ class MapSection {
         for (var i = 0; i < NUM_OF_RAYS; i++){
             var ray = player.rayCaster.rays[i];
 
-            for (var o = 0; o < objectsToUpdate.length; o++) {
-                if (objectsToUpdate[o].distanceToPlayer > ray.distance) objectsToUpdate[o].draw();
+            for (var o = 0; o < allObjects.length; o++) {
+                if (allObjects[o].distanceToPlayer > ray.distance) allObjects[o].draw();
                 else break;
             }
             

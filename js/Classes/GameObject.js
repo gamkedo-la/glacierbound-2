@@ -14,7 +14,7 @@ class GameObject {
         this.renderedThisFrame = false;
         this.pic = spriteList[0];
 
-        objectsToUpdate.push(this);
+        allObjects.push(this);
     }
 
     update() {

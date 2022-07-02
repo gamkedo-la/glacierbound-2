@@ -26,7 +26,7 @@ class Player {
         bookItem = new Item(0, "book_blue_spritesheet", 8, 1, 128, 128);
         inventory.addItem(bookItem);
 
-        objectsToUpdate.push(this);
+        allObjects.push(this);
     }
     update() {
         this.col = mapSection.getGridCoordFromPixelCoord(this.x, this.y).col;

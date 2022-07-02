@@ -11,7 +11,7 @@ class Item{
         this.tickCount = 0;
         this.ticksPerFrame = 20;
 
-        objectsToUpdate.push(this);
+        allObjects.push(this);
     }
 
     update (){
