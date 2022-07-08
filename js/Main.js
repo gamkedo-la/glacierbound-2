@@ -59,9 +59,10 @@ function drawEverything(){
     } else {
 
         clearAllCanvases();
-        mapSection.drawCeilingAndFloor();
 
+        mapSection.drawCeilingAndFloor();
         mapSection.draw3DProjectedWalls();
+        
         mapSection.draw2DMinimap();
 
         player.draw();

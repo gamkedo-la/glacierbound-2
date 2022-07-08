@@ -6,7 +6,7 @@ class MapSection {
     constructor() {
         this.grid = JSON.parse(JSON.stringify(shipInterior.grid));
         this.minimapIsDirty = true;
-        this.minimapImage = document.createElement('img')
+        this.minimapImage = document.createElement('img');
         this.minimapWidth = MAP_NUM_COLS * TILE_SIZE * MINIMAP_SCALE_FACTOR;
         this.minimapHeight = MAP_NUM_ROWS * TILE_SIZE * MINIMAP_SCALE_FACTOR;
     }
@@ -121,7 +121,9 @@ class MapSection {
     draw2DMinimap() {
 
         if (this.minimapIsDirty) {
-            colorRect(0, 0, this.minimapWidth, this.minimapHeight, 'lightgrey', bufferedDebugCanvasContext);
+            
+            //colorRect(0, 0, this.minimapWidth, this.minimapHeight, 'lightgrey', bufferedDebugCanvasContext);
+            bufferedDebugCanvasContext.clearRect(0,0,this.minimapWidth, this.minimapHeight);
     
             for (var row = 0; row < MAP_NUM_ROWS; row++) {
                 for ( var col = 0; col < MAP_NUM_COLS; col++) {
@@ -144,11 +146,26 @@ class MapSection {
             }
 
             this.minimapIsDirty = false;
-            this.minimapImage.width = this.minimapWidth
-            this.minimapImage.height = this.minimapHeight
-            this.minimapImage.src = bufferedDebugCanvas.toDataURL()
+            this.minimapImage.width = this.minimapWidth;
+            this.minimapImage.height = this.minimapHeight;
+            this.minimapImage.src = bufferedDebugCanvas.toDataURL();
         } else {
-            bufferedDebugCanvasContext.drawImage(this.minimapImage, 0, 0);
+
+            if (MINIMAP_ENABLED) {
+                // regular, larger, opaque "debug version" of the minimap
+                colorRect(0, 0, this.minimapWidth, this.minimapHeight, 'lightgrey', bufferedDebugCanvasContext);
+                bufferedDebugCanvasContext.drawImage(this.minimapImage, 0, 0);
+            }
+
+            if (RADAR_ENABLED) {
+                // small radar version
+                if (RADAR_BG_ENABLED) colorRect(RADAR_X, RADAR_Y, RADAR_W, RADAR_H, RADAR_BG_FILL, bufferedDebugCanvasContext);
+                bufferedDebugCanvasContext.globalAlpha = RADAR_ALPHA;
+                bufferedDebugCanvasContext.drawImage(this.minimapImage, RADAR_X, RADAR_Y, RADAR_W, RADAR_H);
+                bufferedDebugCanvasContext.globalAlpha = 1;
+
+            }
+            
         }
     }
 

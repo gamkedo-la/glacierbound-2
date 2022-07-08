@@ -56,6 +56,6 @@ class GameObject {
     }
 
     draw2D() {
-        colorCircle(this.x * MINIMAP_SCALE_FACTOR, this.y * MINIMAP_SCALE_FACTOR, this.radius * MINIMAP_SCALE_FACTOR, "green", bufferedDebugCanvasContext);
+        if (MINIMAP_ENABLED) colorCircle(this.x * MINIMAP_SCALE_FACTOR, this.y * MINIMAP_SCALE_FACTOR, this.radius * MINIMAP_SCALE_FACTOR, "green", bufferedDebugCanvasContext);
     }
 }

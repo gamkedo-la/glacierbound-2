@@ -25,13 +25,25 @@ const NEUTRAL = 0;
 //#endregion
 
 //#region Map Grid Constants
-const MINIMAP_SCALE_FACTOR = 0.4;
-const MAP_NUM_ROWS = 15;
 const MAP_NUM_COLS = 20;
+const MAP_NUM_ROWS = 15;
 const TILE_SIZE = 32;
 const TILE_TYPE_WALL = 1;
 const TILE_TYPE_FLOOR = 0;
 const TEXTURE_SIZE = 32;
+
+const MINIMAP_ENABLED = false; // the large opaque debug map
+const MINIMAP_SCALE_FACTOR = 0.4;
+
+const RADAR_ENABLED = true; // // the small transparent map
+const RADAR_BG_ENABLED = true;
+const RADAR_BG_FILL = "rgba(0,0,0,0.15)";
+const RADAR_ALPHA = 0.5;
+const RADAR_W = 200;
+const RADAR_H = 150;
+const RADAR_X = 560;
+const RADAR_Y = 524;
+const RADAR_SCALE_FACTOR = 1/8;
 //#endregion Map Grid Constants
 
 //#region Keyboard Code Constants
