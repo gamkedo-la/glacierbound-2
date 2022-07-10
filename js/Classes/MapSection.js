@@ -4,7 +4,7 @@ var WIND_SPEED = 0.00025;
 
 class MapSection {
     constructor() {
-        this.grid = JSON.parse(JSON.stringify(shipInterior.grid));
+        this.grid = JSON.parse(JSON.stringify(ship_80.grid));
         this.minimapIsDirty = true;
         this.minimapImage = document.createElement('img');
         this.minimapWidth = MAP_NUM_COLS * TILE_SIZE * MINIMAP_SCALE_FACTOR;
