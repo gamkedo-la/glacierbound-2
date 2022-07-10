@@ -5,18 +5,24 @@ class GameObject {
         this.direction = angle;
         this.moveSpeed = speed;
         this.altitude = altitude;
-        this.spriteSheet = spriteSheet;
+        //this.spriteSheet = spriteSheet;
         this.scale = scale;
         this.radius = (this.scale * TILE_SIZE / 2) - 6;
         this.distanceToPlayer = Infinity;
         this.isDead = false;
         this.animTimer = 0;
-        this.sprite = spriteList['ice_wall'];
+        this.spriteName = "ice_wall"
+        this.sprite = spriteList[this.spriteName];
+        //this.spriteData = spriteData[this.spriteName];
+        //this.frameCounter = 0;
 
         allObjects.push(this);
     }
 
     update() {
+
+        //frame counter
+
         this.distanceToPlayer = distanceBetweenPoints(this.x, this.y, player.x, player.y);
 
         let movePos = getPixelCoordFromAngleAndSpeed(this.x, this.y, this.direction, this.moveSpeed);
@@ -49,9 +55,9 @@ class GameObject {
             //this.sprite.width, //sW
             //this.sprite.height, //sH
             (drawX - drawWidth / 2), //dx
-            (bufferedGameCanvas.height / 2) - (drawHeight / 2), //dyad
-            drawWidth / 2, //dW
-            drawHeight / 2 //dH
+            (bufferedGameCanvas.height / 2) - (drawHeight / 2), //dy
+            drawWidth, //dW
+            drawHeight //dH
         );
     }
 
