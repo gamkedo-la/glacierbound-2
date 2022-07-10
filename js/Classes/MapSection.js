@@ -228,8 +228,8 @@ class MapSection {
         this.grid = JSON.parse(JSON.stringify(newMap.grid));
         this.minimapIsDirty = true;
         var startingPosition = this.findPlayerStartPosition();
-        player.x = startingPosition.col * TILE_SIZE;
-        player.y = startingPosition.row * TILE_SIZE;
+        player.x = (startingPosition.col * TILE_SIZE) + player.posInTile.x;
+        player.y = (startingPosition.row * TILE_SIZE) + player.posInTile.y;
         player.startingCol = startingPosition.col
         player.startingRow = startingPosition.row
         player.canExitMapSection = false;

@@ -21,6 +21,10 @@ class Player {
         this.currentTileType = 0;
         this.previousMapSection = 0;
         this.canExitMapSection = true;
+        this.posInTile = {
+            x: TILE_SIZE / 2,
+            y: TILE_SIZE / 2
+        }
 
         //Testing inventory item functionality
         bookItem = new Item(0, "book_blue_spritesheet", 8, 1, 128, 128);
@@ -31,6 +35,8 @@ class Player {
     update() {
         this.col = mapSection.getGridCoordFromPixelCoord(this.x, this.y).col;
         this.row = mapSection.getGridCoordFromPixelCoord(this.x, this.y).row;
+        //this.posInTile.x = this.x % TILE_SIZE;
+        //this.posInTile.y = this.y % TILE_SIZE;
 
         if (this.col != this.startingCol || this.row != this.startingRow){
             this.canExitMapSection = true;
