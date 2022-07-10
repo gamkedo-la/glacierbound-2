@@ -1,5 +1,6 @@
 var imagesToLoad = 0;
 var spriteList = {};
+var spriteData = [];
 
 function loadImages() {
 
@@ -16,6 +17,10 @@ function loadImages() {
         {spriteName: 'ship_window', fileName: 'ship_interior_window_32x32.png'},
         {spriteName: 'ship_shelves', fileName: 'ship_interior_shelves_32x32.png'},
         {spriteName: 'book_blue_spritesheet', fileName: 'spritesheets/book_blue_spritesheet.png'},
+        {spriteName: 'flashlight_spritesheet', fileName: 'spritesheets/flashlight_spritesheet.png'},
+        {spriteName: 'fire_extinguisher_spritesheet', fileName: 'spritesheets/fire_extinguisher_spritesheet.png'},
+        {spriteName: 'map_spritesheet', fileName: 'spritesheets/map_spritesheet.png'},
+        {spriteName: 'wrench_red_spritesheet', fileName: 'spritesheets/wrench_red_spritesheet.png'},
         {spriteName: 'floor_snow', fileName: 'floor_snow.png'},
         {spriteName: 'floor_ship', fileName: 'floor_ship.png'},
 
@@ -52,3 +57,9 @@ function countImagesOrStartGame() {
 		initRenderLoop();
 	}
 }
+
+spriteData["book_blue_spritesheet"] = {frames: 8, w: 128, h: 128};
+spriteData["flashlight_spritesheet"] = {frames: 8, w: 128, h: 128};
+spriteData["fire_extinguisher_spritesheet"] = {frames: 8, w: 128, h: 128};
+spriteData["map_spritesheet"] = {frames: 8, w: 128, h: 128};
+spriteData["wrench_red_spritesheet"] = {frames: 8, w: 128, h: 128};

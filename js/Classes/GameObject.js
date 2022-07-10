@@ -5,23 +5,27 @@ class GameObject {
         this.direction = angle;
         this.moveSpeed = speed;
         this.altitude = altitude;
-        //this.spriteSheet = spriteSheet;
         this.scale = scale;
         this.radius = (this.scale * TILE_SIZE / 2) - 6;
         this.distanceToPlayer = Infinity;
         this.isDead = false;
-        this.animTimer = 0;
-        this.spriteName = "ice_wall"
+        this.spriteName = spriteSheet
         this.sprite = spriteList[this.spriteName];
-        //this.spriteData = spriteData[this.spriteName];
-        //this.frameCounter = 0;
-
+        this.spriteData = spriteData[this.spriteName];
+        this.timer = 0;
+        this.frameCounter = 1;
+        this.secondsPerFrame = 0.2
+        
         allObjects.push(this);
     }
 
     update() {
 
-        //frame counter
+        this.timer += 1;
+        if (this.timer % (60 * this.secondsPerFrame) === 0) {
+            this.frameCounter += 1;
+        }
+        
 
         this.distanceToPlayer = distanceBetweenPoints(this.x, this.y, player.x, player.y);
 
@@ -44,16 +48,16 @@ class GameObject {
         var size = Math.cos(drawAngle);
         if (size <= Math.cos(FOV_RADS)) return;
 
-        var drawHeight = (this.sprite.height / dist) * PROJECTION_PLAIN_DISTANCE;
-        var drawWidth = (this.sprite.width / this.sprite.height) * drawHeight;
+        var drawHeight = (this.spriteData.h / dist) * PROJECTION_PLAIN_DISTANCE * this.scale;
+        var drawWidth = (this.spriteData.w / this.spriteData.h) * drawHeight;
         var drawX = (bufferedGameCanvas.width / 2) + (Math.tan(drawAngle) * PROJECTION_PLAIN_DISTANCE);
 
         bufferedGameCanvasContext.drawImage(
             this.sprite, //image
-            //0, //sx
-            //0, //sy
-            //this.sprite.width, //sW
-            //this.sprite.height, //sH
+            spriteData[this.spriteName].w * (this.frameCounter % spriteData[this.spriteName].frames), //sx
+            0, //sy
+            spriteData[this.spriteName].w, //sW
+            spriteData[this.spriteName].h, //sH
             (drawX - drawWidth / 2), //dx
             (bufferedGameCanvas.height / 2) - (drawHeight / 2), //dy
             drawWidth, //dW
