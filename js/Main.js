@@ -6,6 +6,7 @@ var player = new Player();
 var debugModeEnabled = true;
 var levelEditorEnabled = false;
 var showDebugText = true;
+var gameStarted = false;
 
 window.onload = function () {
     loadImages();
@@ -48,43 +49,50 @@ function updateEverything(){
 
 function drawEverything(){
 
-    if (isPaused()) {
-        // show the pause menu, contained in its own function
-        if (menuState === MENUSTATE_CONTROLS) {
-            showControlsMenu();
-        }
-        if (menuState === MENUSTATE_PAUSED) {
-            showPauseMenu();
-        }
+    if (!gameStarted){
+        clearAllCanvases();
+        drawTitleScreen();
+        drawBufferedCanvasToScreenCanvas(titleScreenCanvas);
     } else {
 
-        clearAllCanvases();
-
-        mapSection.drawCeilingAndFloor();
-        mapSection.draw3DProjectedWalls();
-        
-        mapSection.draw2DMinimap();
-
-        player.draw();
-
-        testObject.draw2D();
-        testObject.draw();
-
-        inventory.draw();
-
-        drawBufferedCanvasToScreenCanvas(bufferedGameCanvas);
-        drawBufferedCanvasToScreenCanvas(bufferedHUDCanvas);
-
-        if (debugModeEnabled){
-            screenCanvas.style.cursor = "auto";
-            drawBufferedCanvasToScreenCanvas(bufferedDebugCanvas);
+        if (isPaused()) {
+            // show the pause menu, contained in its own function
+            if (menuState === MENUSTATE_CONTROLS) {
+                showControlsMenu();
+            }
+            if (menuState === MENUSTATE_PAUSED) {
+                showPauseMenu();
+            }
         } else {
-            screenCanvas.style.cursor = "none";
-        }
-
-        if (levelEditorEnabled) {
-            drawLevelEditor();
-            drawBufferedCanvasToScreenCanvas(bufferedLevelEditorCanvas);
+    
+            clearAllCanvases();
+    
+            mapSection.drawCeilingAndFloor();
+            mapSection.draw3DProjectedWalls();
+            
+            mapSection.draw2DMinimap();
+    
+            player.draw();
+    
+            testObject.draw2D();
+            testObject.draw();
+    
+            inventory.draw();
+    
+            drawBufferedCanvasToScreenCanvas(bufferedGameCanvas);
+            drawBufferedCanvasToScreenCanvas(bufferedHUDCanvas);
+    
+            if (debugModeEnabled){
+                screenCanvas.style.cursor = "auto";
+                drawBufferedCanvasToScreenCanvas(bufferedDebugCanvas);
+            } else {
+                screenCanvas.style.cursor = "none";
+            }
+    
+            if (levelEditorEnabled) {
+                drawLevelEditor();
+                drawBufferedCanvasToScreenCanvas(bufferedLevelEditorCanvas);
+            }
         }
     }
 }

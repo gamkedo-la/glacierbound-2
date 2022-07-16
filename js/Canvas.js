@@ -1,6 +1,6 @@
 function initCanvases(){
     screenCanvas = document.getElementById('screenCanvas');
-    screenCanvas.style.cursor = "none";
+    //screenCanvas.style.cursor = "none";
     screenCanvasContext = screenCanvas.getContext('2d');
     setCanvasContextSizeAndSmoothing(screenCanvasContext, CANVAS_SCALE_FACTOR);
 
@@ -19,6 +19,10 @@ function initCanvases(){
     bufferedLevelEditorCanvas = document.createElement("canvas");
     bufferedLevelEditorCanvasContext = bufferedLevelEditorCanvas.getContext('2d');
     setCanvasContextSizeAndSmoothing(bufferedLevelEditorCanvasContext, CANVAS_SCALE_FACTOR);
+
+    titleScreenCanvas = document.createElement("canvas");
+    titleScreenCanvasContext = titleScreenCanvas.getContext('2d');
+    setCanvasContextSizeAndSmoothing(titleScreenCanvasContext);
 }
 
 function setCanvasContextSizeAndSmoothing(thisCanvasContext, scale = 1){
