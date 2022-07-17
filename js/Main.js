@@ -20,6 +20,8 @@ window.onload = function () {
 
 function initRenderLoop() { //called from ImageLoading.js
     gameRunning = setInterval(function () {
+        pollMouseButtons(); // used to detect click, so may need to get out of pause menu, too
+
         if (isPaused()) {
             // if the game is paused, we only want to draw the game as it stands, we don't want it updated
             drawEverything();
@@ -31,7 +33,6 @@ function initRenderLoop() { //called from ImageLoading.js
 }
 
 function updateEverything(){
-
     pollGamepad();
     
     allObjects.forEach(object => object.update());

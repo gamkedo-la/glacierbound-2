@@ -1,5 +1,7 @@
 var mousePos = null;
 var isMouseDown = false;
+var wasMouseDown = false; // not meant to be used directly, just lags behind isMouseDown then checked to set didMouseJustGoDown
+var didMouseJustGoDown = false; // true for one frame
 var inputMapping = [KEY_LETTER_W, KEY_LETTER_S, KEY_LETTER_A, KEY_LETTER_D, KEY_LETTER_Q, KEY_LETTER_E, KEY_LEFT_SHIFT, KEY_LETTER_I];
 var inputAction = ['FORWARD', 'BACKWARD', 'TURN LEFT', 'TURN RIGHT', 'STRAFE LEFT', 'STRAFE RIGHT', 'SPRINT', 'INVENTORY'];
 var inputLookup = [];
@@ -36,8 +38,9 @@ function initInput() {
   document.addEventListener("wheel", mousewheel);
 }
 
-function pollInput() {
-  pollMouseButtons();
+function pollMouseButtons() {
+  didMouseJustGoDown = (wasMouseDown != isMouseDown && isMouseDown); // wasn't already held + it's down now?
+  wasMouseDown = isMouseDown; // traps previous hold value for comparison at next frame
 }
 
 function pollGamepad() {
