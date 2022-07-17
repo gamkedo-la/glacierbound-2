@@ -1,21 +1,25 @@
 var showingCredits = false;
 var wasMouseDown = false;
 
+function drawAndCheckButtonClick(label, color, centerX, centerY, buttonWidth, fontSize, doIfClicked) {
+    colorRect(centerX - (buttonWidth/2) , centerY - 15, buttonWidth , 18, color, titleScreenCanvasContext, 1);
+    colorText(label, titleScreenCanvasContext, centerX, centerY, fontSize+'px sans-serif', "center", "white");
+    if (didMouseJustGoDown && 
+        mousePos.x / CANVAS_SCALE_FACTOR  > centerX - (buttonWidth/2) &&
+        mousePos.y / CANVAS_SCALE_FACTOR > centerY - 15 &&
+        mousePos.x / CANVAS_SCALE_FACTOR < centerX + (buttonWidth/2) &&
+        mousePos.y / CANVAS_SCALE_FACTOR < centerY + 3) {
+        doIfClicked();
+    }
+}
+
 function drawTitleScreen(){
     if(showingCredits) {
         colorRect(0,0, titleScreenCanvas.width, titleScreenCanvas.height, "black", titleScreenCanvasContext, 1);
         colorText("Credits TBD", titleScreenCanvasContext, titleScreenCanvas.width / 2, titleScreenCanvas.height * 0.1, '12px sans-serif', "center", "white");
 
         //Draw Credits Button
-        colorRect((titleScreenCanvas.width / 2) - 20 , (titleScreenCanvas.height * 0.9) - 15, 40 , 18, "blue", titleScreenCanvasContext, 1);
-        colorText("Back", titleScreenCanvasContext, titleScreenCanvas.width / 2, titleScreenCanvas.height * 0.9, '12px sans-serif', "center", "white");
-        if (didMouseJustGoDown && 
-            mousePos.x / CANVAS_SCALE_FACTOR  > (titleScreenCanvas.width / 2) - 20 &&
-            mousePos.y / CANVAS_SCALE_FACTOR > (titleScreenCanvas.height * 0.9) - 15 &&
-            mousePos.x / CANVAS_SCALE_FACTOR < (titleScreenCanvas.width / 2) + 20 &&
-            mousePos.y / CANVAS_SCALE_FACTOR < (titleScreenCanvas.height * 0.9) + 3) {
-            showingCredits = false;
-        }
+        drawAndCheckButtonClick("Back", "green", (titleScreenCanvas.width / 2), (titleScreenCanvas.height * 0.9), 40, 12, function() {showingCredits = false;} );
         return;
     }
 
@@ -25,25 +29,7 @@ function drawTitleScreen(){
     // Draw Title
     colorText("GLACIERBOUND 2", titleScreenCanvasContext, titleScreenCanvas.width / 2, titleScreenCanvas.height * 0.25, '18px sans-serif', "center", "white");
 
-    // Draw Start Button
-    colorRect((titleScreenCanvas.width / 2) - 20 , (titleScreenCanvas.height * 0.75) - 15, 40 , 18, "blue", titleScreenCanvasContext, 1);
-    colorText("Start", titleScreenCanvasContext, titleScreenCanvas.width / 2, titleScreenCanvas.height * 0.75, '15px sans-serif', "center", "white");
-    if (didMouseJustGoDown && 
-        mousePos.x / CANVAS_SCALE_FACTOR  > (titleScreenCanvas.width / 2) - 20 &&
-        mousePos.y / CANVAS_SCALE_FACTOR > (titleScreenCanvas.height * 0.75) - 15 &&
-        mousePos.x / CANVAS_SCALE_FACTOR < (titleScreenCanvas.width / 2) + 20 &&
-        mousePos.y / CANVAS_SCALE_FACTOR < (titleScreenCanvas.height * 0.75) + 3) {
-            gameStarted = true;
-    }
-
-    //Draw Credits Button
-    colorRect((titleScreenCanvas.width / 2) - 20 , (titleScreenCanvas.height * 0.9) - 15, 40 , 18, "blue", titleScreenCanvasContext, 1);
-    colorText("Credits", titleScreenCanvasContext, titleScreenCanvas.width / 2, titleScreenCanvas.height * 0.9, '12px sans-serif', "center", "white");
-    if (didMouseJustGoDown && 
-        mousePos.x / CANVAS_SCALE_FACTOR  > (titleScreenCanvas.width / 2) - 20 &&
-        mousePos.y / CANVAS_SCALE_FACTOR > (titleScreenCanvas.height * 0.9) - 15 &&
-        mousePos.x / CANVAS_SCALE_FACTOR < (titleScreenCanvas.width / 2) + 20 &&
-        mousePos.y / CANVAS_SCALE_FACTOR < (titleScreenCanvas.height * 0.9) + 3) {
-        showingCredits = true;
-    }
+    // Draw Buttons
+    drawAndCheckButtonClick("Start", "green", (titleScreenCanvas.width / 2), (titleScreenCanvas.height * 0.75), 40, 15, function() {gameStarted = true;} );
+    drawAndCheckButtonClick("Credits", "blue", (titleScreenCanvas.width / 2), (titleScreenCanvas.height * 0.9), 40, 12, function() {showingCredits = true;} );
 }
