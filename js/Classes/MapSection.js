@@ -221,13 +221,14 @@ class MapSection {
     changeMap(newMapIndex){
 
         if (!player.canExitMapSection) return;
+        var previousMapID = levelList[currentRoom].mapID;
 
         player.previousMapSection = currentRoom;
         currentRoom = newMapIndex;
         var newMap = levelList[currentRoom];
         this.grid = JSON.parse(JSON.stringify(newMap.grid));
         this.minimapIsDirty = true;
-        var startingPosition = this.findPlayerStartPosition();
+        var startingPosition = this.findPlayerStartPosition(previousMapID);
         player.x = (startingPosition.col * TILE_SIZE) + player.posInTile.x;
         player.y = (startingPosition.row * TILE_SIZE) + player.posInTile.y;
         player.startingCol = startingPosition.col
@@ -254,10 +255,10 @@ class MapSection {
 
     }
 
-    findPlayerStartPosition() {
+    findPlayerStartPosition(previousMapID) {
         for (var row = 0; row < MAP_NUM_ROWS; row++) {
             for ( var col = 0; col < MAP_NUM_COLS; col++) {
-                if (levelList[currentRoom].grid[row][col] >= 80) {
+                if (levelList[currentRoom].grid[row][col] == previousMapID) {
                     var startPosition = {
                         row: row,
                         col: col

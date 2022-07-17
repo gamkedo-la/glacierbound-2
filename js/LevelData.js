@@ -38,7 +38,8 @@ var ship_80 = {
     startingTileY: 5,
     skyMapName: 'sky_ship',
     floorMapName: 'floor_ship',
-    floorReflection: true
+    floorReflection: true,
+    mapID: 80
 }
 
 var ship_81 = {
@@ -64,7 +65,8 @@ var ship_81 = {
     startingTileY: 5,
     skyMapName: 'sky_ship',
     floorMapName: 'floor_ship',
-    floorReflection: true
+    floorReflection: true,
+    mapID: 81
 }
 
 var ship_82 = {
@@ -89,7 +91,8 @@ var ship_82 = {
     startingTileY: 5,
     skyMapName: 'sky_ship',
     floorMapName: 'floor_ship',
-    floorReflection: true
+    floorReflection: true,
+    mapID: 82
 }
 
 var arctic_83 = {
@@ -114,7 +117,8 @@ var arctic_83 = {
     startingTileY: 6,
     skyMapName: 'sky_clouds',
     floorMapName: 'floor_snow',
-    floorReflection: false
+    floorReflection: false,
+    mapID: 83
 }
 
 var arctic_84 = {
@@ -139,7 +143,8 @@ var arctic_84 = {
     startingTileY: 6,
     skyMapName: 'sky_clouds',
     floorMapName: 'floor_snow',
-    floorReflection: false
+    floorReflection: false,
+    mapID: 84
 }
 
 var arctic_85 = {
@@ -164,7 +169,8 @@ var arctic_85 = {
     startingTileY: 2,
     skyMapName: 'sky_clouds',
     floorMapName: 'floor_snow',
-    floorReflection: false
+    floorReflection: false,
+    mapID: 85
 }
 
 var cave_86 = {
@@ -189,7 +195,8 @@ var cave_86 = {
     startingTileY: 2,
     skyMapName: 'sky_ship',
     floorMapName: 'floor_ship',
-    floorReflection: false
+    floorReflection: false,
+    mapID: 86
 }
 
 var cave_87 = {
@@ -214,7 +221,8 @@ var cave_87 = {
     startingTileY: 2,
     skyMapName: 'sky_ship',
     floorMapName: 'floor_ship',
-    floorReflection: false
+    floorReflection: false,
+    mapID: 87
 }
 
 var cave_88 = {
@@ -239,7 +247,8 @@ var cave_88 = {
     startingTileY: 2,
     skyMapName: 'sky_ship',
     floorMapName: 'floor_ship',
-    floorReflection: false
+    floorReflection: false,
+    mapID: 88
 }
 
 var lab_89 = {
@@ -264,7 +273,8 @@ var lab_89 = {
     startingTileY: 2,
     skyMapName: 'sky_ship',
     floorMapName: 'floor_ship',
-    floorReflection: false
+    floorReflection: false,
+    mapID: 89
 }
 
 var lab_90 = {
@@ -289,7 +299,8 @@ var lab_90 = {
     startingTileY: 2,
     skyMapName: 'sky_ship',
     floorMapName: 'floor_ship',
-    floorReflection: false
+    floorReflection: false,
+    mapID: 90
 }
 
 var lab_91 = {
@@ -314,7 +325,8 @@ var lab_91 = {
     startingTileY: 2,
     skyMapName: 'sky_ship',
     floorMapName: 'floor_ship',
-    floorReflection: false
+    floorReflection: false,
+    mapID: 91
 }
 
 var empty = {
