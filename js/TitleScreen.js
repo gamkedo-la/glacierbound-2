@@ -5,7 +5,7 @@ function drawAndCheckButtonClick(label, color, centerX, centerY, buttonWidth, fo
     colorRect(centerX - (buttonWidth/2) , centerY - 15, buttonWidth , 18, color, titleScreenCanvasContext, 1);
     colorText(label, titleScreenCanvasContext, centerX, centerY, fontSize+'px sans-serif', "center", "white");
     if (didMouseJustGoDown && 
-        mousePos.x / CANVAS_SCALE_FACTOR  > centerX - (buttonWidth/2) &&
+        mousePos.x / CANVAS_SCALE_FACTOR > centerX - (buttonWidth/2) &&
         mousePos.y / CANVAS_SCALE_FACTOR > centerY - 15 &&
         mousePos.x / CANVAS_SCALE_FACTOR < centerX + (buttonWidth/2) &&
         mousePos.y / CANVAS_SCALE_FACTOR < centerY + 3) {

@@ -15,7 +15,7 @@ window.onload = function () {
     initLevelEditor();
 
     //TODO: move to level initialization
-    testObject = new GameObject(TILE_SIZE * 6.5, TILE_SIZE * 3.5, 0, "map_spritesheet", 0, 0.05, 0);
+    //testObject = new GameObject(TILE_SIZE * 6.5, TILE_SIZE * 3.5, 0, "map_spritesheet", 0, 0.05, 0);
 }
 
 function initRenderLoop() { //called from ImageLoading.js
@@ -75,8 +75,8 @@ function drawEverything(){
     
             player.draw();
     
-            testObject.draw2D();
-            testObject.draw();
+            //testObject.draw2D();
+            //testObject.draw();
     
             inventory.draw();
     

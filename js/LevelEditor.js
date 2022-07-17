@@ -22,8 +22,27 @@ function initLevelEditor(){
     wallTextures.push(spriteList['cave_wall']);
 
     selectedTileTextureIndex = 0;
+
+    seenGrid = [
+        [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+        [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+        [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+        [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+        [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+        [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+        [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+        [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+        [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+        [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+        [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+        [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+        [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+        [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+        [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+    ];
 }
 function updateLevelEditor(){
+
     //if the mouse is down
     if (isMouseDown) {
         //set a selected tile if one was clicked
@@ -33,6 +52,7 @@ function updateLevelEditor(){
     }
 }
 function drawLevelEditor(){
+
     colorText('Level Editor', bufferedLevelEditorCanvasContext, bufferedLevelEditorCanvas.width / 2, bufferedLevelEditorCanvas.height / 2, '50px sans-serif', "center", "yellow");
 
     //draw delete image
@@ -78,9 +98,9 @@ function displayLevelData() {
         for (var eachCol = 0; eachCol < MAP_NUM_COLS; eachCol++) {
 
             if (eachCol == 0) outPutString += "[";
+            if (mapSection.grid[eachRow][eachCol] < 10) outPutString += " ";
             outPutString += mapSection.grid[eachRow][eachCol];
-            outPutString += (eachCol == MAP_NUM_COLS - 1) ? "]" : ", ";
-
+            outPutString += (eachCol == MAP_NUM_COLS - 1) ? "]" : ",";
         }
 
         outPutString += (eachRow == MAP_NUM_ROWS - 1) ? "<br>" : ",<br>";

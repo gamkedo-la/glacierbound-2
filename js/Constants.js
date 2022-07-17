@@ -32,7 +32,7 @@ const TILE_TYPE_WALL = 1;
 const TILE_TYPE_FLOOR = 0;
 const TEXTURE_SIZE = 32;
 
-const MINIMAP_ENABLED = false; // the large opaque debug map
+const MINIMAP_ENABLED = true; // the large opaque debug map
 const MINIMAP_SCALE_FACTOR = 0.4;
 
 const RADAR_ENABLED = true; // // the small transparent map
