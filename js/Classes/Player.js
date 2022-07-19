@@ -35,8 +35,6 @@ class Player {
     update() {
         this.col = mapSection.getGridCoordFromPixelCoord(this.x, this.y).col;
         this.row = mapSection.getGridCoordFromPixelCoord(this.x, this.y).row;
-        //this.posInTile.x = this.x % TILE_SIZE;
-        //this.posInTile.y = this.y % TILE_SIZE;
 
         if (this.col != this.startingCol || this.row != this.startingRow){
             this.canExitMapSection = true;
@@ -70,6 +68,9 @@ class Player {
             mapSection.getTileTypeAtPixelCoord(this.x+movementDirectionX, this.y) >= 80) {
             this.x += movementDirectionX;
         }
+
+        this.posInTile.x = this.x % TILE_SIZE;
+        this.posInTile.y = this.y % TILE_SIZE;
 
         this.rayCaster = new RayCaster(player.rotationAngle);
 
