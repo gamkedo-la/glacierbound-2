@@ -218,6 +218,17 @@ class MapSection {
         return gridCoord;
     }
 
+    getTileCenterPixelCoordFromGridCoord(col, row) {
+        if (!isGridCoordWithinMapGrid(col, row)) return;
+
+        var pixelCoord = {
+            x: (col * TILE_SIZE) + (TILE_SIZE / 2),
+            y: (row * TILE_SIZE) + (TILE_SIZE / 2),
+        }
+
+        return pixelCoord;
+    }
+
     changeMap(newMapIndex){
 
         if (!player.canExitMapSection) return;

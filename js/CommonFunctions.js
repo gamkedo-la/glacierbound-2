@@ -94,7 +94,7 @@ function distanceBetweenPoints(x1, y1, x2, y2){
     return Math.sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1));
 }
 
-function getPixelCoordFromAngleAndSpeed(startingX, startingY, angle, speed) {
+function getVectorFromAngleAndMagnitude(startingX, startingY, angle, speed) {
     var newX = startingX + Math.cos(angle) * speed;
     var newY = startingY + Math.sin(angle) * speed;
     return [newX, newY];
