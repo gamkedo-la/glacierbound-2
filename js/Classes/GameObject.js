@@ -1,7 +1,8 @@
 class GameObject {
-    constructor(col, row, speed, spriteSheet, altitude = 0, scale = 1, angle) {
+    constructor(col, row, speed, spriteSheet, altitude = 0, scale = 1, angle, mapID) {
         this.x = mapSection.getTileCenterPixelCoordFromGridCoord(col, row).x;
         this.y = mapSection.getTileCenterPixelCoordFromGridCoord(col, row).y;
+        this.mapID = mapID;
         this.direction = angle;
         this.moveSpeed = speed;
         this.altitude = altitude;
@@ -15,11 +16,15 @@ class GameObject {
         this.timer = 0;
         this.frameCounter = 1;
         this.secondsPerFrame = 0.2
+        this.drawnThisFrame = false;
         
         allObjects.push(this);
     }
 
     update() {
+        if (this.mapID != currentRoom) return;
+
+        this.drawnThisFrame = false;
 
         this.timer += 1;
         if (this.timer % (60 * this.secondsPerFrame) === 0) {
@@ -42,6 +47,9 @@ class GameObject {
     }
 
     draw() {
+        if (this.mapID != currentRoom) return;
+        if (this.drawnThisFrame) return;
+
         var dist = distanceBetweenPoints(this.x, this.y, player.x, player.y);
         var drawAngle = Math.atan2(this.y - player.y, this.x - player.x) - player.rotationAngle;
         var size = Math.cos(drawAngle);
@@ -62,9 +70,13 @@ class GameObject {
             drawWidth, //dW
             drawHeight //dH
         );
+
+        this.drawnThisFrame = true;
     }
 
     draw2D() {
+        if (this.mapID != currentRoom) return;
+        
         if (MINIMAP_ENABLED) colorCircle(this.x * MINIMAP_SCALE_FACTOR, this.y * MINIMAP_SCALE_FACTOR, 5, "green", bufferedDebugCanvasContext);
     }
 }

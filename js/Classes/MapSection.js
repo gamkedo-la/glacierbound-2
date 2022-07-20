@@ -53,10 +53,12 @@ class MapSection {
     draw3DProjectedWalls(){
         for (var i = 0; i < NUM_OF_RAYS; i++){
             var ray = player.rayCaster.rays[i];
+            if (ray.drawnThisFrame) break;
 
             for (var o = 0; o < allObjects.length; o++) {
-                if (allObjects[o].distanceToPlayer > ray.distance) allObjects[o].draw();
-                else break;
+                if (allObjects[o].distanceToPlayer > ray.distance && allObjects[o].drawnThisFrame == false){
+                    allObjects[o].draw();
+                }
             }
             
             var rayDistance = ray.distance * Math.cos(ray.rayAngle - player.rotationAngle);
@@ -76,7 +78,8 @@ class MapSection {
             textureOffSetX = Math.floor(textureOffSetX);
 
             bufferedGameCanvasContext.drawImage(ray.wallStripTexture, textureOffSetX, 0, 1, TEXTURE_SIZE, ray.id * RAY_INCREMENT_WIDTH, wallTopPixel, RAY_INCREMENT_WIDTH, wallStripHeight);
-    
+            
+            ray.drawnThisFrame = true;
         }
     }
 
@@ -137,7 +140,6 @@ class MapSection {
                         }
 
                         if (tileType >= 80) {
-                            //exitCoord = getPixelCoordFromGridCoord(pixelX, pixelY)
                             colorCircle((tileX + TILE_SIZE/2) * MINIMAP_SCALE_FACTOR, (tileY + TILE_SIZE/2) * MINIMAP_SCALE_FACTOR, 5, "blue", bufferedDebugCanvasContext);
                         }
                     };
@@ -245,6 +247,8 @@ class MapSection {
         player.startingCol = startingPosition.col
         player.startingRow = startingPosition.row
         player.canExitMapSection = false;
+
+        newMap.objects.forEach(function(element) {new GameObject(element.col, element.row, 0, element.spriteSheet, 0, 0.05, 0, newMapIndex) })
 
         /*seenGrid = [
             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],

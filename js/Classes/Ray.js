@@ -2,6 +2,7 @@ class Ray {
     constructor(rayAngle, id) {
         this.rayAngle = normalizeAngle(rayAngle);
         this.id = id;
+        this.drawnThisFrame = false;
 
         this.isRayFacingDown = this.rayAngle > 0 && this.rayAngle < Math.PI;
         this.isRayFacingUp = !this.isRayFacingDown;

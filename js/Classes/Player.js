@@ -91,4 +91,8 @@ class Player {
             colorLineAtAngle(RADAR_X+this.x*RADAR_SCALE_FACTOR, RADAR_Y+this.y*RADAR_SCALE_FACTOR, this.rotationAngle, 6, 'red', bufferedDebugCanvasContext, 1);
         }
     }
+
+    draw2D(){
+        
+    }
 }

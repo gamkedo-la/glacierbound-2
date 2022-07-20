@@ -13,9 +13,6 @@ window.onload = function () {
     initInput();
     initCanvases();
     initLevelEditor();
-
-    //TODO: move to level initialization
-    testObject = new GameObject(6, 3, 0, "map_spritesheet", 0, 0.05, 0);
 }
 
 function initRenderLoop() { //called from ImageLoading.js
@@ -67,17 +64,15 @@ function drawEverything(){
         } else {
     
             clearAllCanvases();
+
+            mapSection.draw2DMinimap();
+            player.draw();
+            allObjects.forEach(object => object.draw2D());
     
             mapSection.drawCeilingAndFloor();
             mapSection.draw3DProjectedWalls();
+            allObjects.forEach(object => object.draw());
             
-            mapSection.draw2DMinimap();
-    
-            player.draw();
-    
-            testObject.draw2D();
-            testObject.draw();
-    
             inventory.draw();
     
             drawBufferedCanvasToScreenCanvas(bufferedGameCanvas);
@@ -97,4 +92,3 @@ function drawEverything(){
         }
     }
 }
-

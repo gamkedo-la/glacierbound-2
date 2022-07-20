@@ -26,4 +26,12 @@ class Item{
             this.tickCount += 1;
         }
     }
+
+    draw(){
+
+    }
+
+    draw2D(){
+        
+    }
 }
