@@ -6,7 +6,7 @@ class GameObject {
         this.moveSpeed = speed;
         this.altitude = altitude;
         this.scale = scale;
-        this.radius = (this.scale * TILE_SIZE / 2);
+        this.radius = TILE_SIZE;
         this.distanceToPlayer = Infinity;
         this.isDead = false;
         this.spriteName = spriteSheet
@@ -26,7 +26,6 @@ class GameObject {
             this.frameCounter += 1;
         }
         
-
         this.distanceToPlayer = distanceBetweenPoints(this.x, this.y, player.x, player.y);
 
         let movePos = getVectorFromAngleAndMagnitude(this.x, this.y, this.direction, this.moveSpeed);
