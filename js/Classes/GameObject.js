@@ -76,7 +76,7 @@ class GameObject {
 
     draw2D() {
         if (this.mapID != currentRoom) return;
-        
+
         if (MINIMAP_ENABLED) colorCircle(this.x * MINIMAP_SCALE_FACTOR, this.y * MINIMAP_SCALE_FACTOR, 5, "green", bufferedDebugCanvasContext);
     }
 }

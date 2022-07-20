@@ -1,3 +1,7 @@
+function initMapGameObjects(){
+    levelList.forEach(map => map.objects.forEach(function(element) {new GameObject(element.col, element.row, 0, element.spriteSheet, 0, 0.05, 0, map.mapID - 80); }) );
+}
+
 var ship_80 = {
     grid: [
         [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -96,7 +100,12 @@ var ship_82 = {
     mapID: 82,
     objects: [
         {
-
+            col: 6,
+            row: 3,
+            spriteSheet: "map_spritesheet",
+            altitude: 0,
+            scale: 0.05,
+            angle: 0
         }
     ]
 }
@@ -127,7 +136,12 @@ var arctic_83 = {
     mapID: 83,
     objects: [
         {
-
+            col: 6,
+            row: 3,
+            spriteSheet: "map_spritesheet",
+            altitude: 0,
+            scale: 0.05,
+            angle: 0
         }
     ]
 }
@@ -158,7 +172,12 @@ var arctic_84 = {
     mapID: 84,
     objects: [
         {
-
+            col: 6,
+            row: 3,
+            spriteSheet: "map_spritesheet",
+            altitude: 0,
+            scale: 0.05,
+            angle: 0
         }
     ]
 }
@@ -189,7 +208,12 @@ var arctic_85 = {
     mapID: 85,
     objects: [
         {
-
+            col: 6,
+            row: 3,
+            spriteSheet: "map_spritesheet",
+            altitude: 0,
+            scale: 0.05,
+            angle: 0
         }
     ]
 }
@@ -220,7 +244,12 @@ var cave_86 = {
     mapID: 86,
     objects: [
         {
-
+            col: 6,
+            row: 3,
+            spriteSheet: "map_spritesheet",
+            altitude: 0,
+            scale: 0.05,
+            angle: 0
         }
     ]
 }
@@ -251,7 +280,12 @@ var cave_87 = {
     mapID: 87,
     objects: [
         {
-
+            col: 6,
+            row: 3,
+            spriteSheet: "map_spritesheet",
+            altitude: 0,
+            scale: 0.05,
+            angle: 0
         }
     ]
 }
@@ -282,7 +316,12 @@ var cave_88 = {
     mapID: 88,
     objects: [
         {
-
+            col: 6,
+            row: 3,
+            spriteSheet: "map_spritesheet",
+            altitude: 0,
+            scale: 0.05,
+            angle: 0
         }
     ]
 }
@@ -313,7 +352,12 @@ var lab_89 = {
     mapID: 89,
     objects: [
         {
-
+            col: 6,
+            row: 3,
+            spriteSheet: "map_spritesheet",
+            altitude: 0,
+            scale: 0.05,
+            angle: 0
         }
     ]
 }
@@ -344,7 +388,12 @@ var lab_90 = {
     mapID: 90,
     objects: [
         {
-
+            col: 6,
+            row: 3,
+            spriteSheet: "map_spritesheet",
+            altitude: 0,
+            scale: 0.05,
+            angle: 0
         }
     ]
 }
@@ -375,7 +424,12 @@ var lab_91 = {
     mapID: 91,
     objects: [
         {
-
+            col: 6,
+            row: 3,
+            spriteSheet: "map_spritesheet",
+            altitude: 0,
+            scale: 0.05,
+            angle: 0
         }
     ]
 }

@@ -248,8 +248,6 @@ class MapSection {
         player.startingRow = startingPosition.row
         player.canExitMapSection = false;
 
-        newMap.objects.forEach(function(element) {new GameObject(element.col, element.row, 0, element.spriteSheet, 0, 0.05, 0, newMapIndex) })
-
         /*seenGrid = [
             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],

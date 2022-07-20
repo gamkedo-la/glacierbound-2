@@ -13,6 +13,7 @@ window.onload = function () {
     initInput();
     initCanvases();
     initLevelEditor();
+    initMapGameObjects();
 }
 
 function initRenderLoop() { //called from ImageLoading.js
