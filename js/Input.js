@@ -176,6 +176,12 @@ function keyReleased(evt) {
     levelEditorEnabled = !levelEditorEnabled;
     displayLevelData();
   }
+
+  // Enable generic debug display
+  if (evt.keyCode === KEY_TAB) {
+    debugModeEnabled = !debugModeEnabled;
+    // console.log("Show debug window:", debugModeEnabled);
+  }
 }
 
 function moveMouse(evt){

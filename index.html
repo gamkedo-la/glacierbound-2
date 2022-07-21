@@ -6,42 +6,55 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap&family=Roboto+Mono:wght@100" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap&family=Roboto+Mono:wght@100"
+        rel="stylesheet">
+
     <meta content="utf-8" http-equiv="encoding">
     <title>Glacierbound 2</title>
     <style>
-        body { background-color: rgba(81, 111, 175, 100);padding-left: 0; padding-right: 0; margin-left: auto; margin-right: auto; display: block; width: 600px; overflow:hidden; }
-        #gameCanvas { margin:0; padding:0; }
+        body {
+            background-color: rgba(81, 111, 175, 100);
+            padding-left: 0;
+            padding-right: 0;
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+            width: 600px;
+            overflow: hidden;
+        }
+
+        #gameCanvas {
+            margin: 0;
+            padding: 0;
+        }
     </style>
 </head>
 
 <body>
+    <canvas id="screenCanvas"></canvas>
+    <br>
+    <p id="debug-text"></p>
+    <p id="EditorExport"></p>
 
-<canvas id="screenCanvas"></canvas>
-<br>
-<p id="debug-text"></p>
-<p id="EditorExport"></p>
-
-<script src="js\ImageLoading.js"></script>
-<script src="js\CommonFunctions.js"></script>
-<script src="js\Constants.js"></script>
-<script src="js\Input.js"></script>
-<script src="js\Classes\MapSection.js"></script>
-<script src="js\Classes\Player.js"></script>
-<script src="js\Classes\Inventory.js"></script>
-<script src="js\Classes\Item.js"></script>
-<script src="js\Classes\GameObject.js"></script>
-<script src="js\Canvas.js"></script>
-<script src="js\LevelEditor.js"></script>
-<script src="js\LevelData.js"></script>
-<script src="js\PauseMenu.js"></script>
-<script src="js\Gamepad.js"></script>
-<script src="js\TitleScreen.js"></script>
-<script src="js\Main.js"></script>
-<script src="js\Classes\RayCaster.js"></script>
-<script src="js\Classes\Ray.js"></script>
-
+    <script src="js\ImageLoading.js"></script>
+    <script src="js\CommonFunctions.js"></script>
+    <script src="js\Constants.js"></script>
+    <script src="js\Input.js"></script>
+    <script src="js\Classes\MapSection.js"></script>
+    <script src="js\Classes\Player.js"></script>
+    <script src="js\Classes\Inventory.js"></script>
+    <script src="js\Classes\Item.js"></script>
+    <script src="js\Classes\GameObject.js"></script>
+    <script src="js\Classes\DebugDisplay.js"></script>
+    <script src="js\Canvas.js"></script>
+    <script src="js\LevelEditor.js"></script>
+    <script src="js\LevelData.js"></script>
+    <script src="js\PauseMenu.js"></script>
+    <script src="js\Gamepad.js"></script>
+    <script src="js\TitleScreen.js"></script>
+    <script src="js\Main.js"></script>
+    <script src="js\Classes\RayCaster.js"></script>
+    <script src="js\Classes\Ray.js"></script>
 </body>
 
 </html>

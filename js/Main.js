@@ -1,12 +1,23 @@
 var allObjects = [];
+
 var mapSection = new MapSection();
 var testObject;
 var inventory = new Inventory();
 var player = new Player();
-var debugModeEnabled = true;
+var debugDisplay = new DebugDisplay();
+
+var debugModeEnabled = false; // Start game with the debug window hidden
 var levelEditorEnabled = false;
 var showDebugText = true;
 var gameStarted = false;
+
+// Objects to be displayed when the debug window is open
+var debugDisplayData = {
+    debugModeEnabled,
+    levelEditorEnabled,
+    showDebugText,
+    gameStarted
+}
 
 window.onload = function () {
     loadImages();
@@ -81,7 +92,7 @@ function drawEverything(){
     
             if (debugModeEnabled){
                 screenCanvas.style.cursor = "auto";
-                drawBufferedCanvasToScreenCanvas(bufferedDebugCanvas);
+                debugDisplay.draw();
             } else {
                 screenCanvas.style.cursor = "none";
             }

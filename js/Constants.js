@@ -47,6 +47,7 @@ const RADAR_SCALE_FACTOR = 1/8;
 //#endregion Map Grid Constants
 
 //#region Keyboard Code Constants
+const KEY_TAB = 9;
 const KEY_ENTER = 13;
 const KEY_LEFT_ARROW = 37;
 const KEY_UP_ARROW = 38;
@@ -74,4 +75,5 @@ const KEY_NUMBER_4  = 52;
 const KEY_RIGHT_BRACKET = 221;
 const KEY_LEFT_BRACKET = 219;
 const KEY_ESCAPE = 27;
+
 //#endregion Keyboard Code Constants
