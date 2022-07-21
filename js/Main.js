@@ -8,8 +8,6 @@ var levelEditorEnabled = false;
 var showDebugText = true;
 var gameStarted = false;
 
-//Practice Commit - will remove
-
 window.onload = function () {
     loadImages();
     initInput();
