@@ -136,7 +136,7 @@ class MapSection {
                         var tileType = this.getTileTypeAtGridCoord(col, row);
     
                         if (tileType != TILE_TYPE_FLOOR && tileType < 80) {
-                            bufferedDebugCanvasContext.drawImage(wallTextures[tileType - 1], tileX * MINIMAP_SCALE_FACTOR, tileY * MINIMAP_SCALE_FACTOR, TEXTURE_SIZE * MINIMAP_SCALE_FACTOR, TEXTURE_SIZE * MINIMAP_SCALE_FACTOR);
+                            bufferedDebugCanvasContext.drawImage(wallTexturesFlat[tileType - 1], tileX * MINIMAP_SCALE_FACTOR, tileY * MINIMAP_SCALE_FACTOR, TEXTURE_SIZE * MINIMAP_SCALE_FACTOR, TEXTURE_SIZE * MINIMAP_SCALE_FACTOR);
                         }
 
                         if (tileType >= 80) {
@@ -202,10 +202,8 @@ class MapSection {
         var tileCol = Math.floor((scaledPixelX) / (TILE_SIZE));
         var tileRow = Math.floor((scaledPixelY) / (TILE_SIZE));
 
-        if(this.grid[tileRow][tileCol] != selectedTileTextureIndex+1){
-            this.grid[tileRow][tileCol] = selectedTileTextureIndex + 1;
-            mapSection.minimapIsDirty = true;
-        }
+        this.grid[tileRow][tileCol] = tileTextureFlatIndex;
+        mapSection.minimapIsDirty = true;
 
     }
 

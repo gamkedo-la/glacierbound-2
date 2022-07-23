@@ -1,25 +1,37 @@
 var wallTextures = [];
-var selectedTileTextureIndex;
+var wallTexturesFlat = [];
+var shipWallTextures = [];
+var arcticWallTextures = [];
+var caveWallTextures = [];
+var labWallTextures = [];
+var selectedTileTextureIndex = [];
+var tileTextureFlatIndex = 0;
 
 function initLevelEditor(){
-    wallTextures.push(spriteList['ice_wall']);
-    wallTextures.push(spriteList['rock_snowy_wall']);
-    wallTextures.push(spriteList['snowy_wall']);
-    wallTextures.push(spriteList['rock_wall']);
-    wallTextures.push(spriteList['ice_spikes']);
-    wallTextures.push(spriteList['cliff_ice']);
-    wallTextures.push(spriteList['cliff_rock']);
-    wallTextures.push(spriteList['ship_window']);
-    wallTextures.push(spriteList['ship_shelves']);
 
-    wallTextures.push(spriteList['ship_interior_wall_simple_panels']);
-    wallTextures.push(spriteList['ship_interior_wall_panels']);
-    wallTextures.push(spriteList['ship_interior_wall']);
-    wallTextures.push(spriteList['ship_interior_plain_wall']);
-    wallTextures.push(spriteList['ship_interior_wall_simple']);
-    wallTextures.push(spriteList['ship_interior_wall_no_pipes']);
+    shipWallTextures.push(spriteList['ship_interior_wall_simple']);
+    shipWallTextures.push(spriteList['ship_interior_wall_no_pipes']);
+    shipWallTextures.push(spriteList['ship_interior_wall_simple_panels']);
+    shipWallTextures.push(spriteList['ship_interior_wall_panels']);
+    shipWallTextures.push(spriteList['ship_interior_wall']);
+    shipWallTextures.push(spriteList['ship_interior_plain_wall']);
+    shipWallTextures.push(spriteList['ship_shelves']);
+    shipWallTextures.push(spriteList['ship_window']);
+    wallTextures.push(shipWallTextures);
 
-    wallTextures.push(spriteList['cave_wall']);
+    arcticWallTextures.push(spriteList['rock_snowy_wall']);
+    arcticWallTextures.push(spriteList['snowy_wall']);
+    arcticWallTextures.push(spriteList['rock_wall']);
+    arcticWallTextures.push(spriteList['ice_spikes']);
+    arcticWallTextures.push(spriteList['cliff_ice']);
+    arcticWallTextures.push(spriteList['cliff_rock']);
+    wallTextures.push(arcticWallTextures);
+
+    caveWallTextures.push(spriteList['cave_wall']);
+    caveWallTextures.push(spriteList['cave_wall_icy']);
+    wallTextures.push(caveWallTextures);
+
+    wallTexturesFlat = wallTextures.flat();
 
     selectedTileTextureIndex = 0;
 
@@ -54,39 +66,49 @@ function updateLevelEditor(){
 function drawLevelEditor(){
 
     colorText('Level Editor', bufferedLevelEditorCanvasContext, bufferedLevelEditorCanvas.width / 2, bufferedLevelEditorCanvas.height / 2, '50px sans-serif', "center", "yellow");
+    colorRect(0, bufferedLevelEditorCanvas.height - (wallTextures.length * TILE_SIZE), bufferedLevelEditorCanvas.width, wallTextures.length * TILE_SIZE, 'black', targetCanvas = bufferedLevelEditorCanvasContext)
 
     //draw delete image
     bufferedLevelEditorCanvasContext.fillStyle = "white";
-    bufferedLevelEditorCanvasContext.fillRect(0,bufferedLevelEditorCanvas.height - TEXTURE_SIZE,TEXTURE_SIZE,TEXTURE_SIZE)
+    bufferedLevelEditorCanvasContext.fillRect(0,bufferedLevelEditorCanvas.height - (TEXTURE_SIZE * (wallTextures.length + 1)),TEXTURE_SIZE,TEXTURE_SIZE)
 
     //draw textures
-    for (var i = 0; i < wallTextures.length; i++){
-        bufferedLevelEditorCanvasContext.drawImage(wallTextures[i],TEXTURE_SIZE+TEXTURE_SIZE * i, bufferedLevelEditorCanvas.height - TEXTURE_SIZE);
+    for (let i = 0; i < wallTextures.length; i++){
+        for(let j = 0; j < wallTextures[i].length; j++){
+            bufferedLevelEditorCanvasContext.drawImage(wallTextures[i][j],TEXTURE_SIZE * j, bufferedLevelEditorCanvas.height - ((i + 1) * TEXTURE_SIZE));
+        }
     }
 
     //draw highlight around selected
-    bufferedLevelEditorCanvasContext.strokeStyle = "red";
-    bufferedLevelEditorCanvasContext.lineWidth = 3;
-    bufferedLevelEditorCanvasContext.beginPath();
-    bufferedLevelEditorCanvasContext.moveTo(TEXTURE_SIZE+TEXTURE_SIZE * selectedTileTextureIndex,bufferedLevelEditorCanvas.height - TEXTURE_SIZE);
-    bufferedLevelEditorCanvasContext.lineTo(TEXTURE_SIZE*2+TEXTURE_SIZE * selectedTileTextureIndex,bufferedLevelEditorCanvas.height - TEXTURE_SIZE);
-    bufferedLevelEditorCanvasContext.lineTo(TEXTURE_SIZE*2+TEXTURE_SIZE * selectedTileTextureIndex,bufferedLevelEditorCanvas.height);
-    bufferedLevelEditorCanvasContext.lineTo(TEXTURE_SIZE+TEXTURE_SIZE * selectedTileTextureIndex,bufferedLevelEditorCanvas.height);
-    bufferedLevelEditorCanvasContext.lineTo(TEXTURE_SIZE+TEXTURE_SIZE * selectedTileTextureIndex,bufferedLevelEditorCanvas.height - TEXTURE_SIZE);
-    bufferedLevelEditorCanvasContext.stroke();
+    drawRect(selectedTileTextureIndex[0] * TILE_SIZE,
+            bufferedLevelEditorCanvas.height - ((selectedTileTextureIndex[1] * TILE_SIZE) + TILE_SIZE),
+            TILE_SIZE,
+            TILE_SIZE,
+            'red',
+            3,
+            bufferedLevelEditorCanvasContext);
 }
 
 function setSelectedTile() {
-    for (var i = 0; i < wallTextures.length; i++) {
-        if (mousePos.x > 0 &&
-        mousePos.x < (wallTextures.length+1) * TILE_SIZE &&
-        mousePos.y > bufferedLevelEditorCanvas.height - TEXTURE_SIZE &&
-        mousePos.y < bufferedLevelEditorCanvas.height){
-            //set selectedTileTexture where -1 = delete, and 0+ is a texture
-            selectedTileTextureIndex = Math.floor(mousePos.x / TILE_SIZE)-1;
+    var counter = 0;
 
+    for (let i = 0; i < wallTextures.length; i++){
+        for(let j = 0; j < wallTextures[i].length; j++){
+
+            counter++;
+
+            if (isCoordWithinRect(mousePos.x, mousePos.y, j * TEXTURE_SIZE, bufferedLevelEditorCanvas.height - ((i + 1) * TEXTURE_SIZE), TEXTURE_SIZE, TEXTURE_SIZE)){
+                selectedTileTextureIndex = [j, i];
+                tileTextureFlatIndex = counter;
+            }
+
+            if (isCoordWithinRect(mousePos.x, mousePos.y, 0, bufferedLevelEditorCanvas.height - ((wallTextures.length + 1) * TEXTURE_SIZE), TEXTURE_SIZE, TEXTURE_SIZE)){
+                selectedTileTextureIndex = [0, wallTextures[i].length + 1];
+                tileTextureFlatIndex = 0;
+            }
         }
     }
+
     displayLevelData();
 }
 

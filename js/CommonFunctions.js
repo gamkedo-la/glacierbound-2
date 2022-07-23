@@ -64,6 +64,13 @@ function isCoordWithinCanvas(xPixel, yPixel){
     return xPixel >= 0 && xPixel < screenCanvasContext.canvas.width && yPixel >= 0 && yPixel < screenCanvasContext.canvas.height;
 }
 
+function isCoordWithinRect(coordX, coordY, rectTopLeftX, rectTopLeftY, rectWidth, rectHeight){
+    return (coordX > rectTopLeftX &&
+            coordX < rectTopLeftX + rectWidth &&
+            coordY > rectTopLeftY &&
+            coordY < rectTopLeftY + rectHeight)
+}
+
 function isPixelCoordWithinMapGrid(xPixel, yPixel){
     return xPixel >= 0 && xPixel < MAP_NUM_COLS * TILE_SIZE && yPixel >= 0 && yPixel < MAP_NUM_ROWS * TILE_SIZE;
 }

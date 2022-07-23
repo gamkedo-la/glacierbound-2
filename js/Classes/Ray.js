@@ -24,7 +24,7 @@ class Ray {
             seenGrid[this.gridCoord.row][this.gridCoord.col]
         }
         seenGrid[this.gridCoord.row][this.gridCoord.col] = 1;
-        this.wallStripTexture = wallTextures[this.tileTypeHit - 1];
+        this.wallStripTexture = wallTexturesFlat[this.tileTypeHit - 1];
     }
 
     getHorWallHitCoord(){
