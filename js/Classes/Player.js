@@ -26,10 +26,6 @@ class Player {
             y: TILE_SIZE / 2
         }
 
-        //Testing inventory item functionality
-        bookItem = new Item(0, "book_blue_spritesheet", 8, 1, 128, 128);
-        inventory.addItem(bookItem);
-
         allObjects.push(this);
     }
     update() {

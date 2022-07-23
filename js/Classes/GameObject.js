@@ -1,5 +1,5 @@
 class GameObject {
-    constructor(col, row, speed, spriteSheet, altitude = 0, scale = 1, angle, mapID) {
+    constructor(col, row, speed, spriteSheet, altitude = 0, scale = 1, angle, mapID, isCollectable = false) {
         this.x = mapSection.getTileCenterPixelCoordFromGridCoord(col, row).x;
         this.y = mapSection.getTileCenterPixelCoordFromGridCoord(col, row).y;
         this.mapID = mapID;
@@ -17,11 +17,14 @@ class GameObject {
         this.frameCounter = 1;
         this.secondsPerFrame = 0.2
         this.drawnThisFrame = false;
+        this.isCollectable = isCollectable;
+        this.isActive = true;
         
         allObjects.push(this);
     }
 
     update() {
+        if (!this.isActive) return;
         if (this.mapID != currentRoom) return;
 
         this.drawnThisFrame = false;
@@ -43,10 +46,19 @@ class GameObject {
     }
 
     activate() {
+        if (!this.isActive) return;
+
         console.log(this + " Activated");
+
+        if (this.isCollectable){
+            inventory.addItem(new Item(0, this.spriteName, 8, 1, 128, 128));
+            this.isActive = false;
+            console.log("Picked up " + this.spriteName);
+        }
     }
 
     draw() {
+        if (!this.isActive) return;
         if (this.mapID != currentRoom) return;
         if (this.drawnThisFrame) return;
 
@@ -75,6 +87,7 @@ class GameObject {
     }
 
     draw2D() {
+        if (!this.isActive) return;
         if (this.mapID != currentRoom) return;
 
         if (MINIMAP_ENABLED) colorCircle(this.x * MINIMAP_SCALE_FACTOR, this.y * MINIMAP_SCALE_FACTOR, 5, "green", bufferedDebugCanvasContext);

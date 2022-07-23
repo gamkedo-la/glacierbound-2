@@ -1,5 +1,5 @@
 function initMapGameObjects(){
-    levelList.forEach(map => map.objects.forEach(function(element) {new GameObject(element.col, element.row, 0, element.spriteSheet, 0, 0.05, 0, map.mapID - 80); }) );
+    levelList.forEach(map => map.objects.forEach(function(element) {new GameObject(element.col, element.row, 0, element.spriteSheet, 0, 0.05, 0, map.mapID - 80, element.isCollectable); }) );
 }
 
 var ship_80 = {
@@ -31,10 +31,11 @@ var ship_80 = {
         {
         col: 6,
         row: 7,
-        spriteSheet: "map_spritesheet",
+        spriteSheet: "book_blue_spritesheet",
         altitude: 0,
         scale: 0.05,
-        angle: 0
+        angle: 0,
+        isCollectable: true
         }
     ]
 }
@@ -71,7 +72,8 @@ var ship_81 = {
         spriteSheet: "map_spritesheet",
         altitude: 0,
         scale: 0.05,
-        angle: 0
+        angle: 0,
+        sCollectable: false
         }
     ]
 }
@@ -107,7 +109,8 @@ var ship_82 = {
             spriteSheet: "map_spritesheet",
             altitude: 0,
             scale: 0.05,
-            angle: 0
+            angle: 0,
+            sCollectable: false
         }
     ]
 }
@@ -144,7 +147,8 @@ var arctic_83 = {
             spriteSheet: "map_spritesheet",
             altitude: 0,
             scale: 0.05,
-            angle: 0
+            angle: 0,
+            sCollectable: false
         }
     ]
 }
@@ -181,7 +185,8 @@ var arctic_84 = {
             spriteSheet: "map_spritesheet",
             altitude: 0,
             scale: 0.05,
-            angle: 0
+            angle: 0,
+            sCollectable: false
         }
     ]
 }
@@ -218,7 +223,8 @@ var arctic_85 = {
             spriteSheet: "map_spritesheet",
             altitude: 0,
             scale: 0.05,
-            angle: 0
+            angle: 0,
+            sCollectable: false
         }
     ]
 }
@@ -254,7 +260,8 @@ var cave_86 = {
             spriteSheet: "map_spritesheet",
             altitude: 0,
             scale: 0.05,
-            angle: 0
+            angle: 0,
+            sCollectable: false
         }
     ]
 }
@@ -290,7 +297,8 @@ var cave_87 = {
             spriteSheet: "map_spritesheet",
             altitude: 0,
             scale: 0.05,
-            angle: 0
+            angle: 0,
+            sCollectable: false
         }
     ]
 }
@@ -326,7 +334,8 @@ var cave_88 = {
             spriteSheet: "map_spritesheet",
             altitude: 0,
             scale: 0.05,
-            angle: 0
+            angle: 0,
+            sCollectable: false
         }
     ]
 }
@@ -362,7 +371,8 @@ var lab_89 = {
             spriteSheet: "map_spritesheet",
             altitude: 0,
             scale: 0.05,
-            angle: 0
+            angle: 0,
+            sCollectable: false
         }
     ]
 }
@@ -398,7 +408,8 @@ var lab_90 = {
             spriteSheet: "map_spritesheet",
             altitude: 0,
             scale: 0.05,
-            angle: 0
+            angle: 0,
+            sCollectable: false
         }
     ]
 }
@@ -429,12 +440,13 @@ var lab_91 = {
     mapID: 91,
     objects: [
         {
-            col: 6,
-            row: 3,
-            spriteSheet: "map_spritesheet",
+            col: 9,
+            row: 5,
+            spriteSheet: "blue_book_spritesheet",
             altitude: 0,
             scale: 0.05,
-            angle: 0
+            angle: 0,
+            isCollectable: true
         }
     ]
 }
