@@ -31,7 +31,7 @@ var ship_80 = {
         {
         col: 6,
         row: 7,
-        spriteSheet: "book_blue_spritesheet",
+        spriteSheet: "flashlight_spritesheet",
         altitude: 0,
         scale: 0.05,
         angle: 0,
@@ -69,11 +69,11 @@ var ship_81 = {
         {
         col: 6,
         row: 3,
-        spriteSheet: "map_spritesheet",
+        spriteSheet: "fire_extinguisher_spritesheet",
         altitude: 0,
         scale: 0.05,
         angle: 0,
-        sCollectable: false
+        isCollectable: true
         }
     ]
 }
@@ -110,7 +110,7 @@ var ship_82 = {
             altitude: 0,
             scale: 0.05,
             angle: 0,
-            sCollectable: false
+            isCollectable: true
         }
     ]
 }
@@ -144,11 +144,11 @@ var arctic_83 = {
         {
             col: 6,
             row: 3,
-            spriteSheet: "map_spritesheet",
+            spriteSheet: "wrench_red_spritesheet",
             altitude: 0,
             scale: 0.05,
             angle: 0,
-            sCollectable: false
+            isCollectable: true
         }
     ]
 }
@@ -182,11 +182,11 @@ var arctic_84 = {
         {
             col: 6,
             row: 3,
-            spriteSheet: "map_spritesheet",
+            spriteSheet: "lamp_spritesheet",
             altitude: 0,
             scale: 0.05,
             angle: 0,
-            sCollectable: false
+            isCollectable: true
         }
     ]
 }
@@ -224,7 +224,7 @@ var arctic_85 = {
             altitude: 0,
             scale: 0.05,
             angle: 0,
-            sCollectable: false
+            isCollectable: true
         }
     ]
 }
@@ -261,7 +261,7 @@ var cave_86 = {
             altitude: 0,
             scale: 0.05,
             angle: 0,
-            sCollectable: false
+            isCollectable: true
         }
     ]
 }
@@ -298,7 +298,7 @@ var cave_87 = {
             altitude: 0,
             scale: 0.05,
             angle: 0,
-            sCollectable: false
+            isCollectable: true
         }
     ]
 }
@@ -335,7 +335,7 @@ var cave_88 = {
             altitude: 0,
             scale: 0.05,
             angle: 0,
-            sCollectable: false
+            isCollectable: true
         }
     ]
 }
@@ -372,7 +372,7 @@ var lab_89 = {
             altitude: 0,
             scale: 0.05,
             angle: 0,
-            sCollectable: false
+            isCollectable: true
         }
     ]
 }
@@ -409,7 +409,7 @@ var lab_90 = {
             altitude: 0,
             scale: 0.05,
             angle: 0,
-            sCollectable: false
+            isCollectable: true
         }
     ]
 }
@@ -442,7 +442,7 @@ var lab_91 = {
         {
             col: 9,
             row: 5,
-            spriteSheet: "blue_book_spritesheet",
+            spriteSheet: "book_blue_spritesheet",
             altitude: 0,
             scale: 0.05,
             angle: 0,

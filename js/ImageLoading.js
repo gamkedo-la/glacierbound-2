@@ -19,6 +19,7 @@ function loadImages() {
         {spriteName: 'flashlight_spritesheet', fileName: 'spritesheets/flashlight_spritesheet.png'},
         {spriteName: 'fire_extinguisher_spritesheet', fileName: 'spritesheets/fire_extinguisher_spritesheet.png'},
         {spriteName: 'map_spritesheet', fileName: 'spritesheets/map_spritesheet.png'},
+        {spriteName: 'lamp_spritesheet', fileName: 'spritesheets/lamp_128_sheet.png'},
         {spriteName: 'wrench_red_spritesheet', fileName: 'spritesheets/wrench_red_spritesheet.png'},
         {spriteName: 'floor_snow', fileName: 'floor_snow.png'},
         {spriteName: 'floor_ship', fileName: 'floor_ship.png'},
@@ -63,3 +64,4 @@ spriteData["flashlight_spritesheet"] = {frames: 8, w: 128, h: 128};
 spriteData["fire_extinguisher_spritesheet"] = {frames: 8, w: 128, h: 128};
 spriteData["map_spritesheet"] = {frames: 8, w: 128, h: 128};
 spriteData["wrench_red_spritesheet"] = {frames: 8, w: 128, h: 128};
+spriteData["lamp_spritesheet"] = {frames: 8, w: 128, h: 128};
