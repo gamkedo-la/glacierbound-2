@@ -1,5 +1,7 @@
 function initMapGameObjects(){
-    levelList.forEach(map => map.objects.forEach(function(element) {new GameObject(element.col, element.row, 0, element.spriteSheet, 0, 0.05, 0, map.mapID - 80, element.isCollectable); }) );
+    levelList.forEach(map => map.objects.forEach(function(element) {
+        new GameObject(element.col, element.row, 0, element.spriteSheet, 0, 0.05, 0, map.mapID - 80, element.isCollectable, element.isInteractable); 
+    }) );
 }
 
 var ship_80 = {
@@ -15,7 +17,7 @@ var ship_80 = {
         [ 8, 0, 0, 0, 0, 3, 0, 3, 0, 0, 0, 0, 0, 3, 0, 0, 0, 3, 3, 3],
         [ 8, 0, 0, 0, 3, 3, 0, 3, 3, 3, 3, 3, 0, 3, 3, 0, 0, 0, 0, 4],
         [ 4, 8, 8, 8, 3, 0, 0, 0, 3, 3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 4],
-        [ 0, 0, 0, 3, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 3, 3,81, 4],
+        [ 0, 0, 0, 3, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 3, 4,81, 4],
         [ 0, 0, 0, 3, 0, 0, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 3, 0, 0, 4],
         [ 0, 0, 0, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 4, 4, 4],
         [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]              
@@ -29,22 +31,33 @@ var ship_80 = {
     mapID: 80,
     objects: [
         {
-        col: 6,
-        row: 7,
-        spriteSheet: "flashlight_spritesheet",
-        altitude: 0,
-        scale: 0.05,
-        angle: 0,
-        isCollectable: true
+            col: 6,
+            row: 7,
+            spriteSheet: "flashlight_spritesheet",
+            altitude: 0,
+            scale: 0.05,
+            angle: 0,
+            isCollectable: true,
+            isInteractable: true
+        },
+        {
+            col: 0,
+            row: 7,
+            spriteSheet: undefined,
+            altitude: 0,
+            scale: 0.05,
+            angle: 0,
+            isCollectable: false,
+            isInteractable: true
         }
     ]
 }
 
 var ship_81 = {
     grid: [
-        [ 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4],
+        [ 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 4, 3, 3, 3],
         [ 3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 4],
-        [ 3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0, 3, 4, 0, 4],
+        [ 3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0, 3, 3, 0, 4],
         [ 4, 4, 0, 4, 4, 4, 0, 4, 4, 4, 0, 4, 4, 4, 0, 4, 4, 4,80, 4],
         [ 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4],
         [ 4, 0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4],
@@ -73,7 +86,8 @@ var ship_81 = {
         altitude: 0,
         scale: 0.05,
         angle: 0,
-        isCollectable: true
+        isCollectable: true,
+        isInteractable: true
         }
     ]
 }
@@ -110,7 +124,8 @@ var ship_82 = {
             altitude: 0,
             scale: 0.05,
             angle: 0,
-            isCollectable: true
+            isCollectable: true,
+            isInteractable: true
         }
     ]
 }
@@ -148,7 +163,8 @@ var arctic_83 = {
             altitude: 0,
             scale: 0.05,
             angle: 0,
-            isCollectable: true
+            isCollectable: true,
+            isInteractable: true
         }
     ]
 }
@@ -186,7 +202,8 @@ var arctic_84 = {
             altitude: 0,
             scale: 0.05,
             angle: 0,
-            isCollectable: true
+            isCollectable: true,
+            isInteractable: true
         }
     ]
 }
@@ -224,7 +241,8 @@ var arctic_85 = {
             altitude: 0,
             scale: 0.05,
             angle: 0,
-            isCollectable: true
+            isCollectable: true,
+            isInteractable: true
         }
     ]
 }
@@ -261,7 +279,8 @@ var cave_86 = {
             altitude: 0,
             scale: 0.05,
             angle: 0,
-            isCollectable: true
+            isCollectable: true,
+            isInteractable: true
         }
     ]
 }
@@ -298,7 +317,8 @@ var cave_87 = {
             altitude: 0,
             scale: 0.05,
             angle: 0,
-            isCollectable: true
+            isCollectable: true,
+            isInteractable: true
         }
     ]
 }
@@ -335,7 +355,8 @@ var cave_88 = {
             altitude: 0,
             scale: 0.05,
             angle: 0,
-            isCollectable: true
+            isCollectable: true,
+            isInteractable: true
         }
     ]
 }
@@ -372,7 +393,8 @@ var lab_89 = {
             altitude: 0,
             scale: 0.05,
             angle: 0,
-            isCollectable: true
+            isCollectable: true,
+            isInteractable: true
         }
     ]
 }
@@ -409,7 +431,8 @@ var lab_90 = {
             altitude: 0,
             scale: 0.05,
             angle: 0,
-            isCollectable: true
+            isCollectable: true,
+            isInteractable: true
         }
     ]
 }
@@ -446,7 +469,8 @@ var lab_91 = {
             altitude: 0,
             scale: 0.05,
             angle: 0,
-            isCollectable: true
+            isCollectable: true,
+            isInteractable: true
         }
     ]
 }

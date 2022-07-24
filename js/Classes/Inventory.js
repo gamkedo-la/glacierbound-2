@@ -29,8 +29,8 @@ class Inventory{
         return true;
     }
 
-    containsItem(item){
-        return this.inventorySlots.findIndex(element => element.itemID === item.itemID);
+    containsItem(spriteName){
+        return (this.inventorySlots.findIndex(element => element.spriteName === spriteName) >= 0)
     }
     toggleShowInventory(){
         this.showInventory = !this.showInventory;

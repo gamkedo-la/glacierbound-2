@@ -1,5 +1,5 @@
 class GameObject {
-    constructor(col, row, speed, spriteSheet, altitude = 0, scale = 1, angle, mapID, isCollectable = false) {
+    constructor(col, row, speed, spriteSheet, altitude = 0, scale = 1, angle, mapID, isCollectable = false, isInteractable = false) {
         this.x = mapSection.getTileCenterPixelCoordFromGridCoord(col, row).x;
         this.y = mapSection.getTileCenterPixelCoordFromGridCoord(col, row).y;
         this.mapID = mapID;
@@ -10,7 +10,7 @@ class GameObject {
         this.radius = TILE_SIZE;
         this.distanceToPlayer = Infinity;
         this.isDead = false;
-        this.spriteName = spriteSheet
+        this.spriteName = spriteSheet;
         this.sprite = spriteList[this.spriteName];
         this.spriteData = spriteData[this.spriteName];
         this.timer = 0;
@@ -18,6 +18,7 @@ class GameObject {
         this.secondsPerFrame = 0.2
         this.drawnThisFrame = false;
         this.isCollectable = isCollectable;
+        this.isInteractable = isInteractable;
         this.isActive = true;
         
         allObjects.push(this);
@@ -54,10 +55,19 @@ class GameObject {
             inventory.addItem(new Item(0, this.spriteName, 8, 1, 128, 128));
             this.isActive = false;
             console.log("Picked up " + this.spriteName);
+        } else if (this.isInteractable){
+            if (inventory.containsItem("book_blue_spritesheet")){
+                document.location.reload();
+            } else {
+                //colorText("Item Required", bufferedGameCanvas, bufferedDebugCanvasContext.height / 2, bufferedDebugCanvasContext.height / 2, '20px sans-serif', center, 'white');
+                console.log("Iten Required");
+            }
         }
+
     }
 
     draw() {
+        if (typeof this.spriteName === 'undefined') return;
         if (!this.isActive) return;
         if (this.mapID != currentRoom) return;
         if (this.drawnThisFrame) return;
