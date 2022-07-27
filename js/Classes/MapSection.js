@@ -3,8 +3,9 @@ var sky_scroll_x = 0;
 var WIND_SPEED = 0.00025;
 
 class MapSection {
-    constructor() {
-        this.grid = JSON.parse(JSON.stringify(ship_80.grid));
+    constructor(startingGrid) {
+        this.originalGrid = startingGrid;
+        this.grid = JSON.parse(JSON.stringify(startingGrid));
         this.minimapIsDirty = true;
         this.minimapImage = document.createElement('img');
         this.minimapWidth = MAP_NUM_COLS * TILE_SIZE * MINIMAP_SCALE_FACTOR;
@@ -193,7 +194,7 @@ class MapSection {
         return this.grid[row][col];
     }
 
-    setTileTypeAtPixelCoord(pixelX, pixelY) {
+    setTileTypeAtPixelCoord(pixelX, pixelY, tileType) {
         var scaledPixelX = pixelX / MINIMAP_SCALE_FACTOR;
         var scaledPixelY = pixelY / MINIMAP_SCALE_FACTOR;
 
@@ -202,9 +203,13 @@ class MapSection {
         var tileCol = Math.floor((scaledPixelX) / (TILE_SIZE));
         var tileRow = Math.floor((scaledPixelY) / (TILE_SIZE));
 
-        this.grid[tileRow][tileCol] = tileTextureFlatIndex;
+        this.grid[tileRow][tileCol] = tileType;
         mapSection.minimapIsDirty = true;
+    }
 
+    setTileTypeAtGridCoord(col, row, tileType){
+        this.grid[row][col] = tileType;
+        this.originalGrid[row][col] = tileType;
     }
 
     getGridCoordFromPixelCoord(pixelX, pixelY){
@@ -230,21 +235,23 @@ class MapSection {
     }
 
     changeMap(newMapIndex){
-
         if (!player.canExitMapSection) return;
-        var previousMapID = levelList[currentRoom].mapID;
 
+        var previousMapID = levelList[currentRoom].mapID;
         player.previousMapSection = currentRoom;
         currentRoom = newMapIndex;
-        var newMap = levelList[currentRoom];
+        var newMap = levelList[newMapIndex];
+        this.originalGrid = newMap.grid;
         this.grid = JSON.parse(JSON.stringify(newMap.grid));
-        this.minimapIsDirty = true;
+
         var startingPosition = this.findPlayerStartPosition(previousMapID);
         player.x = (startingPosition.col * TILE_SIZE) + player.posInTile.x;
         player.y = (startingPosition.row * TILE_SIZE) + player.posInTile.y;
         player.startingCol = startingPosition.col
         player.startingRow = startingPosition.row
         player.canExitMapSection = false;
+
+        this.minimapIsDirty = true;
 
         /*seenGrid = [
             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],

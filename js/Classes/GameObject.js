@@ -1,5 +1,7 @@
 class GameObject {
-    constructor(col, row, speed, spriteSheet, altitude = 0, scale = 1, angle, mapID, isCollectable = false, isInteractable = false) {
+    constructor(col, row, speed, spriteSheet, altitude = 0, scale = 1, angle, mapID, objectType) {
+        this.col = col;
+        this.row = row;
         this.x = mapSection.getTileCenterPixelCoordFromGridCoord(col, row).x;
         this.y = mapSection.getTileCenterPixelCoordFromGridCoord(col, row).y;
         this.mapID = mapID;
@@ -17,9 +19,8 @@ class GameObject {
         this.frameCounter = 1;
         this.secondsPerFrame = 0.2
         this.drawnThisFrame = false;
-        this.isCollectable = isCollectable;
-        this.isInteractable = isInteractable;
         this.isActive = true;
+        this.objectType = objectType;
         
         allObjects.push(this);
     }
@@ -48,22 +49,25 @@ class GameObject {
 
     activate() {
         if (!this.isActive) return;
-
         console.log(this + " Activated");
 
-        if (this.isCollectable){
-            inventory.addItem(new Item(0, this.spriteName, 8, 1, 128, 128));
-            this.isActive = false;
-            console.log("Picked up " + this.spriteName);
-        } else if (this.isInteractable){
-            if (inventory.containsItem("book_blue_spritesheet")){
-                document.location.reload();
-            } else {
-                //colorText("Item Required", bufferedGameCanvas, bufferedDebugCanvasContext.height / 2, bufferedDebugCanvasContext.height / 2, '20px sans-serif', center, 'white');
-                console.log("Iten Required");
-            }
-        }
+        switch(this.objectType) {
 
+            case OBJECT_TYPE_ITEM:
+                inventory.addItem(new Item(0, this.spriteName, 8, 1, 128, 128));
+                textDisplay.setText("Picked up " + this.spriteName);
+                this.isActive = false;
+                break;
+
+            case OBJECT_TYPE_DOOR:
+                if (inventory.containsItem("book_blue_spritesheet")){
+                    document.location.reload();
+                } else {
+                    textDisplay.setText("Item Required");
+                    mapSection.setTileTypeAtGridCoord(this.col, this.row, TILE_TYPE_FLOOR);
+                }
+                break;
+        }
     }
 
     draw() {

@@ -1,6 +1,6 @@
 function initMapGameObjects(){
     levelList.forEach(map => map.objects.forEach(function(element) {
-        new GameObject(element.col, element.row, 0, element.spriteSheet, 0, 0.05, 0, map.mapID - 80, element.isCollectable, element.isInteractable); 
+        new GameObject(element.col, element.row, 0, element.spriteSheet, 0, 0.05, 0, map.mapID - 80, element.objectType); 
     }) );
 }
 
@@ -11,11 +11,11 @@ var ship_80 = {
         [ 0, 0, 0, 3, 0, 0, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0, 0, 0, 3],
         [ 0, 0, 0, 3, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 3, 0, 3, 0, 3],
         [ 4, 8, 8, 8, 3, 0, 0, 0, 3, 3, 0, 0, 0, 3, 0, 0, 0, 0, 0, 3],
-        [ 8, 0, 0, 0, 3, 3, 0, 3, 3, 3, 3, 3, 0, 3, 3, 0, 0, 0, 3, 3],
-        [ 8, 0, 0, 0, 0, 3, 0, 3, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 3],
-        [ 8, 0, 0, 0, 0, 0, 0, 0, 0, 3, 3, 3, 0, 3, 0, 3, 0, 3, 0, 3],
-        [ 8, 0, 0, 0, 0, 3, 0, 3, 0, 0, 0, 0, 0, 3, 0, 0, 0, 3, 3, 3],
-        [ 8, 0, 0, 0, 3, 3, 0, 3, 3, 3, 3, 3, 0, 3, 3, 0, 0, 0, 0, 4],
+        [ 8, 8, 0, 0, 3, 3, 0, 3, 3, 3, 3, 3, 0, 3, 3, 0, 0, 0, 3, 3],
+        [ 8, 8, 0, 0, 0, 3, 0, 3, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 3],
+        [ 8, 8, 0, 0, 0, 0, 0, 0, 0, 3, 3, 3, 0, 3, 0, 3, 0, 3, 0, 3],
+        [ 8, 8, 0, 0, 0, 3, 0, 3, 0, 0, 0, 0, 0, 3, 0, 0, 0, 3, 3, 3],
+        [ 8, 8, 0, 0, 3, 3, 0, 3, 3, 3, 3, 3, 0, 3, 3, 0, 0, 0, 0, 4],
         [ 4, 8, 8, 8, 3, 0, 0, 0, 3, 3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 4],
         [ 0, 0, 0, 3, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 3, 4,81, 4],
         [ 0, 0, 0, 3, 0, 0, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 3, 0, 0, 4],
@@ -37,18 +37,16 @@ var ship_80 = {
             altitude: 0,
             scale: 0.05,
             angle: 0,
-            isCollectable: true,
-            isInteractable: true
+            objectType: OBJECT_TYPE_ITEM
         },
         {
-            col: 0,
+            col: 1,
             row: 7,
             spriteSheet: undefined,
             altitude: 0,
             scale: 0.05,
             angle: 0,
-            isCollectable: false,
-            isInteractable: true
+            objectType: OBJECT_TYPE_DOOR
         }
     ]
 }
@@ -86,8 +84,7 @@ var ship_81 = {
         altitude: 0,
         scale: 0.05,
         angle: 0,
-        isCollectable: true,
-        isInteractable: true
+        objectType: OBJECT_TYPE_ITEM
         }
     ]
 }
@@ -124,8 +121,7 @@ var ship_82 = {
             altitude: 0,
             scale: 0.05,
             angle: 0,
-            isCollectable: true,
-            isInteractable: true
+            objectType: OBJECT_TYPE_ITEM
         }
     ]
 }
@@ -163,8 +159,7 @@ var arctic_83 = {
             altitude: 0,
             scale: 0.05,
             angle: 0,
-            isCollectable: true,
-            isInteractable: true
+            objectType: OBJECT_TYPE_ITEM
         }
     ]
 }
@@ -202,8 +197,7 @@ var arctic_84 = {
             altitude: 0,
             scale: 0.05,
             angle: 0,
-            isCollectable: true,
-            isInteractable: true
+            objectType: OBJECT_TYPE_ITEM
         }
     ]
 }
@@ -241,8 +235,7 @@ var arctic_85 = {
             altitude: 0,
             scale: 0.05,
             angle: 0,
-            isCollectable: true,
-            isInteractable: true
+            objectType: OBJECT_TYPE_ITEM
         }
     ]
 }
@@ -279,8 +272,7 @@ var cave_86 = {
             altitude: 0,
             scale: 0.05,
             angle: 0,
-            isCollectable: true,
-            isInteractable: true
+            objectType: OBJECT_TYPE_ITEM
         }
     ]
 }
@@ -317,8 +309,7 @@ var cave_87 = {
             altitude: 0,
             scale: 0.05,
             angle: 0,
-            isCollectable: true,
-            isInteractable: true
+            objectType: OBJECT_TYPE_ITEM
         }
     ]
 }
@@ -355,8 +346,7 @@ var cave_88 = {
             altitude: 0,
             scale: 0.05,
             angle: 0,
-            isCollectable: true,
-            isInteractable: true
+            objectType: OBJECT_TYPE_ITEM
         }
     ]
 }
@@ -393,8 +383,7 @@ var lab_89 = {
             altitude: 0,
             scale: 0.05,
             angle: 0,
-            isCollectable: true,
-            isInteractable: true
+            objectType: OBJECT_TYPE_ITEM
         }
     ]
 }
@@ -431,8 +420,7 @@ var lab_90 = {
             altitude: 0,
             scale: 0.05,
             angle: 0,
-            isCollectable: true,
-            isInteractable: true
+            objectType: OBJECT_TYPE_ITEM
         }
     ]
 }
@@ -469,8 +457,7 @@ var lab_91 = {
             altitude: 0,
             scale: 0.05,
             angle: 0,
-            isCollectable: true,
-            isInteractable: true
+            objectType: OBJECT_TYPE_ITEM
         }
     ]
 }

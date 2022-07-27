@@ -1,9 +1,10 @@
 var allObjects = [];
 
-var mapSection = new MapSection();
+var mapSection = new MapSection(ship_80.grid);
 var inventory = new Inventory();
 var player = new Player();
 var debugDisplay = new DebugDisplay();
+var textDisplay;
 
 var debugModeEnabled = false; // Start game with the debug window hidden
 var levelEditorEnabled = false;
@@ -24,6 +25,8 @@ window.onload = function () {
     initCanvases();
     initLevelEditor();
     initMapGameObjects();
+
+    textDisplay = new TextDisplay();
 }
 
 function initRenderLoop() { //called from ImageLoading.js

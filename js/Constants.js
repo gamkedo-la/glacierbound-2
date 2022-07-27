@@ -2,6 +2,9 @@
 const FRAMES_PER_SECOND = 60;
 const BACKGROUND_FILL_COLOR = "rgba(100,100,100,1)";
 const GROUND_FILL_COLOR = "rgba(200,200,200,1)";
+const TEXT_DISPLAY_TIME_SEC = 5;
+const OBJECT_TYPE_DOOR = 0;
+const OBJECT_TYPE_ITEM = 1;
 //#endregion
 
 //#region Projection Plane Constants
@@ -75,5 +78,4 @@ const KEY_NUMBER_4  = 52;
 const KEY_RIGHT_BRACKET = 221;
 const KEY_LEFT_BRACKET = 219;
 const KEY_ESCAPE = 27;
-
 //#endregion Keyboard Code Constants

@@ -60,7 +60,7 @@ function updateLevelEditor(){
         //set a selected tile if one was clicked
         setSelectedTile();
         //set the tile at the coord
-        mapSection.setTileTypeAtPixelCoord(mousePos.x, mousePos.y);
+        mapSection.setTileTypeAtPixelCoord(mousePos.x, mousePos.y, tileTextureFlatIndex);
     }
 }
 function drawLevelEditor(){
