@@ -15,6 +15,7 @@ function loadImages() {
         {spriteName: 'cliff_rock', fileName: 'cliff_rock.png'},
         {spriteName: 'ship_window', fileName: 'ship_interior_window_32x32.png'},
         {spriteName: 'ship_shelves', fileName: 'ship_interior_shelves_32x32.png'},
+        {spriteName: 'ship_door', fileName: 'ship_interior_door_32x32.png'},
         {spriteName: 'book_blue_spritesheet', fileName: 'spritesheets/book_blue_spritesheet.png'},
         {spriteName: 'flashlight_spritesheet', fileName: 'spritesheets/flashlight_spritesheet.png'},
         {spriteName: 'fire_extinguisher_spritesheet', fileName: 'spritesheets/fire_extinguisher_spritesheet.png'},
