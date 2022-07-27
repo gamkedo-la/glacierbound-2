@@ -1,6 +1,6 @@
 function initMapGameObjects(){
     levelList.forEach(map => map.objects.forEach(function(element) {
-        new GameObject(element.col, element.row, 0, element.spriteSheet, 0, 0.05, 0, map.mapID - 80, element.objectType); 
+        new GameObject(element.col, element.row, 0, element.spriteSheet, 0, 0.05, 0, map.mapID - 80, element.objectType, element.isLocked); 
     }) );
 }
 
@@ -30,23 +30,55 @@ var ship_80 = {
     floorReflection: true,
     mapID: 80,
     objects: [
+        //{
+        //    col: 6,
+        //    row: 7,
+        //    spriteSheet: "book_blue_spritesheet",
+        //    altitude: 0,
+        //    scale: 0.05,
+        //    angle: 0,
+        //    objectType: OBJECT_TYPE_ITEM,
+        //    isLocked: false
+        //},
         {
             col: 6,
-            row: 7,
-            spriteSheet: "flashlight_spritesheet",
+            row: 5,
+            spriteSheet: undefined,
             altitude: 0,
             scale: 0.05,
             angle: 0,
-            objectType: OBJECT_TYPE_ITEM
+            objectType: OBJECT_TYPE_DOOR,
+            isLocked: false
         },
         {
-            col: 1,
+            col: 5,
             row: 7,
             spriteSheet: undefined,
             altitude: 0,
             scale: 0.05,
             angle: 0,
-            objectType: OBJECT_TYPE_DOOR
+            objectType: OBJECT_TYPE_DOOR,
+            isLocked: false
+        },
+        {
+            col: 6,
+            row: 9,
+            spriteSheet: undefined,
+            altitude: 0,
+            scale: 0.05,
+            angle: 0,
+            objectType: OBJECT_TYPE_DOOR,
+            isLocked: false
+        },
+        {
+            col: 17,
+            row: 9,
+            spriteSheet: undefined,
+            altitude: 0,
+            scale: 0.05,
+            angle: 0,
+            objectType: OBJECT_TYPE_DOOR,
+            isLocked: false
         }
     ]
 }
@@ -78,14 +110,55 @@ var ship_81 = {
     mapID: 81,
     objects: [
         {
-        col: 6,
-        row: 3,
-        spriteSheet: "fire_extinguisher_spritesheet",
-        altitude: 0,
-        scale: 0.05,
-        angle: 0,
-        objectType: OBJECT_TYPE_ITEM
-        }
+            col: 6,
+            row: 1,
+            spriteSheet: "fire_extinguisher_spritesheet",
+            altitude: 0,
+            scale: 0.05,
+            angle: 0,
+            objectType: OBJECT_TYPE_ITEM,
+            isLocked: false
+        },
+        {
+            col: 2,
+            row: 3,
+            spriteSheet: undefined,
+            altitude: 0,
+            scale: 0.05,
+            angle: 0,
+            objectType: OBJECT_TYPE_DOOR,
+            isLocked: false
+        },
+        {
+            col: 6,
+            row: 3,
+            spriteSheet: undefined,
+            altitude: 0,
+            scale: 0.05,
+            angle: 0,
+            objectType: OBJECT_TYPE_DOOR,
+            isLocked: false
+        },
+        {
+            col: 10,
+            row: 3,
+            spriteSheet: undefined,
+            altitude: 0,
+            scale: 0.05,
+            angle: 0,
+            objectType: OBJECT_TYPE_DOOR,
+            isLocked: false
+        },
+        {
+            col: 14,
+            row: 3,
+            spriteSheet: undefined,
+            altitude: 0,
+            scale: 0.05,
+            angle: 0,
+            objectType: OBJECT_TYPE_DOOR,
+            isLocked: false
+        },
     ]
 }
 
@@ -121,7 +194,8 @@ var ship_82 = {
             altitude: 0,
             scale: 0.05,
             angle: 0,
-            objectType: OBJECT_TYPE_ITEM
+            objectType: OBJECT_TYPE_ITEM,
+            isLocked: false
         }
     ]
 }
@@ -159,7 +233,8 @@ var arctic_83 = {
             altitude: 0,
             scale: 0.05,
             angle: 0,
-            objectType: OBJECT_TYPE_ITEM
+            objectType: OBJECT_TYPE_ITEM,
+            isLocked: false
         }
     ]
 }
@@ -197,7 +272,8 @@ var arctic_84 = {
             altitude: 0,
             scale: 0.05,
             angle: 0,
-            objectType: OBJECT_TYPE_ITEM
+            objectType: OBJECT_TYPE_ITEM,
+            isLocked: false
         }
     ]
 }
@@ -235,7 +311,8 @@ var arctic_85 = {
             altitude: 0,
             scale: 0.05,
             angle: 0,
-            objectType: OBJECT_TYPE_ITEM
+            objectType: OBJECT_TYPE_ITEM,
+            isLocked: false
         }
     ]
 }
@@ -272,7 +349,8 @@ var cave_86 = {
             altitude: 0,
             scale: 0.05,
             angle: 0,
-            objectType: OBJECT_TYPE_ITEM
+            objectType: OBJECT_TYPE_ITEM,
+            isLocked: false
         }
     ]
 }
@@ -309,7 +387,8 @@ var cave_87 = {
             altitude: 0,
             scale: 0.05,
             angle: 0,
-            objectType: OBJECT_TYPE_ITEM
+            objectType: OBJECT_TYPE_ITEM,
+            isLocked: false
         }
     ]
 }
@@ -346,7 +425,8 @@ var cave_88 = {
             altitude: 0,
             scale: 0.05,
             angle: 0,
-            objectType: OBJECT_TYPE_ITEM
+            objectType: OBJECT_TYPE_ITEM,
+            isLocked: false
         }
     ]
 }
@@ -383,7 +463,8 @@ var lab_89 = {
             altitude: 0,
             scale: 0.05,
             angle: 0,
-            objectType: OBJECT_TYPE_ITEM
+            objectType: OBJECT_TYPE_ITEM,
+            isLocked: false
         }
     ]
 }
@@ -420,7 +501,8 @@ var lab_90 = {
             altitude: 0,
             scale: 0.05,
             angle: 0,
-            objectType: OBJECT_TYPE_ITEM
+            objectType: OBJECT_TYPE_ITEM,
+            isLocked: false
         }
     ]
 }
@@ -457,7 +539,8 @@ var lab_91 = {
             altitude: 0,
             scale: 0.05,
             angle: 0,
-            objectType: OBJECT_TYPE_ITEM
+            objectType: OBJECT_TYPE_ITEM,
+            isLocked: false
         }
     ]
 }

@@ -1,5 +1,5 @@
 class GameObject {
-    constructor(col, row, speed, spriteSheet, altitude = 0, scale = 1, angle, mapID, objectType) {
+    constructor(col, row, speed, spriteSheet, altitude = 0, scale = 1, angle, mapID, objectType, isLocked) {
         this.col = col;
         this.row = row;
         this.x = mapSection.getTileCenterPixelCoordFromGridCoord(col, row).x;
@@ -9,7 +9,7 @@ class GameObject {
         this.moveSpeed = speed;
         this.altitude = altitude;
         this.scale = scale;
-        this.radius = TILE_SIZE;
+        this.radius = TILE_SIZE * 1.5;
         this.distanceToPlayer = Infinity;
         this.isDead = false;
         this.spriteName = spriteSheet;
@@ -21,6 +21,12 @@ class GameObject {
         this.drawnThisFrame = false;
         this.isActive = true;
         this.objectType = objectType;
+        this.isLocked = isLocked;
+        this.opened = false;
+
+        if (this.objectType == OBJECT_TYPE_DOOR && this.mapID == currentRoom) {
+            mapSection.setTileTypeAtGridCoord(this.col, this.row, 17);
+        }
         
         allObjects.push(this);
     }
@@ -28,6 +34,10 @@ class GameObject {
     update() {
         if (!this.isActive) return;
         if (this.mapID != currentRoom) return;
+
+        if (this.objectType == OBJECT_TYPE_DOOR && this.opened == false) {
+            mapSection.setTileTypeAtGridCoord(this.col, this.row, 17);
+        }
 
         this.drawnThisFrame = false;
 
@@ -60,6 +70,20 @@ class GameObject {
                 break;
 
             case OBJECT_TYPE_DOOR:
+                if (this.isLocked) {
+                    textDisplay.setText("Locked");
+                    if (inventory.containsItem("book_blue_spritesheet")){
+                        this.isLocked = false;
+                        textDisplay.setText("Door Unlocked");
+                        mapSection.setTileTypeAtGridCoord(this.col, this.row, TILE_TYPE_FLOOR);
+                        this.opened = true;
+                    }
+                } else {
+                    mapSection.setTileTypeAtGridCoord(this.col, this.row, TILE_TYPE_FLOOR);
+                    this.opened = true;
+                }
+                break;
+                /*
                 if (inventory.containsItem("book_blue_spritesheet")){
                     document.location.reload();
                 } else {
@@ -67,6 +91,7 @@ class GameObject {
                     mapSection.setTileTypeAtGridCoord(this.col, this.row, TILE_TYPE_FLOOR);
                 }
                 break;
+                */
         }
     }
 

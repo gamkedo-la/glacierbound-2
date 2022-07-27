@@ -5,6 +5,10 @@ class DebugDisplay {
     this.width = 640
     this.height = 320
     this.color = 'rgba(0,0,0,0.5)'
+    this.mouseGridCood = {
+      col: 0,
+      row: 0
+    };
   }
 
   draw() {
@@ -31,6 +35,8 @@ class DebugDisplay {
       text_pos_y += 25;
     }
 
+    colorText("Minimap Grid Coord: ("+this.mouseGridCood.col +", "+this.mouseGridCood.row+")", bufferedDebugCanvasContext, text_pos_x, text_pos_y, font, text_align, color);
+
     drawBufferedCanvasToScreenCanvas(bufferedDebugCanvas);
   }
 
@@ -41,5 +47,13 @@ class DebugDisplay {
         showDebugText,
         gameStarted
     };
+
+    if (isPixelCoordWithinMapGrid(mousePos.x / MINIMAP_SCALE_FACTOR, mousePos.y / MINIMAP_SCALE_FACTOR)){
+        this.mouseGridCood = {
+          col: mapSection.getGridCoordFromPixelCoord(mousePos.x / MINIMAP_SCALE_FACTOR, mousePos.y / MINIMAP_SCALE_FACTOR).col,
+          row: mapSection.getGridCoordFromPixelCoord(mousePos.x / MINIMAP_SCALE_FACTOR, mousePos.y / MINIMAP_SCALE_FACTOR).row
+        }
+    }
+    
   }
 }
