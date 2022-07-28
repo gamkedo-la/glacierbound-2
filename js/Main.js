@@ -50,7 +50,7 @@ function updateEverything() {
 
     if (showDebugText) {
         const debugParagraph = document.getElementById('debug-text')
-        debugParagraph.innerText = levelEditorEnabled ? `Press 'L' to exit Editor Mode` : `Press 'L' to enter Editor Mode`
+        debugParagraph.innerText = levelEditorEnabled ? `Press 'L' to exit Editor Mode` : `Press 'L' to enter Editor Mode and TAB for debug info`
     }
     if (levelEditorEnabled) {
         updateLevelEditor();
