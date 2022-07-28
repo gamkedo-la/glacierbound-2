@@ -34,6 +34,10 @@ function loadImages() {
 
         {spriteName: 'cave_wall', fileName: 'cave_wall.png'},
         {spriteName: 'cave_wall_icy', fileName: 'cave_wall_icy.png'},
+
+        {spriteName: 'titlescreenBG', fileName: 'title_screen_bg.png'},
+        {spriteName: 'snow', fileName: 'snow.png'},
+        {spriteName: 'fog', fileName: 'fog.png'},
 	]
 
 	imagesToLoad = imageList.length;

@@ -13,6 +13,25 @@ function drawAndCheckButtonClick(label, color, centerX, centerY, buttonWidth, fo
     }
 }
 
+function drawSnow(){
+    let num = 16;
+    let speed = 0.0002;
+    let size = 150;
+    let maxalpha = 1;
+    let now = performance.now();
+    for (let x,y,a,i=0; i<num; i++) {
+        x = Math.sin(now*speed+i*1234)*size;
+        y = Math.sin(now*speed+i*7654)*size;
+        //a = Math.sin(now*0.0001+i*2468)*maxalpha; // hmm seems choppy
+        a=maxalpha;
+        titleScreenCanvasContext.globalAlpha = a;
+        //if (i==0) console.log('fog:'+x.toFixed(1)+','+y.toFixed(1)+','+a.toFixed(2));
+        //titleScreenCanvasContext.drawImage(spriteList['snow'],x,y);
+        titleScreenCanvasContext.drawImage(spriteList['fog'],x,y);
+    }
+    titleScreenCanvasContext.globalAlpha = 1;
+}
+
 function drawTitleScreen(){
     if(showingCredits) {
         colorRect(0,0, titleScreenCanvas.width, titleScreenCanvas.height, "black", titleScreenCanvasContext, 1);
@@ -25,8 +44,11 @@ function drawTitleScreen(){
 
     // Draw Background
     colorRect(0,0,titleScreenCanvas.width, titleScreenCanvas.height, "black", titleScreenCanvasContext, 1);
+    titleScreenCanvasContext.drawImage(spriteList['titlescreenBG'],-2,-2); // the -2's make no sense but eliminate blocky edges due to filtering of some sort
+    drawSnow();
 
     // Draw Title
+    colorText("GLACIERBOUND 2", titleScreenCanvasContext, titleScreenCanvas.width / 2 + 1, titleScreenCanvas.height * 0.25 + 1, '18px Roboto Mono', "center", "black");
     colorText("GLACIERBOUND 2", titleScreenCanvasContext, titleScreenCanvas.width / 2, titleScreenCanvas.height * 0.25, '18px Roboto Mono', "center", "white");
 
     // Draw Buttons
