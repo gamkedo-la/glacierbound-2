@@ -20,11 +20,11 @@
 #X obj 322 272 cos~;
 #X obj 322 296 *~;
 #X obj 224 355 +~;
-#X msg 266 35 250;
+#X msg 317 34 250;
 #X obj 571 108 vsl 15 128 1 500 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 6400 1;
+-1 -1 4400 1;
 #X obj 618 154 vsl 15 128 0 100 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 4800 1;
+-1 -1 8400 1;
 #X floatatom 618 290 5 0 0 0 - - -;
 #X floatatom 571 244 5 0 0 0 - - -;
 #X obj 327 546 *~;
@@ -49,6 +49,7 @@
 #X text 507 423 <- master volume;
 #X text 651 153 <- Q;
 #X text 597 104 <- center freq;
+#X msg 252 34 75;
 #X connect 0 0 1 0;
 #X connect 1 0 2 0;
 #X connect 2 0 3 0;
@@ -71,6 +72,7 @@
 #X connect 16 0 17 0;
 #X connect 17 0 18 0;
 #X connect 18 0 19 0;
+#X connect 18 0 19 1;
 #X connect 19 0 20 1;
 #X connect 20 0 6 0;
 #X connect 21 0 8 0;
@@ -90,7 +92,8 @@
 #X connect 33 0 38 0;
 #X connect 34 0 37 0;
 #X connect 35 0 32 0;
-#X connect 36 0 21 0;
 #X connect 36 0 33 0;
+#X connect 36 0 44 0;
 #X connect 37 0 35 0;
 #X connect 38 0 34 0;
+#X connect 44 0 8 0;
