@@ -31,6 +31,8 @@ function loadImages() {
         {spriteName: 'ship_interior_plain_wall', fileName: 'ship_interior_plain_wall.png'},
         {spriteName: 'ship_interior_wall_simple', fileName: 'ship_interior_wall_simple.png'},
         {spriteName: 'ship_interior_wall_no_pipes', fileName: 'ship_interior_wall_no_pipes.png'},
+        {spriteName: 'ship_interior_valves', fileName: 'ship_interior_valves_32x32.png'},
+        {spriteName: 'ship_interior_valves_striped', fileName: 'ship_interior_valves_striped_32x32.png'},
 
         {spriteName: 'cave_wall', fileName: 'cave_wall.png'},
         {spriteName: 'cave_wall_icy', fileName: 'cave_wall_icy.png'},

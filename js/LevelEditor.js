@@ -30,6 +30,8 @@ function initLevelEditor(){
     caveWallTextures.push(spriteList['cave_wall']);
     caveWallTextures.push(spriteList['cave_wall_icy']);
     caveWallTextures.push(spriteList['ship_door']);
+    caveWallTextures.push(spriteList['ship_interior_valves']);
+    caveWallTextures.push(spriteList['ship_interior_valves_striped']);
     wallTextures.push(caveWallTextures);
 
     wallTexturesFlat = wallTextures.flat();
