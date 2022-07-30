@@ -415,7 +415,7 @@ var cave_86 = {
             scale: 0.05,
             angle: 0,
             objectType: OBJECT_TYPE_DOOR,
-            isLocked: falsed,
+            isLocked: false,
             lockedMessage: "It's getting too dark to continue without a light",
             keyName: 'lamp_spritesheet'
         }
