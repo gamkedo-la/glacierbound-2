@@ -406,6 +406,18 @@ var cave_86 = {
             isLocked: false,
             lockedMessage: '',
             keyName: ''
+        },
+        {
+            col: 1,
+            row: 11,
+            spriteSheet: undefined,
+            altitude: 0,
+            scale: 0.05,
+            angle: 0,
+            objectType: OBJECT_TYPE_DOOR,
+            isLocked: falsed,
+            lockedMessage: "It's getting too dark to continue without a light",
+            keyName: 'lamp_spritesheet'
         }
     ]
 }
@@ -436,8 +448,8 @@ var cave_87 = {
     mapID: 87,
     objects: [
         {
-            col: 6,
-            row: 3,
+            col: 0,
+            row: 0,
             spriteSheet: "map_spritesheet",
             altitude: 0,
             scale: 0.05,
@@ -732,8 +744,8 @@ var lab_90 = {
             scale: 0.05,
             angle: 0,
             objectType: OBJECT_TYPE_DOOR,
-            isLocked: false,
-            lockedMessage: "",
+            isLocked: true,
+            lockedMessage: "It doesn't seem to open from this side",
             keyName: ''
         },
         {
@@ -779,13 +791,13 @@ var lab_91 = {
         {
             col: 9,
             row: 5,
-            spriteSheet: "book_blue_spritesheet",
+            spriteSheet: "Artifact",
             altitude: 0,
             scale: 0.05,
             angle: 0,
             objectType: OBJECT_TYPE_ITEM,
             isLocked: false,
-            lockedMessage: "Locked",
+            lockedMessage: '',
             keyName: ''
         },
         {
@@ -880,9 +892,9 @@ var lab_91 = {
             scale: 0.05,
             angle: 0,
             objectType: OBJECT_TYPE_DOOR,
-            isLocked: false,
-            lockedMessage: "",
-            keyName: ''
+            isLocked: true,
+            lockedMessage: "I can't leave without the artifact...",
+            keyName: 'Artifact'
         }
     ]
 }

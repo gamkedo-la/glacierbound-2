@@ -24,6 +24,7 @@ function loadImages() {
         {spriteName: 'wrench_red_spritesheet', fileName: 'spritesheets/wrench_red_spritesheet.png'},
         {spriteName: 'Key', fileName: 'spritesheets/key_spritesheet.png'},
         {spriteName: 'TNT', fileName: 'spritesheets/tnt_spritesheet.png'},
+        {spriteName: 'Artifact', fileName: 'spritesheets/artifact_spritesheet.png'},
         {spriteName: 'floor_snow', fileName: 'floor_snow.png'},
         {spriteName: 'floor_ship', fileName: 'floor_ship.png'},
 
@@ -78,3 +79,4 @@ spriteData["wrench_red_spritesheet"] = {frames: 8, w: 128, h: 128};
 spriteData["lamp_spritesheet"] = {frames: 8, w: 128, h: 128};
 spriteData["Key"] = {frames: 8, w: 128, h: 128};
 spriteData["TNT"] = {frames: 8, w: 128, h: 128};
+spriteData["Artifact"] = {frames: 8, w: 128, h: 128};
