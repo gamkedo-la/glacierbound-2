@@ -5,6 +5,7 @@ const GROUND_FILL_COLOR = "rgba(200,200,200,1)";
 const TEXT_DISPLAY_TIME_SEC = 5;
 const OBJECT_TYPE_DOOR = 0;
 const OBJECT_TYPE_ITEM = 1;
+const OBJECT_TYPE_INTERACTABLE = 2;
 //#endregion
 
 //#region Projection Plane Constants

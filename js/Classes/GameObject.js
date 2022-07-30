@@ -74,16 +74,34 @@ class GameObject {
 
             case OBJECT_TYPE_DOOR:
                 if (this.isLocked) {
-                    textDisplay.setText(this.lockedMessage);
                     if (inventory.containsItem(this.keyName)){
                         this.isLocked = false;
-                        textDisplay.setText("Door Unlocked");
                         mapSection.setTileTypeAtGridCoord(this.col, this.row, TILE_TYPE_FLOOR);
                         this.opened = true;
+                    } else {
+                        textDisplay.setText(this.lockedMessage);
                     }
                 } else {
                     mapSection.setTileTypeAtGridCoord(this.col, this.row, TILE_TYPE_FLOOR);
                     this.opened = true;
+                }
+                break;
+            case OBJECT_TYPE_INTERACTABLE:
+                if (this.isLocked) {
+                    if (inventory.containsItem(this.keyName)){
+                        this.isLocked = false;
+                        this.opened = true;
+                        gameStarted = false;
+                        showingEndingText = true;
+                    } else {
+                        textDisplay.setText(this.lockedMessage);
+                    }
+                } else {
+                    textDisplay.setText("Activated");
+                    this.opened = true;
+                    gameStarted = false;
+                    showingEndingText = true;
+                    this.isLocked = true;
                 }
                 break;
         }
