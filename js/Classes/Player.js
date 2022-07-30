@@ -78,11 +78,11 @@ class Player {
 
     draw() {
         this.rayCaster.draw();
-        if (MINIMAP_ENABLED) {
-            colorCircle(this.x, this.y, this.radius, 'red', bufferedDebugCanvasContext, MINIMAP_SCALE_FACTOR);
-            colorLineAtAngle(this.x, this.y, this.rotationAngle, this.radius * 2, 'red', bufferedDebugCanvasContext, MINIMAP_SCALE_FACTOR);
+        if (MINIMAP_ENABLED && inventory.containsItem("Map") || levelEditorEnabled) {
+            colorCircle(this.x, this.y, this.radius, 'red', bufferedHUDCanvasContext, mapSection.miniMapScaleFactor);
+            colorLineAtAngle(this.x, this.y, this.rotationAngle, this.radius * 3, 'red', bufferedHUDCanvasContext, mapSection.miniMapScaleFactor);
         }
-        if (RADAR_ENABLED) {
+        if (RADAR_ENABLED && inventory.containsItem("Map")) {
             colorCircle(RADAR_X+this.x*RADAR_SCALE_FACTOR, RADAR_Y+this.y*RADAR_SCALE_FACTOR, 2, 'red', bufferedHUDCanvasContext, 1);
             colorLineAtAngle(RADAR_X+this.x*RADAR_SCALE_FACTOR, RADAR_Y+this.y*RADAR_SCALE_FACTOR, this.rotationAngle, 6, 'red', bufferedHUDCanvasContext, 1);
         }

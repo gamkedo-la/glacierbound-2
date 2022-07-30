@@ -4,12 +4,13 @@ var WIND_SPEED = 0.00025;
 
 class MapSection {
     constructor(startingGrid) {
+        this.miniMapScaleFactor = (levelEditorEnabled) ? MINIMAP_SCALE_FACTOR * 2 : MINIMAP_SCALE_FACTOR;
         this.originalGrid = startingGrid;
         this.grid = JSON.parse(JSON.stringify(startingGrid));
         this.minimapIsDirty = true;
         this.minimapImage = document.createElement('img');
-        this.minimapWidth = MAP_NUM_COLS * TILE_SIZE * MINIMAP_SCALE_FACTOR;
-        this.minimapHeight = MAP_NUM_ROWS * TILE_SIZE * MINIMAP_SCALE_FACTOR;
+        this.minimapWidth = MAP_NUM_COLS * TILE_SIZE * this.miniMapScaleFactor;
+        this.minimapHeight = MAP_NUM_ROWS * TILE_SIZE * this.miniMapScaleFactor;
     }
 
     // this is not perspective correct so it would not work for floors
@@ -123,11 +124,16 @@ class MapSection {
     }
 
     draw2DMinimap() {
+        if (!inventory.containsItem('Map') && !levelEditorEnabled) return;
+
+        this.miniMapScaleFactor = (levelEditorEnabled) ? MINIMAP_SCALE_FACTOR * 2 : MINIMAP_SCALE_FACTOR;
+        this.minimapWidth = MAP_NUM_COLS * TILE_SIZE * this.miniMapScaleFactor;
+        this.minimapHeight = MAP_NUM_ROWS * TILE_SIZE * this.miniMapScaleFactor;
 
         if (this.minimapIsDirty) {
             
             //colorRect(0, 0, this.minimapWidth, this.minimapHeight, 'lightgrey', bufferedDebugCanvasContext);
-            bufferedDebugCanvasContext.clearRect(0,0,this.minimapWidth, this.minimapHeight);
+            bufferedHUDCanvasContext.clearRect(0,0,this.minimapWidth, this.minimapHeight);
     
             for (var row = 0; row < MAP_NUM_ROWS; row++) {
                 for ( var col = 0; col < MAP_NUM_COLS; col++) {
@@ -137,11 +143,11 @@ class MapSection {
                         var tileType = this.getTileTypeAtGridCoord(col, row);
     
                         if (tileType != TILE_TYPE_FLOOR && tileType < 80) {
-                            bufferedDebugCanvasContext.drawImage(wallTexturesFlat[tileType - 1], tileX * MINIMAP_SCALE_FACTOR, tileY * MINIMAP_SCALE_FACTOR, TEXTURE_SIZE * MINIMAP_SCALE_FACTOR, TEXTURE_SIZE * MINIMAP_SCALE_FACTOR);
+                            bufferedHUDCanvasContext.drawImage(wallTexturesFlat[tileType - 1], tileX * this.miniMapScaleFactor, tileY * this.miniMapScaleFactor, TEXTURE_SIZE * this.miniMapScaleFactor, TEXTURE_SIZE * this.miniMapScaleFactor);
                         }
 
-                        if (tileType >= 80) {
-                            colorCircle((tileX + TILE_SIZE/2) * MINIMAP_SCALE_FACTOR, (tileY + TILE_SIZE/2) * MINIMAP_SCALE_FACTOR, 5, "blue", bufferedDebugCanvasContext);
+                        if (tileType >= 80 && debugModeEnabled) {
+                            colorCircle((tileX + TILE_SIZE/2) * this.miniMapScaleFactor, (tileY + TILE_SIZE/2) * this.miniMapScaleFactor, 5, "blue", bufferedHUDCanvasContext);
                         }
                     };
                     
@@ -151,13 +157,13 @@ class MapSection {
             this.minimapIsDirty = false;
             this.minimapImage.width = this.minimapWidth;
             this.minimapImage.height = this.minimapHeight;
-            this.minimapImage.src = bufferedDebugCanvas.toDataURL();
+            this.minimapImage.src = bufferedHUDCanvas.toDataURL();
         } else {
 
             if (MINIMAP_ENABLED) {
                 // regular, larger, opaque "debug version" of the minimap
-                colorRect(0, 0, this.minimapWidth, this.minimapHeight, 'lightgrey', bufferedDebugCanvasContext);
-                bufferedDebugCanvasContext.drawImage(this.minimapImage, 0, 0);
+                colorRect(0, 0, this.minimapWidth, this.minimapHeight, 'lightgrey', bufferedHUDCanvasContext);
+                bufferedHUDCanvasContext.drawImage(this.minimapImage, 0, 0);
             }
 
             if (RADAR_ENABLED) {
@@ -166,7 +172,6 @@ class MapSection {
                 bufferedHUDCanvasContext.globalAlpha = RADAR_ALPHA;
                 bufferedHUDCanvasContext.drawImage(this.minimapImage, RADAR_X, RADAR_Y, RADAR_W, RADAR_H);
                 bufferedHUDCanvasContext.globalAlpha = 1;
-
             }
             
         }
@@ -195,8 +200,8 @@ class MapSection {
     }
 
     setTileTypeAtPixelCoord(pixelX, pixelY, tileType) {
-        var scaledPixelX = pixelX / MINIMAP_SCALE_FACTOR;
-        var scaledPixelY = pixelY / MINIMAP_SCALE_FACTOR;
+        var scaledPixelX = pixelX / this.miniMapScaleFactor;
+        var scaledPixelY = pixelY / this.miniMapScaleFactor;
 
         if (!isPixelCoordWithinMapGrid(scaledPixelX, scaledPixelY)) return;
 
@@ -254,7 +259,7 @@ class MapSection {
         this.minimapIsDirty = true;
         wasLevelSelectPressed = false;
 
-        /*seenGrid = [
+        seenGrid = [
             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -270,7 +275,7 @@ class MapSection {
             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-        ];*/
+        ];
 
     }
 

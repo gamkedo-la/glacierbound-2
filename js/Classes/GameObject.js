@@ -141,6 +141,6 @@ class GameObject {
         if (!this.isActive) return;
         if (this.mapID != currentRoom) return;
 
-        if (MINIMAP_ENABLED) colorCircle(this.x * MINIMAP_SCALE_FACTOR, this.y * MINIMAP_SCALE_FACTOR, 5, this.miniMapColor, bufferedDebugCanvasContext);
+        if (MINIMAP_ENABLED) colorCircle(this.x * mapSection.miniMapScaleFactor, this.y * mapSection.miniMapScaleFactor, 5, this.miniMapColor, bufferedDebugCanvasContext);
     }
 }

@@ -21,9 +21,10 @@ class Ray {
         this.gridCoord = mapSection.getGridCoordFromPixelCoord(this.closestWallHitCoord.x + this.xOffset, this.closestWallHitCoord.y + this.yOffset)
         if (seenGrid[this.gridCoord.row][this.gridCoord.col] != 1){
             mapSection.minimapIsDirty = true;
-            seenGrid[this.gridCoord.row][this.gridCoord.col]
+            //seenGrid[this.gridCoord.row][this.gridCoord.col];
         }
-        seenGrid[this.gridCoord.row][this.gridCoord.col] = 1;
+
+        if (this.distance < 100) seenGrid[this.gridCoord.row][this.gridCoord.col] = 1;
         this.wallStripTexture = wallTexturesFlat[this.tileTypeHit - 1];
     }
 
@@ -82,6 +83,6 @@ class Ray {
     }
 
     draw(){
-        if (MINIMAP_ENABLED) colorLine(player.x, player.y, this.closestWallHitCoord.x, this.closestWallHitCoord.y, 'red', bufferedDebugCanvasContext, MINIMAP_SCALE_FACTOR);
+        if (MINIMAP_ENABLED) colorLine(player.x, player.y, this.closestWallHitCoord.x, this.closestWallHitCoord.y, 'red', bufferedDebugCanvasContext, mapSection.miniMapScaleFactor);
     }
 }

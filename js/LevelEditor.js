@@ -37,6 +37,8 @@ function initLevelEditor(){
     wallTexturesFlat = wallTextures.flat();
 
     selectedTileTextureIndex = 0;
+}
+function updateLevelEditor(){
 
     seenGrid = [
         [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
@@ -55,8 +57,6 @@ function initLevelEditor(){
         [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
     ];
-}
-function updateLevelEditor(){
 
     //if the mouse is down
     if (isMouseDown) {

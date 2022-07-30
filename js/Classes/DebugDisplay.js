@@ -48,10 +48,10 @@ class DebugDisplay {
         gameStarted
     };
 
-    if (isPixelCoordWithinMapGrid(mousePos.x / MINIMAP_SCALE_FACTOR, mousePos.y / MINIMAP_SCALE_FACTOR)){
+    if (isPixelCoordWithinMapGrid(mousePos.x / mapSection.miniMapScaleFactor, mousePos.y / mapSection.miniMapScaleFactor)){
         this.mouseGridCood = {
-          col: mapSection.getGridCoordFromPixelCoord(mousePos.x / MINIMAP_SCALE_FACTOR, mousePos.y / MINIMAP_SCALE_FACTOR).col,
-          row: mapSection.getGridCoordFromPixelCoord(mousePos.x / MINIMAP_SCALE_FACTOR, mousePos.y / MINIMAP_SCALE_FACTOR).row
+          col: mapSection.getGridCoordFromPixelCoord(mousePos.x / mapSection.miniMapScaleFactor, mousePos.y / mapSection.miniMapScaleFactor).col,
+          row: mapSection.getGridCoordFromPixelCoord(mousePos.x / mapSection.miniMapScaleFactor, mousePos.y / mapSection.miniMapScaleFactor).row
         }
     }
     

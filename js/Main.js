@@ -27,6 +27,7 @@ window.onload = function () {
     initMapGameObjects();
 
     textDisplay = new TextDisplay();
+    textDisplay.setText("LMB to interact with doors and pickup items");
 }
 
 function initRenderLoop() { //called from ImageLoading.js

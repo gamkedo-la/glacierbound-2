@@ -1,6 +1,8 @@
 function initMapGameObjects(){
     levelList.forEach(map => map.objects.forEach(function(element) {
-        new GameObject(element.col, element.row, 0, element.spriteSheet, 0, 0.05, 0, map.mapID - 80, element.objectType, element.isLocked, element.lockedMessage, element.keyName); 
+        if (element) {
+            new GameObject(element.col, element.row, 0, element.spriteSheet, 0, 0.05, 0, map.mapID - 80, element.objectType, element.isLocked, element.lockedMessage, element.keyName); 
+        }
     }) );
 }
 
@@ -121,6 +123,18 @@ var ship_81 = {
     mapID: 81,
     objects: [
         {
+            col: 1,
+            row: 7,
+            spriteSheet: "Map",
+            altitude: 0,
+            scale: 0.05,
+            angle: 0,
+            objectType: OBJECT_TYPE_ITEM,
+            isLocked: false,
+            lockedMessage: "Locked",
+            keyName: ''
+        },
+        {
             col: 6,
             row: 1,
             spriteSheet: "Fire Extinguisher",
@@ -190,7 +204,7 @@ var ship_81 = {
             angle: 0,
             objectType: OBJECT_TYPE_DOOR,
             isLocked: true,
-            lockedMessage: "I need find the wrench in the boiler room to open this.",
+            lockedMessage: "I need to find the wrench in the boiler room to open this.",
             keyName: 'Wrench'
         }
     ]
@@ -356,20 +370,7 @@ var arctic_85 = {
     floorMapName: 'floor_snow',
     floorReflection: false,
     mapID: 85,
-    objects: [
-        {
-            col: 6,
-            row: 3,
-            spriteSheet: "Map",
-            altitude: 0,
-            scale: 0.05,
-            angle: 0,
-            objectType: OBJECT_TYPE_ITEM,
-            isLocked: false,
-            lockedMessage: "Locked",
-            keyName: ''
-        }
-    ]
+    objects: []
 }
 
 var cave_86 = {
@@ -448,20 +449,7 @@ var cave_87 = {
     floorMapName: 'floor_ship',
     floorReflection: false,
     mapID: 87,
-    objects: [
-        {
-            col: 0,
-            row: 0,
-            spriteSheet: "Map",
-            altitude: 0,
-            scale: 0.05,
-            angle: 0,
-            objectType: OBJECT_TYPE_ITEM,
-            isLocked: false,
-            lockedMessage: "Locked",
-            keyName: ''
-        }
-    ]
+    objects: []
 }
 
 var cave_88 = {
@@ -488,20 +476,7 @@ var cave_88 = {
     floorMapName: 'floor_ship',
     floorReflection: false,
     mapID: 88,
-    objects: [
-        {
-            col: 6,
-            row: 3,
-            spriteSheet: "Map",
-            altitude: 0,
-            scale: 0.05,
-            angle: 0,
-            objectType: OBJECT_TYPE_ITEM,
-            isLocked: false,
-            lockedMessage: "Locked",
-            keyName: ''
-        }
-    ]
+    objects: []
 }
 
 var lab_89 = {
@@ -529,18 +504,6 @@ var lab_89 = {
     floorReflection: false,
     mapID: 89,
     objects: [
-        {
-            col: 1,
-            row: 8,
-            spriteSheet: "Map",
-            altitude: 0,
-            scale: 0.05,
-            angle: 0,
-            objectType: OBJECT_TYPE_ITEM,
-            isLocked: false,
-            lockedMessage: '',
-            keyName: ''
-        },
         {
             col: 9,
             row: 4,

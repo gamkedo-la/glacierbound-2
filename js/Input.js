@@ -184,7 +184,7 @@ function keyReleased(evt) {
 
   // Enable generic debug display
   if (evt.keyCode === KEY_TAB) {
-    debugModeEnabled = !debugModeEnabled;
+    //debugModeEnabled = !debugModeEnabled;
     // console.log("Show debug window:", debugModeEnabled);
   }
 }
