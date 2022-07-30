@@ -1,5 +1,5 @@
 class GameObject {
-    constructor(col, row, speed, spriteSheet, altitude = 0, scale = 1, angle, mapID, objectType, isLocked) {
+    constructor(col, row, speed, spriteSheet, altitude = 0, scale = 1, angle, mapID, objectType, isLocked, lockedMessage, keyName) {
         this.col = col;
         this.row = row;
         this.x = mapSection.getTileCenterPixelCoordFromGridCoord(col, row).x;
@@ -22,6 +22,8 @@ class GameObject {
         this.isActive = true;
         this.objectType = objectType;
         this.isLocked = isLocked;
+        this.lockedMessage = lockedMessage;
+        this.keyName = keyName;
         this.opened = false;
 
         if (this.objectType == OBJECT_TYPE_DOOR && this.mapID == currentRoom) {
@@ -71,8 +73,8 @@ class GameObject {
 
             case OBJECT_TYPE_DOOR:
                 if (this.isLocked) {
-                    textDisplay.setText("Locked");
-                    if (inventory.containsItem("book_blue_spritesheet")){
+                    textDisplay.setText(this.lockedMessage);
+                    if (inventory.containsItem(this.keyName)){
                         this.isLocked = false;
                         textDisplay.setText("Door Unlocked");
                         mapSection.setTileTypeAtGridCoord(this.col, this.row, TILE_TYPE_FLOOR);

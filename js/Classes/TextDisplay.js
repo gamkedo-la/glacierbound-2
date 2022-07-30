@@ -5,7 +5,7 @@ class TextDisplay {
  
         this.boxY = bufferedHUDCanvas.height - 180;
         this.boxHeight = 50;
-        this.fontSize = 20;
+        this.fontSize = 16;
         this.font = this.fontSize+'px Roboto Mono';
         this.textY = this.boxY + (this.boxHeight / 2) + (this.fontSize / 2);
 

@@ -1,6 +1,6 @@
 function initMapGameObjects(){
     levelList.forEach(map => map.objects.forEach(function(element) {
-        new GameObject(element.col, element.row, 0, element.spriteSheet, 0, 0.05, 0, map.mapID - 80, element.objectType, element.isLocked); 
+        new GameObject(element.col, element.row, 0, element.spriteSheet, 0, 0.05, 0, map.mapID - 80, element.objectType, element.isLocked, element.lockedMessage, element.keyName); 
     }) );
 }
 
@@ -48,7 +48,9 @@ var ship_80 = {
             scale: 0.05,
             angle: 0,
             objectType: OBJECT_TYPE_DOOR,
-            isLocked: false
+            isLocked: false,
+            lockedMessage: "Locked",
+            keyName: ''
         },
         {
             col: 5,
@@ -58,7 +60,9 @@ var ship_80 = {
             scale: 0.05,
             angle: 0,
             objectType: OBJECT_TYPE_DOOR,
-            isLocked: false
+            isLocked: false,
+            lockedMessage: "Locked",
+            keyName: ''
         },
         {
             col: 6,
@@ -68,7 +72,10 @@ var ship_80 = {
             scale: 0.05,
             angle: 0,
             objectType: OBJECT_TYPE_DOOR,
-            isLocked: false
+            isLocked: false,
+            lockedMessage: "Locked",
+            keyName: '',
+            keyName: ''
         },
         {
             col: 17,
@@ -78,7 +85,9 @@ var ship_80 = {
             scale: 0.05,
             angle: 0,
             objectType: OBJECT_TYPE_DOOR,
-            isLocked: false
+            isLocked: false,
+            lockedMessage: "Locked",
+            keyName: ''
         }
     ]
 }
@@ -117,7 +126,10 @@ var ship_81 = {
             scale: 0.05,
             angle: 0,
             objectType: OBJECT_TYPE_ITEM,
-            isLocked: false
+            isLocked: false,
+            lockedMessage: "Locked",
+            keyName: '',
+            keyName: ''
         },
         {
             col: 2,
@@ -127,7 +139,9 @@ var ship_81 = {
             scale: 0.05,
             angle: 0,
             objectType: OBJECT_TYPE_DOOR,
-            isLocked: false
+            isLocked: false,
+            lockedMessage: "Locked",
+            keyName: ''
         },
         {
             col: 6,
@@ -137,7 +151,9 @@ var ship_81 = {
             scale: 0.05,
             angle: 0,
             objectType: OBJECT_TYPE_DOOR,
-            isLocked: false
+            isLocked: false,
+            lockedMessage: "Locked",
+            keyName: ''
         },
         {
             col: 10,
@@ -147,7 +163,9 @@ var ship_81 = {
             scale: 0.05,
             angle: 0,
             objectType: OBJECT_TYPE_DOOR,
-            isLocked: false
+            isLocked: false,
+            lockedMessage: "Locked",
+            keyName: ''
         },
         {
             col: 14,
@@ -157,28 +175,43 @@ var ship_81 = {
             scale: 0.05,
             angle: 0,
             objectType: OBJECT_TYPE_DOOR,
-            isLocked: false
+            isLocked: false,
+            lockedMessage: "Locked",
+            keyName: ''
         },
+        {
+            col: 16,
+            row: 6,
+            spriteSheet: undefined,
+            altitude: 0,
+            scale: 0.05,
+            angle: 0,
+            objectType: OBJECT_TYPE_DOOR,
+            isLocked: true,
+            lockedMessage: "I need find the wrench in the boiler room to open this.",
+            keyName: 'wrench_red_spritesheet'
+        }
     ]
 }
 
 var ship_82 = {
     grid: [
         [ 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 4, 4, 4],
-        [ 5, 0, 0, 5, 0, 5, 0, 0, 0, 0, 5, 0, 0, 5, 0, 0, 4, 0, 0, 4],
-        [ 5, 5, 0, 5, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 5, 4, 4, 0, 4],
-        [ 5, 0, 0, 0, 0, 5, 5, 5, 5, 5, 5, 5, 0, 5, 0, 0, 0, 4,81, 4],
-        [ 5, 0, 5, 0, 0, 5, 0, 0, 0, 0, 0, 5, 5, 0, 5, 5, 0, 0, 0, 4],
-        [ 5, 0, 5, 5, 0, 0, 5, 5, 5, 0, 0, 0, 0, 0, 5, 0, 0, 4, 4, 4],
-        [ 5, 0, 0, 0, 0, 0, 0, 0, 5, 0, 5, 5, 0, 0, 0, 5, 0, 0, 0, 5],
-        [ 5, 0, 5, 5, 0, 5, 0, 5, 5, 0, 0, 0, 5, 5, 0, 0, 0, 5, 0, 5],
-        [ 5, 0, 0, 5, 5, 5, 0, 0, 0, 0, 5, 0, 5, 0, 5, 0, 0, 5, 0, 5],
-        [ 5, 5, 0, 5, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 5, 5, 0, 5],
-        [ 5, 5, 0, 0, 0, 0, 5, 5, 0, 5, 5, 0, 0, 5, 0, 0, 0, 0, 0, 5],
-        [ 5, 0, 0, 5, 5, 0, 0, 5, 0, 0, 5, 0, 5, 5, 0, 5, 5, 5, 0, 5],
+        [18, 0, 0, 5, 0, 5, 0, 0, 0, 0, 5, 0, 0, 5, 0, 0, 4, 0, 0, 6],
+        [ 5, 5, 0, 5, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 5, 4, 4, 0, 6],
+        [ 5, 0, 0, 0, 0, 5, 5, 5, 5, 5, 5, 5, 0, 5, 0, 0, 0, 4,81, 6],
+        [ 5, 0, 5, 0, 0, 5,18, 0, 0, 0, 0, 5, 5, 5, 5, 5, 0, 0, 0, 6],
+        [ 5, 0, 5, 5, 0, 0, 5, 5, 5, 0, 0, 0, 0, 5,18, 0, 0, 6, 6, 6],
+        [ 5, 0, 0, 0, 0, 0, 0, 0, 5, 0, 5, 5, 0, 5, 5, 5, 0, 0, 0, 5],
+        [ 5, 0, 5, 5, 0, 5, 0, 5, 5, 0, 0, 0, 0, 0, 0, 0, 0, 5, 0, 5],
+        [ 5, 0, 0, 5,18, 5, 0, 0, 0, 0, 5, 0, 5, 0, 5, 0, 0, 5, 0, 5],
+        [ 5, 5, 0, 5, 5, 5, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 5, 5, 0, 5],
+        [ 5, 5, 0, 0, 0, 0, 0, 5, 0, 5, 5, 0, 0, 5, 0, 5, 5, 5, 0, 5],
+        [ 5, 0, 0, 5, 5, 0, 0, 5, 0, 0, 5, 0, 5, 5, 0, 5,18, 5, 0, 5],
         [ 5, 0, 5, 5, 0, 5, 0, 5, 5, 0, 5, 0, 5, 5, 0, 5, 0, 5, 0, 5],
         [ 5, 0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5],
         [ 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5]
+
     ],
     startingTileX: 16,
     startingTileY: 5,
@@ -188,14 +221,16 @@ var ship_82 = {
     mapID: 82,
     objects: [
         {
-            col: 6,
-            row: 3,
-            spriteSheet: "map_spritesheet",
+            col: 4,
+            row: 12,
+            spriteSheet: "wrench_red_spritesheet",
             altitude: 0,
             scale: 0.05,
             angle: 0,
             objectType: OBJECT_TYPE_ITEM,
-            isLocked: false
+            isLocked: false,
+            lockedMessage: "Locked",
+            keyName: ''
         }
     ]
 }
@@ -234,7 +269,9 @@ var arctic_83 = {
             scale: 0.05,
             angle: 0,
             objectType: OBJECT_TYPE_ITEM,
-            isLocked: false
+            isLocked: false,
+            lockedMessage: "Locked",
+            keyName: ''
         }
     ]
 }
@@ -273,7 +310,9 @@ var arctic_84 = {
             scale: 0.05,
             angle: 0,
             objectType: OBJECT_TYPE_ITEM,
-            isLocked: false
+            isLocked: false,
+            lockedMessage: "Locked",
+            keyName: ''
         }
     ]
 }
@@ -312,7 +351,9 @@ var arctic_85 = {
             scale: 0.05,
             angle: 0,
             objectType: OBJECT_TYPE_ITEM,
-            isLocked: false
+            isLocked: false,
+            lockedMessage: "Locked",
+            keyName: ''
         }
     ]
 }
@@ -350,7 +391,9 @@ var cave_86 = {
             scale: 0.05,
             angle: 0,
             objectType: OBJECT_TYPE_ITEM,
-            isLocked: false
+            isLocked: false,
+            lockedMessage: "Locked",
+            keyName: ''
         }
     ]
 }
@@ -388,7 +431,9 @@ var cave_87 = {
             scale: 0.05,
             angle: 0,
             objectType: OBJECT_TYPE_ITEM,
-            isLocked: false
+            isLocked: false,
+            lockedMessage: "Locked",
+            keyName: ''
         }
     ]
 }
@@ -426,7 +471,9 @@ var cave_88 = {
             scale: 0.05,
             angle: 0,
             objectType: OBJECT_TYPE_ITEM,
-            isLocked: false
+            isLocked: false,
+            lockedMessage: "Locked",
+            keyName: ''
         }
     ]
 }
@@ -464,7 +511,9 @@ var lab_89 = {
             scale: 0.05,
             angle: 0,
             objectType: OBJECT_TYPE_ITEM,
-            isLocked: false
+            isLocked: false,
+            lockedMessage: "Locked",
+            keyName: ''
         }
     ]
 }
@@ -502,7 +551,9 @@ var lab_90 = {
             scale: 0.05,
             angle: 0,
             objectType: OBJECT_TYPE_ITEM,
-            isLocked: false
+            isLocked: false,
+            lockedMessage: "Locked",
+            keyName: ''
         }
     ]
 }
@@ -540,7 +591,9 @@ var lab_91 = {
             scale: 0.05,
             angle: 0,
             objectType: OBJECT_TYPE_ITEM,
-            isLocked: false
+            isLocked: false,
+            lockedMessage: "Locked",
+            keyName: ''
         }
     ]
 }
