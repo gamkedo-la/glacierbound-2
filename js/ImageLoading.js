@@ -40,6 +40,8 @@ function loadImages() {
         {spriteName: 'titlescreenBG', fileName: 'title_screen_bg.png'},
         {spriteName: 'snow', fileName: 'snow.png'},
         {spriteName: 'fog', fileName: 'fog.png'},
+
+        {spriteName: 'intro_text', fileName: 'intro_text.png'}
 	]
 
 	imagesToLoad = imageList.length;

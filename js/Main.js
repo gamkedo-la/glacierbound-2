@@ -65,6 +65,7 @@ function drawEverything() {
         clearAllCanvases();
         drawTitleScreen();
         drawBufferedCanvasToScreenCanvas(titleScreenCanvas);
+        drawBufferedCanvasToScreenCanvas(bufferedHUDCanvas);
     } else {
 
         if (isPaused()) {
