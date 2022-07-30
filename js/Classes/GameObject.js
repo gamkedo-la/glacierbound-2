@@ -21,6 +21,7 @@ class GameObject {
         this.drawnThisFrame = false;
         this.isActive = true;
         this.objectType = objectType;
+        this.miniMapColor = (this.objectType === OBJECT_TYPE_DOOR) ? 'green' : 'yellow';
         this.isLocked = isLocked;
         this.lockedMessage = lockedMessage;
         this.keyName = keyName;
@@ -131,6 +132,6 @@ class GameObject {
         if (!this.isActive) return;
         if (this.mapID != currentRoom) return;
 
-        if (MINIMAP_ENABLED) colorCircle(this.x * MINIMAP_SCALE_FACTOR, this.y * MINIMAP_SCALE_FACTOR, 5, "green", bufferedDebugCanvasContext);
+        if (MINIMAP_ENABLED) colorCircle(this.x * MINIMAP_SCALE_FACTOR, this.y * MINIMAP_SCALE_FACTOR, 5, this.miniMapColor, bufferedDebugCanvasContext);
     }
 }
