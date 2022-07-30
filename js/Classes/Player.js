@@ -83,8 +83,8 @@ class Player {
             colorLineAtAngle(this.x, this.y, this.rotationAngle, this.radius * 2, 'red', bufferedDebugCanvasContext, MINIMAP_SCALE_FACTOR);
         }
         if (RADAR_ENABLED) {
-            colorCircle(RADAR_X+this.x*RADAR_SCALE_FACTOR, RADAR_Y+this.y*RADAR_SCALE_FACTOR, 2, 'red', bufferedDebugCanvasContext, 1);
-            colorLineAtAngle(RADAR_X+this.x*RADAR_SCALE_FACTOR, RADAR_Y+this.y*RADAR_SCALE_FACTOR, this.rotationAngle, 6, 'red', bufferedDebugCanvasContext, 1);
+            colorCircle(RADAR_X+this.x*RADAR_SCALE_FACTOR, RADAR_Y+this.y*RADAR_SCALE_FACTOR, 2, 'red', bufferedHUDCanvasContext, 1);
+            colorLineAtAngle(RADAR_X+this.x*RADAR_SCALE_FACTOR, RADAR_Y+this.y*RADAR_SCALE_FACTOR, this.rotationAngle, 6, 'red', bufferedHUDCanvasContext, 1);
         }
     }
 

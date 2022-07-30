@@ -162,10 +162,10 @@ class MapSection {
 
             if (RADAR_ENABLED) {
                 // small radar version
-                if (RADAR_BG_ENABLED) colorRect(RADAR_X, RADAR_Y, RADAR_W, RADAR_H, RADAR_BG_FILL, bufferedDebugCanvasContext);
-                bufferedDebugCanvasContext.globalAlpha = RADAR_ALPHA;
-                bufferedDebugCanvasContext.drawImage(this.minimapImage, RADAR_X, RADAR_Y, RADAR_W, RADAR_H);
-                bufferedDebugCanvasContext.globalAlpha = 1;
+                if (RADAR_BG_ENABLED) colorRect(RADAR_X, RADAR_Y, RADAR_W, RADAR_H, RADAR_BG_FILL, bufferedHUDCanvasContext);
+                bufferedHUDCanvasContext.globalAlpha = RADAR_ALPHA;
+                bufferedHUDCanvasContext.drawImage(this.minimapImage, RADAR_X, RADAR_Y, RADAR_W, RADAR_H);
+                bufferedHUDCanvasContext.globalAlpha = 1;
 
             }
             
