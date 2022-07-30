@@ -94,7 +94,7 @@ function drawEverything() {
             drawBufferedCanvasToScreenCanvas(bufferedGameCanvas);
             drawBufferedCanvasToScreenCanvas(bufferedHUDCanvas);
 
-            if (debugModeEnabled) {
+            if (debugModeEnabled || levelEditorEnabled) {
                 screenCanvas.style.cursor = "auto";
                 debugDisplay.draw();
             } else {

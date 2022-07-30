@@ -25,6 +25,7 @@ class Player {
             x: TILE_SIZE / 2,
             y: TILE_SIZE / 2
         }
+        this.currentObjective = OBJECTIVE_1;
 
         allObjects.push(this);
     }
@@ -86,9 +87,21 @@ class Player {
             colorCircle(RADAR_X+this.x*RADAR_SCALE_FACTOR, RADAR_Y+this.y*RADAR_SCALE_FACTOR, 2, 'red', bufferedHUDCanvasContext, 1);
             colorLineAtAngle(RADAR_X+this.x*RADAR_SCALE_FACTOR, RADAR_Y+this.y*RADAR_SCALE_FACTOR, this.rotationAngle, 6, 'red', bufferedHUDCanvasContext, 1);
         }
+
+        this.displayObjectives();
     }
 
     draw2D(){
         
+    }
+
+    displayObjectives(){
+
+        if (inventory.containsItem("Artifact")){
+            this.currentObjective = OBJECTIVE_2;
+        }
+
+        colorText("Current Objective:", bufferedHUDCanvasContext, bufferedHUDCanvas.width - 20, 30, '16px Roboto Mono', 'right', 'white');
+        colorText(this.currentObjective, bufferedHUDCanvasContext, bufferedHUDCanvas.width - 20, 50, '16px Roboto Mono', 'right', 'white');
     }
 }

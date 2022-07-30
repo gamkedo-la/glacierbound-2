@@ -26,6 +26,10 @@ const FORWARD = 1;
 const LEFT = -1;
 const BACKWARD = -1;
 const NEUTRAL = 0;
+
+const OBJECTIVE_1 = "Find the artifact"
+const OBJECTIVE_2 = "Take the artifact back to the computer on the ship";
+
 //#endregion
 
 //#region Map Grid Constants

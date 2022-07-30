@@ -241,6 +241,7 @@ class MapSection {
 
     changeMap(newMapIndex){
         if (!player.canExitMapSection && !wasLevelSelectPressed) return;
+        if (levelEditorEnabled) return;
 
         var previousMapID = levelList[currentRoom].mapID;
         player.previousMapSection = currentRoom;

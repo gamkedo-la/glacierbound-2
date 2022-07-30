@@ -26,6 +26,7 @@ function loadImages() {
         {spriteName: 'ship_interior_valves_striped', fileName: 'ship_interior_valves_striped_32x32.png'},
         {spriteName: 'cave_wall', fileName: 'cave_wall.png'},
         {spriteName: 'cave_wall_icy', fileName: 'cave_wall_icy.png'},
+        {spriteName: 'ship_interior_computer', fileName: 'ship_interior_computer_32x32.png'},
 
         //Item Spritesheets
         {spriteName: 'Book', fileName: 'spritesheets/book_blue_spritesheet.png'},

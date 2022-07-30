@@ -32,6 +32,7 @@ function initLevelEditor(){
     levelEditorTexturesRow3.push(spriteList['ship_door']);
     levelEditorTexturesRow3.push(spriteList['ship_interior_valves']);
     levelEditorTexturesRow3.push(spriteList['ship_interior_valves_striped']);
+    levelEditorTexturesRow3.push(spriteList['ship_interior_computer']);
     wallTextures.push(levelEditorTexturesRow3);
 
     wallTexturesFlat = wallTextures.flat();
