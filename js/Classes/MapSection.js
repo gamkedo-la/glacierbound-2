@@ -235,7 +235,7 @@ class MapSection {
     }
 
     changeMap(newMapIndex){
-        if (!player.canExitMapSection) return;
+        if (!player.canExitMapSection && !wasLevelSelectPressed) return;
 
         var previousMapID = levelList[currentRoom].mapID;
         player.previousMapSection = currentRoom;
@@ -252,6 +252,7 @@ class MapSection {
         player.canExitMapSection = false;
 
         this.minimapIsDirty = true;
+        wasLevelSelectPressed = false;
 
         /*seenGrid = [
             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -274,8 +275,14 @@ class MapSection {
     }
 
     findPlayerStartPosition(previousMapID) {
+        var defaultStartPos;
         for (var row = 0; row < MAP_NUM_ROWS; row++) {
             for ( var col = 0; col < MAP_NUM_COLS; col++) {
+
+                if (levelList[currentRoom].grid[row][col] >= 80){
+                    defaultStartPos = {row: row,col: col};
+                } 
+
                 if (levelList[currentRoom].grid[row][col] == previousMapID) {
                     var startPosition = {
                         row: row,
@@ -286,6 +293,7 @@ class MapSection {
                 }
             }
         }
-    }
 
+        return defaultStartPos;
+    }
 }

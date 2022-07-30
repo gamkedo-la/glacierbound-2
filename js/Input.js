@@ -5,6 +5,7 @@ var didMouseJustGoDown = false; // true for one frame
 var inputMapping = [KEY_LETTER_W, KEY_LETTER_S, KEY_LETTER_A, KEY_LETTER_D, KEY_LETTER_Q, KEY_LETTER_E, KEY_LEFT_SHIFT, KEY_LETTER_I];
 var inputAction = ['FORWARD', 'BACKWARD', 'TURN LEFT', 'TURN RIGHT', 'STRAFE LEFT', 'STRAFE RIGHT', 'SPRINT', 'INVENTORY'];
 var inputLookup = [];
+var wasLevelSelectPressed = false;
 
 // homemade ascii to character map
 // this will make it possible to display accurate info on the controls menu
@@ -101,16 +102,20 @@ function keyPressed(evt) {
   }
   
   if (evt.keyCode === KEY_NUMBER_1) {
+    wasLevelSelectPressed = true;
     mapSection.changeMap(0);
   }
   if (evt.keyCode === KEY_NUMBER_2) {
-    mapSection.changeMap(1);
+    wasLevelSelectPressed = true;
+    mapSection.changeMap(3);
   }
   if (evt.keyCode === KEY_NUMBER_3) {
-    mapSection.changeMap(2);
+    wasLevelSelectPressed = true;
+    mapSection.changeMap(6);
   }
   if (evt.keyCode === KEY_NUMBER_4) {
-    mapSection.changeMap(3);
+    wasLevelSelectPressed = true;
+    mapSection.changeMap(9);
   }
 
   if(evt.keyCode === inputLookup['SPRINT']){
