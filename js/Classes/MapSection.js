@@ -275,11 +275,11 @@ class MapSection {
     }
 
     findPlayerStartPosition(previousMapID) {
-        var defaultStartPos;
+        var defaultStartPos = 0;
         for (var row = 0; row < MAP_NUM_ROWS; row++) {
             for ( var col = 0; col < MAP_NUM_COLS; col++) {
 
-                if (levelList[currentRoom].grid[row][col] >= 80){
+                if (levelList[currentRoom].grid[row][col] >= 80  && defaultStartPos === 0){
                     defaultStartPos = {row: row,col: col};
                 } 
 

@@ -262,16 +262,16 @@ var arctic_83 = {
     mapID: 83,
     objects: [
         {
-            col: 6,
-            row: 3,
-            spriteSheet: "wrench_red_spritesheet",
+            col: 17,
+            row: 11,
+            spriteSheet: undefined,
             altitude: 0,
             scale: 0.05,
             angle: 0,
-            objectType: OBJECT_TYPE_ITEM,
-            isLocked: false,
-            lockedMessage: "Locked",
-            keyName: ''
+            objectType: OBJECT_TYPE_DOOR,
+            isLocked: true,
+            lockedMessage: "I'll need to find the key to access the cave systems.",
+            keyName: 'Key'
         }
     ]
 }
@@ -303,9 +303,9 @@ var arctic_84 = {
     mapID: 84,
     objects: [
         {
-            col: 6,
-            row: 3,
-            spriteSheet: "lamp_spritesheet",
+            col: 9,
+            row: 10,
+            spriteSheet: "Key",
             altitude: 0,
             scale: 0.05,
             angle: 0,
