@@ -1,38 +1,38 @@
 var wallTextures = [];
 var wallTexturesFlat = [];
-var shipWallTextures = [];
-var arcticWallTextures = [];
-var caveWallTextures = [];
+var levelEditorTexturesRow1 = [];
+var levelEditorTexturesRow2 = [];
+var levelEditorTexturesRow3 = [];
 var labWallTextures = [];
 var selectedTileTextureIndex = [];
 var tileTextureFlatIndex = 0;
 
 function initLevelEditor(){
 
-    shipWallTextures.push(spriteList['ship_interior_wall_simple']);
-    shipWallTextures.push(spriteList['ship_interior_wall_no_pipes']);
-    shipWallTextures.push(spriteList['ship_interior_wall_simple_panels']);
-    shipWallTextures.push(spriteList['ship_interior_wall_panels']);
-    shipWallTextures.push(spriteList['ship_interior_wall']);
-    shipWallTextures.push(spriteList['ship_interior_plain_wall']);
-    shipWallTextures.push(spriteList['ship_shelves']);
-    shipWallTextures.push(spriteList['ship_window']);
-    wallTextures.push(shipWallTextures);
+    levelEditorTexturesRow1.push(spriteList['ship_interior_wall_simple']);
+    levelEditorTexturesRow1.push(spriteList['ship_interior_wall_no_pipes']);
+    levelEditorTexturesRow1.push(spriteList['ship_interior_wall_simple_panels']);
+    levelEditorTexturesRow1.push(spriteList['ship_interior_wall_panels']);
+    levelEditorTexturesRow1.push(spriteList['ship_interior_wall']);
+    levelEditorTexturesRow1.push(spriteList['ship_interior_plain_wall']);
+    levelEditorTexturesRow1.push(spriteList['ship_shelves']);
+    levelEditorTexturesRow1.push(spriteList['ship_window']);
+    wallTextures.push(levelEditorTexturesRow1);
 
-    arcticWallTextures.push(spriteList['rock_snowy_wall']);
-    arcticWallTextures.push(spriteList['snowy_wall']);
-    arcticWallTextures.push(spriteList['rock_wall']);
-    arcticWallTextures.push(spriteList['ice_spikes']);
-    arcticWallTextures.push(spriteList['cliff_ice']);
-    arcticWallTextures.push(spriteList['cliff_rock']);
-    wallTextures.push(arcticWallTextures);
+    levelEditorTexturesRow2.push(spriteList['rock_snowy_wall']);
+    levelEditorTexturesRow2.push(spriteList['snowy_wall']);
+    levelEditorTexturesRow2.push(spriteList['rock_wall']);
+    levelEditorTexturesRow2.push(spriteList['ice_spikes']);
+    levelEditorTexturesRow2.push(spriteList['cliff_ice']);
+    levelEditorTexturesRow2.push(spriteList['cliff_rock']);
+    wallTextures.push(levelEditorTexturesRow2);
 
-    caveWallTextures.push(spriteList['cave_wall']);
-    caveWallTextures.push(spriteList['cave_wall_icy']);
-    caveWallTextures.push(spriteList['ship_door']);
-    caveWallTextures.push(spriteList['ship_interior_valves']);
-    caveWallTextures.push(spriteList['ship_interior_valves_striped']);
-    wallTextures.push(caveWallTextures);
+    levelEditorTexturesRow3.push(spriteList['cave_wall']);
+    levelEditorTexturesRow3.push(spriteList['cave_wall_icy']);
+    levelEditorTexturesRow3.push(spriteList['ship_door']);
+    levelEditorTexturesRow3.push(spriteList['ship_interior_valves']);
+    levelEditorTexturesRow3.push(spriteList['ship_interior_valves_striped']);
+    wallTextures.push(levelEditorTexturesRow3);
 
     wallTexturesFlat = wallTextures.flat();
 
