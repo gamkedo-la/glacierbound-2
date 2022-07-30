@@ -86,15 +86,6 @@ class GameObject {
                     this.opened = true;
                 }
                 break;
-                /*
-                if (inventory.containsItem("book_blue_spritesheet")){
-                    document.location.reload();
-                } else {
-                    textDisplay.setText("Item Required");
-                    mapSection.setTileTypeAtGridCoord(this.col, this.row, TILE_TYPE_FLOOR);
-                }
-                break;
-                */
         }
     }
 

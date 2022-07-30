@@ -33,7 +33,7 @@ var ship_80 = {
         //{
         //    col: 6,
         //    row: 7,
-        //    spriteSheet: "book_blue_spritesheet",
+        //    spriteSheet: "Book",
         //    altitude: 0,
         //    scale: 0.05,
         //    angle: 0,
@@ -121,7 +121,7 @@ var ship_81 = {
         {
             col: 6,
             row: 1,
-            spriteSheet: "fire_extinguisher_spritesheet",
+            spriteSheet: "Fire Extinguisher",
             altitude: 0,
             scale: 0.05,
             angle: 0,
@@ -189,7 +189,7 @@ var ship_81 = {
             objectType: OBJECT_TYPE_DOOR,
             isLocked: true,
             lockedMessage: "I need find the wrench in the boiler room to open this.",
-            keyName: 'wrench_red_spritesheet'
+            keyName: 'Wrench'
         }
     ]
 }
@@ -223,7 +223,7 @@ var ship_82 = {
         {
             col: 4,
             row: 12,
-            spriteSheet: "wrench_red_spritesheet",
+            spriteSheet: "Wrench",
             altitude: 0,
             scale: 0.05,
             angle: 0,
@@ -358,7 +358,7 @@ var arctic_85 = {
         {
             col: 6,
             row: 3,
-            spriteSheet: "map_spritesheet",
+            spriteSheet: "Map",
             altitude: 0,
             scale: 0.05,
             angle: 0,
@@ -415,9 +415,9 @@ var cave_86 = {
             scale: 0.05,
             angle: 0,
             objectType: OBJECT_TYPE_DOOR,
-            isLocked: false,
+            isLocked: true,
             lockedMessage: "It's getting too dark to continue without a light",
-            keyName: 'lamp_spritesheet'
+            keyName: 'Lantern'
         }
     ]
 }
@@ -450,7 +450,7 @@ var cave_87 = {
         {
             col: 0,
             row: 0,
-            spriteSheet: "map_spritesheet",
+            spriteSheet: "Map",
             altitude: 0,
             scale: 0.05,
             angle: 0,
@@ -490,7 +490,7 @@ var cave_88 = {
         {
             col: 6,
             row: 3,
-            spriteSheet: "map_spritesheet",
+            spriteSheet: "Map",
             altitude: 0,
             scale: 0.05,
             angle: 0,
@@ -530,7 +530,7 @@ var lab_89 = {
         {
             col: 1,
             row: 8,
-            spriteSheet: "map_spritesheet",
+            spriteSheet: "Map",
             altitude: 0,
             scale: 0.05,
             angle: 0,
@@ -655,7 +655,7 @@ var lab_90 = {
         {
             col: 16,
             row: 10,
-            spriteSheet: "lamp_spritesheet",
+            spriteSheet: "Lantern",
             altitude: 0,
             scale: 0.05,
             angle: 0,
@@ -746,7 +746,7 @@ var lab_90 = {
             objectType: OBJECT_TYPE_DOOR,
             isLocked: true,
             lockedMessage: "It doesn't seem to open from this side",
-            keyName: ''
+            keyName: 'Artifact'
         },
         {
             col: 15,
