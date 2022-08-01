@@ -20,7 +20,10 @@ class Player {
         this.rayCaster;
         this.currentTileType = 0;
         this.previousMapSection = 0;
+        this.isMoving = false;
         this.canExitMapSection = true;
+        this.ticksBetweenSteps = 20;
+        this.stepTickCounter = 0;
         this.posInTile = {
             x: TILE_SIZE / 2,
             y: TILE_SIZE / 2
@@ -57,13 +60,19 @@ class Player {
             movementDirectionX *= this.moveSpeed;
             movementDirectionY *= this.moveSpeed;
         }
+
+        //set moving to false, set to true if we do actually move
+        this.isMoving = false;
+
         if (mapSection.getTileTypeAtPixelCoord(this.x, this.y+movementDirectionY) === TILE_TYPE_FLOOR ||
             mapSection.getTileTypeAtPixelCoord(this.x, this.y+movementDirectionY) >= 80) {
             this.y += movementDirectionY;
+            this.isMoving = true;
         }
         if (mapSection.getTileTypeAtPixelCoord(this.x+movementDirectionX, this.y) === TILE_TYPE_FLOOR ||
             mapSection.getTileTypeAtPixelCoord(this.x+movementDirectionX, this.y) >= 80) {
             this.x += movementDirectionX;
+            this.isMoving = true;
         }
 
         this.posInTile.x = this.x % TILE_SIZE;
@@ -74,6 +83,17 @@ class Player {
         this.currentTileType = mapSection.getTileTypeAtPixelCoord(this.x, this.y);
         if (this.currentTileType >= 80){
             mapSection.changeMap(this.currentTileType - 80);
+        }
+
+        if(this.isMoving ) {
+            if (this.stepTickCounter === 0) {
+                playSFXAudio(audioSourceList['footstep']);
+                this.stepTickCounter = this.ticksBetweenSteps;
+            } else {
+                this.stepTickCounter--;
+            }
+        }else{//if movement stops reset the counter
+            this.stepTickCounter = 0;
         }
     }
 
