@@ -8,7 +8,7 @@ class Inventory{
         this.inventorySlots = [];
         this.showInventory = false;
         this.backgroundColor = "white";
-        this.borderColor = "black";
+        this.borderColor = 'rgb(89,86,82)';
         this.borderSize = 2;
         this.selectedColor = "red";
         this.selectedIndex = 0;
@@ -56,7 +56,8 @@ class Inventory{
         let inventoryIndex = 0;
         for(let i = 0; i < rows; i++){
             for(let j = 0; j < this.slotsPerRow; j++){
-                colorRect(this.x+j*this.slotSize,this.y+i*this.slotSize,this.slotSize,this.slotSize, this.backgroundColor);
+                //colorRect(this.x+j*this.slotSize,this.y+i*this.slotSize,this.slotSize,this.slotSize, this.backgroundColor);
+                bufferedGameCanvasContext.drawImage(spriteList['inventory_background'], this.x+j*this.slotSize,this.y+i*this.slotSize)
                 if(inventoryIndex < this.inventorySlots.length){
                     bufferedGameCanvasContext.drawImage(
                         spriteList[this.inventorySlots[inventoryIndex].spriteName], //image
