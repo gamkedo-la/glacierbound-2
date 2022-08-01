@@ -28,6 +28,7 @@ var ship_80 = {
     startingTileY: 5,
     skyMapName: 'sky_ship',
     floorMapName: 'floor_ship',
+    mapMusicTrack: 'InteriorAmbient',
     floorReflection: true,
     mapID: 80,
     objects: [
@@ -117,6 +118,7 @@ var ship_81 = {
     startingTileY: 5,
     skyMapName: 'sky_ship',
     floorMapName: 'floor_ship',
+    mapMusicTrack: 'InteriorAmbient',
     floorReflection: true,
     mapID: 81,
     objects: [
@@ -230,6 +232,7 @@ var ship_82 = {
     startingTileY: 5,
     skyMapName: 'sky_ship',
     floorMapName: 'floor_ship',
+    mapMusicTrack: 'InteriorAmbient',
     floorReflection: true,
     mapID: 82,
     objects: [
@@ -271,6 +274,7 @@ var arctic_83 = {
     startingTileY: 6,
     skyMapName: 'sky_clouds',
     floorMapName: 'floor_snow',
+    mapMusicTrack: 'ExteriorAmbient',
     floorReflection: false,
     mapID: 83,
     objects: [
@@ -312,6 +316,7 @@ var arctic_84 = {
     startingTileY: 6,
     skyMapName: 'sky_clouds',
     floorMapName: 'floor_snow',
+    mapMusicTrack: 'ExteriorAmbient',
     floorReflection: false,
     mapID: 84,
     objects: [
@@ -365,6 +370,7 @@ var arctic_85 = {
     startingTileY: 2,
     skyMapName: 'sky_clouds',
     floorMapName: 'floor_snow',
+    mapMusicTrack: 'ExteriorAmbient',
     floorReflection: false,
     mapID: 85,
     objects: [
@@ -405,6 +411,7 @@ var cave_86 = {
     startingTileY: 2,
     skyMapName: 'sky_ship',
     floorMapName: 'floor_ship',
+    mapMusicTrack: 'cave-music',
     floorReflection: false,
     mapID: 86,
     objects: [
@@ -457,6 +464,7 @@ var cave_87 = {
     startingTileY: 2,
     skyMapName: 'sky_ship',
     floorMapName: 'floor_ship',
+    mapMusicTrack: 'cave-music',
     floorReflection: false,
     mapID: 87,
     objects: []
@@ -484,6 +492,7 @@ var cave_88 = {
     startingTileY: 2,
     skyMapName: 'sky_ship',
     floorMapName: 'floor_ship',
+    mapMusicTrack: 'cave-music',
     floorReflection: false,
     mapID: 88,
     objects: []
@@ -511,6 +520,7 @@ var lab_89 = {
     startingTileY: 2,
     skyMapName: 'sky_ship',
     floorMapName: 'floor_ship',
+    mapMusicTrack: 'cave-music',
     floorReflection: false,
     mapID: 89,
     objects: [
@@ -624,6 +634,7 @@ var lab_90 = {
     startingTileY: 2,
     skyMapName: 'sky_ship',
     floorMapName: 'floor_ship',
+    mapMusicTrack: 'cave-music',
     floorReflection: false,
     mapID: 90,
     objects: [
@@ -760,6 +771,7 @@ var lab_91 = {
     startingTileY: 2,
     skyMapName: 'sky_ship',
     floorMapName: 'floor_ship',
+    mapMusicTrack: 'cave-music',
     floorReflection: false,
     mapID: 91,
     objects: [

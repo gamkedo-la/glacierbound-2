@@ -52,7 +52,7 @@ function drawTitleScreen(){
         bufferedHUDCanvasContext.drawImage(spriteList['intro_text'], 0, 0, bufferedHUDCanvas.width, bufferedHUDCanvas.height);
         
         //Draw Continue Button
-        drawAndCheckButtonClick("Continue", "green", (bufferedHUDCanvas.width / 2), (bufferedHUDCanvas.height * 0.9), 60, 12, 1, function() {gameStarted = true; showingIntroText = false;}, bufferedHUDCanvasContext );
+        drawAndCheckButtonClick("Continue", "green", (bufferedHUDCanvas.width / 2), (bufferedHUDCanvas.height * 0.9), 60, 12, 1, function() {gameStarted = true; showingIntroText = false; playMusic(audioSourceList['InteriorAmbient'])}, bufferedHUDCanvasContext );
         return;
     }
 

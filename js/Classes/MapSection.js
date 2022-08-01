@@ -249,6 +249,7 @@ class MapSection {
         var newMap = levelList[newMapIndex];
         this.originalGrid = newMap.grid;
         this.grid = JSON.parse(JSON.stringify(newMap.grid));
+        playMusic(audioSourceList[newMap.mapMusicTrack]);
 
         var startingPosition = this.findPlayerStartPosition(previousMapID);
         player.x = (startingPosition.col * TILE_SIZE) + player.posInTile.x;

@@ -19,12 +19,23 @@ var debugDisplayData = {
     gameStarted
 }
 
+//listen for the first window click so we can start the menu music
+function windowClicked(){
+    playMusic(audioSourceList['menu-music']);
+    //don't call this again after the first click
+    window.removeEventListener('click', windowClicked, false);
+}
+
 window.onload = function () {
     loadImages();
+    initAudioList();
     initInput();
     initCanvases();
     initLevelEditor();
     initMapGameObjects();
+
+    //listen for the first click on the window so we can play audio
+    window.addEventListener('click', windowClicked, false);
 
     textDisplay = new TextDisplay();
     textDisplay.setText("LMB to interact with doors and pickup items");
