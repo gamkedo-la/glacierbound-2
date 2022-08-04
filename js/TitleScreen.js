@@ -2,6 +2,8 @@ var showingCredits = false;
 var showingIntroText = false;
 var showingEndingText = false;
 var wasMouseDown = false;
+var intro_BG_Opacity = 1;
+var intro_BG_Opacity_fade_speed = 0.005;
 
 function drawAndCheckButtonClick(label, color, centerX, centerY, buttonWidth, fontSize, scaleFactor, doIfClicked, canvasContext = titleScreenCanvasContext) {
     colorRect(centerX - (buttonWidth/2) , centerY - 15, buttonWidth , 18, color, canvasContext, 1);
@@ -48,11 +50,29 @@ function drawTitleScreen(){
     }
 
     if(showingIntroText) {
+        
         colorRect(0,0, titleScreenCanvas.width, titleScreenCanvas.height, "black", titleScreenCanvasContext, 1);
+        
+        // fade the blue sky to black
+        intro_BG_Opacity -= intro_BG_Opacity_fade_speed;
+        titleScreenCanvasContext.globalAlpha = Math.max(0,intro_BG_Opacity);
+        titleScreenCanvasContext.drawImage(spriteList['titlescreenBG'],-2,-2); // the -2's make no sense but eliminate blocky edges due to filtering of some sort
+        titleScreenCanvasContext.globalAlpha = 1;
+        drawSnow();
+
+
         bufferedHUDCanvasContext.drawImage(spriteList['intro_text'], 0, 0, bufferedHUDCanvas.width, bufferedHUDCanvas.height);
         
         //Draw Continue Button
-        drawAndCheckButtonClick("Continue", "green", (bufferedHUDCanvas.width / 2), (bufferedHUDCanvas.height * 0.9), 60, 12, 1, function() {gameStarted = true; showingIntroText = false; playMusic(audioSourceList['InteriorAmbient'])}, bufferedHUDCanvasContext );
+        drawAndCheckButtonClick(
+            "Continue", "green", (bufferedHUDCanvas.width / 2), (bufferedHUDCanvas.height * 0.9), 60, 12, 1, 
+            function()
+            { 
+                gameStarted = true;
+                showingIntroText = false;
+                playMusic(audioSourceList['InteriorAmbient']);
+            },
+            bufferedHUDCanvasContext );
         return;
     }
 
