@@ -1,6 +1,7 @@
 var audioSourceList = {};
-var musicVolume = 1.0;
+var musicVolume = 0.25;
 var sfxVolume = 1.0;
+
 var musicAudioPlayer = new Audio();
 var currentMusicTrack = '';
 musicAudioPlayer.volume = musicVolume;
@@ -16,6 +17,12 @@ function initAudioList(){
 
     //SFX
     audioSourceList['footstep'] = 'audio/synthesised-sounds/footsteps/footstep.wav';
+    audioSourceList['pickup'] = 'audio/pickup.wav';
+    audioSourceList['locked'] = 'audio/locked.wav';
+    audioSourceList['unlocked'] = 'audio/unlocked.wav';
+    audioSourceList['open'] = 'audio/open.wav';
+    audioSourceList['click'] = 'audio/click.wav';
+    audioSourceList['activate'] = 'audio/activate.wav';
 
     //ambient
     audioSourceList['wind'] = 'ambient effects/ambient_wind.wav';

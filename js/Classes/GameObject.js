@@ -71,6 +71,7 @@ class GameObject {
                 inventory.addItem(new Item(0, this.spriteName, 8, 1, 128, 128));
                 textDisplay.setText("Picked up " + this.spriteName);
                 this.isActive = false;
+                playSFXAudio(audioSourceList['pickup']);
                 break;
 
             case OBJECT_TYPE_DOOR:
@@ -79,11 +80,14 @@ class GameObject {
                         this.isLocked = false;
                         mapSection.setTileTypeAtGridCoord(this.col, this.row, TILE_TYPE_FLOOR);
                         this.opened = true;
+                        playSFXAudio(audioSourceList['unlock']);
                     } else {
                         textDisplay.setText(this.lockedMessage);
+                        playSFXAudio(audioSourceList['locked']);
                     }
                 } else {
                     mapSection.setTileTypeAtGridCoord(this.col, this.row, TILE_TYPE_FLOOR);
+                    playSFXAudio(audioSourceList['open']);
                     this.opened = true;
                 }
                 break;
@@ -94,8 +98,10 @@ class GameObject {
                         this.opened = true;
                         gameStarted = false;
                         showingEndingText = true;
+                        playSFXAudio(audioSourceList['unlock']);
                     } else {
                         textDisplay.setText(this.lockedMessage);
+                        playSFXAudio(audioSourceList['locked']);
                     }
                 } else {
                     textDisplay.setText("Activated");
@@ -103,6 +109,7 @@ class GameObject {
                     gameStarted = false;
                     showingEndingText = true;
                     this.isLocked = true;
+                    playSFXAudio(audioSourceList['pickup']);
                 }
                 break;
         }

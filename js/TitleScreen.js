@@ -70,6 +70,7 @@ function drawTitleScreen(){
             { 
                 gameStarted = true;
                 showingIntroText = false;
+                playSFXAudio(audioSourceList['click']);
                 playMusic(audioSourceList['InteriorAmbient']);
             },
             bufferedHUDCanvasContext );
@@ -95,6 +96,6 @@ function drawTitleScreen(){
     colorText("GLACIERBOUND 2", titleScreenCanvasContext, titleScreenCanvas.width / 2, titleScreenCanvas.height * 0.25, '18px Roboto Mono', "center", "white");
 
     // Draw Buttons
-    drawAndCheckButtonClick("Start", "green", (titleScreenCanvas.width / 2), (titleScreenCanvas.height * 0.75), 40, 15, CANVAS_SCALE_FACTOR, function() {showingIntroText = true;} );
-    drawAndCheckButtonClick("Credits", "blue", (titleScreenCanvas.width / 2), (titleScreenCanvas.height * 0.9), 40, 12, CANVAS_SCALE_FACTOR, function() {showingCredits = true;} );
+    drawAndCheckButtonClick("Start", "green", (titleScreenCanvas.width / 2), (titleScreenCanvas.height * 0.75), 40, 15, CANVAS_SCALE_FACTOR, function() {showingIntroText = true; playSFXAudio(audioSourceList['click']);} );
+    drawAndCheckButtonClick("Credits", "blue", (titleScreenCanvas.width / 2), (titleScreenCanvas.height * 0.9), 40, 12, CANVAS_SCALE_FACTOR, function() {showingCredits = true; playSFXAudio(audioSourceList['click']);} );
 }
