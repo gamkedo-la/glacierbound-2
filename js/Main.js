@@ -69,6 +69,8 @@ function updateEverything() {
     }
 
     allObjects.sort((a, b) => (a.distanceToPlayer < b.distanceToPlayer) ? 1 : -1);
+
+    activationPending = false; // if space/enter to activate door/item but nothing nearby, reset flag with no action
 }
 
 function drawEverything() {
