@@ -2,10 +2,11 @@ var mousePos = null;
 var isMouseDown = false;
 var wasMouseDown = false; // not meant to be used directly, just lags behind isMouseDown then checked to set didMouseJustGoDown
 var didMouseJustGoDown = false; // true for one frame
-var inputMapping = [KEY_LETTER_W, KEY_LETTER_S, KEY_LETTER_A, KEY_LETTER_D, KEY_LETTER_Q, KEY_LETTER_E, KEY_LEFT_SHIFT, KEY_LETTER_I];
-var inputAction = ['FORWARD', 'BACKWARD', 'TURN LEFT', 'TURN RIGHT', 'STRAFE LEFT', 'STRAFE RIGHT', 'SPRINT', 'INVENTORY'];
+var inputMapping = [KEY_LETTER_W, KEY_LETTER_S, KEY_LETTER_A, KEY_LETTER_D, KEY_LETTER_Q, KEY_LETTER_E, KEY_LEFT_SHIFT, KEY_LETTER_I, KEY_SPACE, KEY_ENTER];
+var inputAction = ['FORWARD', 'BACKWARD', 'TURN LEFT', 'TURN RIGHT', 'STRAFE LEFT', 'STRAFE RIGHT', 'SPRINT', 'INVENTORY', 'ACTIVATE1', 'ACTIVATE2'];
 var inputLookup = [];
 var wasLevelSelectPressed = false;
+var activationPending = false; // enter/space act like a mouse click to open doors etc
 
 // homemade ascii to character map
 // this will make it possible to display accurate info on the controls menu
@@ -80,6 +81,12 @@ function keyPressed(evt) {
   if (isPaused()) {
     // paused handled in keyReleased()
     return;
+  }
+
+  // spacebar/enter are synonymous with left mouse button click (open doors)
+  if (evt.keyCode === inputLookup['ACTIVATE1'] || evt.keyCode === inputLookup['ACTIVATE2']) {
+    activationPending = true; // act like a mouse click to open doors etc
+    // note" set to falkse in the code that handles it
   }
 
   if (evt.keyCode === inputLookup['FORWARD'] || evt.keyCode === KEY_UP_ARROW) { 

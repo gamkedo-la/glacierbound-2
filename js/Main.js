@@ -38,7 +38,7 @@ window.onload = function () {
     window.addEventListener('click', windowClicked, false);
 
     textDisplay = new TextDisplay();
-    textDisplay.setText("LMB to interact with doors and pickup items");
+    textDisplay.setText("Mouse click / spacebar to interact with doors and pickup items");
 }
 
 function initRenderLoop() { //called from ImageLoading.js

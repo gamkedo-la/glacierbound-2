@@ -55,7 +55,8 @@ class GameObject {
         this.x = movePos[0];
         this.y = movePos[1];
 
-        if (this.distanceToPlayer < this.radius && isMouseDown) {
+        if (this.distanceToPlayer < this.radius && (isMouseDown || activationPending)) {
+            activationPending = false;
             this.activate();
         }
     }
