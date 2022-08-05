@@ -132,8 +132,8 @@ class MapSection {
 
         if (this.minimapIsDirty) {
             
-            //colorRect(0, 0, this.minimapWidth, this.minimapHeight, 'lightgrey', bufferedDebugCanvasContext);
             bufferedHUDCanvasContext.clearRect(0,0,this.minimapWidth, this.minimapHeight);
+            colorRect(0, 0, this.minimapWidth, this.minimapHeight, 'lightgrey', bufferedHUDCanvasContext);
     
             for (var row = 0; row < MAP_NUM_ROWS; row++) {
                 for ( var col = 0; col < MAP_NUM_COLS; col++) {
@@ -162,7 +162,6 @@ class MapSection {
 
             if (MINIMAP_ENABLED) {
                 // regular, larger, opaque "debug version" of the minimap
-                colorRect(0, 0, this.minimapWidth, this.minimapHeight, 'lightgrey', bufferedHUDCanvasContext);
                 bufferedHUDCanvasContext.drawImage(this.minimapImage, 0, 0);
             }
 
