@@ -1,12 +1,12 @@
 class Inventory{
     constructor() {
-        this.x = 96;
-        this.y = 112;
-        this.slotSize = 16;
         this.inventorySize = 8;
-        this.slotsPerRow = 4;
+        this.slotsPerRow = 8;
+        this.slotSize = 16;
+        this.x = bufferedGameCanvas.width - (this.slotsPerRow * this.slotSize);
+        this.y = bufferedGameCanvas.height - ((this.inventorySize / this.slotsPerRow) * this.slotSize);
         this.inventorySlots = [];
-        this.showInventory = false;
+        this.showInventory = true;
         this.backgroundColor = "white";
         this.borderColor = 'rgb(89,86,82)';
         this.borderSize = 2;
@@ -32,9 +32,9 @@ class Inventory{
     containsItem(spriteName){
         return (this.inventorySlots.findIndex(element => element.spriteName === spriteName) >= 0)
     }
-    toggleShowInventory(){
-        this.showInventory = !this.showInventory;
-    }
+    //toggleShowInventory(){
+    //    this.showInventory = !this.showInventory;
+    //}
     incrementSelectedItemIndex(){
         this.selectedIndex++;
         this.selectedIndex %= this.inventorySize;
@@ -52,6 +52,7 @@ class Inventory{
         if(!this.showInventory){
             return;
         }
+
         let rows = Math.ceil(this.inventorySize/this.slotsPerRow);
         let inventoryIndex = 0;
         for(let i = 0; i < rows; i++){
@@ -76,8 +77,8 @@ class Inventory{
         }
 
         //draw selected
-        let selectedItemRow = Math.floor(this.selectedIndex / this.slotsPerRow);
-        let selectedItemColumn = this.selectedIndex % this.slotsPerRow;
-        drawRect(this.x + selectedItemColumn * this.slotSize, this.y + selectedItemRow * this.slotSize, this.slotSize, this.slotSize, this.selectedColor, this.borderSize);
+        //let selectedItemRow = Math.floor(this.selectedIndex / this.slotsPerRow);
+        //let selectedItemColumn = this.selectedIndex % this.slotsPerRow;
+        //drawRect(this.x + selectedItemColumn * this.slotSize, this.y + selectedItemRow * this.slotSize, this.slotSize, this.slotSize, this.selectedColor, this.borderSize);
     }
 }

@@ -1,7 +1,7 @@
 var allObjects = [];
 
 var mapSection = new MapSection(ship_80.grid);
-var inventory = new Inventory();
+var inventory;
 var player = new Player();
 var debugDisplay = new DebugDisplay();
 var textDisplay;
@@ -36,6 +36,7 @@ window.onload = function () {
     //listen for the first click on the window so we can play audio
     window.addEventListener('click', windowClicked, false);
 
+    inventory = new Inventory();
     textDisplay = new TextDisplay();
     textDisplay.setText("Mouse click / spacebar to interact with doors and pickup items");
 }

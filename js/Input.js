@@ -2,8 +2,8 @@ var mousePos = null;
 var isMouseDown = false;
 var wasMouseDown = false; // not meant to be used directly, just lags behind isMouseDown then checked to set didMouseJustGoDown
 var didMouseJustGoDown = false; // true for one frame
-var inputMapping = [KEY_LETTER_W, KEY_LETTER_S, KEY_LETTER_A, KEY_LETTER_D, KEY_LETTER_Q, KEY_LETTER_E, KEY_LEFT_SHIFT, KEY_LETTER_I, KEY_SPACE, KEY_ENTER];
-var inputAction = ['FORWARD', 'BACKWARD', 'TURN LEFT', 'TURN RIGHT', 'STRAFE LEFT', 'STRAFE RIGHT', 'SPRINT', 'INVENTORY', 'ACTIVATE1', 'ACTIVATE2'];
+var inputMapping = [KEY_LETTER_W, KEY_LETTER_S, KEY_LETTER_A, KEY_LETTER_D, KEY_LETTER_Q, KEY_LETTER_E, KEY_LEFT_SHIFT, KEY_SPACE, KEY_ENTER];
+var inputAction = ['FORWARD', 'BACKWARD', 'TURN LEFT', 'TURN RIGHT', 'STRAFE LEFT', 'STRAFE RIGHT', 'SPRINT', 'ACTIVATE1', 'ACTIVATE2'];
 var inputLookup = [];
 var wasLevelSelectPressed = false;
 var activationPending = false; // enter/space act like a mouse click to open doors etc
@@ -37,7 +37,7 @@ function initInput() {
   document.addEventListener("mousemove", moveMouse);
   document.addEventListener("mousedown", mouseDown);
   document.addEventListener("mouseup", mouseUp);
-  document.addEventListener("wheel", mousewheel);
+  //document.addEventListener("wheel", mousewheel);
 }
 
 function pollMouseButtons() {
@@ -69,8 +69,8 @@ function pollGamepad() {
     if (gamepad.lookright()) { player.turnDirection = RIGHT; gamepad.prevLR=true; } 
     else if (gamepad.prevLR) { player.turnDirection = NEUTRAL; gamepad.prevLR=false; }
 
-    if (gamepad.buttonX()) { if (!gamepad.prevX) inventory.toggleShowInventory(); gamepad.prevX=true; } 
-    else { gamepad.prevX=false; }
+    //if (gamepad.buttonX()) { if (!gamepad.prevX) inventory.toggleShowInventory(); gamepad.prevX=true; } 
+    //else { gamepad.prevX=false; }
 
     if (gamepad.buttonA()) { player.isSprinting = true; gamepad.prevA=true; } 
     else if (gamepad.prevA) { player.isSprinting = false; gamepad.prevA=false; }
@@ -128,9 +128,9 @@ function keyPressed(evt) {
   if(evt.keyCode === inputLookup['SPRINT']){
     player.isSprinting = true;
   }
-  if(evt.keyCode === inputLookup['INVENTORY']){
-    inventory.toggleShowInventory();
-  }
+  //if(evt.keyCode === inputLookup['INVENTORY']){
+  //  inventory.toggleShowInventory();
+  //}
 
   //TODO: Remove this. Inventory Testing Commands
   if(evt.keyCode === KEY_LETTER_T && DEBUG_MODE_ENBALED){
@@ -201,13 +201,13 @@ function mouseDown(evt){
 function mouseUp(evt){
   isMouseDown = false;
 }
-function mousewheel(evt){
-  if(evt.deltaY > 0){
-    inventory.incrementSelectedItemIndex();
-  }else if (evt.deltaY < 0){
-    inventory.decrementSelectedItemIndex();
-  }
-}
+//function mousewheel(evt){
+//  if(evt.deltaY > 0){
+//    inventory.incrementSelectedItemIndex();
+//  }else if (evt.deltaY < 0){
+//    inventory.decrementSelectedItemIndex();
+//  }
+//}
 function calculateMousePos(evt) {
   var rect = screenCanvas.getBoundingClientRect();
   var root = document.documentElement;
