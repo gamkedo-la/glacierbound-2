@@ -124,7 +124,7 @@ class MapSection {
     }
 
     draw2DMinimap() {
-        if (!inventory.containsItem('Map') && !levelEditorEnabled) return;
+        if (!inventory.containsItem('Map') && !DEBUG_MODE_ENBALED) return;
 
         this.miniMapScaleFactor = (levelEditorEnabled) ? MINIMAP_SCALE_FACTOR * 2 : MINIMAP_SCALE_FACTOR;
         this.minimapWidth = MAP_NUM_COLS * TILE_SIZE * this.miniMapScaleFactor;
@@ -146,7 +146,7 @@ class MapSection {
                             bufferedHUDCanvasContext.drawImage(wallTexturesFlat[tileType - 1], tileX * this.miniMapScaleFactor, tileY * this.miniMapScaleFactor, TEXTURE_SIZE * this.miniMapScaleFactor, TEXTURE_SIZE * this.miniMapScaleFactor);
                         }
 
-                        if (tileType >= 80 && debugModeEnabled) {
+                        if (tileType >= 80 && DEBUG_MODE_ENBALED) {
                             colorCircle((tileX + TILE_SIZE/2) * this.miniMapScaleFactor, (tileY + TILE_SIZE/2) * this.miniMapScaleFactor, 5, "blue", bufferedHUDCanvasContext);
                         }
                     };

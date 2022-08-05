@@ -6,14 +6,13 @@ var player = new Player();
 var debugDisplay = new DebugDisplay();
 var textDisplay;
 
-var debugModeEnabled = false; // Start game with the debug window hidden
 var levelEditorEnabled = false;
 var showDebugText = true;
 var gameStarted = false;
 
 // Objects to be displayed when the debug window is open
 var debugDisplayData = {
-    debugModeEnabled,
+    DEBUG_MODE_ENBALED,
     levelEditorEnabled,
     showDebugText,
     gameStarted
@@ -60,7 +59,7 @@ function updateEverything() {
 
     allObjects.forEach(object => object.update());
 
-    if (showDebugText) {
+    if (showDebugText && DEBUG_MODE_ENBALED) {
         const debugParagraph = document.getElementById('debug-text')
         debugParagraph.innerText = levelEditorEnabled ? `Press 'L' to exit Editor Mode` : `Press 'L' to enter Editor Mode and TAB for debug info`
     }
@@ -107,7 +106,7 @@ function drawEverything() {
             drawBufferedCanvasToScreenCanvas(bufferedGameCanvas);
             drawBufferedCanvasToScreenCanvas(bufferedHUDCanvas);
 
-            if (debugModeEnabled || levelEditorEnabled) {
+            if (DEBUG_MODE_ENBALED || levelEditorEnabled) {
                 screenCanvas.style.cursor = "auto";
                 debugDisplay.draw();
             } else {

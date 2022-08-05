@@ -108,19 +108,19 @@ function keyPressed(evt) {
     player.turnDirection = RIGHT;
   }
   
-  if (evt.keyCode === KEY_NUMBER_1) {
+  if (evt.keyCode === KEY_NUMBER_1 && DEBUG_MODE_ENBALED) {
     wasLevelSelectPressed = true;
     mapSection.changeMap(0);
   }
-  if (evt.keyCode === KEY_NUMBER_2) {
+  if (evt.keyCode === KEY_NUMBER_2 && DEBUG_MODE_ENBALED) {
     wasLevelSelectPressed = true;
     mapSection.changeMap(3);
   }
-  if (evt.keyCode === KEY_NUMBER_3) {
+  if (evt.keyCode === KEY_NUMBER_3 && DEBUG_MODE_ENBALED) {
     wasLevelSelectPressed = true;
     mapSection.changeMap(6);
   }
-  if (evt.keyCode === KEY_NUMBER_4) {
+  if (evt.keyCode === KEY_NUMBER_4 && DEBUG_MODE_ENBALED) {
     wasLevelSelectPressed = true;
     mapSection.changeMap(9);
   }
@@ -133,10 +133,10 @@ function keyPressed(evt) {
   }
 
   //TODO: Remove this. Inventory Testing Commands
-  if(evt.keyCode === KEY_LETTER_T){
+  if(evt.keyCode === KEY_LETTER_T && DEBUG_MODE_ENBALED){
     inventory.addItem(new Item(0,'ship_shelves'));
   }
-  if(evt.keyCode === KEY_LETTER_R){
+  if(evt.keyCode === KEY_LETTER_R && DEBUG_MODE_ENBALED){
     console.log(inventory.removeItem(0));
   }
   evt.preventDefault(); // without this, arrow keys scroll the browser!
@@ -184,15 +184,9 @@ function keyReleased(evt) {
   if(evt.keyCode === KEY_LEFT_SHIFT){
     player.isSprinting = false;
   }
-  if (evt.keyCode === KEY_LETTER_L) {
+  if (evt.keyCode === KEY_LETTER_L && DEBUG_MODE_ENBALED) {
     levelEditorEnabled = !levelEditorEnabled;
     displayLevelData();
-  }
-
-  // Enable generic debug display
-  if (evt.keyCode === KEY_TAB) {
-    debugModeEnabled = !debugModeEnabled;
-    // console.log("Show debug window:", debugModeEnabled);
   }
 }
 

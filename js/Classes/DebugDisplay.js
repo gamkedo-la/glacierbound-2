@@ -42,7 +42,7 @@ class DebugDisplay {
 
   updateDebugData() {
     debugDisplayData = {
-        debugModeEnabled,
+        DEBUG_MODE_ENBALED,
         levelEditorEnabled,
         showDebugText,
         gameStarted
