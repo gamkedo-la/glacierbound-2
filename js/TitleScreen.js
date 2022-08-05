@@ -42,10 +42,12 @@ function drawTitleScreen(){
 
     if(showingCredits) {
         colorRect(0,0, titleScreenCanvas.width, titleScreenCanvas.height, "black", titleScreenCanvasContext, 1);
-        colorText("Credits TBD", titleScreenCanvasContext, titleScreenCanvas.width / 2, titleScreenCanvas.height * 0.1, '12px sans-serif', "center", "white");
+        // colorText("Credits TBD", titleScreenCanvasContext, titleScreenCanvas.width / 2, titleScreenCanvas.height * 0.1, '12px sans-serif', "center", "white");
+
+        drawCredits();
 
         //Draw Credits Button
-        drawAndCheckButtonClick("Back", "green", (titleScreenCanvas.width / 2), (titleScreenCanvas.height * 0.9), 40, 12, CANVAS_SCALE_FACTOR, function() {showingCredits = false;} );
+        drawAndCheckButtonClick("X", "green", (titleScreenCanvas.width-10), (titleScreenCanvas.height * 0.95), 40, 12, CANVAS_SCALE_FACTOR, function() {showingCredits = false;} );
         return;
     }
 
@@ -99,3 +101,78 @@ function drawTitleScreen(){
     drawAndCheckButtonClick("Start", "green", (titleScreenCanvas.width / 2), (titleScreenCanvas.height * 0.75), 40, 15, CANVAS_SCALE_FACTOR, function() {showingIntroText = true; playSFXAudio(audioSourceList['click']);} );
     drawAndCheckButtonClick("Credits", "blue", (titleScreenCanvas.width / 2), (titleScreenCanvas.height * 0.9), 40, 12, CANVAS_SCALE_FACTOR, function() {showingCredits = true; playSFXAudio(audioSourceList['click']);} );
 }
+
+var creditsList = [
+"Brian J. Boucher: Project lead, core gameplay, ray casting engine, custom level editor, level design layouts, majority of wall textures, spinning sprite support, collectable pickups, item models (including flashlight, map, table, fire extinguisher, key, TNT, artifact), mouse control, locked doors, spawn position, map names, title font selection, computer texture and objective display, assorted bug fixes, ending story",
+"Patrick Moffett: Texture seam fix, skybox loop, wind fix, strafing speed normalized, inventory UI and related interactions, sprint input, minimap fix, additional editor input, audio manager, music integration",
+"Drew Beardall: Input key remapping system, controls screen, pause screen, custom font integration",
+"Christer \"McFunkypants\" Kaitila: Scrolling skybox and cloud support, 16 wall designs, variable sky/floor, floor reflection effect, gamepad movement, radar, title background, keyboard tooltip, background fade transition, sounds (click, lock, unlock, open, activate, pickup)",
+"Ashleigh M.: Menu music, cave music",
+"Cooper Willis: Models (lamp model, blue chair), cave wall texture, wrench render sheet",
+"Jared Rigby: Syntheized dynamic snow walking sound, footstep improvements, debug panel",
+"Rodrigo Bonzerr Lopez: Wrench art, exterior ambient sound, interior lab sound",
+"Cody Crawford: Icy cave wall texture ",
+"H Trayford: Minimap optimization",
+"Bastiaan \"borsjt\" Schaar: Ambient wind",
+"Nick O'Connell: Practice commit",
+"Chris DeLeon: Credits panel hookup, menu click refactor",
+"Playtesting: Cassidy Noble, Rodrigo Bonzerr Lopez, Klaim (A. Joël Lamotte), Michael Monty Tanner"];
+
+function drawCredits() {
+  var lineX = 1;
+  var lineY = 1;
+  var creditsSize = 6.5;
+  var lineSkip = creditsSize-1;
+  // colorRect(0, 0, titleScreenCanvasContext.titleScreenCanvasContext, titleScreenCanvasContext.height, "#504324");
+  for(var i=0;i<creditsList.length;i++) {
+    colorText(creditsList[i], titleScreenCanvasContext, lineX, lineY+=lineSkip, creditsSize+'px sans-serif', "left", "#d0bc92");
+  }
+}
+
+function lineWrapCredits() { // note: gets calling immediately after definition!
+  const newCut = [];
+  var maxLineChar = 80;
+  var findEnd;
+
+  for(let i = 0; i < creditsList.length; i++) {
+    const currentLine = creditsList[i];
+    for(let j = 0; j < currentLine.length; j++) {
+      /*const aChar = currentLine[j];
+      if(aChar === ":") {
+        if(i !== 0) {
+          newCut.push("\n");
+        }
+
+        newCut.push(currentLine.substring(0, j + 1));
+        newCut.push(currentLine.substring(j + 2, currentLine.length));
+        break;
+      } else*/ if(j === currentLine.length - 1) {
+        if((i === 0) || (i >= creditsList.length - 2)) {
+          newCut.push(currentLine);
+        } else {
+          newCut.push(currentLine.substring(0, currentLine.length));
+        }
+      }
+    }
+  }
+
+  const newerCut = [];
+  for(var i=0;i<newCut.length;i++) {
+    while(newCut[i].length > 0) {
+      findEnd = maxLineChar;
+      if(newCut[i].length > maxLineChar) {
+        for(var ii=findEnd;ii>0;ii--) {
+          if(newCut[i].charAt(ii) == " ") {
+            findEnd=ii;
+            break;
+          }
+        }
+      }
+      newerCut.push(newCut[i].substring(0, findEnd));
+      newCut[i] = newCut[i].substring(findEnd, newCut[i].length);
+    }
+  }
+
+  creditsList = newerCut;
+}
+lineWrapCredits(); // note: calling immediately as part of init, outside the function
