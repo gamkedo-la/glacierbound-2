@@ -102,8 +102,8 @@ function drawTitleScreen(){
 var creditsList = [
 "Brian J. Boucher: Project lead, core gameplay, ray casting engine, custom level editor, level design layouts, majority of wall textures, spinning sprite support, collectable pickups, item models (including flashlight, map, table, fire extinguisher, key, TNT, artifact), mouse control, locked doors, spawn position, map names, title font selection, computer texture and objective display, assorted bug fixes, ending story",
 "Patrick Moffett: Texture seam fix, skybox loop, wind fix, strafing speed normalized, inventory UI and related interactions, sprint input, minimap fix, additional editor input, audio manager, music integration",
-"Drew Beardall: Input key remapping system, controls screen, pause screen, custom font",
 "Christer \"McFunkypants\" Kaitila: Scrolling skybox and cloud support, 16 wall designs, variable sky/floor, floor reflection effect, gamepad movement, radar, title background, keyboard tooltip, background fade transition, sounds (click, lock, unlock, open, activate, pickup)",
+"Drew Beardall: Input key remapping system, controls screen, pause screen, custom font",
 "Ashleigh M.: Menu music, cave music",
 "Cooper Willis: Models (lamp model, blue chair), cave wall texture, wrench render sheet",
 "Jared Rigby: Synthesized snow walk sound, footstep improvements, debug panel",
