@@ -89,10 +89,10 @@ function keyPressed(evt) {
     // note" set to falkse in the code that handles it
   }
 
-  if (evt.keyCode === inputLookup['FORWARD'] || evt.keyCode === KEY_UP_ARROW) { 
+  if (evt.keyCode === inputLookup['FORWARD']) { 
     player.walkDirection = FORWARD;
   }
-  if (evt.keyCode === inputLookup['BACKWARD'] || evt.keyCode === KEY_DOWN_ARROW) {
+  if (evt.keyCode === inputLookup['BACKWARD']) {
     player.walkDirection = BACKWARD;
   }
   if (evt.keyCode === inputLookup['STRAFE LEFT']) {
@@ -101,10 +101,10 @@ function keyPressed(evt) {
   if (evt.keyCode === inputLookup['STRAFE RIGHT']) {
     player.strafeDirection = RIGHT;
   }
-  if (evt.keyCode === inputLookup['TURN LEFT'] || evt.keyCode === KEY_LEFT_ARROW) {
+  if (evt.keyCode === inputLookup['TURN LEFT']) {
     player.turnDirection = LEFT;
   }
-  if (evt.keyCode === inputLookup['TURN RIGHT'] || evt.keyCode === KEY_RIGHT_ARROW) {
+  if (evt.keyCode === inputLookup['TURN RIGHT']) {
     player.turnDirection = RIGHT;
   }
   
@@ -143,7 +143,7 @@ function keyPressed(evt) {
 }
 
 function keyReleased(evt) {
-  if (evt.keyCode === KEY_LETTER_P || evt.keyCode === KEY_ESCAPE) {
+  if (evt.keyCode === KEY_LETTER_P) {
     // toggle pause menu
     if (isPaused()) {
       menuState = MENUSTATE_NONE;
