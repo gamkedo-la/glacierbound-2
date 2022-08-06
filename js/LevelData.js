@@ -24,6 +24,7 @@ var ship_80 = {
         [ 0, 0, 0, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 4, 4, 4],
         [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
     ],
+    seenGrid: initSeenGrid(),
     startingTileX: 16,
     startingTileY: 5,
     skyMapName: 'sky_ship',
@@ -114,6 +115,7 @@ var ship_81 = {
         [ 3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0, 3, 0,79, 5],
         [ 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 5, 5, 5]
     ],
+    seenGrid: initSeenGrid(),
     startingTileX: 16,
     startingTileY: 5,
     skyMapName: 'sky_ship',
@@ -228,6 +230,7 @@ var ship_82 = {
         [ 5, 0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3],
         [ 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 3, 3, 3, 3, 3]
     ],
+    seenGrid: initSeenGrid(),
     startingTileX: 16,
     startingTileY: 5,
     skyMapName: 'sky_ship',
@@ -270,6 +273,7 @@ var arctic_83 = {
         [ 4,10,10,10,10,10,10,10,10,14,14,14,14,14,14,14,14,15,15,15]
 
     ],
+    seenGrid: initSeenGrid(),
     startingTileX: 2,
     startingTileY: 6,
     skyMapName: 'sky_clouds',
@@ -312,6 +316,7 @@ var arctic_84 = {
         [ 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9]        
         
     ],
+    seenGrid: initSeenGrid(),
     startingTileX: 2,
     startingTileY: 6,
     skyMapName: 'sky_clouds',
@@ -366,6 +371,7 @@ var arctic_85 = {
         [11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11]
 
     ],
+    seenGrid: initSeenGrid(),
     startingTileX: 6,
     startingTileY: 2,
     skyMapName: 'sky_clouds',
@@ -407,6 +413,7 @@ var cave_86 = {
         [16,79, 0,16, 0, 0, 0, 0, 0, 0, 0, 0, 0,16, 0,16, 0, 0, 0,16],
         [16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16]
     ],
+    seenGrid: initSeenGrid(),
     startingTileX: 1,
     startingTileY: 2,
     skyMapName: 'sky_ship',
@@ -460,6 +467,7 @@ var cave_87 = {
         [15, 0, 0, 0, 0,15, 0, 0, 0, 0, 0, 0,15, 0, 0, 0, 0, 0, 0,15],
         [15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15]        
     ],
+    seenGrid: initSeenGrid(),
     startingTileX: 1,
     startingTileY: 2,
     skyMapName: 'sky_ship',
@@ -488,6 +496,7 @@ var cave_88 = {
         [15, 0, 0, 0, 0, 0, 0,15, 0, 0,15, 0, 0, 0, 0, 0,15, 0, 0,15],
         [15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15]        
     ],
+    seenGrid: initSeenGrid(),
     startingTileX: 1,
     startingTileY: 2,
     skyMapName: 'sky_ship',
@@ -516,6 +525,7 @@ var lab_89 = {
         [ 3,79,90, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3],
         [ 3, 0, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3]
     ],
+    seenGrid: initSeenGrid(),
     startingTileX: 1,
     startingTileY: 2,
     skyMapName: 'sky_ship',
@@ -630,6 +640,7 @@ var lab_90 = {
         [15, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,15],
         [15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15]        
     ],
+    seenGrid: initSeenGrid(),
     startingTileX: 1,
     startingTileY: 2,
     skyMapName: 'sky_ship',
@@ -767,6 +778,7 @@ var lab_91 = {
         [ 7, 0, 0, 0, 0, 5, 0,90,79, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,15],
         [ 5, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 0,15]        
     ],
+    seenGrid: initSeenGrid(),
     startingTileX: 1,
     startingTileY: 2,
     skyMapName: 'sky_ship',
@@ -889,20 +901,16 @@ var lab_91 = {
 var levelList = [ship_80, ship_81, ship_82, arctic_83, arctic_84, arctic_85, cave_86, cave_87, cave_88, lab_89, lab_90, lab_91];
 var currentRoom = 0;
 
-var seenGrid = [
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-];
+function initSeenGrid(val = 0) {
+    var seenGrid = [];
+
+    for (var row = 0; row < MAP_NUM_ROWS; row++) {
+        seenGrid[row] = [];
+
+        for ( var col = 0; col < MAP_NUM_COLS; col++) {
+            seenGrid[row][col] = val;
+        }
+    }
+
+    return seenGrid;
+}

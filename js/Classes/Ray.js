@@ -19,12 +19,12 @@ class Ray {
 
         this.tileTypeHit = mapSection.getTileTypeAtPixelCoord(this.closestWallHitCoord.x + this.xOffset, this.closestWallHitCoord.y + this.yOffset);
         this.gridCoord = mapSection.getGridCoordFromPixelCoord(this.closestWallHitCoord.x + this.xOffset, this.closestWallHitCoord.y + this.yOffset)
-        if (seenGrid[this.gridCoord.row][this.gridCoord.col] != 1){
+        if (levelList[currentRoom].seenGrid[this.gridCoord.row][this.gridCoord.col] != 1){
             mapSection.minimapIsDirty = true;
             //seenGrid[this.gridCoord.row][this.gridCoord.col];
         }
 
-        if (this.distance < 100) seenGrid[this.gridCoord.row][this.gridCoord.col] = 1;
+        if (this.distance < 100) levelList[currentRoom].seenGrid[this.gridCoord.row][this.gridCoord.col] = 1;
         this.wallStripTexture = wallTexturesFlat[this.tileTypeHit - 1];
     }
 
