@@ -49,7 +49,8 @@ function loadImages() {
         {spriteName: 'titlescreenBG', fileName: 'title_screen_bg.png'},
         {spriteName: 'intro_text', fileName: 'intro_text.png'},
         {spriteName: 'ending_text', fileName: 'ending_text.png'},
-        {spriteName: 'inventory_background', fileName:'inventory_background_16x16.png'}
+        {spriteName: 'inventory_background', fileName:'inventory_background_16x16.png'},
+        {spriteName: 'menu_button', fileName: 'ui/menu-button.png'}
 	]
 
 	imagesToLoad = imageList.length;

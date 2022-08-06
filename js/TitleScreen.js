@@ -17,6 +17,23 @@ function drawAndCheckButtonClick(label, color, centerX, centerY, buttonWidth, fo
     }
 }
 
+function drawClickButton(label, x, y, width, height, scaleFactor, doIfClicked, canvasContext = titleScreenCanvasContext) {
+  canvasContext.drawImage(spriteList['menu_button'], x, y, width, height);
+  colorText(label, canvasContext, x + (width/2), y + (height*.7), '15px sans-serif', "center", "white");
+  if (
+      didMouseJustGoDown && 
+      mousePos.x > x * scaleFactor &&
+      mousePos.x < (x + width) * scaleFactor &&
+      mousePos.y > y * scaleFactor &&
+      mousePos.y < (y + width) * scaleFactor
+      ) {
+      // console.log("Mouse", mousePos.x, mousePos.y);
+      // console.log("Button", x, y);
+      // console.log("Scale", scaleFactor);
+      doIfClicked();
+  }
+}
+
 function drawSnow(){
     let num = 16;
     let speed = 0.0002;
@@ -95,8 +112,14 @@ function drawTitleScreen(){
     colorText("GLACIERBOUND 2", titleScreenCanvasContext, titleScreenCanvas.width / 2, titleScreenCanvas.height * 0.25, '18px Roboto Mono', "center", "white");
 
     // Draw Buttons
+    /*
     drawAndCheckButtonClick("Start", "green", (titleScreenCanvas.width / 2), (titleScreenCanvas.height * 0.75), 40, 15, CANVAS_SCALE_FACTOR, function() {showingIntroText = true; playSFXAudio(audioSourceList['click']);} );
     drawAndCheckButtonClick("Credits", "blue", (titleScreenCanvas.width / 2), (titleScreenCanvas.height * 0.9), 40, 12, CANVAS_SCALE_FACTOR, function() {showingCreditsPage = 0; playSFXAudio(audioSourceList['click']);} );
+    */
+
+    drawClickButton("Start", 40, 75, 80, 25, CANVAS_SCALE_FACTOR,  function() {showingIntroText = true; playSFXAudio(audioSourceList['click']);});
+
+    drawClickButton("Credits", 40, 105, 80, 25, CANVAS_SCALE_FACTOR,  function() {showingCreditsPage = 0; playSFXAudio(audioSourceList['click']);});
 }
 
 var creditsList = [
