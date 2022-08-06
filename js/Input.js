@@ -2,8 +2,8 @@ var mousePos = null;
 var isMouseDown = false;
 var wasMouseDown = false; // not meant to be used directly, just lags behind isMouseDown then checked to set didMouseJustGoDown
 var didMouseJustGoDown = false; // true for one frame
-var inputMapping = [KEY_LETTER_W, KEY_LETTER_S, KEY_LETTER_A, KEY_LETTER_D, KEY_LETTER_Q, KEY_LETTER_E, KEY_LEFT_SHIFT, KEY_SPACE, KEY_ENTER];
-var inputAction = ['FORWARD', 'BACKWARD', 'TURN LEFT', 'TURN RIGHT', 'STRAFE LEFT', 'STRAFE RIGHT', 'SPRINT', 'ACTIVATE1', 'ACTIVATE2'];
+var inputMapping = [KEY_LETTER_W, KEY_LETTER_S, KEY_LETTER_A, KEY_LETTER_D, KEY_LETTER_Q, KEY_LETTER_E, KEY_LEFT_SHIFT, "LMB", KEY_SPACE, KEY_ENTER];
+var inputAction = ['FORWARD', 'BACKWARD', 'TURN LEFT', 'TURN RIGHT', 'STRAFE LEFT', 'STRAFE RIGHT', 'SPRINT', 'ACTIVATE1', 'ACTIVATE2', 'ACTIVATE3'];
 var inputLookup = [];
 var wasLevelSelectPressed = false;
 var activationPending = false; // enter/space act like a mouse click to open doors etc
@@ -13,7 +13,7 @@ var activationPending = false; // enter/space act like a mouse click to open doo
 var inputMap = {
   65: 'A', 66: 'B', 67: 'C', 68: 'D', 69: 'E', 70: 'F', 71: 'G', 72: 'H', 73: 'I', 74: 'J', 75: 'K', 76: 'L', 77: 'M',
   78: 'N', 79: 'O', 80: 'P', 81: 'Q', 82: 'R', 83: 'S', 84: 'T', 85: 'U', 86: 'V', 87: 'W', 88: 'X', 89: 'Y', 90: 'Z',
-  13: 'ENTER', 16: 'SHIFT', 18: 'ALT', 32: 'SPACE'
+  13: 'ENTER', 16: 'SHIFT', 18: 'ALT', 32: 'SPACE', LMB: 'LMB'
 };
 
 // if there are custom controls set, use those
