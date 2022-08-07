@@ -24,8 +24,12 @@ class Ray {
             //seenGrid[this.gridCoord.row][this.gridCoord.col];
         }
 
-        if (this.distance < 100) levelList[currentRoom].seenGrid[this.gridCoord.row][this.gridCoord.col] = 1;
+        if (this.distance < mapSection.minimapDrawDistance) levelList[currentRoom].seenGrid[this.gridCoord.row][this.gridCoord.col] = 1;
         this.wallStripTexture = wallTexturesFlat[this.tileTypeHit - 1];
+
+        //quick solution to minimap floor drawing bug is to just run these functions once more after this.distance is calculated.
+        this.getVertWallHitCoord();
+        this.getHorWallHitCoord();
     }
 
     getHorWallHitCoord(){
@@ -70,7 +74,8 @@ class Ray {
                 };
             } else {
 
-                if (distanceBetweenPoints(player.x, player.y, nextTileEdgeX, nextTileEdgeY) < 100){
+                if (distanceBetweenPoints(player.x, player.y, nextTileEdgeX, nextTileEdgeY) < (mapSection.minimapDrawDistance - TILE_SIZE) &&
+                    distanceBetweenPoints(player.x, player.y, nextTileEdgeX, nextTileEdgeY) < this.distance){
                     var coord = mapSection.getGridCoordFromPixelCoord(nextTileEdgeX + this.xOffset, nextTileEdgeY + this.yOffset);
                     levelList[currentRoom].seenGrid[coord.row][coord.col] = 1;
                 }

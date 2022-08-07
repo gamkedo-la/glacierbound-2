@@ -13,6 +13,7 @@ class MapSection {
         this.minimapHeight = MAP_NUM_ROWS * TILE_SIZE * this.miniMapScaleFactor;
         this.minimapX = 0;
         this.minimapY = bufferedHUDCanvas.height - this.minimapHeight;
+        this.minimapDrawDistance = TILE_SIZE * 4;
     }
 
     // this is not perspective correct so it would not work for floors
