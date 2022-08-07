@@ -133,24 +133,29 @@ class MapSection {
         if (this.minimapIsDirty) {
             
             bufferedHUDCanvasContext.clearRect(0,0,this.minimapWidth, this.minimapHeight);
-            colorRect(0, 0, this.minimapWidth, this.minimapHeight, 'lightgrey', bufferedHUDCanvasContext);
+
+            //draw minimap backgroud
+            colorRect(0, 0, this.minimapWidth, this.minimapHeight, 'black', bufferedHUDCanvasContext);
     
             for (var row = 0; row < MAP_NUM_ROWS; row++) {
                 for ( var col = 0; col < MAP_NUM_COLS; col++) {
+                    
                     if (levelList[currentRoom].seenGrid[row][col] == 1) {
                         var tileX = col * TILE_SIZE;
                         var tileY = row * TILE_SIZE;
                         var tileType = this.getTileTypeAtGridCoord(col, row);
-    
-                        if (tileType != TILE_TYPE_FLOOR && tileType < 80) {
+
+                        //draw revealed floor tiles
+                        colorRect(tileX * this.miniMapScaleFactor, tileY * this.miniMapScaleFactor, TEXTURE_SIZE * this.miniMapScaleFactor, TEXTURE_SIZE * this.miniMapScaleFactor, 'lightgrey', bufferedHUDCanvasContext);
+
+                        if (tileType != TILE_TYPE_FLOOR && tileType < 79) {
                             bufferedHUDCanvasContext.drawImage(wallTexturesFlat[tileType - 1], tileX * this.miniMapScaleFactor, tileY * this.miniMapScaleFactor, TEXTURE_SIZE * this.miniMapScaleFactor, TEXTURE_SIZE * this.miniMapScaleFactor);
                         }
 
                         if (tileType >= 80 && DEBUG_MODE_ENBALED) {
                             colorCircle((tileX + TILE_SIZE/2) * this.miniMapScaleFactor, (tileY + TILE_SIZE/2) * this.miniMapScaleFactor, 5, "blue", bufferedHUDCanvasContext);
                         }
-                    };
-                    
+                    } 
                 }
             }
 

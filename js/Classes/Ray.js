@@ -69,6 +69,12 @@ class Ray {
                     'y': nextTileEdgeY
                 };
             } else {
+
+                if (distanceBetweenPoints(player.x, player.y, nextTileEdgeX, nextTileEdgeY) < 100){
+                    var coord = mapSection.getGridCoordFromPixelCoord(nextTileEdgeX + this.xOffset, nextTileEdgeY + this.yOffset);
+                    levelList[currentRoom].seenGrid[coord.row][coord.col] = 1;
+                }
+
                 nextTileEdgeX += xStep;
                 nextTileEdgeY += yStep;
             }
