@@ -9,6 +9,7 @@ class GameObject {
         this.moveSpeed = speed;
         this.altitude = altitude;
         this.scale = scale;
+        this.minimapIconRadius = TILE_SIZE / 2;
         this.radius = TILE_SIZE * 1.5;
         this.distanceToPlayer = Infinity;
         this.isDead = false;
@@ -48,6 +49,8 @@ class GameObject {
         if (this.timer % (60 * this.secondsPerFrame) === 0) {
             this.frameCounter += 1;
         }
+
+        this.minimapIconRadius = Math.abs(Math.sin(this.frameCounter)) * 20;
         
         this.distanceToPlayer = distanceBetweenPoints(this.x, this.y, player.x, player.y);
 
@@ -148,6 +151,10 @@ class GameObject {
     draw2D() {
         if (!this.isActive) return;
         if (this.mapID != currentRoom) return;
+
+        if (this.objectType === OBJECT_TYPE_ITEM && inventory.containsItem('Map')){
+            colorCircle(this.x, this.y, this.minimapIconRadius, 'yellow', bufferedHUDCanvasContext, mapSection.miniMapScaleFactor);
+        }
 
         if (MINIMAP_ENABLED) colorCircle(this.x * mapSection.miniMapScaleFactor, this.y * mapSection.miniMapScaleFactor, 5, this.miniMapColor, bufferedDebugCanvasContext);
     }
