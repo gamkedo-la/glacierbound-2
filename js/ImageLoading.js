@@ -43,8 +43,10 @@ function loadImages() {
         //Other Images
         {spriteName: 'floor_snow', fileName: 'floor_snow.png'},
         {spriteName: 'floor_ship', fileName: 'floor_ship.png'},
+        {spriteName: 'floor_cave', fileName: 'floor_cave.png'},
         {spriteName: 'sky_clouds', fileName: 'sky_clouds.png'},
         {spriteName: 'sky_ship', fileName: 'sky_ship.png'},
+        {spriteName: 'sky_cave', fileName: 'sky_cave.png'},
         {spriteName: 'snow', fileName: 'snow.png'},
         {spriteName: 'fog', fileName: 'fog.png'},
         {spriteName: 'titlescreenBG', fileName: 'title_screen_bg.png'},
