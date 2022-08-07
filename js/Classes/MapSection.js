@@ -130,26 +130,26 @@ class MapSection {
         this.minimapWidth = MAP_NUM_COLS * TILE_SIZE * this.miniMapScaleFactor;
         this.minimapHeight = MAP_NUM_ROWS * TILE_SIZE * this.miniMapScaleFactor;
 
-        if (this.minimapIsDirty) {
+        //if (this.minimapIsDirty) {  //Causing minimap drawing bug
             
             bufferedHUDCanvasContext.clearRect(0,0,this.minimapWidth, this.minimapHeight);
 
             //draw minimap backgroud
-            colorRect(0, 0, this.minimapWidth, this.minimapHeight, 'black', bufferedHUDCanvasContext);
+            colorRect(0, bufferedHUDCanvas.height - this.minimapHeight, this.minimapWidth, this.minimapHeight, 'black', bufferedHUDCanvasContext);
     
             for (var row = 0; row < MAP_NUM_ROWS; row++) {
                 for ( var col = 0; col < MAP_NUM_COLS; col++) {
-                    
+
                     if (levelList[currentRoom].seenGrid[row][col] == 1) {
                         var tileX = col * TILE_SIZE;
                         var tileY = row * TILE_SIZE;
                         var tileType = this.getTileTypeAtGridCoord(col, row);
 
                         //draw revealed floor tiles
-                        colorRect(tileX * this.miniMapScaleFactor, tileY * this.miniMapScaleFactor, TEXTURE_SIZE * this.miniMapScaleFactor, TEXTURE_SIZE * this.miniMapScaleFactor, 'lightgrey', bufferedHUDCanvasContext);
+                        colorRect(tileX * this.miniMapScaleFactor, (tileY * this.miniMapScaleFactor) + (bufferedHUDCanvas.height - this.minimapHeight), TEXTURE_SIZE * this.miniMapScaleFactor, TEXTURE_SIZE * this.miniMapScaleFactor, 'lightgrey', bufferedHUDCanvasContext);
 
                         if (tileType != TILE_TYPE_FLOOR && tileType < 79) {
-                            bufferedHUDCanvasContext.drawImage(wallTexturesFlat[tileType - 1], tileX * this.miniMapScaleFactor, tileY * this.miniMapScaleFactor, TEXTURE_SIZE * this.miniMapScaleFactor, TEXTURE_SIZE * this.miniMapScaleFactor);
+                            bufferedHUDCanvasContext.drawImage(wallTexturesFlat[tileType - 1], tileX * this.miniMapScaleFactor, (tileY * this.miniMapScaleFactor) + (bufferedHUDCanvas.height - this.minimapHeight), TEXTURE_SIZE * this.miniMapScaleFactor, TEXTURE_SIZE * this.miniMapScaleFactor);
                         }
 
                         if (tileType >= 80 && DEBUG_MODE_ENBALED) {
@@ -163,22 +163,22 @@ class MapSection {
             this.minimapImage.width = this.minimapWidth;
             this.minimapImage.height = this.minimapHeight;
             this.minimapImage.src = bufferedHUDCanvas.toDataURL();
-        } else {
+        //} else {
 
-            if (MINIMAP_ENABLED) {
-                // regular, larger, opaque "debug version" of the minimap
-                bufferedHUDCanvasContext.drawImage(this.minimapImage, 0, 0);
-            }
+            //if (MINIMAP_ENABLED) {
+            //    // regular, larger, opaque "debug version" of the minimap
+            //    bufferedHUDCanvasContext.drawImage(this.minimapImage, 0, bufferedHUDCanvas.height - this.minimapHeight);
+            //}
 
-            if (RADAR_ENABLED) {
-                // small radar version
-                if (RADAR_BG_ENABLED) colorRect(RADAR_X, RADAR_Y, RADAR_W, RADAR_H, RADAR_BG_FILL, bufferedHUDCanvasContext);
-                bufferedHUDCanvasContext.globalAlpha = RADAR_ALPHA;
-                bufferedHUDCanvasContext.drawImage(this.minimapImage, RADAR_X, RADAR_Y, RADAR_W, RADAR_H);
-                bufferedHUDCanvasContext.globalAlpha = 1;
-            }
+            //if (RADAR_ENABLED) {
+             //   // small radar version
+            //    if (RADAR_BG_ENABLED) colorRect(RADAR_X, RADAR_Y, RADAR_W, RADAR_H, RADAR_BG_FILL, bufferedHUDCanvasContext);
+            //    bufferedHUDCanvasContext.globalAlpha = RADAR_ALPHA;
+            //    bufferedHUDCanvasContext.drawImage(this.minimapImage, RADAR_X, RADAR_Y, RADAR_W, RADAR_H);
+            //    bufferedHUDCanvasContext.globalAlpha = 1;
+            //}
             
-        }
+        //}
     }
 
     drawCeilingAndFloor(){

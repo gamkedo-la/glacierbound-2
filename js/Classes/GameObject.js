@@ -153,9 +153,9 @@ class GameObject {
         if (this.mapID != currentRoom) return;
 
         if (this.objectType === OBJECT_TYPE_ITEM && inventory.containsItem('Map')){
-            colorCircle(this.x, this.y, this.minimapIconRadius, 'yellow', bufferedHUDCanvasContext, mapSection.miniMapScaleFactor);
+            colorCircle(this.x * mapSection.miniMapScaleFactor, (bufferedHUDCanvas.height - mapSection.minimapHeight) + (this.y * mapSection.miniMapScaleFactor) , this.minimapIconRadius * mapSection.miniMapScaleFactor, 'yellow', bufferedHUDCanvasContext);
         }
 
-        if (MINIMAP_ENABLED) colorCircle(this.x * mapSection.miniMapScaleFactor, this.y * mapSection.miniMapScaleFactor, 5, this.miniMapColor, bufferedDebugCanvasContext);
+        if (MINIMAP_ENABLED) colorCircle(this.x * mapSection.miniMapScaleFactor, (this.y * this.miniMapScaleFactor) + (bufferedHUDCanvas.height - mapSection.minimapHeight), 5, this.miniMapColor, bufferedDebugCanvasContext);
     }
 }
