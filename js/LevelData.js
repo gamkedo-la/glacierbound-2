@@ -15,9 +15,9 @@ var ship_80 = {
         [ 3, 3, 3, 3, 3, 0, 0, 0, 3, 3, 0, 0, 0, 3, 0, 0, 0, 0, 0, 3],
         [ 3, 0, 0, 0, 3, 3, 0, 3, 3, 3, 3, 3, 0, 3, 3, 0, 0, 0, 3, 3],
         [ 3, 0, 0, 0, 0, 3, 0, 3, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 3],
-        [ 20, 0, 0, 0, 0,17, 0, 0, 0, 3, 3, 3, 0, 3, 0, 3, 0, 3, 0, 3],
+        [ 20, 0, 0, 0, 0,0, 0, 0, 0, 3, 3, 3, 0, 3, 0, 3, 0, 3, 0, 3],
         [ 3, 0, 0, 0, 0, 3, 0, 3, 0, 0, 0, 0, 0, 3, 0, 0, 0, 3, 3, 3],
-        [ 3, 0, 0, 0, 3, 3,17, 3, 3, 3, 3, 3, 0, 3, 3, 0, 0, 0, 0, 4],
+        [ 3, 0, 0, 0, 3, 3, 0, 3, 3, 3, 3, 3, 0, 3, 3, 0, 0, 0, 0, 4],
         [ 3, 3, 3, 3, 3, 0, 0, 0, 3, 3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 4],
         [ 0, 0, 0, 3, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 3, 3,81, 4],
         [ 0, 0, 0, 3, 0, 0, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 3, 0,79, 4],
@@ -33,6 +33,18 @@ var ship_80 = {
     floorReflection: true,
     mapID: 80,
     objects: [
+        {
+            col: 2,
+            row: 7,
+            spriteSheet: "Map",
+            altitude: 0,
+            scale: 0.05,
+            angle: 0,
+            objectType: OBJECT_TYPE_ITEM,
+            isLocked: false,
+            lockedMessage: "Locked",
+            keyName: ''
+        },
         {
             col: 0,
             row: 7,
@@ -58,16 +70,16 @@ var ship_80 = {
             keyName: ''
         },
         {
-            col: 5,
+            col: 7,
             row: 7,
             spriteSheet: undefined,
             altitude: 0,
             scale: 0.05,
             angle: 0,
             objectType: OBJECT_TYPE_DOOR,
-            isLocked: false,
-            lockedMessage: "Locked",
-            keyName: ''
+            isLocked: true,
+            lockedMessage: "I'd better grab the map from the bridge before setting out.",
+            keyName: 'Map'
         },
         {
             col: 6,
@@ -124,31 +136,6 @@ var ship_81 = {
     floorReflection: true,
     mapID: 81,
     objects: [
-        {
-            col: 1,
-            row: 7,
-            spriteSheet: "Map",
-            altitude: 0,
-            scale: 0.05,
-            angle: 0,
-            objectType: OBJECT_TYPE_ITEM,
-            isLocked: false,
-            lockedMessage: "Locked",
-            keyName: ''
-        },
-        {
-            col: 6,
-            row: 1,
-            spriteSheet: "Fire Extinguisher",
-            altitude: 0,
-            scale: 0.05,
-            angle: 0,
-            objectType: OBJECT_TYPE_ITEM,
-            isLocked: false,
-            lockedMessage: "Locked",
-            keyName: '',
-            keyName: ''
-        },
         {
             col: 2,
             row: 3,
