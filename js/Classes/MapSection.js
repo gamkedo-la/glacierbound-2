@@ -11,6 +11,8 @@ class MapSection {
         this.minimapImage = document.createElement('img');
         this.minimapWidth = MAP_NUM_COLS * TILE_SIZE * this.miniMapScaleFactor;
         this.minimapHeight = MAP_NUM_ROWS * TILE_SIZE * this.miniMapScaleFactor;
+        this.minimapX = 0;
+        this.minimapY = bufferedHUDCanvas.height - this.minimapHeight;
     }
 
     // this is not perspective correct so it would not work for floors
@@ -129,13 +131,15 @@ class MapSection {
         this.miniMapScaleFactor = (levelEditorEnabled) ? MINIMAP_SCALE_FACTOR * 2 : MINIMAP_SCALE_FACTOR;
         this.minimapWidth = MAP_NUM_COLS * TILE_SIZE * this.miniMapScaleFactor;
         this.minimapHeight = MAP_NUM_ROWS * TILE_SIZE * this.miniMapScaleFactor;
+        this.minimapY = (levelEditorEnabled) ? 0 : bufferedHUDCanvas.height - this.minimapHeight;
+        
 
         //if (this.minimapIsDirty) {  //Causing minimap drawing bug
             
             bufferedHUDCanvasContext.clearRect(0,0,this.minimapWidth, this.minimapHeight);
 
             //draw minimap backgroud
-            colorRect(0, bufferedHUDCanvas.height - this.minimapHeight, this.minimapWidth, this.minimapHeight, 'black', bufferedHUDCanvasContext);
+            colorRect(0, this.minimapY, this.minimapWidth, this.minimapHeight, 'black', bufferedHUDCanvasContext);
     
             for (var row = 0; row < MAP_NUM_ROWS; row++) {
                 for ( var col = 0; col < MAP_NUM_COLS; col++) {
@@ -146,10 +150,10 @@ class MapSection {
                         var tileType = this.getTileTypeAtGridCoord(col, row);
 
                         //draw revealed floor tiles
-                        colorRect(tileX * this.miniMapScaleFactor, (tileY * this.miniMapScaleFactor) + (bufferedHUDCanvas.height - this.minimapHeight), TEXTURE_SIZE * this.miniMapScaleFactor, TEXTURE_SIZE * this.miniMapScaleFactor, 'lightgrey', bufferedHUDCanvasContext);
+                        colorRect(tileX * this.miniMapScaleFactor, (tileY * this.miniMapScaleFactor) + this.minimapY, TEXTURE_SIZE * this.miniMapScaleFactor, TEXTURE_SIZE * this.miniMapScaleFactor, 'lightgrey', bufferedHUDCanvasContext);
 
                         if (tileType != TILE_TYPE_FLOOR && tileType < 79) {
-                            bufferedHUDCanvasContext.drawImage(wallTexturesFlat[tileType - 1], tileX * this.miniMapScaleFactor, (tileY * this.miniMapScaleFactor) + (bufferedHUDCanvas.height - this.minimapHeight), TEXTURE_SIZE * this.miniMapScaleFactor, TEXTURE_SIZE * this.miniMapScaleFactor);
+                            bufferedHUDCanvasContext.drawImage(wallTexturesFlat[tileType - 1], tileX * this.miniMapScaleFactor, (tileY * this.miniMapScaleFactor) + (this.minimapY), TEXTURE_SIZE * this.miniMapScaleFactor, TEXTURE_SIZE * this.miniMapScaleFactor);
                         }
 
                         if (tileType >= 80 && DEBUG_MODE_ENBALED) {
@@ -167,7 +171,7 @@ class MapSection {
 
             //if (MINIMAP_ENABLED) {
             //    // regular, larger, opaque "debug version" of the minimap
-            //    bufferedHUDCanvasContext.drawImage(this.minimapImage, 0, bufferedHUDCanvas.height - this.minimapHeight);
+            //    bufferedHUDCanvasContext.drawImage(this.minimapImage, 0, this.minimapY);
             //}
 
             //if (RADAR_ENABLED) {
