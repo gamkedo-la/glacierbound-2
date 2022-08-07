@@ -1,7 +1,7 @@
 function initMapGameObjects(){
     levelList.forEach(map => map.objects.forEach(function(element) {
         if (element) {
-            new GameObject(element.col, element.row, 0, element.spriteSheet, 0, 0.05, 0, map.mapID - 80, element.objectType, element.isLocked, element.lockedMessage, element.keyName); 
+            new GameObject(element.col, element.row, 0, element.spriteSheet, 0, 0.05, 0, map.mapID - 80, element.objectType, element.isLocked, element.lockedMessage, element.keyName, element.functionWhenLocked, element.functionWhenActivated); 
         }
     }) );
 }
@@ -44,7 +44,9 @@ var ship_80 = {
             objectType: OBJECT_TYPE_ITEM,
             isLocked: false,
             lockedMessage: "Locked",
-            keyName: ''
+            keyName: '',
+            functionWhenLocked: function() {},
+            functionWhenActivated: function() {player.addObjective(OBJECTIVE_FIND_BEACON)}
         },
         {
             col: 0,
@@ -56,7 +58,9 @@ var ship_80 = {
             objectType: OBJECT_TYPE_INTERACTABLE,
             isLocked: true,
             lockedMessage: "I need to find the Artifact before I can leave this planet.",
-            keyName: 'Artifact'
+            keyName: 'Artifact',
+            functionWhenLocked: function() {},
+            functionWhenActivated: function() {}
         },
         {
             col: 6,
@@ -68,7 +72,9 @@ var ship_80 = {
             objectType: OBJECT_TYPE_DOOR,
             isLocked: false,
             lockedMessage: "Locked",
-            keyName: ''
+            keyName: '',
+            functionWhenLocked: function() {},
+            functionWhenActivated: function() {}
         },
         {
             col: 7,
@@ -80,7 +86,9 @@ var ship_80 = {
             objectType: OBJECT_TYPE_DOOR,
             isLocked: true,
             lockedMessage: "I'd better grab the map from the bridge before setting out.",
-            keyName: 'Map'
+            keyName: 'Map',
+            functionWhenLocked: function() {},
+            functionWhenActivated: function() {}
         },
         {
             col: 6,
@@ -93,7 +101,9 @@ var ship_80 = {
             isLocked: false,
             lockedMessage: "Locked",
             keyName: '',
-            keyName: ''
+            keyName: '',
+            functionWhenLocked: function() {},
+            functionWhenActivated: function() {}
         },
         {
             col: 17,
@@ -105,7 +115,9 @@ var ship_80 = {
             objectType: OBJECT_TYPE_DOOR,
             isLocked: false,
             lockedMessage: "Locked",
-            keyName: ''
+            keyName: '',
+            functionWhenLocked: function() {},
+            functionWhenActivated: function() {}
         }
     ]
 }
@@ -148,7 +160,9 @@ var ship_81 = {
             objectType: OBJECT_TYPE_DOOR,
             isLocked: false,
             lockedMessage: "Locked",
-            keyName: ''
+            keyName: '',
+            functionWhenLocked: function() {},
+            functionWhenActivated: function() {}
         },
         {
             col: 6,
@@ -160,7 +174,9 @@ var ship_81 = {
             objectType: OBJECT_TYPE_DOOR,
             isLocked: false,
             lockedMessage: "Locked",
-            keyName: ''
+            keyName: '',
+            functionWhenLocked: function() {},
+            functionWhenActivated: function() {}
         },
         {
             col: 10,
@@ -172,7 +188,9 @@ var ship_81 = {
             objectType: OBJECT_TYPE_DOOR,
             isLocked: false,
             lockedMessage: "Locked",
-            keyName: ''
+            keyName: '',
+            functionWhenLocked: function() {},
+            functionWhenActivated: function() {}
         },
         {
             col: 14,
@@ -184,7 +202,9 @@ var ship_81 = {
             objectType: OBJECT_TYPE_DOOR,
             isLocked: false,
             lockedMessage: "Locked",
-            keyName: ''
+            keyName: '',
+            functionWhenLocked: function() {},
+            functionWhenActivated: function() {}
         },
         {
             col: 17,
@@ -195,8 +215,10 @@ var ship_81 = {
             angle: 0,
             objectType: OBJECT_TYPE_DOOR,
             isLocked: true,
-            lockedMessage: "I need to find the wrench in the boiler room to open this.",
-            keyName: 'Wrench'
+            lockedMessage: "The handle is broken. I'll need to find the wrench in the boiler room to open this.",
+            keyName: 'Wrench',
+            functionWhenLocked: function() {player.addObjective(OBJECTIVE_FIND_WRENCH)},
+            functionWhenActivated: function() {player.removeObjective(OBJECTIVE_EXIT_SHIP);}
         },
          /*
         {
@@ -209,7 +231,9 @@ var ship_81 = {
             objectType: OBJECT_TYPE_ITEM,
             isLocked: false,
             lockedMessage: "Locked",
-            keyName: ''
+            keyName: '',
+            functionWhenLocked: function() {},
+            functionWhenActivated: function() {}
         }
         */
     ]
@@ -252,7 +276,9 @@ var ship_82 = {
             objectType: OBJECT_TYPE_ITEM,
             isLocked: false,
             lockedMessage: "Locked",
-            keyName: ''
+            keyName: '',
+            functionWhenLocked: function() {},
+            functionWhenActivated: function() {player.removeObjective(OBJECTIVE_FIND_WRENCH); player.addObjective(OBJECTIVE_EXIT_SHIP);}
         }
     ]
 }
@@ -295,7 +321,9 @@ var arctic_83 = {
             objectType: OBJECT_TYPE_DOOR,
             isLocked: true,
             lockedMessage: "I'll need to find the key to access the cave systems.",
-            keyName: 'Key'
+            keyName: 'Key',
+            functionWhenLocked: function() {player.addObjective(OBJECTIVE_FIND_MINE_KEY);},
+            functionWhenActivated: function() {}
         }
     ]
 }
@@ -337,7 +365,9 @@ var arctic_84 = {
             objectType: OBJECT_TYPE_ITEM,
             isLocked: false,
             lockedMessage: "Locked",
-            keyName: ''
+            keyName: '',
+            functionWhenLocked: function() {},
+            functionWhenActivated: function() {player.removeObjective(OBJECTIVE_FIND_MINE_KEY)}
         },
         {
             col: 17,
@@ -349,7 +379,9 @@ var arctic_84 = {
             objectType: OBJECT_TYPE_DOOR,
             isLocked: true,
             lockedMessage: "It's jammed shut. Maybe I can find something to pry it open.",
-            keyName: 'Crowbar'
+            keyName: 'Crowbar',
+            functionWhenLocked: function() {player.addObjective(OBJECTIVE_FIND_CROW_BAR)},
+            functionWhenActivated: function() {}
         }
     ]
 }
@@ -392,7 +424,9 @@ var arctic_85 = {
             objectType: OBJECT_TYPE_DOOR,
             isLocked: false,
             lockedMessage: '',
-            keyName: ''
+            keyName: '',
+            functionWhenLocked: function() {},
+            functionWhenActivated: function() {}
         }
     ]
 }
@@ -434,7 +468,9 @@ var cave_86 = {
             objectType: OBJECT_TYPE_ITEM,
             isLocked: false,
             lockedMessage: '',
-            keyName: ''
+            keyName: '',
+            functionWhenLocked: function() {},
+            functionWhenActivated: function() {player.removeObjective(OBJECTIVE_FIND_CROW_BAR)}
         },
         {
             col: 1,
@@ -446,7 +482,9 @@ var cave_86 = {
             objectType: OBJECT_TYPE_DOOR,
             isLocked: true,
             lockedMessage: "It's getting too dark to continue without a light",
-            keyName: 'Lantern'
+            keyName: 'Lantern',
+            functionWhenLocked: function() {player.addObjective(OBJECTIVE_FIND_LANTERN)},
+            functionWhenActivated: function() {player.addObjective(OBJECTIVE_FIND_BEACON)}
         }
     ]
 }
@@ -546,7 +584,9 @@ var lab_89 = {
             objectType: OBJECT_TYPE_DOOR,
             isLocked: false,
             lockedMessage: "",
-            keyName: ''
+            keyName: '',
+            functionWhenLocked: function() {},
+            functionWhenActivated: function() {}
         },
         {
             col: 12,
@@ -558,7 +598,9 @@ var lab_89 = {
             objectType: OBJECT_TYPE_DOOR,
             isLocked: false,
             lockedMessage: "",
-            keyName: ''
+            keyName: '',
+            functionWhenLocked: function() {},
+            functionWhenActivated: function() {}
         }
         ,
         {
@@ -571,7 +613,9 @@ var lab_89 = {
             objectType: OBJECT_TYPE_DOOR,
             isLocked: false,
             lockedMessage: "",
-            keyName: ''
+            keyName: '',
+            functionWhenLocked: function() {},
+            functionWhenActivated: function() {}
         },
         {
             col: 4,
@@ -583,7 +627,9 @@ var lab_89 = {
             objectType: OBJECT_TYPE_DOOR,
             isLocked: false,
             lockedMessage: "",
-            keyName: ''
+            keyName: '',
+            functionWhenLocked: function() {},
+            functionWhenActivated: function() {}
         },
         {
             col: 6,
@@ -595,7 +641,9 @@ var lab_89 = {
             objectType: OBJECT_TYPE_DOOR,
             isLocked: false,
             lockedMessage: "",
-            keyName: ''
+            keyName: '',
+            functionWhenLocked: function() {},
+            functionWhenActivated: function() {}
         },
         {
             col: 15,
@@ -607,7 +655,9 @@ var lab_89 = {
             objectType: OBJECT_TYPE_DOOR,
             isLocked: false,
             lockedMessage: "",
-            keyName: ''
+            keyName: '',
+            functionWhenLocked: function() {},
+            functionWhenActivated: function() {}
         },
         {
             col: 3,
@@ -619,7 +669,9 @@ var lab_89 = {
             objectType: OBJECT_TYPE_DOOR,
             isLocked: false,
             lockedMessage: "",
-            keyName: ''
+            keyName: '',
+            functionWhenLocked: function() {},
+            functionWhenActivated: function() {}
         }
     ]
 }
@@ -661,7 +713,9 @@ var lab_90 = {
             objectType: OBJECT_TYPE_ITEM,
             isLocked: false,
             lockedMessage: "Locked",
-            keyName: ''
+            keyName: '',
+            functionWhenLocked: function() {},
+            functionWhenActivated: function() {player.removeObjective(OBJECTIVE_FIND_LANTERN)}
         },
         {
             col: 2,
@@ -673,7 +727,9 @@ var lab_90 = {
             objectType: OBJECT_TYPE_DOOR,
             isLocked: false,
             lockedMessage: "",
-            keyName: ''
+            keyName: '',
+            functionWhenLocked: function() {},
+            functionWhenActivated: function() {}
         },
         {
             col: 8,
@@ -685,7 +741,9 @@ var lab_90 = {
             objectType: OBJECT_TYPE_DOOR,
             isLocked: false,
             lockedMessage: "",
-            keyName: ''
+            keyName: '',
+            functionWhenLocked: function() {},
+            functionWhenActivated: function() {}
         },
         {
             col: 14,
@@ -697,7 +755,9 @@ var lab_90 = {
             objectType: OBJECT_TYPE_DOOR,
             isLocked: false,
             lockedMessage: "",
-            keyName: ''
+            keyName: '',
+            functionWhenLocked: function() {},
+            functionWhenActivated: function() {}
         },
         {
             col: 14,
@@ -709,7 +769,9 @@ var lab_90 = {
             objectType: OBJECT_TYPE_DOOR,
             isLocked: false,
             lockedMessage: "",
-            keyName: ''
+            keyName: '',
+            functionWhenLocked: function() {},
+            functionWhenActivated: function() {}
         },
         {
             col: 8,
@@ -721,7 +783,9 @@ var lab_90 = {
             objectType: OBJECT_TYPE_DOOR,
             isLocked: false,
             lockedMessage: "",
-            keyName: ''
+            keyName: '',
+            functionWhenLocked: function() {},
+            functionWhenActivated: function() {}
         },
         {
             col: 4,
@@ -733,7 +797,9 @@ var lab_90 = {
             objectType: OBJECT_TYPE_DOOR,
             isLocked: false,
             lockedMessage: "",
-            keyName: ''
+            keyName: '',
+            functionWhenLocked: function() {},
+            functionWhenActivated: function() {}
         },
         {
             col: 1,
@@ -745,7 +811,9 @@ var lab_90 = {
             objectType: OBJECT_TYPE_DOOR,
             isLocked: true,
             lockedMessage: "It doesn't seem to open from this side",
-            keyName: 'Artifact'
+            keyName: 'Artifact',
+            functionWhenLocked: function() {player.addObjective(OBJECTIVE_FIND_LAB_CAVE_ENTERANCE)},
+            functionWhenActivated: function() {}
         },
         {
             col: 15,
@@ -757,7 +825,9 @@ var lab_90 = {
             objectType: OBJECT_TYPE_DOOR,
             isLocked: false,
             lockedMessage: "",
-            keyName: ''
+            keyName: '',
+            functionWhenLocked: function() {},
+            functionWhenActivated: function() {}
         }
     ]
 }
@@ -799,7 +869,9 @@ var lab_91 = {
             objectType: OBJECT_TYPE_ITEM,
             isLocked: false,
             lockedMessage: '',
-            keyName: ''
+            keyName: '',
+            functionWhenLocked: function() {},
+            functionWhenActivated: function() {player.addObjective(OBJECTIVE_RETURN_TO_SHIP);}
         },
         {
             col: 4,
@@ -811,7 +883,9 @@ var lab_91 = {
             objectType: OBJECT_TYPE_DOOR,
             isLocked: false,
             lockedMessage: "",
-            keyName: ''
+            keyName: '',
+            functionWhenLocked: function() {},
+            functionWhenActivated: function() {}
         },
         {
             col: 1,
@@ -823,7 +897,9 @@ var lab_91 = {
             objectType: OBJECT_TYPE_DOOR,
             isLocked: false,
             lockedMessage: "",
-            keyName: ''
+            keyName: '',
+            functionWhenLocked: function() {},
+            functionWhenActivated: function() {}
         },
         {
             col: 9,
@@ -835,7 +911,9 @@ var lab_91 = {
             objectType: OBJECT_TYPE_DOOR,
             isLocked: false,
             lockedMessage: "",
-            keyName: ''
+            keyName: '',
+            functionWhenLocked: function() {},
+            functionWhenActivated: function() {}
         },
         {
             col: 13,
@@ -847,7 +925,9 @@ var lab_91 = {
             objectType: OBJECT_TYPE_DOOR,
             isLocked: false,
             lockedMessage: "",
-            keyName: ''
+            keyName: '',
+            functionWhenLocked: function() {},
+            functionWhenActivated: function() {}
         },
         {
             col: 15,
@@ -859,7 +939,9 @@ var lab_91 = {
             objectType: OBJECT_TYPE_DOOR,
             isLocked: false,
             lockedMessage: "",
-            keyName: ''
+            keyName: '',
+            functionWhenLocked: function() {},
+            functionWhenActivated: function() {}
         },
         {
             col: 15,
@@ -871,7 +953,9 @@ var lab_91 = {
             objectType: OBJECT_TYPE_DOOR,
             isLocked: false,
             lockedMessage: "",
-            keyName: ''
+            keyName: '',
+            functionWhenLocked: function() {},
+            functionWhenActivated: function() {}
         },
         {
             col: 13,
@@ -883,7 +967,9 @@ var lab_91 = {
             objectType: OBJECT_TYPE_DOOR,
             isLocked: false,
             lockedMessage: "",
-            keyName: ''
+            keyName: '',
+            functionWhenLocked: function() {},
+            functionWhenActivated: function() {}
         },
         {
             col: 6,
@@ -895,7 +981,9 @@ var lab_91 = {
             objectType: OBJECT_TYPE_DOOR,
             isLocked: true,
             lockedMessage: "I can't leave without the artifact...",
-            keyName: 'Artifact'
+            keyName: 'Artifact',
+            functionWhenLocked: function() {},
+            functionWhenActivated: function() {}
         }
     ]
 }

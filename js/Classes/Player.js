@@ -28,7 +28,7 @@ class Player {
             x: TILE_SIZE / 2,
             y: TILE_SIZE / 2
         }
-        this.currentObjective = OBJECTIVE_1;
+        this.currentObjective = [];
 
         allObjects.push(this);
     }
@@ -117,11 +117,24 @@ class Player {
 
     displayObjectives(){
 
-        if (inventory.containsItem("Artifact")){
-            this.currentObjective = OBJECTIVE_2;
+        colorText("Current Objectives:", bufferedHUDCanvasContext, bufferedHUDCanvas.width - 20, 30, '16px Roboto Mono', 'right', 'white');
+        for (i = 0; i < this.currentObjective.length; i++){
+            colorText(this.currentObjective[i], bufferedHUDCanvasContext, bufferedHUDCanvas.width - 20, 50 + (i * 20), '16px Roboto Mono', 'right', 'white');
         }
 
-        colorText("Current Objective:", bufferedHUDCanvasContext, bufferedHUDCanvas.width - 20, 30, '16px Roboto Mono', 'right', 'white');
-        colorText(this.currentObjective, bufferedHUDCanvasContext, bufferedHUDCanvas.width - 20, 50, '16px Roboto Mono', 'right', 'white');
     }
+
+    addObjective(objective){
+        if (this.currentObjective.findIndex(element => element === objective) === -1){
+            this.currentObjective.push(objective);
+        }
+    }
+
+    removeObjective(objective){
+        var index = this.currentObjective.findIndex(element => element === objective);
+        if (index >= 0){
+            this.currentObjective.splice(index, 1);
+        }
+    }
+
 }

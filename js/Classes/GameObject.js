@@ -1,5 +1,5 @@
 class GameObject {
-    constructor(col, row, speed, spriteSheet, altitude = 0, scale = 1, angle, mapID, objectType, isLocked, lockedMessage, keyName) {
+    constructor(col, row, speed, spriteSheet, altitude = 0, scale = 1, angle, mapID, objectType, isLocked, lockedMessage, keyName, functionWhenLocked, functionWhenActivated) {
         this.col = col;
         this.row = row;
         this.x = mapSection.getTileCenterPixelCoordFromGridCoord(col, row).x;
@@ -27,6 +27,8 @@ class GameObject {
         this.lockedMessage = lockedMessage;
         this.keyName = keyName;
         this.opened = false;
+        this.functionWhenLocked = functionWhenLocked;
+        this.functionWhenActivated = functionWhenActivated;
 
         if (this.objectType == OBJECT_TYPE_DOOR && this.mapID == currentRoom) {
             mapSection.setTileTypeAtGridCoord(this.col, this.row, 17);
@@ -75,6 +77,7 @@ class GameObject {
                 textDisplay.setText("Picked up " + this.spriteName);
                 this.isActive = false;
                 playSFXAudio(audioSourceList['pickup']);
+                this.functionWhenActivated();
                 break;
 
             case OBJECT_TYPE_DOOR:
@@ -84,9 +87,11 @@ class GameObject {
                         mapSection.setTileTypeAtGridCoord(this.col, this.row, TILE_TYPE_FLOOR);
                         this.opened = true;
                         playSFXAudio(audioSourceList['unlock']);
+                        this.functionWhenActivated();
                     } else {
                         textDisplay.setText(this.lockedMessage);
                         playSFXAudio(audioSourceList['locked']);
+                        this.functionWhenLocked();
                     }
                 } else {
                     mapSection.setTileTypeAtGridCoord(this.col, this.row, TILE_TYPE_FLOOR);
@@ -113,6 +118,7 @@ class GameObject {
                     showingEndingText = true;
                     this.isLocked = true;
                     playSFXAudio(audioSourceList['pickup']);
+                    this.functionWhenActivated();
                 }
                 break;
         }

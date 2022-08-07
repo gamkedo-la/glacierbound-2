@@ -1,5 +1,5 @@
 //#region General Constants
-const DEBUG_MODE_ENBALED = true;
+const DEBUG_MODE_ENBALED = false;
 const FRAMES_PER_SECOND = 60;
 const BACKGROUND_FILL_COLOR = "rgba(100,100,100,1)";
 const GROUND_FILL_COLOR = "rgba(200,200,200,1)";
@@ -12,7 +12,7 @@ const OBJECT_TYPE_INTERACTABLE = 2;
 //#region Projection Plane Constants
 const PROJECTION_PLANE_WIDTH = 160;
 const PROJECTION_PLANE_HEIGHT = 144;
-const CANVAS_SCALE_FACTOR = 4;
+const CANVAS_SCALE_FACTOR = 6;
 const FOV_DEGREES = 60;
 const FOV_RADS = degreesToRadians(FOV_DEGREES);
 const PROJECTION_PLAIN_DISTANCE = (PROJECTION_PLANE_WIDTH / 2) / Math.tan(FOV_RADS / 2);
@@ -28,8 +28,14 @@ const LEFT = -1;
 const BACKWARD = -1;
 const NEUTRAL = 0;
 
-const OBJECTIVE_1 = "Find the artifact"
-const OBJECTIVE_2 = "Take the artifact back to the computer on the ship";
+const OBJECTIVE_FIND_BEACON = "Find the source of the emergency beacon"
+const OBJECTIVE_FIND_WRENCH = "Find the wrench in the ship's boiler room";
+const OBJECTIVE_EXIT_SHIP = "Exit the ship";
+const OBJECTIVE_FIND_MINE_KEY = "Find the key to unlock the mines";
+const OBJECTIVE_FIND_CROW_BAR = "Search for a crowbar in the mines";
+const OBJECTIVE_FIND_LANTERN = "Search for a lantern in the research station offices";
+const OBJECTIVE_FIND_LAB_CAVE_ENTERANCE = "Search the caves for a secret entrance to underground science lab";
+const OBJECTIVE_RETURN_TO_SHIP = "Take the artifact back to the computer on the ship";
 
 //#endregion
 
