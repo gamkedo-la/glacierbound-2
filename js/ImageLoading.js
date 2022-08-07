@@ -30,6 +30,7 @@ function loadImages() {
 
         //Item Spritesheets
         {spriteName: 'Book', fileName: 'spritesheets/book_blue_spritesheet.png'},
+        {spriteName: 'Crowbar', fileName: 'spritesheets/crowbar_spritesheet.png'},
         {spriteName: 'Flashlight', fileName: 'spritesheets/flashlight_spritesheet.png'},
         {spriteName: 'Fire Extinguisher', fileName: 'spritesheets/fire_extinguisher_spritesheet.png'},
         {spriteName: 'Map', fileName: 'spritesheets/map_spritesheet.png'},
@@ -78,6 +79,7 @@ function countImagesOrStartGame() {
 }
 
 spriteData["Book"] = {frames: 8, w: 128, h: 128};
+spriteData["Crowbar"] = {frames: 8, w: 128, h: 128};
 spriteData["Flashlight"] = {frames: 8, w: 128, h: 128};
 spriteData["Fire Extinguisher"] = {frames: 8, w: 128, h: 128};
 spriteData["Map"] = {frames: 8, w: 128, h: 128};

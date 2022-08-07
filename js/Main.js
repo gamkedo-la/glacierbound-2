@@ -112,7 +112,7 @@ function drawEverything() {
 
             if (DEBUG_MODE_ENBALED || levelEditorEnabled) {
                 screenCanvas.style.cursor = "auto";
-                debugDisplay.draw();
+                //debugDisplay.draw();
             } else {
                 screenCanvas.style.cursor = "none";
             }
