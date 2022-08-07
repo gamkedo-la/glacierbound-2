@@ -141,7 +141,7 @@ var creditsList = [
 function drawCredits() {
   var lineX = 1;
   var lineY = 1;
-  var creditsSize = 8;
+  var creditsSize = 26;
   var lineSkip = creditsSize-1;
   // colorRect(0, 0, titleScreenCanvasContext.titleScreenCanvasContext, titleScreenCanvasContext.height, "#504324");
   var linesPerPage=17;
@@ -152,9 +152,9 @@ function drawCredits() {
     endLine = creditsList.length;
   }
   for(var i=startLine;i<endLine;i++) {
-    colorText(creditsList[i], titleScreenCanvasContext, lineX, lineY+=lineSkip, creditsSize+'px sans-serif', "left", "#d0bc92");
+    colorText(creditsList[i], bufferedHUDCanvasContext, lineX, lineY+=lineSkip, creditsSize+'px sans-serif', "left", "#d0bc92");
   }
-  colorText("Page "+(showingCreditsPage+1) + " of " + pageCount, titleScreenCanvasContext, lineX+10, titleScreenCanvas.height-10, creditsSize+'px sans-serif', "left", "#d0bc92");
+  colorText("Page "+(showingCreditsPage+1) + " of " + pageCount, bufferedHUDCanvasContext, lineX+10, bufferedHUDCanvas.height-10, creditsSize+'px sans-serif', "left", "#d0bc92");
   //Draw back Button
   var cornerMargin = 3;
   drawAndCheckButtonClick("Next", "green", (titleScreenCanvas.width-20)-cornerMargin, -cornerMargin+(titleScreenCanvas.height * 0.98), 40, 12, CANVAS_SCALE_FACTOR, function() {showingCreditsPage++; if(showingCreditsPage>=3){showingCreditsPage=-1}} );
